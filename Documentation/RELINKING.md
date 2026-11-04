@@ -31,9 +31,9 @@ The supplied sources can replace developer downloads. Scripts/swift.sh and Scrip
 
 ## Release replacement test
 
-The automated release test adds a temporary LGPL test file to both the vendored crypto package and upstream go-ethereum RLP package. Each package's initializer emits a distinct public marker. It rebuilds the native archive, relinks the actual Swift application and executes a small C ABI empty-input fixture against the replacement archive. Both markers and the expected error response must be observed. It does not generate/import wallet keys, open a vault, start the wallet UI or contact a network service.
+The automated release test adds a temporary LGPL test file to the compiled upstream go-ethereum common and RLP packages in an independent local module replacement. Each package's initializer emits a distinct public marker. It rebuilds the native archive, relinks the actual Swift application and executes a small C ABI empty-input fixture against the replacement archive. Both markers and the expected error response must be observed. It does not generate/import wallet keys, open a vault, start the wallet UI or contact a network service.
 
-The files and original permissions are restored before the unmodified release application is built. RELINK-VERIFICATION.json records the exact committed tree, modified application/archive hashes and successful observations; the temporary modified application is not distributed. This verifies source replacement and relinking mechanically. It is not a legal opinion, security audit or guarantee of reproducible bytes for upstream binaries.
+The temporary module replacement and test files are removed before the unmodified release application is built. RELINK-VERIFICATION.json records the exact committed tree, modified application/archive hashes and successful observations; the temporary modified application is not distributed. This verifies source replacement and relinking mechanically. It is not a legal opinion, security audit or guarantee of reproducible bytes for upstream binaries.
 
 ~~~bash
 python3 Scripts/release-materials.py fetch

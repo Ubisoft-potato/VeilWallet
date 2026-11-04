@@ -93,33 +93,38 @@ def archive(destination, entries):
 
 def relink():
     commit, tree = identity()
-    module_cache = ROOT/'.build/go-mod/github.com/ethereum/go-ethereum@v1.17.10/rlp'
-    locations = [
-        (ROOT/'Vendor/OKXWalletSDK/crypto/go-ethereum/crypto', 'crypto', 'VEIL_LGPL_VENDORED_RELINK_OK'),
-        (module_cache, 'rlp', 'VEIL_LGPL_UPSTREAM_RELINK_OK'),
-    ]
-    patches = []; result = None; binary = None
+    cached = ROOT/'.build/go-mod/github.com/ethereum/go-ethereum@v1.17.10'
+    if not cached.is_dir():
+        raise ValueError('Build dependencies before testing library replacement')
+    modfile = ROOT/'Native/ChainCore/veil_release_relink.mod'
+    sumfile = modfile.with_suffix('.sum')
+    if modfile.exists() or sumfile.exists():
+        raise ValueError('Refusing to overwrite an existing relink module fixture')
+    binary = None; result = None
     with tempfile.TemporaryDirectory(prefix='relink-', dir=ROOT/'.build') as temporary:
         temporary = Path(temporary)
         try:
-            for directory, package, marker in locations:
-                if not directory.is_dir():
-                    raise ValueError('Build dependencies before testing library replacement')
-                path = directory/'veil_release_relink_check.go'
-                if path.exists():
-                    raise ValueError('Refusing to overwrite an existing relink fixture')
-                mode = directory.stat().st_mode & 0o777
-                directory.chmod(mode | 0o700)
-                patches.append((path, mode))
-                path.write_text('// SPDX-License-Identifier: LGPL-3.0-or-later\npackage ' + package +
-                                '\nfunc init() { println("' + marker + '") }\n')
-            binary = Path(run(['./Scripts/swift.sh', 'build', '-c', 'release', '--show-bin-path']))/'VeilWallet'
+            # The Go module cache is immutable/indexed. A genuine local module
+            # replacement tests user modification without editing that cache.
+            replacement = temporary/'go-ethereum'
+            shutil.copytree(cached, replacement, copy_function=shutil.copyfile)
+            for directory, _, _ in os.walk(replacement): Path(directory).chmod(0o755)
+            locations = [('common', 'VEIL_LGPL_COMMON_RELINK_OK'), ('rlp', 'VEIL_LGPL_RLP_RELINK_OK')]
+            for package, marker in locations:
+                (replacement/package/'veil_release_relink_check.go').write_text(
+                    '// SPDX-License-Identifier: LGPL-3.0-or-later\npackage ' + package +
+                    '\nfunc init() { println("' + marker + '") }\n')
+            original = ROOT/'Native/ChainCore/go.mod'
+            modfile.write_text(original.read_text() + '\nreplace github.com/ethereum/go-ethereum => ' + json.dumps(str(replacement)) + '\n')
+            shutil.copyfile(original.with_suffix('.sum'), sumfile)
+            # Go parses quoted GOFLAGS; no shell evaluation or global config change.
+            env = dict(os.environ, GOFLAGS=json.dumps('-modfile=' + str(modfile)))
+            (ROOT/'.build/ChainCore/fingerprint').unlink(missing_ok=True)
+            binary = Path(run(['./Scripts/swift.sh', 'build', '-c', 'release', '--show-bin-path'], env=env))/'VeilWallet'
             if not binary.resolve().is_relative_to(ROOT/'.build'):
                 raise ValueError('Unexpected Swift product location')
-            # A linked-library build setting is not always an incremental linker input.
-            # Remove only this disposable product to force actual application relinking.
             binary.unlink(missing_ok=True)
-            subprocess.run(['./Scripts/swift.sh', 'build', '-c', 'release'], cwd=ROOT, check=True)
+            subprocess.run(['./Scripts/swift.sh', 'build', '-c', 'release'], cwd=ROOT, env=env, check=True)
             library = ROOT/'.build/ChainCore/libVeilChainCore.a'
             harness = temporary/'check.c'
             harness.write_text('#include <string.h>\n#include "CChainCore.h"\nint main(void) {\n'
@@ -131,23 +136,25 @@ def relink():
                             str(harness), str(library), '-framework', 'CoreFoundation', '-framework', 'Security',
                             '-lresolv', '-o', str(executable)], check=True)
             fixture = subprocess.run([str(executable)], capture_output=True, text=True, check=True)
-            markers = [marker for _, _, marker in locations]
-            if not all(marker in fixture.stderr and marker.encode() in binary.read_bytes() for marker in markers):
-                raise ValueError('The replacement libraries were not executed')
+            application = binary.read_bytes()
+            observations = {marker: dict(executed=marker in fixture.stderr, linked=marker.encode() in application)
+                            for _, marker in locations}
+            if not all(item['executed'] and item['linked'] for item in observations.values()):
+                raise ValueError('Replacement observation failed: ' + json.dumps(observations))
             result = dict(version=1, sourceCommit=commit, sourceTree=tree, passed=True,
                           actualSwiftApplicationRelinked=True, modifiedApplicationSHA256=digest(binary),
-                          modifiedStaticArchiveSHA256=digest(library), replacementSignals=markers,
+                          modifiedStaticArchiveSHA256=digest(library), replacementSignals=observations,
                           fixture='C ABI empty-input validation; no wallet creation or network access',
-                          patch='LGPL package init prints a public marker; no crypto primitive changed')
+                          patch='Two compiled LGPL packages in a local go-ethereum replacement emit public init markers; no crypto primitive changed')
         finally:
-            for path, mode in reversed(patches):
-                path.unlink(missing_ok=True); path.parent.chmod(mode)
+            modfile.unlink(missing_ok=True); sumfile.unlink(missing_ok=True)
+            (ROOT/'.build/ChainCore/fingerprint').unlink(missing_ok=True)
             if binary is not None: binary.unlink(missing_ok=True)
     if identity() != (commit, tree):
         raise ValueError('Source was not restored after replacement testing')
     result['sourcesRestored'] = True
     write_json(OUT/'RELINK-VERIFICATION.json', result)
-    print('Verified modified LGPL libraries, C ABI and actual Swift application relink; restored sources.')
+    print('Verified local LGPL library replacement, C ABI and actual Swift application relink; restored sources.')
 
 
 def prepare():
@@ -215,7 +222,7 @@ def upload():
     if build.get('sourceCommit') != commit or build.get('sourceTree') != tree or build.get('dirty') is not False:
         raise ValueError('Release upload requires the exact clean build')
     application = (OUT/'Veil Wallet.app/Contents/MacOS/VeilWallet').read_bytes()
-    if b'VEIL_LGPL_VENDORED_RELINK_OK' in application or b'VEIL_LGPL_UPSTREAM_RELINK_OK' in application:
+    if b'VEIL_LGPL_' in application:
         raise ValueError('Temporary replacement-test code must not be distributed')
     subprocess.run(['python3', 'Scripts/check-release-policy.py', '--require-binary', '--stage-materials'], cwd=ROOT, check=True)
     folder = OUT/'release-upload'
