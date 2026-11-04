@@ -13,7 +13,7 @@ for command in hdiutil ditto codesign python3 plutil lipo git; do command -v "$c
 if [ "${1:-}" != --skip-build ]; then ./Scripts/build-app.sh release; fi
 app="$PWD/build/Veil Wallet.app"
 python3 Scripts/verify-app.py "$app"
-lipo -verify_arch arm64 "$app/Contents/MacOS/VeilWallet"
+lipo "$app/Contents/MacOS/VeilWallet" -verify_arch arm64
 version=$(plutil -extract CFBundleShortVersionString raw -o - "$app/Contents/Info.plist")
 case "$version" in ''|*[!0-9A-Za-z.-]*) echo 'Invalid application version' >&2; exit 1 ;; esac
 name="VeilWallet-$version-macOS-arm64.dmg"

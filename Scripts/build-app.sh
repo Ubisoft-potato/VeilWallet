@@ -90,7 +90,7 @@ cp Configuration/TrustWallet-Assets-LICENSE.txt Configuration/Cryptocurrency-Ico
 if [ -f Configuration/AppIcon.icns ]; then cp Configuration/AppIcon.icns "$app/Contents/Resources/AppIcon.icns"; fi
 architecture=$(uname -m)
 for executable in "$app/Contents/MacOS/VeilWallet" "$helper/Contents/MacOS/tor" "$helper/Contents/MacOS/lyrebird" "$helper/Contents/MacOS/libevent-2.1.7.dylib" "$monero_helper/Contents/MacOS/monero-wallet-rpc" "$privacy_helper/Contents/MacOS/node"; do
-    lipo -verify_arch "$architecture" "$executable" || { echo "Architecture mismatch: $executable" >&2; exit 1; }
+    lipo "$executable" -verify_arch "$architecture" || { echo "Architecture mismatch: $executable" >&2; exit 1; }
 done
 python3 - "$app" <<'PY'
 import json
