@@ -1,0 +1,202 @@
+{
+  "checked": "2026-11-02",
+  "source": "cosmos/chain-registry; sending excludes retired stargaze/comdex and Terra Classic tax handling",
+  "chains": [
+    {
+      "name": "cosmoshub",
+      "chainID": "cosmoshub-4",
+      "hrp": "cosmos",
+      "status": "live",
+      "sha": "f2d0c05c59f501fb9017424d2ab8e24a64fbbc77",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/cosmoshub/chain.json"
+    },
+    {
+      "name": "osmosis",
+      "chainID": "osmosis-1",
+      "hrp": "osmo",
+      "status": "live",
+      "sha": "8c14345f56b2223f96c898363e6a9308b99150d5",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/osmosis/chain.json"
+    },
+    {
+      "name": "celestia",
+      "chainID": "celestia",
+      "hrp": "celestia",
+      "status": "live",
+      "sha": "e5554c9bb26a3a40cf24be1d7726e1dc492fb574",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/celestia/chain.json"
+    },
+    {
+      "name": "injective",
+      "chainID": "injective-1",
+      "hrp": "inj",
+      "status": "live",
+      "sha": "a842a68cff09bee2c47499f1acd0002a66562120",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/injective/chain.json"
+    },
+    {
+      "name": "sei",
+      "chainID": "pacific-1",
+      "hrp": "sei",
+      "status": "live",
+      "sha": "a7d84fbef629e912882b08e042a35f90f6666592",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/sei/chain.json"
+    },
+    {
+      "name": "juno",
+      "chainID": "juno-1",
+      "hrp": "juno",
+      "status": "live",
+      "sha": "32a8fc0a6b40f56f4c8bb74f6c214f534f3b4105",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/juno/chain.json"
+    },
+    {
+      "name": "akash",
+      "chainID": "akashnet-2",
+      "hrp": "akash",
+      "status": "live",
+      "sha": "b6eb22a5cff4f5f8074918feb543dc1f75b8e11b",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/akash/chain.json"
+    },
+    {
+      "name": "secret",
+      "error": "no content"
+    },
+    {
+      "name": "kujira",
+      "chainID": "kaiyo-1",
+      "hrp": "kujira",
+      "status": "live",
+      "sha": "6c6018581624f30df40bfd9d145f9f265e77d643",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/kujira/chain.json"
+    },
+    {
+      "name": "stargaze",
+      "chainID": "stargaze-1",
+      "hrp": "stars",
+      "status": "killed",
+      "sha": "7549e37b32a507ca050c7ab5867699d76abe180e",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/stargaze/chain.json"
+    },
+    {
+      "name": "stride",
+      "chainID": "stride-1",
+      "hrp": "stride",
+      "status": "live",
+      "sha": "e5f2b8c11b6a8f194354ccb01337c81aaabd0183",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/stride/chain.json"
+    },
+    {
+      "name": "neutron",
+      "chainID": "neutron-1",
+      "hrp": "neutron",
+      "status": "live",
+      "sha": "92f3954f778bb71edd9c71199b9d00098baa1fc9",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/neutron/chain.json"
+    },
+    {
+      "name": "dydx",
+      "chainID": "dydx-mainnet-1",
+      "hrp": "dydx",
+      "status": "live",
+      "sha": "cf2422089cbf4d1d32ffbcea8789403b772250d6",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/dydx/chain.json"
+    },
+    {
+      "name": "noble",
+      "chainID": "noble-1",
+      "hrp": "noble",
+      "status": "live",
+      "sha": "e9bc664af1c9a9a4caf865de226986a62e1a229f",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/noble/chain.json"
+    },
+    {
+      "name": "persistence",
+      "chainID": "core-1",
+      "hrp": "persistence",
+      "status": "live",
+      "sha": "7ac19d5216aa510a06727c4992331c79461c2635",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/persistence/chain.json"
+    },
+    {
+      "name": "axelar",
+      "chainID": "axelar-dojo-1",
+      "hrp": "axelar",
+      "status": "live",
+      "sha": "74a4eed815a3c2d06b0adf4a151d97849992cd05",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/axelar/chain.json"
+    },
+    {
+      "name": "bandchain",
+      "chainID": "laozi-mainnet",
+      "hrp": "band",
+      "status": "live",
+      "sha": "5a36286cec79a0063a960d2c5f20c96fe422fe02",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/bandchain/chain.json"
+    },
+    {
+      "name": "irisnet",
+      "chainID": "irishub-1",
+      "hrp": "iaa",
+      "status": "live",
+      "sha": "7ec046b1c1568b89b6680a9358590f7b118bd293",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/irisnet/chain.json"
+    },
+    {
+      "name": "kava",
+      "chainID": "kava_2222-10",
+      "hrp": "kava",
+      "status": "live",
+      "sha": "38929529864aea1e75d3c1d877870c3d380d1579",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/kava/chain.json"
+    },
+    {
+      "name": "terra2",
+      "chainID": "phoenix-1",
+      "hrp": "terra",
+      "status": "live",
+      "sha": "442e45195e9bcc5debe201ce7160627fa326a712",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/terra2/chain.json"
+    },
+    {
+      "name": "terra",
+      "chainID": "columbus-5",
+      "hrp": "terra",
+      "status": "live",
+      "sha": "4aa1798fdb57a94dd0ae2a98c6850c7f34aead3f",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/terra/chain.json"
+    },
+    {
+      "name": "chihuahua",
+      "chainID": "chihuahua-1",
+      "hrp": "chihuahua",
+      "status": "live",
+      "sha": "a6c5e6de7fc1f2112e6ce444e007dfadc50f63f3",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/chihuahua/chain.json"
+    },
+    {
+      "name": "sentinel",
+      "chainID": "sentinelhub-2",
+      "hrp": "sent",
+      "status": "live",
+      "sha": "48b63c9320e68c986100c724a64fe2f42aa6541c",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/sentinel/chain.json"
+    },
+    {
+      "name": "comdex",
+      "chainID": "comdex-1",
+      "hrp": "comdex",
+      "status": "killed",
+      "sha": "bddc02f77d8bee7ab29a8dc59f83d622cef1d7a3",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/comdex/chain.json"
+    },
+    {
+      "name": "secretnetwork",
+      "chainID": "secret-4",
+      "hrp": "secret",
+      "status": "live",
+      "sha": "e60f2b2ef072866b0fedfe0ae3b30b08b2d1477e",
+      "url": "https://github.com/cosmos/chain-registry/blob/master/secretnetwork/chain.json"
+    }
+  ]
+}

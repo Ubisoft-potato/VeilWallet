@@ -1,0 +1,506 @@
+{
+  "repositories": {
+    "trustwallet/assets": "5bbf02b975ad179fc1eaf823521df303127b1c63",
+    "spothq/cryptocurrency-icons": "1a63530be6e374711a8554f31b17e4cb92c25fa5",
+    "ErikThiart/cryptocurrency-icons": "8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e"
+  },
+  "runtimeDownloads": false,
+  "artwork": [
+    {
+      "key": "0g",
+      "fallback": "Local letter badge; no remote image"
+    },
+    {
+      "key": "ace",
+      "fallback": "Local letter badge; no remote image"
+    },
+    {
+      "key": "ada",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/cardano/info/logo.png",
+      "sha256": "c7164a17474c8b771897e4559fd3696e74d50eb3bd357115d341d73e11a4b75b"
+    },
+    {
+      "key": "akt",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/akash-network.png",
+      "sha256": "cdd734d75175cdf14eb1431136481b5b920a9913df61a2b2577f998a0ac1e305"
+    },
+    {
+      "key": "ape",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/ape.png",
+      "sha256": "c01cd698aad3dcccc569628c38a46ba820ff3b5903ffeeb6e5da64aaa26fc17a"
+    },
+    {
+      "key": "apt",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/aptos/info/logo.png",
+      "sha256": "030fc736338e392f4da475108706266e10ff77442b181e6a3b1d034f7481a615"
+    },
+    {
+      "key": "arbitrum",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/arbitrum/info/logo.png",
+      "sha256": "a12644f04d8b8099dd5f0427a8189abcf1a60707efe68feee354587ec23ae403"
+    },
+    {
+      "key": "astr",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/astar.png",
+      "sha256": "1b335cd7817557a4f230e2bfba22f9f8c5aec90d8b9cf99710696cfe7d3e75e4"
+    },
+    {
+      "key": "atom",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/cosmos/info/logo.png",
+      "sha256": "dc5c2d0bd18ed4f4def21b6459f4eff45c04991c7662d05a72399fe655f71b44"
+    },
+    {
+      "key": "avax",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/avalanchec/info/logo.png",
+      "sha256": "fde310a87a0c83345d8fd194b3a65edf6d73cdd6ef5c2f1aa9344e60ebc88589"
+    },
+    {
+      "key": "axl",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/axelar.png",
+      "sha256": "5bec295993793905a656cf1f3be11369d726852045128f0224dae83c9b36eb57"
+    },
+    {
+      "key": "band",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/band.png",
+      "sha256": "24281264558ec0bb1df70b86902f928368922bcffb4c8119079f7e0162b69fe3"
+    },
+    {
+      "key": "base",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/base/info/logo.png",
+      "sha256": "5a47cf1cb030398a2ba05f578573f3f3ed6b9d9f9a776a772049f05a57d60c6e"
+    },
+    {
+      "key": "bera",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/berachain.png",
+      "sha256": "5fbd95959fcfb3b889542ac0e0218422257f6760da89ca9b84081fa0c873db87"
+    },
+    {
+      "key": "bnb",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/smartchain/info/logo.png",
+      "sha256": "1ceadd0447350643dd0828120b3768ffad23c857d3e127a730217a3a1a03dbcc"
+    },
+    {
+      "key": "btc",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/bitcoin/info/logo.png",
+      "sha256": "5119d67e7902df5ef9d0e40e309b5f2da85dd8a736eae870072dbe647ed6bcc4"
+    },
+    {
+      "key": "btt",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/btt.png",
+      "sha256": "3bdfa614f82bc228e2b02fcd0dcd9dc89e768791fdd3f405c9a7ea00d6196a6c"
+    },
+    {
+      "key": "celo",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/celo.png",
+      "sha256": "d0c15b8751f5ac1c4b566ce6229615ee7977e6a48272de5781d671810f50504e"
+    },
+    {
+      "key": "cfx",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/conflux-network.png",
+      "sha256": "13d3994e110874faabb42753ecd129c165f16e932f18b88dd21188f424ed44de"
+    },
+    {
+      "key": "chz",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/chz.png",
+      "sha256": "bcb237f1a7bcb97a005005324b2f70be950b6ed7cd97d0d79b2016aac8d63264"
+    },
+    {
+      "key": "cmdx",
+      "fallback": "Local letter badge; no remote image"
+    },
+    {
+      "key": "core",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/core-dao.png",
+      "sha256": "cf263b57402da8e25d7f9841f81f0d89df98adac378ec8aef788e93812042d27"
+    },
+    {
+      "key": "cro",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/cronos/info/logo.png",
+      "sha256": "d7bb796b43eb7754cf28ceaf795a05127fa1258472eee6e58ac6efdf57a845b7"
+    },
+    {
+      "key": "dai",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/dai.png",
+      "sha256": "4d93468f9a57ce913cc25aac45c14955671e01d70c4b2329d078892b5e5cd84f"
+    },
+    {
+      "key": "dot",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/polkadot/info/logo.png",
+      "sha256": "d36bf05f05ea4d94d6c76adad58214306ac28cb7481543603fe3685b15e8e5f4"
+    },
+    {
+      "key": "dvpn",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/sentinel.png",
+      "sha256": "d8efcc3297069a2e694d97d3257d930db876cf7b9d60940b0c7bfd38617941a4"
+    },
+    {
+      "key": "dydx",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/dydx.png",
+      "sha256": "b816ad30738e29415224c62aa205c3a2570c9211525c215890598a43131ea83f"
+    },
+    {
+      "key": "eos",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/eos/info/logo.png",
+      "sha256": "8fb11ecacc04557ad4390a079cce68ffc65c131019b398623824fe16b80ed389"
+    },
+    {
+      "key": "eth",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/ethereum/info/logo.png",
+      "sha256": "c253d7c5d4203783e31bde1d33e143f6a9ce1defac24ab5e06948847696b80a1"
+    },
+    {
+      "key": "ethw",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/ethereum-pow.png",
+      "sha256": "36dfab2726c0e4679168b252098a3a0c738a6e8fe2b0ec6cf033c9e6dd6f7afe"
+    },
+    {
+      "key": "fil",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/fil.png",
+      "sha256": "ddcd108a16727bf2cb990ce5a9320add46152d16330f9d5a10f1d7ed19c75f72"
+    },
+    {
+      "key": "flr",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/flare.png",
+      "sha256": "79467151a7906b2ba6cb0884758e9f9019b482565ffbdc961183919d31a43461"
+    },
+    {
+      "key": "frax",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/frax.png",
+      "sha256": "58b21a0bb1a13e1d97abe936ca09db168ab4ddb6143310a433fa3211b70273c0"
+    },
+    {
+      "key": "ftm",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/fantom.png",
+      "sha256": "daf6d468c3064b6bfcd6b9fc440bd6253b8eb9c2f5716b58b72b3fbf65e69a5d"
+    },
+    {
+      "key": "g",
+      "fallback": "Local letter badge; no remote image"
+    },
+    {
+      "key": "glmr",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/moonbeam.png",
+      "sha256": "6be1fdfcbe59f22f595bf790a4eab02d458518d6a9e9a5fb4c8436da54683781"
+    },
+    {
+      "key": "gnosis",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/xdai/info/logo.png",
+      "sha256": "05a882a3d6dbef94c78cd32f531cf9f7814581badd4de203ef7ce9baf81f2dac"
+    },
+    {
+      "key": "ht",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/ht.png",
+      "sha256": "569ccc7ecec5769c02455598a9ede6c90cd8537e12c7eef037d944d2678471e7"
+    },
+    {
+      "key": "huahua",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/chihuahua.png",
+      "sha256": "0a1d31de6b9f4ff26f8f194a397ee3cbc5f5b1f045bf76de144737470b1a6cef"
+    },
+    {
+      "key": "hype",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/hyperliquid.png",
+      "sha256": "afb164b6389895f82e2c9a5821dd4e18a355caaddad3865decbeff585abdb4c1"
+    },
+    {
+      "key": "imx",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/immutable-x.png",
+      "sha256": "c2ffcebe3f39923c2579ac93e1e2154b12f878aa44a37bb8be53f50787132831"
+    },
+    {
+      "key": "inj",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/injective-protocol.png",
+      "sha256": "b5fec93df275ed993dd722f0d87d74d0c134389b8b9397b901e636fb4c838ae1"
+    },
+    {
+      "key": "iotx",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/iotx.png",
+      "sha256": "9d267dae9553a1506b8a89091d7bc4d4f422f7a314c329ea894022229a8cde99"
+    },
+    {
+      "key": "iris",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/irisnet.png",
+      "sha256": "ccd03d2290984ea45bbdd47c0fa4349f42c80ff6989cfd46547ac2a665c2c51c"
+    },
+    {
+      "key": "islm",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/islamic-coin.png",
+      "sha256": "486654e33a6f0978170a01e7cb6edc7cf68cb645469ba798c0ebc2777c75dfd5"
+    },
+    {
+      "key": "jst",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/tron/assets/TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9/logo.png",
+      "sha256": "88d3b26b9f70d9d11fe24339030db6e48528e4c8c66cfff437b1daa40613e10f"
+    },
+    {
+      "key": "juno",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/juno.png",
+      "sha256": "7197cfa02ee4fb49a5ff9903695764d8c0bba7e7f5b55e20bf7d7b4b3c8ef965"
+    },
+    {
+      "key": "kaia",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/kaia.png",
+      "sha256": "8979a8fcf3fb79bf2ceb579f1714d107478bf41273844b99517ab0f333aa3cc2"
+    },
+    {
+      "key": "kava",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/kava.png",
+      "sha256": "506920ad9516a172b82213fa26b77076eebd7144c29ca1d51899db552946467c"
+    },
+    {
+      "key": "kuji",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/kujira.png",
+      "sha256": "39ac0c2ebdf0a4cc0397234096fda020be7e3bd46da1c5c7c962ecb879aba6ae"
+    },
+    {
+      "key": "linea",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/linea/info/logo.png",
+      "sha256": "557e6310f4f1886ff354832749270abb9581ba286cf31b3c7b99d1d12077c400"
+    },
+    {
+      "key": "ltc",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/litecoin/info/logo.png",
+      "sha256": "ef3ae3b687adcff219f3fcd300b99e7cdf9a1a0120a180797cc5bfe040168823"
+    },
+    {
+      "key": "luna",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/terra-luna.png",
+      "sha256": "2a8835979ae1a009471bbe7f5188b644318aa685e1d6d547a15c94debf679ba2"
+    },
+    {
+      "key": "lunc",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/terra-luna.png",
+      "sha256": "2a8835979ae1a009471bbe7f5188b644318aa685e1d6d547a15c94debf679ba2"
+    },
+    {
+      "key": "mantle",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/mantle/info/logo.png",
+      "sha256": "e2c7f562c73973ff34b941477f916e7d6ca519e0181d628d6651eb40c836413f"
+    },
+    {
+      "key": "matic",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/polygon/info/logo.png",
+      "sha256": "ba495a374776ab6cfaecc15b3e3d0f9b04743cd0309f99575b8599fc0112e030"
+    },
+    {
+      "key": "metis",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/metisdao.png",
+      "sha256": "51fcf399152a215d38e13d2182b93973f712bbe462677462e12053942b5f0c8e"
+    },
+    {
+      "key": "mnt",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/mantle/info/logo.png",
+      "sha256": "e2c7f562c73973ff34b941477f916e7d6ca519e0181d628d6651eb40c836413f"
+    },
+    {
+      "key": "mon",
+      "fallback": "Local letter badge; no remote image"
+    },
+    {
+      "key": "movr",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/moonriver.png",
+      "sha256": "e40178eb662fc1361baa781aa8aa080e3118c1cd29ae1d7b0f74c6de86a53043"
+    },
+    {
+      "key": "near",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/near/info/logo.png",
+      "sha256": "3ef6620bdc78d7c782068d435c0b97cec0f68b3c7ed4e0e9e2787b8ba5cd8102"
+    },
+    {
+      "key": "ntrn",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/neutron.png",
+      "sha256": "d36d13e18115f6928a3d36ccdebc05f16c8263a6395157d049468feb5e8a7b0d"
+    },
+    {
+      "key": "okb",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/okxchain/info/logo.png",
+      "sha256": "c4b23889bdf5b224eb4e155bbc97e6a4c0eb5b885fe71381ce81bc88f78d865b"
+    },
+    {
+      "key": "okt",
+      "fallback": "Local letter badge; no remote image"
+    },
+    {
+      "key": "one",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/one.png",
+      "sha256": "e38faa66617c475df1ab36a0b688dd3c4210f3deed8b19adac4336ec78a20e4a"
+    },
+    {
+      "key": "optimism",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/optimism/info/logo.png",
+      "sha256": "ac49f27e374a1f192a8a473ca00082294729410c1c02e6a538ce730681380d7d"
+    },
+    {
+      "key": "osmo",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/osmosis/info/logo.png",
+      "sha256": "978917fa160a821cbe9458de54ddd8f38bf5f7c5987b6cc42d896f4b5fa9561e"
+    },
+    {
+      "key": "pls",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/pulsechain.png",
+      "sha256": "db8ac6ba519fae3283b1347892b3293e14212fae16b5fb65a65318fb0157d8ac"
+    },
+    {
+      "key": "pol",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/polygon/info/logo.png",
+      "sha256": "ba495a374776ab6cfaecc15b3e3d0f9b04743cd0309f99575b8599fc0112e030"
+    },
+    {
+      "key": "rbtc",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/rsk-smart-bitcoin.png",
+      "sha256": "b66309b79336fd91c637a7d0fed8e016206224a7cd64054c8e373857c509a289"
+    },
+    {
+      "key": "ron",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/ronin.png",
+      "sha256": "a6ffa480ded501f1b63f1254fbe9b62e2e720cee964645704002df9c072b6b6e"
+    },
+    {
+      "key": "s",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/sonic/info/logo.png",
+      "sha256": "f6a08690c283b992da67d8eddfb95d56375b58814734483f40bb6fc2fbc79e40"
+    },
+    {
+      "key": "scroll",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/scroll/info/logo.png",
+      "sha256": "c3087d036cb4b31e3c92d326f6835136294cf3a55af206e8cf447161dac6bb9a"
+    },
+    {
+      "key": "scrt",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/secret.png",
+      "sha256": "69fe70ce565bc467d3a3582f1118edac408df1fb2b3ecef9b85fe0c4965ed81f"
+    },
+    {
+      "key": "sei",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/sei/info/logo.png",
+      "sha256": "7b6d10508f216de6e4f09035be26f9d95a18c8645b64e54fcdc7e86c30220031"
+    },
+    {
+      "key": "sol",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/solana/info/logo.png",
+      "sha256": "b0fb83e48d1b455333436ae158cd9e547b7493ef4f5b2d5de3d678e93a994d4c"
+    },
+    {
+      "key": "sonic",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/sonic/info/logo.png",
+      "sha256": "f6a08690c283b992da67d8eddfb95d56375b58814734483f40bb6fc2fbc79e40"
+    },
+    {
+      "key": "stars",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/stargaze.png",
+      "sha256": "96524cff42d25e47ce0723ec29d0a408c448498c7987766d9bf4144d293d5cd8"
+    },
+    {
+      "key": "strd",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/stride.png",
+      "sha256": "28f353b988630aae6f71e5e6e498eae4a3bd1136bb98c350c033d3362e46d218"
+    },
+    {
+      "key": "strk",
+      "fallback": "Local letter badge; no remote image"
+    },
+    {
+      "key": "stx",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/stx.png",
+      "sha256": "9948bb4f3bcd685beccb2668dfa71300730aae006eeb3aba99b123e31c4950d0"
+    },
+    {
+      "key": "sui",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/sui/info/logo.png",
+      "sha256": "4f8bdce8c8effcc5fb8402578051f3800eab3ac590b100de4e0f4da35dd0dc93"
+    },
+    {
+      "key": "sun",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/tron/assets/TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S/logo.png",
+      "sha256": "d9270eece8f41915f7b37906282faafe2bc6bb8a4b7fa1d65e90b9316b181f13"
+    },
+    {
+      "key": "tia",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/celestia.png",
+      "sha256": "1df54da5a3cf6e607ca7aafeb17ea199dc6b733102db60a0ec3579e31b9b96c1"
+    },
+    {
+      "key": "tlos",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/telos.png",
+      "sha256": "024a636461aef761160872852f4a5772ba93727fbdd4635fe63e3e6a4f63b4e3"
+    },
+    {
+      "key": "ton",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/ton/info/logo.png",
+      "sha256": "6434e8d6e515f65e422e8583cd96f6bffe18904e6a4babb140fb6d542ea4488a"
+    },
+    {
+      "key": "trx",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/tron/info/logo.png",
+      "sha256": "53830c1f0b3c7654c7caa55df858d2967b7e55194d207162bf7cf9371323a1c6"
+    },
+    {
+      "key": "usd",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/usd.png",
+      "sha256": "5e70b38d02ddf7e287d57fde580e62ed365c4ce706ea8d92e5a03b74e96c0ec3"
+    },
+    {
+      "key": "usdc",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/usdc.png",
+      "sha256": "7f9969d11eef1e08ded67abd495a65b4394bf8363515eaf5bbad4c089b98928b"
+    },
+    {
+      "key": "usdd",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/tron/assets/TXDk8mbtRbXeYuMNS83CfKPaYYT8XWv9Hz/logo.png",
+      "sha256": "96b46173ffe9a8fb1eb58f1c02fba952bca2ccf849de31bb0b5631bdf00df8c4"
+    },
+    {
+      "key": "usdt",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/usdt.png",
+      "sha256": "9adc9724481b9ee1393ee384f3cc3e39fdbf21936c38fa581ea1536371d0ceae"
+    },
+    {
+      "key": "usdt0",
+      "alias": "usdt"
+    },
+    {
+      "key": "waxp",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/wax.png",
+      "sha256": "02775ec2dcb10a19eb945380370ef07725390d6b7d233ee62d2f905cc2430f2a"
+    },
+    {
+      "key": "wtrx",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/tron/info/logo.png",
+      "sha256": "53830c1f0b3c7654c7caa55df858d2967b7e55194d207162bf7cf9371323a1c6"
+    },
+    {
+      "key": "xdai",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/xdai/info/logo.png",
+      "sha256": "05a882a3d6dbef94c78cd32f531cf9f7814581badd4de203ef7ce9baf81f2dac"
+    },
+    {
+      "key": "xdc",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/xinfin.png",
+      "sha256": "e11e2c5ecbe4d5283763aa62fd5bd7a6c21afffae171badfa0cb771dc2acf09f"
+    },
+    {
+      "key": "xmr",
+      "source": "https://raw.githubusercontent.com/spothq/cryptocurrency-icons/1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/xmr.png",
+      "sha256": "c050fde5b5f8be05b784ae2aa24bd3833a98e2cefbd1ac53f1dc799864be0d52"
+    },
+    {
+      "key": "xpl",
+      "fallback": "Local letter badge; no remote image"
+    },
+    {
+      "key": "xprt",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/persistence.png",
+      "sha256": "2cebdb8d57a94e6ccde23da060fdc9b0ad35b122689ec33a1d8e7feded75a806"
+    },
+    {
+      "key": "zeta",
+      "source": "https://raw.githubusercontent.com/ErikThiart/cryptocurrency-icons/8dcc316d95f0bbdf6f3b220745ae05f1ef00e79e/128/zetachain.png",
+      "sha256": "7202f1b75b097b2ed0c2d7d14bfef25acf3081b660b234d41c72ba353eb91c6a"
+    },
+    {
+      "key": "zksync",
+      "source": "https://raw.githubusercontent.com/trustwallet/assets/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/zksync/info/logo.png",
+      "sha256": "7ee37859e1a4e751ecbdd59f33c1e330b0834a7ccdd83d0c3c864f8cc3598867"
+    }
+  ]
+}

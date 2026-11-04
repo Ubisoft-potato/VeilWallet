@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-04",
+  "provider": "DefiLlama",
+  "documentation": "https://api-docs.defillama.com/llms-free.txt",
+  "runtimeEndpoint": "https://coins.llama.fi/prices/current/{coins}",
+  "chainMetadataSource": "https://api.llama.fi/v2/chains",
+  "chainMetadataSHA256": "aa34bb4724cb89060144bc132df8f73ca51dfc2e058aa0ad2ddac1788c1ac04b",
+  "nativeMappingRule": "Pinned gasTokenGeckoId (not governance gecko_id) or explicit native CoinGecko ID; never runtime ticker matching",
+  "tokenMappingRule": "Pinned chain namespace + exact contract; case preserved for TRON; response decimals must match",
+  "catalog": "Sources/WalletCore/Resources/market-prices.json",
+  "catalogSHA256": "66f9d039afb56a38db944de5f440407d54edd38b06c26c8dae17829d61d630c8",
+  "walletAddressOrBalanceInMarketRequests": false,
+  "builtinRequestIdentifiers": 141,
+  "customContractsMayExtendRequests": true,
+  "transport": "TorTransport / socks5h / HTTPS 443; no direct fallback",
+  "refreshSeconds": 300,
+  "freshnessSeconds": 900,
+  "minimumConfidence": "0.9",
+  "USDCalculation": "18-place fixed point BigUInt; Decimal JSON parsing; no binary floating point money"
+}

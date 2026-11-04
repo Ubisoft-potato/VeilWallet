@@ -1,0 +1,21 @@
+{
+  "version": "0.9.0",
+  "build": 11,
+  "architecture": "arm64",
+  "zipExtractionAndChecksums": true,
+  "nestedSignaturesVerified": true,
+  "privacyInventoryResources": 1218,
+  "marketNetworkIdentitiesVerified": 119,
+  "tokenPresetsVerified": 59,
+  "logoFilesVerified": 92,
+  "logoLicensesVerified": true,
+  "testResourcesAndNativeAddonsAbsent": true,
+  "executableArchitecturesVerified": true,
+  "appMiB": 253.42,
+  "zipMiB": 82.7,
+  "checksums": {
+    "Veil Wallet.app/Contents/MacOS/VeilWallet": "17adf7243b9752d5280b891a4d8e7b844b513069f583e3e38211c18426ff31f8",
+    "VeilWallet-0.9.0-macOS-arm64.zip": "1961fd14cb5636b58b6e4883f09e0064b63ae287d0ebe22738051ad23104757a"
+  },
+  "signature": "ad-hoc development; not notarized"
+}

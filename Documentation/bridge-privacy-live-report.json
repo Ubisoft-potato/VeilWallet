@@ -1,0 +1,38 @@
+{
+  "checks" : [
+    {
+      "minimumDestination" : "9943035",
+      "nativeFee" : "4994323834743472",
+      "result" : "quote-pass",
+      "route" : "allbridge-oft-eth → allbridge-oft-tron"
+    },
+    {
+      "minimumDestination" : "9943035",
+      "nativeFee" : "4958426",
+      "result" : "quote-pass",
+      "route" : "allbridge-oft-tron → allbridge-oft-eth"
+    },
+    {
+      "minimumDestination" : "9930099000000000000",
+      "nativeFee" : "654936946208419",
+      "result" : "quote-pass",
+      "route" : "stargate-usdt-eth → stargate-usdt-bsc"
+    },
+    {
+      "minimumDestination" : "9930099",
+      "nativeFee" : "3714256012359072",
+      "result" : "quote-pass",
+      "route" : "stargate-usdt-bsc → stargate-usdt-eth"
+    },
+    {
+      "protocol" : "tornado-classic-1",
+      "result" : "all-pool-getters-and-public-proof-pass"
+    },
+    {
+      "protocol" : "tornado-classic-56",
+      "result" : "all-pool-getters-and-public-proof-pass"
+    }
+  ],
+  "generatedAt" : "2026-11-03T09:36:59Z",
+  "scope" : "Read-only public fixtures; no signing, funded simulation or broadcast"
+}

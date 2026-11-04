@@ -1,0 +1,92 @@
+{
+  "version": "0.8.0",
+  "checkedAt": "2026-11-03T15:09:17.039043+00:00",
+  "torExitVerified": true,
+  "sepoliaIdentityVerified": true,
+  "stoppedTorBlocksRequests": true,
+  "usesPublicFixtureOnly": true,
+  "readsUserVault": false,
+  "signatures": false,
+  "broadcasts": false,
+  "scope": "Preset decimals, contract code and balanceOf via bundled Tor",
+  "checks": [
+    {
+      "network": "Ethereum",
+      "symbol": "USDC",
+      "result": "pass"
+    },
+    {
+      "network": "Ethereum",
+      "symbol": "USDT",
+      "result": "pass"
+    },
+    {
+      "network": "Ethereum",
+      "symbol": "WETH",
+      "result": "pass"
+    },
+    {
+      "network": "Ethereum",
+      "symbol": "DAI",
+      "result": "pass"
+    },
+    {
+      "network": "Ethereum",
+      "symbol": "WBTC",
+      "result": "pass"
+    },
+    {
+      "network": "BNB Chain",
+      "symbol": "USDT",
+      "result": "pass"
+    },
+    {
+      "network": "BNB Chain",
+      "symbol": "USDC",
+      "result": "pass"
+    },
+    {
+      "network": "BNB Chain",
+      "symbol": "WBNB",
+      "result": "pass"
+    },
+    {
+      "network": "Tron",
+      "symbol": "USDT",
+      "result": "pass"
+    },
+    {
+      "network": "Tron",
+      "symbol": "USDD",
+      "result": "pass"
+    },
+    {
+      "network": "Tron",
+      "symbol": "WTRX",
+      "result": "pass"
+    },
+    {
+      "network": "Tron",
+      "symbol": "SUN",
+      "result": "pass"
+    },
+    {
+      "network": "Tron",
+      "symbol": "JST",
+      "result": "pass"
+    },
+    {
+      "network": "Tron",
+      "symbol": "USDDOLD",
+      "result": "pass"
+    },
+    {
+      "network": "Tron",
+      "symbol": "USDCOLD",
+      "result": "pass"
+    }
+  ],
+  "packagedTorStartupRetest": true,
+  "releaseTorExitVerified": true,
+  "releaseStoppedTorBlocksRequests": true
+}

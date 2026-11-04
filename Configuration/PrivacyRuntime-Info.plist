@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+    <key>CFBundleIdentifier</key><string>app.veilwallet.privacy-runtime</string>
+    <key>CFBundleName</key><string>PrivacyRuntime</string>
+    <key>CFBundleExecutable</key><string>node</string>
+    <key>CFBundlePackageType</key><string>BNDL</string>
+    <key>CFBundleVersion</key><string>24.22.2</string>
+</dict></plist>

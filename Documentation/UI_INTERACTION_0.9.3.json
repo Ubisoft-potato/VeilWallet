@@ -1,0 +1,21 @@
+{
+  "checks": [
+    "sidebar whitespace click: Assets",
+    "sidebar whitespace click: Accounts",
+    "sidebar whitespace click: Networks",
+    "sidebar whitespace click: Transactions",
+    "sidebar whitespace click: Explore",
+    "sidebar whitespace click: Privacy",
+    "sidebar whitespace click: Settings",
+    "sidebar remains usable during background work",
+    "disclosure whitespace: expand, input focus, child action, collapse, reopen, preserved field state",
+    "icon: 36 x 36 minimum, single activation",
+    "disabled disclosure does not activate",
+    "action flow: six independent clicks, wraps at 360 pt viewport, no overflow"
+  ],
+  "nativePointerEvents": true,
+  "networkStarted": false,
+  "passed": true,
+  "vaultOpened": false,
+  "version": "0.9.3"
+}

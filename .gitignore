@@ -1,0 +1,66 @@
+# Build products, dependency caches and local editor state
+/.build/
+/.index-build/
+/.swiftpm/
+/.tools/
+/build/
+/.idea/
+/.vscode/
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+*.xcuserstate
+xcuserdata/
+node_modules/
+
+# Verified developer downloads; keep public verification keys and source.
+/Vendor/Tor/
+/Vendor/Monero/
+/Vendor/*.tar.gz
+/Vendor/*.tar.gz.asc
+/Vendor/*.tar.bz2
+/Vendor/PrivacyRuntime/node
+/Vendor/PrivacyRuntime/artifacts/
+/Vendor/PrivacyRuntime/manifest.json
+/Vendor/PrivacyRuntime/DEPENDENCIES.json
+/Vendor/PrivacyRuntime/main.cjs
+/Vendor/PrivacyRuntime/package-lock.json
+/Vendor/PrivacyRuntime/NODE-LICENSE
+/Vendor/PrivacyRuntime/source/build/
+
+# Local configuration, credentials, signing materials and wallet data.
+# Public CA certificates and upstream signing keys are intentionally tracked.
+.env
+.env.*
+!.env.example
+.npmrc
+.netrc
+.pypirc
+.git-credentials
+*.local
+*.log
+*.p12
+*.pfx
+*.mobileprovision
+*.keychain
+*.keychain-db
+*.sealed
+vault.json
+wallet.dat
+*.keys
+*.note
+*.notes
+/Transactions/
+/PrivacyTrees/
+/Tor/
+/Monero/
+/audit-private/
+# Generated UI captures may contain account addresses; keep them local.
+/Documentation/*preview.png
+id_rsa
+id_ed25519
+*.app/
+*.dSYM/
+*.dmg
+*.zip

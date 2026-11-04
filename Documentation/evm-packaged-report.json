@@ -1,0 +1,95 @@
+{
+  "broadcastsTransactions" : false,
+  "checkedAt" : "2026-11-02T05:37:59Z",
+  "results" : [
+    {
+      "additionalFeeEstimate" : true,
+      "balanceRead" : true,
+      "chainID" : 1,
+      "feeModel" : "standard",
+      "feeQuote" : true,
+      "gasEstimate" : true,
+      "name" : "Ethereum",
+      "rpcURL" : "https:\/\/ethereum-rpc.publicnode.com",
+      "status" : "ready"
+    },
+    {
+      "additionalFeeEstimate" : true,
+      "balanceRead" : true,
+      "chainID" : 10,
+      "feeModel" : "opStack",
+      "feeQuote" : true,
+      "gasEstimate" : true,
+      "name" : "Optimism",
+      "rpcURL" : "https:\/\/optimism-rpc.publicnode.com",
+      "status" : "ready"
+    },
+    {
+      "additionalFeeEstimate" : true,
+      "balanceRead" : true,
+      "chainID" : 56,
+      "feeModel" : "standard",
+      "feeQuote" : true,
+      "gasEstimate" : true,
+      "name" : "BNB Chain",
+      "rpcURL" : "https:\/\/bsc-rpc.publicnode.com",
+      "status" : "ready"
+    },
+    {
+      "additionalFeeEstimate" : true,
+      "balanceRead" : true,
+      "chainID" : 137,
+      "feeModel" : "standard",
+      "feeQuote" : true,
+      "gasEstimate" : true,
+      "name" : "Polygon",
+      "rpcURL" : "https:\/\/polygon-bor-rpc.publicnode.com",
+      "status" : "ready"
+    },
+    {
+      "additionalFeeEstimate" : true,
+      "balanceRead" : true,
+      "chainID" : 5000,
+      "feeModel" : "mantle",
+      "feeQuote" : true,
+      "gasEstimate" : true,
+      "name" : "Mantle",
+      "rpcURL" : "https:\/\/rpc.mantle.xyz",
+      "status" : "ready"
+    },
+    {
+      "additionalFeeEstimate" : true,
+      "balanceRead" : true,
+      "chainID" : 8453,
+      "feeModel" : "opStack",
+      "feeQuote" : true,
+      "gasEstimate" : true,
+      "name" : "Base",
+      "rpcURL" : "https:\/\/base-rpc.publicnode.com",
+      "status" : "ready"
+    },
+    {
+      "additionalFeeEstimate" : true,
+      "balanceRead" : true,
+      "chainID" : 42161,
+      "feeModel" : "standard",
+      "feeQuote" : true,
+      "gasEstimate" : true,
+      "name" : "Arbitrum One",
+      "rpcURL" : "https:\/\/arbitrum-one-rpc.publicnode.com",
+      "status" : "ready"
+    },
+    {
+      "additionalFeeEstimate" : true,
+      "balanceRead" : true,
+      "chainID" : 534352,
+      "feeModel" : "scroll",
+      "feeQuote" : true,
+      "gasEstimate" : true,
+      "name" : "Scroll",
+      "rpcURL" : "https:\/\/rpc.scroll.io",
+      "status" : "ready"
+    }
+  ],
+  "usesPublicAddress" : true
+}

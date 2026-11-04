@@ -1,0 +1,765 @@
+[
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "arbitrum:0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "arbitrum:0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "arbitrum:0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "avax:0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "avax:0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "base:0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "berachain:0x779ded0c9e1022225f8e0630b35a9b54be713736"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "bsc:0x55d398326f99059ff775485246999027b3197955"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "bsc:0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "bsc:0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "celo:0xceba9300f2b948710d2653dd7b07f33a8b32118c"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:akash-network"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:apecoin"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:aptos"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:astar"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:avalanche-2"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:axelar"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:band-protocol"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:berachain-bera"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:binancecoin"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:bitcoin"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:bittorrent"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:blockstack"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:cardano"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:celestia"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:celo"
+  },
+  {
+    "available" : true,
+    "fresh" : false,
+    "key" : "coingecko:chihuahua-token"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:chiliz"
+  },
+  {
+    "available" : false,
+    "fresh" : false,
+    "key" : "coingecko:comdex"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:conflux-token"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:coredaoorg"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:cosmos"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:crypto-com-chain"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:dydx-chain"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:endurance"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:ethereum"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:ethereum-pow-iou"
+  },
+  {
+    "available" : false,
+    "fresh" : false,
+    "key" : "coingecko:fantom"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:filecoin"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:flare-networks"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:frax-share"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:g-token"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:harmony"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:huobi-token"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:hyperliquid"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:immutable-x"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:injective-protocol"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:iotex"
+  },
+  {
+    "available" : true,
+    "fresh" : false,
+    "key" : "coingecko:iris-network"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:islamic-coin"
+  },
+  {
+    "available" : true,
+    "fresh" : false,
+    "key" : "coingecko:juno-network"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:kaia"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:kava"
+  },
+  {
+    "available" : false,
+    "fresh" : false,
+    "key" : "coingecko:kujira"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:litecoin"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:mantle"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:metis-token"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:monad"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:monero"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:moonbeam"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:moonriver"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:near"
+  },
+  {
+    "available" : true,
+    "fresh" : false,
+    "key" : "coingecko:neutron-3"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:okb"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:osmosis"
+  },
+  {
+    "available" : true,
+    "fresh" : false,
+    "key" : "coingecko:persistence"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:plasma"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:polkadot"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:polygon-ecosystem-token"
+  },
+  {
+    "available" : true,
+    "fresh" : false,
+    "key" : "coingecko:pulsechain"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:ronin"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:rootstock"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:secret"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:sei-network"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:sentinel"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:solana"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:sonic-3"
+  },
+  {
+    "available" : true,
+    "fresh" : false,
+    "key" : "coingecko:stargaze"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:starknet"
+  },
+  {
+    "available" : true,
+    "fresh" : false,
+    "key" : "coingecko:stride"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:sui"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:telos"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:terra-luna"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:terra-luna-2"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:the-open-network"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:tron"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:usd-coin"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:usdt0"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:wax"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:xdai"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:xdce-crowd-sale"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:zero-gravity"
+  },
+  {
+    "available" : true,
+    "fresh" : true,
+    "key" : "coingecko:zetachain"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "conflux:0xaf37e8b6c9ed7f6318979f56fc287d76c30847ff"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "cronos:0x3d7f2c478aafdb65542bcb44bceec05849999d2d"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "era:0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4"
+  },
+  {
+    "available" : true,
+    "decimals" : 8,
+    "fresh" : true,
+    "key" : "ethereum:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "ethereum:0x6b175474e89094c44da98b954eedeac495271d0f"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "ethereum:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "ethereum:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "ethereum:0xdac17f958d2ee523a2206206994597c13d831ec7"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "flare:0xe7cd86e13ac4309349f30b3435a9d337750fc82d"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "hyperliquid:0xb88339cb7199b77e23db6e890353e22632ba630f"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "hyperliquid:0xb8ce59fc3717ada4c02eadf9682a9e934f625ebb"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "ink:0x0200c29006150606b650577bbe7b6248f58470c1"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "ink:0x2d270e6886d130d724215a266106e6832161eaed"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "kava:0x919c1c267bc06a7039e03fcc2ef738525769109c"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "linea:0x176211869ca2b568f2a7d4ee941e073a821ee1ff"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "mantle:0x779ded0c9e1022225f8e0630b35a9b54be713736"
+  },
+  {
+    "available" : false,
+    "fresh" : false,
+    "key" : "megaeth:0xb8ce59fc3717ada4c02eadf9682a9e934f625ebb"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "monad:0x754704bc059f8c67012fed69bc8a327a5aafb603"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "monad:0xe7cd86e13ac4309349f30b3435a9d337750fc82d"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "morph:0xcfb1186f4e93d60e60a8bdd997427d1f33bc372b"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "morph:0xe7cd86e13ac4309349f30b3435a9d337750fc82d"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "optimism:0x01bff41798a0bcf287b996046ca68b395dbc1071"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "optimism:0x0b2c639c533813f4aa9d7837caf62653d097ff85"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "optimism:0x94b008aa00579c1307b0ef2c499ad98a8ce58e58"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "plasma:0x2d661c89d812261039af9764eceaaee884f5f67f"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "plasma:0xb8ce59fc3717ada4c02eadf9682a9e934f625ebb"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "polygon:0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "polygon:0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "polygon:0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "rsk:0x779ded0c9e1022225f8e0630b35a9b54be713736"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "sei:0x9151434b16b9763660705744891fa906f660ecc5"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "sei:0xe15fc38f6d8c56af07bbcbe3baf5708a2bf42392"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "sonic:0x29219dd400f2bf60e5a23d13be72b486d4038894"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "stable:0x779ded0c9e1022225f8e0630b35a9b54be713736"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "tempo:0x20c00000000000000000000014f22ca97301eb73"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "tron:TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "tron:TEkxiTehnzSmSe2XqrBj4w32RUN966rdz8"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "tron:TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "tron:TPYmHEhy5n8TCEfYGqW2rPxsghSfzghPDn"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "tron:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S"
+  },
+  {
+    "available" : true,
+    "decimals" : 18,
+    "fresh" : true,
+    "key" : "tron:TXDk8mbtRbXeYuMNS83CfKPaYYT8XWv9Hz"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "unichain:0x078d782b760474a361dda0af3839290b0ef57ad6"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "unichain:0x9151434b16b9763660705744891fa906f660ecc5"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "wc:0x79a02482a880bce3f13e09da970dc34db4cd24d1"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "xdc:0xfa2958cb79b0491cc627c1557f441ef849ca8eb1"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "xlayer:0x779ded0c9e1022225f8e0630b35a9b54be713736"
+  },
+  {
+    "available" : true,
+    "decimals" : 6,
+    "fresh" : true,
+    "key" : "xlayer:0xb6ceceab302e2e4948951ee7843fc24e92933061"
+  }
+]

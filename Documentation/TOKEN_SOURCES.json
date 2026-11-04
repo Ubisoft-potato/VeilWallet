@@ -1,0 +1,24 @@
+{
+  "checkedDate": "2026-11-03",
+  "presetCount": 59,
+  "chains": 32,
+  "repositories": {
+    "trustwallet/assets": "5bbf02b975ad179fc1eaf823521df303127b1c63",
+    "spothq/cryptocurrency-icons": "1a63530be6e374711a8554f31b17e4cb92c25fa5"
+  },
+  "primarySources": [
+    "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+    "https://docs.usdd.io/developers/deployment-addresses.md",
+    "https://docs.usdd.io/introduction/what-is-usddold.md",
+    "https://docs.usdt0.to/api/deployments",
+    "https://github.com/sun-protocol/sun-cli#built-in-token-symbols",
+    "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/arbitrum/assets",
+    "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/ethereum/assets",
+    "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/optimism/assets",
+    "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/polygon/assets",
+    "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/smartchain/assets",
+    "https://tether.to/en/supported-protocols/",
+    "https://www.circle.com/blog/circle-is-discontinuing-support-for-usdc-on-the-tron-blockchain"
+  ],
+  "runtimeFetchesCatalog": false
+}

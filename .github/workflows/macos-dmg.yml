@@ -1,0 +1,87 @@
+name: Build macOS DMG
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: macos-dmg-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 90
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOMEBREW_NO_ANALYTICS: '1'
+      VEIL_SIGNING_IDENTITY: '-'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+        with:
+          go-version: '1.26.1'
+          cache: false
+      - name: Check platform and build dependencies
+        run: |
+          test "$(uname -m)" = arm64
+          test -d "$DEVELOPER_DIR"
+          swift --version
+          go version
+          node --version
+          npm --version
+          for package in gnupg ripgrep; do
+            brew list --versions "$package" >/dev/null || brew install "$package"
+          done
+      - name: Audit the complete source commit
+        run: |
+          ./Scripts/fetch-gitleaks.sh
+          python3 -m unittest discover -s Tests/SourceAudit -p 'test_*.py'
+          python3 -m unittest discover -s Tests/Packaging -p 'test_*.py'
+          python3 -m unittest discover -s Tests/Localization -p 'test_*.py'
+          python3 Tools/Localization/catalog.py --check
+          python3 Scripts/check-documentation.py
+          python3 Scripts/audit-source.py --source head
+          ./Scripts/check-privacy.sh
+      - name: Archive exact source and validate version tag
+        id: version
+        run: |
+          version=$(plutil -extract CFBundleShortVersionString raw -o - Configuration/Info.plist)
+          if [[ "$GITHUB_REF_TYPE" == tag && "$GITHUB_REF_NAME" != "v$version" ]]; then
+            echo 'Tag must match Configuration/Info.plist version' >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          mkdir -p build
+          git archive --format=tar.gz --prefix=VeilWallet-source/ -o "build/VeilWallet-$version-source.tar.gz" HEAD
+      - name: Fetch and verify bundled runtimes
+        run: |
+          ./Scripts/fetch-tor.sh
+          ./Scripts/fetch-monero.sh
+          ./Scripts/fetch-privacy-runtime.sh
+      - name: Run wallet tests
+        run: ./Scripts/swift.sh test
+      - name: Build and mount-verify DMG
+        run: ./Scripts/build-dmg.sh
+      - name: Upload verified installation artifacts
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: VeilWallet-${{ steps.version.outputs.version }}-macOS-arm64-${{ github.run_number }}
+          path: |
+            build/VeilWallet-*-macOS-arm64.dmg
+            build/VeilWallet-*-macOS-arm64.zip
+            build/VeilWallet-*-source.tar.gz
+            build/BUILD-INFO.json
+            build/SHA256SUMS
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+          include-hidden-files: false

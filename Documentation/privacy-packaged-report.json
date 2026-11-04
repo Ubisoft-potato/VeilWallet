@@ -1,0 +1,14 @@
+{
+  "checks" : [
+    {
+      "protocol" : "tornado-classic-1",
+      "result" : "all-pool-getters-and-public-proof-pass"
+    },
+    {
+      "protocol" : "tornado-classic-56",
+      "result" : "all-pool-getters-and-public-proof-pass"
+    }
+  ],
+  "generatedAt" : "2026-11-03T09:55:10Z",
+  "scope" : "Read-only public fixtures; no signing, funded simulation or broadcast"
+}

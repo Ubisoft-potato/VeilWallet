@@ -1,0 +1,13 @@
+{
+  "name": "veil-offline-privacy-proof",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pinned upstream Tornado Classic cryptography; no network, wallet signing or transaction broadcast",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "circomlib": "git+https://github.com/tornadocash/circomlib.git#3b492f9801573eebcfe1b6c584afe8a3beecf2b4",
+    "snarkjs": "git+https://github.com/tornadocash/snarkjs.git#869181cfaf7526fe8972073d31655493a04326d5",
+    "websnark": "git+https://github.com/tornadocash/websnark.git#4c0af6a8b65aabea3c09f377f63c44e7a58afa6d",
+    "fixed-merkle-tree": "0.6.1"
+  }
+}

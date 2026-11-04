@@ -1,0 +1,50 @@
+{
+  "version": "0.10.1",
+  "build": 16,
+  "defaultLanguage": "en",
+  "languages": [
+    "en",
+    "zh-Hans"
+  ],
+  "messageKeys": 1638,
+  "sourceCallsChecked": 1705,
+  "resourceFormat": "Native .lproj/Localizable.strings with stable keys and numbered arguments",
+  "hardcodedTranslatedSwiftLiterals": 0,
+  "immediateUpdates": true,
+  "rootViewIdentityReplaced": false,
+  "systemLanguageOverrideUsed": false,
+  "sharedProcessConstantRemoved": true,
+  "nativeLanguageControl": {
+    "directions": [
+      "en -> zh-Hans",
+      "zh-Hans -> en"
+    ],
+    "draftAndViewIdentityPreserved": true,
+    "nativePointerEvents": true,
+    "networkStarted": false,
+    "passed": true,
+    "restartRequired": false,
+    "sidebarUpdated": true,
+    "userPreferencesModified": false,
+    "vaultOpened": false,
+    "version": "0.10.1",
+    "warmedProfileCatalogUpdated": true
+  },
+  "swiftTests": {
+    "passed": 132,
+    "suites": 23,
+    "seconds": 22.114
+  },
+  "toolTests": {
+    "localizationAndDocumentation": 9,
+    "packaging": 7,
+    "sourcePublication": 12
+  },
+  "vaultSchemaChanged": false,
+  "signingAndNetworkPolicyChanged": false,
+  "limitations": [
+    "Recognized cached app descriptions translate for display; unknown history/node text retains original wording",
+    "Native checks use our own off-desktop window and an in-memory preference store",
+    "Development build; no independent security audit or Apple notarization"
+  ]
+}

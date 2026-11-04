@@ -1,0 +1,144 @@
+{
+  "code": 0,
+  "message": "SUCCESS",
+  "data": [
+    {
+      "amountIn": "1.000000",
+      "amountInRaw": "1000000",
+      "amountInReferralBips": 0,
+      "amountInReferral": "0.000000",
+      "amountInRawReferral": "0",
+      "amountOut": "0.318275",
+      "amountOutRaw": "318275",
+      "amountOutReferralBips": 0,
+      "amountOutReferral": "0.000000",
+      "amountOutRawReferral": "0",
+      "amountOutMinimum": "0.316683",
+      "amountOutMinimumRaw": "316683",
+      "inUsd": "0.317904573398000000",
+      "outUsd": "0.317768603636262650",
+      "impact": "-0.000001",
+      "fee": "0.000500",
+      "containsUnverifiedHook": false,
+      "tokens": [
+        "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+        "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"
+      ],
+      "symbols": [
+        "TRX",
+        "USDT"
+      ],
+      "poolFees": [
+        "500",
+        "0"
+      ],
+      "poolVersions": [
+        "v4"
+      ],
+      "poolKeys": [
+        {
+          "token0": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+          "token1": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+          "hooks": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+          "fee": 500,
+          "parameters": "0x00000000000000000000000000000000000000000000000000000000000a0000"
+        }
+      ],
+      "stepAmountsOut": [
+        "0.318275"
+      ]
+    },
+    {
+      "amountIn": "1.000000",
+      "amountInRaw": "1000000",
+      "amountInReferralBips": 0,
+      "amountInReferral": "0.000000",
+      "amountInRawReferral": "0",
+      "amountOut": "0.316701",
+      "amountOutRaw": "316701",
+      "amountOutReferralBips": 0,
+      "amountOutReferral": "0.000000",
+      "amountOutRawReferral": "0",
+      "amountOutMinimum": "0.315117",
+      "amountOutMinimumRaw": "315117",
+      "inUsd": "0.317904573398000000",
+      "outUsd": "0.316197107973318726",
+      "impact": "-0.000002",
+      "fee": "0.003000",
+      "containsUnverifiedHook": false,
+      "tokens": [
+        "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+        "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"
+      ],
+      "symbols": [
+        "TRX",
+        "USDT"
+      ],
+      "poolFees": [
+        "3000",
+        "0"
+      ],
+      "poolVersions": [
+        "v4"
+      ],
+      "poolKeys": [
+        {
+          "token0": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+          "token1": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+          "hooks": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+          "fee": 3000,
+          "parameters": "0x0000000000000000000000000000000000000000000000000000000000010000"
+        }
+      ],
+      "stepAmountsOut": [
+        "0.316701"
+      ]
+    },
+    {
+      "amountIn": "1.000000",
+      "amountInRaw": "1000000",
+      "amountInReferralBips": 0,
+      "amountInReferral": "0.000000",
+      "amountInRawReferral": "0",
+      "amountOut": "0.269778",
+      "amountOutRaw": "269778",
+      "amountOutReferralBips": 0,
+      "amountOutReferral": "0.000000",
+      "amountOutRawReferral": "0",
+      "amountOutMinimum": "0.268429",
+      "amountOutMinimumRaw": "268429",
+      "inUsd": "0.317904573398000000",
+      "outUsd": "0.269348765538555228",
+      "impact": "-0.146735",
+      "fee": "0.010000",
+      "containsUnverifiedHook": false,
+      "tokens": [
+        "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+        "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"
+      ],
+      "symbols": [
+        "TRX",
+        "USDT"
+      ],
+      "poolFees": [
+        "10000",
+        "0"
+      ],
+      "poolVersions": [
+        "v4"
+      ],
+      "poolKeys": [
+        {
+          "token0": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+          "token1": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+          "hooks": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+          "fee": 10000,
+          "parameters": "0x0000000000000000000000000000000000000000000000000000000000010000"
+        }
+      ],
+      "stepAmountsOut": [
+        "0.269778"
+      ]
+    }
+  ]
+}

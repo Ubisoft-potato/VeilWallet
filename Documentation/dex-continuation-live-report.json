@@ -1,0 +1,16 @@
+[
+  {
+    "chainID" : 56,
+    "id" : "pancake-v2-56",
+    "message" : "fixed deployment, quote and full swap simulation over Tor; no signing\/broadcast",
+    "status" : "PASS",
+    "venue" : "PancakeSwap V2"
+  },
+  {
+    "chainID" : 56,
+    "id" : "pancake-v3-56",
+    "message" : "fixed deployment, quote and full swap simulation over Tor; no signing\/broadcast",
+    "status" : "PASS",
+    "venue" : "PancakeSwap V3"
+  }
+]

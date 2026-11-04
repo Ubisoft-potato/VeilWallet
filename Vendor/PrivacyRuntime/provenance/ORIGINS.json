@@ -1,0 +1,24 @@
+{
+  "node": {
+    "version": "24.22.2",
+    "archive": "node-v24.22.2-darwin-arm64.tar.gz",
+    "sha256": "aa9549349e47dffaa42dcf95d6e06ade8c4bdafc980979883b88767670df385a",
+    "signerFingerprint": "5BE8A3F6C8A5C01D106C0AD820B1A390B168D356",
+    "keyringSHA256": "610b8d249da3d5733f5a128def2dd0294dbbf5b5713e6ca2529db8db419dee00",
+    "source": "https://nodejs.org/dist/v24.22.2/"
+  },
+  "tornado": {
+    "commit": "378ddf8b8b92a4924037d7b64a94dbfd5a7dd6e8",
+    "source": "https://github.com/tornadocash/tornado-cli",
+    "artifacts": {
+      "tornado.json": {
+        "sha256": "3ddd61dbff09caeec82d8edde95c674a3c34f9e66b1fe9f2c8783e72fe536f98",
+        "gitBlobSHA1": "31b648820cc9e25acc9c5d19d7e67f3ccea5c8a7"
+      },
+      "tornadoProvingKey.bin": {
+        "sha256": "8e2d2f22beafb5a9666daebca57b13f8029c3656c65fcfbcc86e2418fa16a3af",
+        "gitBlobSHA1": "e4e072fa8b404c1ab89fb4f20d20c8c0698723a8"
+      }
+    }
+  }
+}

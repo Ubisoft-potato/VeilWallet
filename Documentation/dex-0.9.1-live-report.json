@@ -1,0 +1,1488 @@
+{
+  "version": "0.9.1",
+  "date": "2026-11-04",
+  "transport": "Bundled Tor via WalletCore TorTransport and CPrivacyTransport",
+  "walletDataAccessed": false,
+  "signed": false,
+  "broadcast": false,
+  "publicFixturesOnly": true,
+  "torExitVerifiedWithoutLoggingIP": true,
+  "stoppedTorBlocksRequests": true,
+  "evmDeployments": 82,
+  "evmNetworks": 26,
+  "tronModes": 2,
+  "statusDefinitions": {
+    "PASS": "Fixed deployment, onchain quote and full swap call simulation. No signing or broadcast.",
+    "QUOTE": "Fixed deployment and onchain quote. Full swap simulation not exercised: token-input probes do not obtain allowances, and native-input probes require sufficient public fixture balance.",
+    "DEPLOYMENT": "Fixed deployment verified. A specific pool/token pair was not exercised by this probe.",
+    "UNAVAILABLE": "Probe failed; no direct-network fallback."
+  },
+  "summaryBasis": "Best validated scope for each deployment across these runs; all attempts including transient failures are retained below.",
+  "summary": {
+    "PASS": 58,
+    "DEPLOYMENT": 22,
+    "QUOTE": 4
+  },
+  "results": [
+    {
+      "chainID": 8453,
+      "id": "aero-slipstream-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Aerodrome Slipstream V1"
+    },
+    {
+      "chainID": 8453,
+      "id": "aero-slipstream-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Aerodrome Slipstream V2"
+    },
+    {
+      "chainID": 8453,
+      "id": "aero-slipstream-v3-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Aerodrome Slipstream V3"
+    },
+    {
+      "chainID": 8453,
+      "id": "aerodrome-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Aerodrome V2"
+    },
+    {
+      "chainID": 1,
+      "id": "balancer-v3-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Balancer V3"
+    },
+    {
+      "chainID": 10,
+      "id": "balancer-v3-10",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "chainID": 100,
+      "id": "balancer-v3-100",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "chainID": 42161,
+      "id": "balancer-v3-42161",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "chainID": 43114,
+      "id": "balancer-v3-43114",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "chainID": 8453,
+      "id": "balancer-v3-8453",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "chainID": 1,
+      "id": "curve-3pool-1",
+      "message": "fixed deployment and onchain quote; swap simulation not exercised",
+      "status": "QUOTE",
+      "venue": "Curve · 3pool"
+    },
+    {
+      "chainID": 1,
+      "id": "curve-steth-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Curve · ETH/stETH"
+    },
+    {
+      "chainID": 143,
+      "id": "lfj-lb-143",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "LFJ Liquidity Book V2.2"
+    },
+    {
+      "chainID": 42161,
+      "id": "lfj-lb-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "LFJ Liquidity Book V2.2"
+    },
+    {
+      "chainID": 43114,
+      "id": "lfj-lb-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "LFJ Liquidity Book V2.2"
+    },
+    {
+      "chainID": 43114,
+      "id": "lfj-v1-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "LFJ / Trader Joe V1"
+    },
+    {
+      "chainID": 1,
+      "id": "pancake-v2-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "chainID": 143,
+      "id": "pancake-v2-143",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "chainID": 204,
+      "id": "pancake-v2-204",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "chainID": 324,
+      "id": "pancake-v2-324",
+      "message": "fixed deployment and onchain quote; swap simulation not exercised",
+      "status": "QUOTE",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "chainID": 42161,
+      "id": "pancake-v2-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "chainID": 56,
+      "id": "pancake-v2-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "chainID": 59144,
+      "id": "pancake-v2-59144",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "chainID": 8453,
+      "id": "pancake-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "chainID": 1,
+      "id": "pancake-v3-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "chainID": 143,
+      "id": "pancake-v3-143",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "chainID": 204,
+      "id": "pancake-v3-204",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "chainID": 324,
+      "id": "pancake-v3-324",
+      "message": "fixed deployment and onchain quote; swap simulation not exercised",
+      "status": "QUOTE",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "chainID": 42161,
+      "id": "pancake-v3-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "chainID": 56,
+      "id": "pancake-v3-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "chainID": 59144,
+      "id": "pancake-v3-59144",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "chainID": 8453,
+      "id": "pancake-v3-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "chainID": 137,
+      "id": "quick-algebra-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "QuickSwap V3 · Algebra"
+    },
+    {
+      "chainID": 137,
+      "id": "quick-v2-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "QuickSwap V2"
+    },
+    {
+      "chainID": 8453,
+      "id": "quick-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "QuickSwap V2"
+    },
+    {
+      "chainID": 1,
+      "id": "sushi-v2-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 10,
+      "id": "sushi-v2-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 100,
+      "id": "sushi-v2-100",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 1116,
+      "id": "sushi-v2-1116",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 137,
+      "id": "sushi-v2-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 146,
+      "id": "sushi-v2-146",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 250,
+      "id": "sushi-v2-250",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 30,
+      "id": "sushi-v2-30",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 314,
+      "id": "sushi-v2-314",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 42161,
+      "id": "sushi-v2-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 42220,
+      "id": "sushi-v2-42220",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 43111,
+      "id": "sushi-v2-43111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 43114,
+      "id": "sushi-v2-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 534352,
+      "id": "sushi-v2-534352",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 56,
+      "id": "sushi-v2-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 59144,
+      "id": "sushi-v2-59144",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 7000,
+      "id": "sushi-v2-7000",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 747474,
+      "id": "sushi-v2-747474",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 81457,
+      "id": "sushi-v2-81457",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 8453,
+      "id": "sushi-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "chainID": 9223372036854776003,
+      "id": "tron-smart",
+      "message": "quote and full simulation over Tor with the same public caller and recipient; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SUN · V1/V2/V3/V4 / SunCurve / PSM"
+    },
+    {
+      "chainID": 9223372036854776003,
+      "id": "tron-v2",
+      "message": "quote and full simulation over Tor with the same public caller and recipient; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SunSwap V2 · Direct on-chain quote"
+    },
+    {
+      "chainID": 1,
+      "id": "uniswap-v2-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 10,
+      "id": "uniswap-v2-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 11155111,
+      "id": "uniswap-v2-11155111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 130,
+      "id": "uniswap-v2-130",
+      "message": "fixed deployment and onchain quote; swap simulation not exercised",
+      "status": "QUOTE",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 137,
+      "id": "uniswap-v2-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 42161,
+      "id": "uniswap-v2-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 43114,
+      "id": "uniswap-v2-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 56,
+      "id": "uniswap-v2-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 8453,
+      "id": "uniswap-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "chainID": 1,
+      "id": "uniswap-v3-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 10,
+      "id": "uniswap-v3-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 11155111,
+      "id": "uniswap-v3-11155111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 137,
+      "id": "uniswap-v3-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 42161,
+      "id": "uniswap-v3-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 43114,
+      "id": "uniswap-v3-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 56,
+      "id": "uniswap-v3-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 7777777,
+      "id": "uniswap-v3-7777777",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 81457,
+      "id": "uniswap-v3-81457",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 8453,
+      "id": "uniswap-v3-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "chainID": 1,
+      "id": "uniswap-v4-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "chainID": 11155111,
+      "id": "uniswap-v4-11155111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "chainID": 42161,
+      "id": "uniswap-v4-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "chainID": 56,
+      "id": "uniswap-v4-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "chainID": 8453,
+      "id": "uniswap-v4-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "chainID": 10,
+      "id": "velo-slipstream-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome Slipstream V1"
+    },
+    {
+      "chainID": 10,
+      "id": "velo-slipstream-v3-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome Slipstream V3"
+    },
+    {
+      "chainID": 10,
+      "id": "velodrome-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome V2"
+    }
+  ],
+  "observations": [
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "aero-slipstream-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Aerodrome Slipstream V1"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "aero-slipstream-v3-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Aerodrome Slipstream V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "aero-slipstream-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Aerodrome Slipstream V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "balancer-v3-8453",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "aerodrome-8453",
+      "message": "deployment · Tor request failed (52); no direct fallback",
+      "status": "UNAVAILABLE",
+      "venue": "Aerodrome V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "balancer-v3-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Balancer V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 43114,
+      "id": "balancer-v3-43114",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42161,
+      "id": "balancer-v3-42161",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 10,
+      "id": "balancer-v3-10",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 100,
+      "id": "balancer-v3-100",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Balancer V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "curve-steth-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Curve · ETH/stETH"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "curve-3pool-1",
+      "message": "fixed deployment and onchain quote; swap simulation not exercised",
+      "status": "QUOTE",
+      "venue": "Curve · 3pool"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42161,
+      "id": "lfj-lb-42161",
+      "message": "quote · No quote for the selected fee tier; check pool/path or node",
+      "status": "UNAVAILABLE",
+      "venue": "LFJ Liquidity Book V2.2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 43114,
+      "id": "lfj-v1-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "LFJ / Trader Joe V1"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 43114,
+      "id": "lfj-lb-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "LFJ Liquidity Book V2.2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 56,
+      "id": "pancake-v2-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "pancake-v2-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 143,
+      "id": "lfj-lb-143",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "LFJ Liquidity Book V2.2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "pancake-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42161,
+      "id": "pancake-v2-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 59144,
+      "id": "pancake-v2-59144",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 204,
+      "id": "pancake-v2-204",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 143,
+      "id": "pancake-v2-143",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 324,
+      "id": "pancake-v2-324",
+      "message": "fixed deployment and onchain quote; swap simulation not exercised",
+      "status": "QUOTE",
+      "venue": "PancakeSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 56,
+      "id": "pancake-v3-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42161,
+      "id": "pancake-v3-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "pancake-v3-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 204,
+      "id": "pancake-v3-204",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "pancake-v3-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 59144,
+      "id": "pancake-v3-59144",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 137,
+      "id": "quick-v2-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "QuickSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 324,
+      "id": "pancake-v3-324",
+      "message": "fixed deployment and onchain quote; swap simulation not exercised",
+      "status": "QUOTE",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 143,
+      "id": "pancake-v3-143",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "PancakeSwap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "sushi-v2-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "quick-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "QuickSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 137,
+      "id": "quick-algebra-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "QuickSwap V3 · Algebra"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 137,
+      "id": "sushi-v2-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 56,
+      "id": "sushi-v2-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 10,
+      "id": "sushi-v2-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 43114,
+      "id": "sushi-v2-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "sushi-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42161,
+      "id": "sushi-v2-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 100,
+      "id": "sushi-v2-100",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 534352,
+      "id": "sushi-v2-534352",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 59144,
+      "id": "sushi-v2-59144",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 250,
+      "id": "sushi-v2-250",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 81457,
+      "id": "sushi-v2-81457",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 146,
+      "id": "sushi-v2-146",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 43111,
+      "id": "sushi-v2-43111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 747474,
+      "id": "sushi-v2-747474",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42220,
+      "id": "sushi-v2-42220",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 7000,
+      "id": "sushi-v2-7000",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1116,
+      "id": "sushi-v2-1116",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 30,
+      "id": "sushi-v2-30",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 314,
+      "id": "sushi-v2-314",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "SushiSwap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 130,
+      "id": "uniswap-v2-130",
+      "message": "deployment · Tor request failed (28); no direct fallback",
+      "status": "UNAVAILABLE",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42161,
+      "id": "uniswap-v2-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 11155111,
+      "id": "uniswap-v2-11155111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "uniswap-v2-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 43114,
+      "id": "uniswap-v2-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 56,
+      "id": "uniswap-v2-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 137,
+      "id": "uniswap-v2-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "uniswap-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 10,
+      "id": "uniswap-v3-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 10,
+      "id": "uniswap-v2-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "uniswap-v3-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42161,
+      "id": "uniswap-v3-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 137,
+      "id": "uniswap-v3-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 56,
+      "id": "uniswap-v3-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 11155111,
+      "id": "uniswap-v3-11155111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "uniswap-v3-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 43114,
+      "id": "uniswap-v3-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 81457,
+      "id": "uniswap-v3-81457",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 7777777,
+      "id": "uniswap-v3-7777777",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 1,
+      "id": "uniswap-v4-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 42161,
+      "id": "uniswap-v4-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 56,
+      "id": "uniswap-v4-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 8453,
+      "id": "uniswap-v4-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 11155111,
+      "id": "uniswap-v4-11155111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 10,
+      "id": "velo-slipstream-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome Slipstream V1"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 10,
+      "id": "velo-slipstream-v3-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome Slipstream V3"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 10,
+      "id": "velodrome-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome V2"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 9223372036854776003,
+      "id": "tron-v2",
+      "message": "quote and full simulation over Tor with the same public caller and recipient; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SunSwap V2 · Direct on-chain quote"
+    },
+    {
+      "run": "all-dex-live",
+      "chainID": 9223372036854776003,
+      "id": "tron-smart",
+      "message": "quote and full simulation over Tor with the same public caller and recipient; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SUN · V1/V2/V3/V4 / SunCurve / PSM"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 10,
+      "id": "uniswap-v3-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 1,
+      "id": "uniswap-v3-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 8453,
+      "id": "uniswap-v2-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V2"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 42161,
+      "id": "uniswap-v3-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 137,
+      "id": "uniswap-v3-137",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 56,
+      "id": "uniswap-v3-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 11155111,
+      "id": "uniswap-v3-11155111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 8453,
+      "id": "uniswap-v3-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 43114,
+      "id": "uniswap-v3-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 81457,
+      "id": "uniswap-v3-81457",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 7777777,
+      "id": "uniswap-v3-7777777",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 1,
+      "id": "uniswap-v4-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 56,
+      "id": "uniswap-v4-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 42161,
+      "id": "uniswap-v4-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 8453,
+      "id": "uniswap-v4-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 11155111,
+      "id": "uniswap-v4-11155111",
+      "message": "deployment verified; pool-specific quote not exercised",
+      "status": "DEPLOYMENT",
+      "venue": "Uniswap V4 · No hooks"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 10,
+      "id": "velo-slipstream-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome Slipstream V1"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 10,
+      "id": "velo-slipstream-v3-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome Slipstream V3"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 10,
+      "id": "velodrome-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Velodrome V2"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 9223372036854776003,
+      "id": "tron-v2",
+      "message": "quote and full simulation over Tor with the same public caller and recipient; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SunSwap V2 · Direct on-chain quote"
+    },
+    {
+      "run": "second-dex-live",
+      "chainID": 9223372036854776003,
+      "id": "tron-smart",
+      "message": "quote and full simulation over Tor with the same public caller and recipient; no signing/broadcast",
+      "status": "PASS",
+      "venue": "SUN · V1/V2/V3/V4 / SunCurve / PSM"
+    },
+    {
+      "run": "dex-retry-1",
+      "chainID": 8453,
+      "id": "aerodrome-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "Aerodrome V2"
+    },
+    {
+      "run": "dex-retry-1",
+      "chainID": 42161,
+      "id": "lfj-lb-42161",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "PASS",
+      "venue": "LFJ Liquidity Book V2.2"
+    },
+    {
+      "run": "dex-retry-2",
+      "chainID": 130,
+      "id": "uniswap-v2-130",
+      "message": "fixed deployment and onchain quote; swap simulation not exercised",
+      "status": "QUOTE",
+      "venue": "Uniswap V2"
+    }
+  ],
+  "notes": [
+    "Mock allowance/approval/receipt regression separately covers every catalog entry; live probes do not replace funded end-to-end acceptance.",
+    "All 26 EVM catalog networks are represented, including Ethereum Sepolia; the remaining 25 are mainnets.",
+    "The initial Arbitrum LFJ probe used USDC.e without a qualifying pool. The retry uses the already configured native USDC token and passes full simulation.",
+    "Tor connection interruptions for Aerodrome and Unichain were retried through fresh isolated Tor sessions using the same configured RPC endpoints."
+  ]
+}

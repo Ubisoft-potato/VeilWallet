@@ -1,0 +1,569 @@
+[
+  {
+    "id": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "rpcURL": "https://eth.drpc.org",
+    "isTestnet": false
+  },
+  {
+    "id": 16661,
+    "name": "0G",
+    "symbol": "0G",
+    "rpcURL": "https://evmrpc.0g.ai",
+    "isTestnet": false
+  },
+  {
+    "id": 2741,
+    "name": "Abstract",
+    "symbol": "ETH",
+    "rpcURL": "https://abstract.drpc.org",
+    "isTestnet": false
+  },
+  {
+    "id": 33139,
+    "name": "ApeChain",
+    "symbol": "APE",
+    "rpcURL": "https://rpc.apechain.com",
+    "isTestnet": false
+  },
+  {
+    "id": 42170,
+    "name": "Arbitrum Nova",
+    "symbol": "ETH",
+    "rpcURL": "https://nova.arbitrum.io/rpc",
+    "isTestnet": false
+  },
+  {
+    "id": 42161,
+    "name": "Arbitrum One",
+    "symbol": "ETH",
+    "rpcURL": "https://arbitrum-one-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 5042,
+    "name": "Arc",
+    "symbol": "USDC",
+    "rpcURL": "https://rpc.mainnet.arc.io",
+    "isTestnet": false
+  },
+  {
+    "id": 592,
+    "name": "Astar",
+    "symbol": "ASTR",
+    "rpcURL": "https://astar.api.onfinality.io/public",
+    "isTestnet": false
+  },
+  {
+    "id": 1313161554,
+    "name": "Aurora",
+    "symbol": "ETH",
+    "rpcURL": "https://mainnet.aurora.dev",
+    "isTestnet": false
+  },
+  {
+    "id": 43114,
+    "name": "Avalanche C",
+    "symbol": "AVAX",
+    "rpcURL": "https://avalanche-c-chain-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 8453,
+    "name": "Base",
+    "symbol": "ETH",
+    "rpcURL": "https://base-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 80094,
+    "name": "Berachain",
+    "symbol": "BERA",
+    "rpcURL": "https://rpc.berachain.com",
+    "isTestnet": false
+  },
+  {
+    "id": 200901,
+    "name": "BitLayer",
+    "symbol": "BTC",
+    "rpcURL": "https://rpc.bitlayer.org",
+    "isTestnet": false
+  },
+  {
+    "id": 199,
+    "name": "BitTorrent Chain",
+    "symbol": "BTT",
+    "rpcURL": "https://rpc.bt.io",
+    "isTestnet": false
+  },
+  {
+    "id": 81457,
+    "name": "Blast",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.blast.io",
+    "isTestnet": false
+  },
+  {
+    "id": 56,
+    "name": "BNB Chain",
+    "symbol": "BNB",
+    "rpcURL": "https://bsc-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 60808,
+    "name": "BOB",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.gobob.xyz",
+    "isTestnet": false
+  },
+  {
+    "id": 288,
+    "name": "Boba",
+    "symbol": "ETH",
+    "rpcURL": "https://mainnet.boba.network",
+    "isTestnet": false
+  },
+  {
+    "id": 42220,
+    "name": "Celo",
+    "symbol": "CELO",
+    "rpcURL": "https://celo-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 88888,
+    "name": "Chiliz",
+    "symbol": "CHZ",
+    "rpcURL": "https://rpc.chiliz.com",
+    "isTestnet": false
+  },
+  {
+    "id": 1030,
+    "name": "Conflux eSpace",
+    "symbol": "CFX",
+    "rpcURL": "https://evm.confluxrpc.com",
+    "isTestnet": false
+  },
+  {
+    "id": 1116,
+    "name": "Core",
+    "symbol": "CORE",
+    "rpcURL": "https://rpc.coredao.org/",
+    "isTestnet": false
+  },
+  {
+    "id": 25,
+    "name": "Cronos",
+    "symbol": "CRO",
+    "rpcURL": "https://evm.cronos.org",
+    "isTestnet": false
+  },
+  {
+    "id": 648,
+    "name": "Endurance",
+    "symbol": "ACE",
+    "rpcURL": "https://rpc-endurance.fusionist.io/",
+    "isTestnet": false
+  },
+  {
+    "id": 10001,
+    "name": "EthereumPoW",
+    "symbol": "ETHW",
+    "rpcURL": "https://mainnet.ethereumpow.org",
+    "isTestnet": false
+  },
+  {
+    "id": 250,
+    "name": "Fantom",
+    "symbol": "FTM",
+    "rpcURL": "https://fantom.drpc.org",
+    "isTestnet": false
+  },
+  {
+    "id": 314,
+    "name": "Filecoin EVM",
+    "symbol": "FIL",
+    "rpcURL": "https://api.node.glif.io/rpc/v1",
+    "isTestnet": false
+  },
+  {
+    "id": 14,
+    "name": "Flare",
+    "symbol": "FLR",
+    "rpcURL": "https://flare-api.flare.network/ext/C/rpc",
+    "isTestnet": false
+  },
+  {
+    "id": 252,
+    "name": "Fraxtal",
+    "symbol": "FRAX",
+    "rpcURL": "https://rpc.frax.com",
+    "isTestnet": false
+  },
+  {
+    "id": 100,
+    "name": "Gnosis",
+    "symbol": "XDAI",
+    "rpcURL": "https://gnosis-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 1625,
+    "name": "Gravity Alpha",
+    "symbol": "G",
+    "rpcURL": "https://rpc.gravity.xyz",
+    "isTestnet": false
+  },
+  {
+    "id": 11235,
+    "name": "Haqq Network",
+    "symbol": "ISLM",
+    "rpcURL": "https://rpc.eth.haqq.network",
+    "isTestnet": false
+  },
+  {
+    "id": 1666600000,
+    "name": "Harmony",
+    "symbol": "ONE",
+    "rpcURL": "https://api.harmony.one",
+    "isTestnet": false
+  },
+  {
+    "id": 128,
+    "name": "HECO",
+    "symbol": "HT",
+    "rpcURL": "https://http-mainnet.hecochain.com",
+    "isTestnet": false
+  },
+  {
+    "id": 43111,
+    "name": "Hemi",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.hemi.network/rpc",
+    "isTestnet": false
+  },
+  {
+    "id": 999,
+    "name": "HyperEVM",
+    "symbol": "HYPE",
+    "rpcURL": "https://rpc.hyperliquid.xyz/evm",
+    "isTestnet": false
+  },
+  {
+    "id": 13371,
+    "name": "Immutable zkEVM",
+    "symbol": "IMX",
+    "rpcURL": "https://rpc.immutable.com",
+    "isTestnet": false
+  },
+  {
+    "id": 57073,
+    "name": "Ink",
+    "symbol": "ETH",
+    "rpcURL": "https://ink-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 4689,
+    "name": "IoTeX",
+    "symbol": "IOTX",
+    "rpcURL": "https://babel-api.mainnet.iotex.io",
+    "isTestnet": false
+  },
+  {
+    "id": 8217,
+    "name": "Kaia",
+    "symbol": "KAIA",
+    "rpcURL": "https://public-en.node.kaia.io",
+    "isTestnet": false
+  },
+  {
+    "id": 747474,
+    "name": "Katana",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.katana.network",
+    "isTestnet": false
+  },
+  {
+    "id": 2222,
+    "name": "Kava EVM",
+    "symbol": "KAVA",
+    "rpcURL": "https://evm.kava.io",
+    "isTestnet": false
+  },
+  {
+    "id": 59144,
+    "name": "Linea",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.linea.build",
+    "isTestnet": false
+  },
+  {
+    "id": 1135,
+    "name": "Lisk",
+    "symbol": "ETH",
+    "rpcURL": "https://lisk.drpc.org",
+    "isTestnet": false
+  },
+  {
+    "id": 169,
+    "name": "Manta Pacific",
+    "symbol": "ETH",
+    "rpcURL": "https://pacific-rpc.manta.network/http",
+    "isTestnet": false
+  },
+  {
+    "id": 5000,
+    "name": "Mantle",
+    "symbol": "MNT",
+    "rpcURL": "https://rpc.mantle.xyz",
+    "isTestnet": false
+  },
+  {
+    "id": 4326,
+    "name": "MegaETH",
+    "symbol": "ETH",
+    "rpcURL": "https://mainnet.megaeth.com/rpc",
+    "isTestnet": false
+  },
+  {
+    "id": 4200,
+    "name": "Merlin",
+    "symbol": "BTC",
+    "rpcURL": "https://rpc.merlinchain.io",
+    "isTestnet": false
+  },
+  {
+    "id": 1088,
+    "name": "Metis",
+    "symbol": "METIS",
+    "rpcURL": "https://andromeda.metis.io/?owner=1088",
+    "isTestnet": false
+  },
+  {
+    "id": 34443,
+    "name": "Mode",
+    "symbol": "ETH",
+    "rpcURL": "https://mainnet.mode.network",
+    "isTestnet": false
+  },
+  {
+    "id": 143,
+    "name": "Monad",
+    "symbol": "MON",
+    "rpcURL": "https://rpc.monad.xyz",
+    "isTestnet": false
+  },
+  {
+    "id": 1284,
+    "name": "Moonbeam",
+    "symbol": "GLMR",
+    "rpcURL": "https://moonbeam.api.onfinality.io/public",
+    "isTestnet": false
+  },
+  {
+    "id": 1285,
+    "name": "Moonriver",
+    "symbol": "MOVR",
+    "rpcURL": "https://moonriver.api.onfinality.io/public",
+    "isTestnet": false
+  },
+  {
+    "id": 2818,
+    "name": "Morph",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.morphl2.io",
+    "isTestnet": false
+  },
+  {
+    "id": 66,
+    "name": "OKT Chain",
+    "symbol": "OKT",
+    "rpcURL": "https://exchainrpc.okex.org",
+    "isTestnet": false
+  },
+  {
+    "id": 204,
+    "name": "opBNB",
+    "symbol": "BNB",
+    "rpcURL": "https://opbnb-mainnet-rpc.bnbchain.org",
+    "isTestnet": false
+  },
+  {
+    "id": 10,
+    "name": "Optimism",
+    "symbol": "ETH",
+    "rpcURL": "https://optimism-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 9745,
+    "name": "Plasma",
+    "symbol": "XPL",
+    "rpcURL": "https://rpc.plasma.to",
+    "isTestnet": false
+  },
+  {
+    "id": 137,
+    "name": "Polygon",
+    "symbol": "POL",
+    "rpcURL": "https://polygon-bor-rpc.publicnode.com",
+    "isTestnet": false
+  },
+  {
+    "id": 1101,
+    "name": "Polygon zkEVM",
+    "symbol": "ETH",
+    "rpcURL": "https://zkevm-rpc.com",
+    "isTestnet": false
+  },
+  {
+    "id": 369,
+    "name": "PulseChain",
+    "symbol": "PLS",
+    "rpcURL": "https://rpc.pulsechain.com",
+    "isTestnet": false
+  },
+  {
+    "id": 4663,
+    "name": "Robinhood",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.mainnet.chain.robinhood.com",
+    "isTestnet": false
+  },
+  {
+    "id": 2020,
+    "name": "Ronin",
+    "symbol": "RON",
+    "rpcURL": "https://api.roninchain.com/rpc",
+    "isTestnet": false
+  },
+  {
+    "id": 30,
+    "name": "Rootstock",
+    "symbol": "RBTC",
+    "rpcURL": "https://public-node.rsk.co",
+    "isTestnet": false
+  },
+  {
+    "id": 534352,
+    "name": "Scroll",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.scroll.io",
+    "isTestnet": false
+  },
+  {
+    "id": 1329,
+    "name": "Sei EVM",
+    "symbol": "SEI",
+    "rpcURL": "https://evm-rpc.sei-apis.com",
+    "isTestnet": false
+  },
+  {
+    "id": 1868,
+    "name": "Soneium",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.soneium.org",
+    "isTestnet": false
+  },
+  {
+    "id": 146,
+    "name": "Sonic",
+    "symbol": "S",
+    "rpcURL": "https://rpc.soniclabs.com",
+    "isTestnet": false
+  },
+  {
+    "id": 988,
+    "name": "Stable",
+    "symbol": "USDT0",
+    "rpcURL": "https://rpc.stable.xyz",
+    "isTestnet": false
+  },
+  {
+    "id": 167000,
+    "name": "Taiko",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.mainnet.taiko.xyz",
+    "isTestnet": false
+  },
+  {
+    "id": 40,
+    "name": "Telos",
+    "symbol": "TLOS",
+    "rpcURL": "https://rpc.telos.net",
+    "isTestnet": false
+  },
+  {
+    "id": 4217,
+    "name": "Tempo",
+    "symbol": "USD",
+    "rpcURL": "https://rpc.mainnet.tempo.xyz",
+    "isTestnet": false
+  },
+  {
+    "id": 130,
+    "name": "Unichain",
+    "symbol": "ETH",
+    "rpcURL": "https://mainnet.unichain.org",
+    "isTestnet": false
+  },
+  {
+    "id": 480,
+    "name": "World Chain",
+    "symbol": "ETH",
+    "rpcURL": "https://worldchain-mainnet.g.alchemy.com/public",
+    "isTestnet": false
+  },
+  {
+    "id": 196,
+    "name": "X Layer",
+    "symbol": "OKB",
+    "rpcURL": "https://rpc.xlayer.tech",
+    "isTestnet": false
+  },
+  {
+    "id": 50,
+    "name": "XDC",
+    "symbol": "XDC",
+    "rpcURL": "https://xdc.public-rpc.com/",
+    "isTestnet": false
+  },
+  {
+    "id": 7000,
+    "name": "ZetaChain",
+    "symbol": "ZETA",
+    "rpcURL": "https://zetachain-evm.blockpi.network/v1/rpc/public",
+    "isTestnet": false
+  },
+  {
+    "id": 48900,
+    "name": "Zircuit",
+    "symbol": "ETH",
+    "rpcURL": "https://mainnet.zircuit.com",
+    "isTestnet": false
+  },
+  {
+    "id": 42766,
+    "name": "zkFair",
+    "symbol": "USDC",
+    "rpcURL": "https://rpc.zkfair.io",
+    "isTestnet": false
+  },
+  {
+    "id": 324,
+    "name": "zkSync Era",
+    "symbol": "ETH",
+    "rpcURL": "https://zksync.drpc.org",
+    "isTestnet": false
+  },
+  {
+    "id": 7777777,
+    "name": "Zora",
+    "symbol": "ETH",
+    "rpcURL": "https://rpc.zora.energy/",
+    "isTestnet": false
+  }
+]

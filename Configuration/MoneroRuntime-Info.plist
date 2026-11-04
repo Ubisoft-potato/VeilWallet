@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+    <key>CFBundleIdentifier</key><string>app.veilwallet.monero-runtime</string>
+    <key>CFBundleName</key><string>MoneroRuntime</string>
+    <key>CFBundleExecutable</key><string>monero-wallet-rpc</string>
+    <key>CFBundlePackageType</key><string>BNDL</string>
+    <key>CFBundleVersion</key><string>18.5.4</string>
+</dict></plist>

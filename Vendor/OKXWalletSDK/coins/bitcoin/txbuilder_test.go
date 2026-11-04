@@ -1,0 +1,152 @@
+package bitcoin
+
+import (
+	"encoding/hex"
+	"fmt"
+	"github.com/btcsuite/btcd/btcec/v2"
+	"github.com/btcsuite/btcd/btcec/v2/ecdsa"
+	"github.com/btcsuite/btcd/btcutil"
+	"github.com/btcsuite/btcd/chaincfg"
+	"github.com/okx/go-wallet-sdk/util"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"testing"
+)
+
+// support for single private key address formats (legacy/segwit_nested/segwit_native/taproot_keypath)
+func TestSignTx(t *testing.T) {
+	// legacy address
+	txBuild := NewTxBuild(1, &chaincfg.TestNet3Params)
+	txBuild.AddInput2("c44a7f98434e5e875a573339f77d36022c79c525771fa88c72fa53f3a55eeaf7", 1, "cPnvkvUYyHcSSS26iD1dkrJdV7k1RoUqJLhn3CYxpo398PdLVE22", "mouQtmBWDS7JnT65Grj2tPzdSmGKJgRMhE", 1488430)
+	txBuild.AddOutput("mouQtmBWDS7JnT65Grj2tPzdSmGKJgRMhE", 1488200)
+	tx, err := txBuild.Build()
+	assert.Nil(t, err)
+	txHex, err := GetTxHex(tx)
+	assert.Nil(t, err)
+	assert.Equal(t, "0100000001f7ea5ea5f353fa728ca81f7725c5792c02367df73933575a875e4e43987f4ac40100000069463043021f58d5662b5215849834d0e402dd2e27f6f5ff06f132eabd2bfcf1eb0ac0cf6602202684f8d65100c6316ed9d1ea0ca3e7119fc4868677928485b0924ea381f6686501210357bbb2d4a9cb8a2357633f201b9c518c2795ded682b7913c6beef3fe23bd6d2fffffffff0148b51600000000001976a9145c005c5532ce810ddf20f9d1d939631b47089ecd88ac00000000", txHex)
+
+	// segwit_nested address
+	txBuild = NewTxBuild(1, &chaincfg.TestNet3Params)
+	txBuild.AddInput2("ce69ca86b68708afc8484dacb7730006e7eff6d0c18b18a16a9e91abeefeb08a", 0, "cPnvkvUYyHcSSS26iD1dkrJdV7k1RoUqJLhn3CYxpo398PdLVE22", "2NF33rckfiQTiE5Guk5ufUdwms8PgmtnEdc", 2000)
+	txBuild.AddOutput("2NF33rckfiQTiE5Guk5ufUdwms8PgmtnEdc", 900)
+	txBuild.AddOutput("2NF33rckfiQTiE5Guk5ufUdwms8PgmtnEdc", 850)
+	tx, err = txBuild.Build()
+	assert.Nil(t, err)
+	txHex, err = GetTxHex(tx)
+	assert.Nil(t, err)
+	assert.Equal(t, "010000000001018ab0feeeab919e6aa1188bc1d0f6efe7060073b7ac4d48c8af0887b686ca69ce00000000171600145c005c5532ce810ddf20f9d1d939631b47089ecdffffffff02840300000000000017a914ef05515a0595d15eaf90d9f62fb85873a6d8c0b487520300000000000017a914ef05515a0595d15eaf90d9f62fb85873a6d8c0b48702483045022100f8bc4f7e5f0a29a3f5b8a75f60a3eac2291b1e5ae8300403d355a134aa99568d02203a3eecf6ca9ae8ce20bf6ba329b0ff27290fae5d389566e84b7c625b9681752201210357bbb2d4a9cb8a2357633f201b9c518c2795ded682b7913c6beef3fe23bd6d2f00000000", txHex)
+
+	// segwit_native address
+	txBuild = NewTxBuild(1, &chaincfg.TestNet3Params)
+	txBuild.AddInput2("0bc66f18fd95ca00b6569471aa2dcd47fe45d3446fbaeec9ced228b00713fe8c", 0, "cPnvkvUYyHcSSS26iD1dkrJdV7k1RoUqJLhn3CYxpo398PdLVE22", "tb1qtsq9c4fje6qsmheql8gajwtrrdrs38kdzeersc", 200000)
+	txBuild.AddOutput("tb1qtsq9c4fje6qsmheql8gajwtrrdrs38kdzeersc", 199700)
+	tx, err = txBuild.Build()
+	assert.Nil(t, err)
+	txHex, err = GetTxHex(tx)
+	assert.Equal(t, "010000000001018cfe1307b028d2cec9eeba6f44d345fe47cd2daa719456b600ca95fd186fc60b0000000000ffffffff01140c0300000000001600145c005c5532ce810ddf20f9d1d939631b47089ecd0247304402200fcc9be29e3ab99b81f30fdf0788d883576d1a313fc809fce616813b8b2db62002207d199936c665f8e2c353c03d968f49dfcc16dacaf5877487c7d49f532180a6a101210357bbb2d4a9cb8a2357633f201b9c518c2795ded682b7913c6beef3fe23bd6d2f00000000", txHex)
+
+	// taproot_keypath address
+	txBuild = NewTxBuild(1, &chaincfg.TestNet3Params)
+	txBuild.AddInput2("3cb62c77c5c3fc032100af4cae9eeb342829cbc5b49815f8db1bb8156314a784", 0, "cPnvkvUYyHcSSS26iD1dkrJdV7k1RoUqJLhn3CYxpo398PdLVE22", "tb1pklh8lqax5l7m2ycypptv2emc4gata2dy28svnwcp9u32wlkenvsspcvhsr", 546)
+	txBuild.AddOutput("tb1pklh8lqax5l7m2ycypptv2emc4gata2dy28svnwcp9u32wlkenvsspcvhsr", 300)
+	tx, err = txBuild.Build()
+	assert.Nil(t, err)
+	txHex, err = GetTxHex(tx)
+	assert.Nil(t, err)
+	assert.Equal(t, "0100000000010184a7146315b81bdbf81598b4c5cb292834eb9eae4caf002103fcc3c5772cb63c0000000000ffffffff012c01000000000000225120b7ee7f83a6a7fdb513040856c56778aa3abea9a451e0c9bb012f22a77ed99b2101408399ed30c87c4dbcb7de58b9beb5448a7b7d9c4a0d8048fca51571648007c0a81cf0024d6c72d3cea13d6d3d69f341bc77a30612f3dfe10ee64874b0feded3b300000000", txHex)
+}
+
+func TestBtcTx(t *testing.T) {
+	txBuild := NewTxBuild(1, &chaincfg.TestNet3Params)
+	txBuild.AddInput("0b2c23f5c2e6326c90cfa1d3925b0d83f4b08035ca6af8fd8f606385dfbc5822", 1, "1790962db820729606cd7b255ace1ac5ebb129ac8e9b2d8534d022194ab25b37", "", "", 0) // replace to your private key
+	txBuild.AddOutput("mvNnCR7EJS4aUReLEw2sL2ZtTZh8CAP8Gp", 53000)
+	txBuild.AddOutput("mvNnCR7EJS4aUReLEw2sL2ZtTZh8CAP8Gp", 10000)
+	txHex, err := txBuild.SingleBuild()
+	require.Nil(t, err)
+	assert.Equal(t, "01000000012258bcdf8563608ffdf86aca3580b0f4830d5b92d3a1cf906c32e6c2f5232c0b010000006a473044022028022b1b92fa0a10927e5ffa26da98aba737eeed6485b92af38071349a0cf1cd02202119a5b8b33f4a186d061f08e800f7dd1d9b908048035bb42516a1706278914d0121031053e9ef0295d334b6bb22e20cc717eb1a16a546f692572c8830b4bc14c13676ffffffff0208cf0000000000001976a914a2fe215e4789e607401a4bf85358cbbfae13a97e88ac10270000000000001976a914a2fe215e4789e607401a4bf85358cbbfae13a97e88ac00000000", txHex)
+}
+
+func TestBtcScript(t *testing.T) {
+	txBuild := NewTxBuild(1, &chaincfg.TestNet3Params)
+	txBuild.AddInput2("02133b22fdd190519ef9b49aca9a8dfdcbab0197c77109bb829cd51e17debed1", 0, "cPnvkvUYyHcSSS26iD1dkrJdV7k1RoUqJLhn3CYxpo398PdLVE22", "tb1qtsq9c4fje6qsmheql8gajwtrrdrs38kdzeersc", 8000)
+	txBuild.AddOutput("tb1qtsq9c4fje6qsmheql8gajwtrrdrs38kdzeersc", 6000)
+	txBuild.AddOutput2("", "6a01520b0080c7f6cf9b7c858c2002", 0)
+	tx, err := txBuild.Build()
+	assert.Nil(t, err)
+	txHex, err := GetTxHex(tx)
+	assert.Equal(t, "01000000000101d1bede171ed59c82bb0971c79701abcbfd8d9aca9ab4f99e5190d1fd223b13020000000000ffffffff0270170000000000001600145c005c5532ce810ddf20f9d1d939631b47089ecd00000000000000000f6a01520b0080c7f6cf9b7c858c20020248304502210082fe8e18b707302c253f7fd9e8ffdd25204986d754675ffbedd08031b4e0708302200ff3ae7e9f1e4d4bcd9182237e8c39577eb2a0242fc8e3c6a646646fa8efe3d201210357bbb2d4a9cb8a2357633f201b9c518c2795ded682b7913c6beef3fe23bd6d2f00000000", txHex)
+}
+
+func TestMultiAddress(t *testing.T) {
+	var pubKeys = []string{"022bc0ca1d6aea1c1e523bfcb33f46131bd1a3240aa04f71c34b1a177cfd5ff933", "035dc63727e7719824978161cdd94609db5235537bc8339a07b6838a6075f02530", "033eeee979afb70450d2aebb17ace1b170a96199b495cdf3dd0631eb96aa21e6a8"}
+	redeemScript, err := GetRedeemScript(pubKeys, 2)
+	require.Nil(t, err)
+	fmt.Println(hex.EncodeToString(redeemScript))
+	multiAddress, err := GenerateMultiAddress(redeemScript, &chaincfg.TestNet3Params)
+	require.Nil(t, err)
+	assert.Equal(t, "2N6DPSDtyXxUdJdACE1eHQ71z8vEVhDJZKF", multiAddress)
+}
+
+func TestMultiTx(t *testing.T) {
+	txBuild := NewTxBuild(1, &chaincfg.TestNet3Params)
+	txBuild.AddInput("f9c199cb3f43c0a1cd1b84f9912c77e3a62381cfe350ecc15a49c9bbd2633377", 0, "1790962db820729606cd7b255ace1ac5ebb129ac8e9b2d8534d022194ab25b37", "5221022bc0ca1d6aea1c1e523bfcb33f46131bd1a3240aa04f71c34b1a177cfd5ff93321035dc63727e7719824978161cdd94609db5235537bc8339a07b6838a6075f0253021033eeee979afb70450d2aebb17ace1b170a96199b495cdf3dd0631eb96aa21e6a853ae", "", 0) // replace to your private key
+	txBuild.AddOutput("2NCVwfBKJ3zQBz1bimvKHC4kW7XHwbtQvF7", 2698100000)
+	firstHex, err := txBuild.SingleBuild()
+	require.Nil(t, err)
+	assert.Equal(t, "0100000001773363d2bbc9495ac1ec50e3cf8123a6e3772c91f9841bcda1c0433fcb99c1f900000000b40047304402203f4ea02bc3ec719a4c1c5a3f798f613ae80fc4a3e03c6199c78fe31808912a4d02201c419de2ac9d1e4b2d8369a9205ac9a6da8ee69cfc421e73e98f6245aa40617f014c695221022bc0ca1d6aea1c1e523bfcb33f46131bd1a3240aa04f71c34b1a177cfd5ff93321035dc63727e7719824978161cdd94609db5235537bc8339a07b6838a6075f0253021033eeee979afb70450d2aebb17ace1b170a96199b495cdf3dd0631eb96aa21e6a853aeffffffff0120bdd1a00000000017a914d332ff8b6514f0b5fb07f090c5022d3d1c6c4bdf8700000000", firstHex)
+
+	tx, err := NewTxFromHex(firstHex)
+	require.Nil(t, err)
+	var priKeyList []string
+	priKeyList = append(priKeyList, "1790962db820729606cd7b255ace1ac5ebb129ac8e9b2d8534d022194ab25b37") // replace to your private key
+	secondHex, err := MultiSignBuild(tx, priKeyList)
+	require.Nil(t, err)
+	assert.Equal(t, "0100000001773363d2bbc9495ac1ec50e3cf8123a6e3772c91f9841bcda1c0433fcb99c1f900000000fc0047304402203f4ea02bc3ec719a4c1c5a3f798f613ae80fc4a3e03c6199c78fe31808912a4d02201c419de2ac9d1e4b2d8369a9205ac9a6da8ee69cfc421e73e98f6245aa40617f0147304402203f4ea02bc3ec719a4c1c5a3f798f613ae80fc4a3e03c6199c78fe31808912a4d02201c419de2ac9d1e4b2d8369a9205ac9a6da8ee69cfc421e73e98f6245aa40617f014c695221022bc0ca1d6aea1c1e523bfcb33f46131bd1a3240aa04f71c34b1a177cfd5ff93321035dc63727e7719824978161cdd94609db5235537bc8339a07b6838a6075f0253021033eeee979afb70450d2aebb17ace1b170a96199b495cdf3dd0631eb96aa21e6a853aeffffffff0120bdd1a00000000017a914d332ff8b6514f0b5fb07f090c5022d3d1c6c4bdf8700000000", secondHex)
+}
+
+func TestAddress(t *testing.T) {
+	privateBytes, err := hex.DecodeString("1790962db820729606cd7b255ace1ac5ebb129ac8e9b2d8534d022194ab25b37")
+	require.Nil(t, err)
+	_, publicKey := btcec.PrivKeyFromBytes(privateBytes)
+	pubKey := publicKey.SerializeCompressed()
+	addr, err := btcutil.NewAddressPubKey(pubKey, &chaincfg.TestNet3Params)
+	require.Nil(t, err)
+	addressEncoded := addr.EncodeAddress()
+	assert.Equal(t, "mwHiLyYXKVbhN6zwJkenkPsydj9MBLXb1K", addressEncoded)
+}
+
+func TestUnsignedTx(t *testing.T) {
+	txBuild := NewTxBuild(1, &chaincfg.TestNet3Params)
+	txBuild.AddInput("0b2c23f5c2e6326c90cfa1d3925b0d83f4b08035ca6af8fd8f606385dfbc5822", 1, "", "", "", 0)
+	txBuild.AddOutput("mvNnCR7EJS4aUReLEw2sL2ZtTZh8CAP8Gp", 53000)
+	txBuild.AddOutput("mvNnCR7EJS4aUReLEw2sL2ZtTZh8CAP8Gp", 10000)
+	pubKeyMap := make(map[int]string)
+	pubKeyMap[0] = "022bc0ca1d6aea1c1e523bfcb33f46131bd1a3240aa04f71c34b1a177cfd5ff933"
+	txHex, hashes, err := txBuild.UnSignedTx(pubKeyMap)
+	require.Nil(t, err)
+	signatureMap := make(map[int]string)
+	for i, h := range hashes {
+		privateBytes, err := hex.DecodeString("1790962db820729606cd7b255ace1ac5ebb129ac8e9b2d8534d022194ab25b37")
+		require.Nil(t, err)
+		prvKey, _ := btcec.PrivKeyFromBytes(privateBytes)
+		sign := ecdsa.Sign(prvKey, util.RemoveZeroHex(h))
+		signatureMap[i] = hex.EncodeToString(sign.Serialize())
+	}
+	txHex, err = SignTx(txHex, pubKeyMap, signatureMap)
+	require.Nil(t, err)
+	assert.Equal(t, "01000000012258bcdf8563608ffdf86aca3580b0f4830d5b92d3a1cf906c32e6c2f5232c0b010000006a47304402206bdac667fb3d6f1a62e0b0d1123a5caa58d8c0fd95c2a2c8cd091374960a871702204f301e6883866570ce309573e569d6a32a44386af5bf928b5f9e1dcd7e2dd0ed0121022bc0ca1d6aea1c1e523bfcb33f46131bd1a3240aa04f71c34b1a177cfd5ff933ffffffff0208cf0000000000001976a914a2fe215e4789e607401a4bf85358cbbfae13a97e88ac10270000000000001976a914a2fe215e4789e607401a4bf85358cbbfae13a97e88ac00000000", txHex)
+}
+
+func TestGenerateAddress(t *testing.T) {
+	address, err := GenerateAddress("022bc0ca1d6aea1c1e523bfcb33f46131bd1a3240aa04f71c34b1a177cfd5ff933", &chaincfg.TestNet3Params)
+	require.Nil(t, err)
+	assert.Equal(t, "1FrpuN2FVQdKhKAiXN4VW7MZba6RMevpkR", address)
+
+}
+func TestCalTxHash(t *testing.T) {
+	rawTx := `0200000000010b97557983d975282533d1235534ae34b3ef4e9c06dccf52ac7b848b81dd3bc7f00500000000fdffffff6321642f43730767cfb2d3bc93a6884c616478f8f7487e30595e3eeb6b63d0790100000000fdfffffff099e00d594e0de26a32bdfb58e5ed7f641d42dabab9b217d554ae63299810750100000000fdffffff577eb4b278545bfc23b6aca0c6b4e742a921c6f9a902d2ac9e136499992826600900000000fdffffff4601d1f984b762432d494bd1fe93f895d52baaca91c1f8b6dca2732f789e5ad70500000000fdffffff577eb4b278545bfc23b6aca0c6b4e742a921c6f9a902d2ac9e136499992826600100000000fdffffff83ff27cc8fef79aeb8921cb46fd1624fd2c23a8f435d03c7247cd6cbd05d02720500000000fdffffff577eb4b278545bfc23b6aca0c6b4e742a921c6f9a902d2ac9e136499992826600200000000fdffffff94f4a93e04f9469a54245e8c212d18a04519de937d4442a6481c14dabb1406b50900000000fdffffffff43287a445817006b709a609fe5cf90ec967ea049cb24d07d31358a8f0d1aff0600000000fdffffffd92fa7f421f49c76696e0e1205446f843d56116f8518fd9215bcddfe069e91790500000000fdffffff06af31760000000000160014d9aceb5adbbd8e56685dacc51dacfafc632c158bfeeb7a000000000016001455e04078c3522d1662817c473098bae873e1684145870a0000000000160014790f6e2fc569bdc26f249145621a3685f816538311788b00000000001600144a596d6689b44537b1e71e0e143009579277f7701bbe930000000000160014757858cd7657c6e937bfd14371908da99ba72011c30268000000000016001482e8a5b646429d5dd329d79f16af6a6d7181e0c0024730440220384507ba39b352786a5a834400d480dcaf2ace4372f08d14071ea5050774bc4b02204219b1c4ed70b68b23a4e4c29dc31e3ecb990b67b53357578c463209f688288a012103b2664b50b470fec4d7205b4824b259b7d8bccca4591e62a5a25f40475e54eddb0247304402204eaaac5866bdbe641aa4dc0e480b790dcaee9c21e713f093c7f75daa5eb3fb360220294f87641d3079191db1cb6254bccc67bcbef5724b251bee71bfdc7d09a9a3900121037e75ebc89636203859ccfaf71757de82c74284db500428e89532cd440c6db10402473044022023219eb5eee4d647e1ed1c4293b5dc1868c251030d702d338c170a3c694f5c75022048f42f6837d4b074490d7a342d160a37a15b64f699fa78c7f006e1a5e9ab59ed012103c8fc3c127c48ddbd4aaac04066306290f2eb39d181fcf0324093b4088d8b5a580247304402207da6157b355635a09ed192a5acff696d2fb94cbaa72b5678d50361261db8808f02202f0b040d2ecd69662f419d208f084c621620484a206db4b9bb1238e90e951efe012103ddcee4b8b4c899fbfc44382b43cdc6675cb81611a6456901740a9b687f4790f50247304402207e2a97bf216d0d042c258cdf966be402744fb925f7d06333d6386620e4a7dd530220393419b8aa12e302c9308f47cfbeb922400ade65d3606d2fac8812b90b4fb9d5012102979a44a9928effb886bebed60b60e8de6228f030bd41fbcc5aa044653fc32bed02473044022014eeda9cc9d366fbb096fc83b78c3ebb119e09317c5ac2d52f96b44c015eeca002203d85b09a722147d5f1a91ae4077924b5a506b7fb39064cf2226e33dedd2da46301210364d62706d86250a8104d68798a211433d60d4d0e0f168d349cb50eb11e3b42240247304402205f53d775eeb9c1b3f33799937468b4faeee389c92b2190d5c6a1e2ab10e9509302205b35804bff2d9e9a357f7a48af8f83e3f355ce1627d89abc74f6a381c8f140db012102a0b88f909f72d174111eea1f1bf8d0b71c74a1dab0cdc525a2680cac47a760320247304402200bc96955890161fca3913fd11e471049ac48ef9cbc8bf12a7eba021c40a953b902207d758fa52f383e41cd0b86f477ee5c1344c4db1b4e6e27949d4256540bc7d738012103855833284fdfd9d2fb1bfda860ab527e8889a2bb7923a9f905270e62261b00610247304402203e7ff9008a76827fd3d5ad457f768a15fc50ebc2333cbb0defba225368a12b7102202aac67d98bb0648b172fbb87044f95660708ec5746fafa1a41a7f930c47a94ff012103e2106bd6b230d68bb815de07a0571150aa8780852d49e68a9b39405af3eb661e0247304402205e771089618897fec5a79bf33f762ea7e039adac7ea16e5f76159aceb5d5b72b022063fe6e7e12d8d3ec91f36195c892a559e94220d64a5b50087be5aa795d97b0740121022ec0b9e844e47515f5b464b19bb3bedf1b45065109d97929d42d2e5bf146fc190247304402204e629993dbe76dea4f5ab11ca486aeddcb4713a30a27e5aea0b5235b22cb2987022036557ab821fc1b6a0e70da215072052a4da7bba90083901439a6a863c9646c3801210329c329d052ffb7c9e15adc5ca940ad1d3b9729c103991889ceb2e333c3c9f0ac00000000`
+	expected := `03b2608c330d8bc5c677d646ced816bb9d31f621a63d70f9cd2213f0e49e38f2`
+	txHash, err := CalTxHash(rawTx)
+	assert.NoError(t, err)
+	assert.Equal(t, expected, txHash)
+}

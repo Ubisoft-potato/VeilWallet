@@ -1,0 +1,173 @@
+{
+  "date": "2026-11-03",
+  "version": "0.5.0",
+  "scope": "Representative read-only checks over bundled Tor. No vault, signing or broadcast. Quotes and simulations are distinct. Not all 82 deployments exercised.",
+  "nodeChanges": {
+    "ethereum": "https://eth.drpc.org",
+    "tron": "https://api.tronstack.io"
+  },
+  "tronFixtures": "Same public caller and recipient: published V2 deployer for V2; public WTRX contract for SUN. No private keys.",
+  "catalogSHA256": "821c5506072b22c81887b78f0e010c308306ff013e0f8b261e69353515398ea3",
+  "results": [
+    {
+      "chainID": 8453,
+      "id": "aero-slipstream-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "Aerodrome Slipstream V1",
+      "sourceReport": "dex-final-live.json"
+    },
+    {
+      "chainID": 8453,
+      "id": "aerodrome-8453",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "Aerodrome V2",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 1,
+      "id": "balancer-v3-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "Balancer V3",
+      "sourceReport": "dex-final-confirmation.json"
+    },
+    {
+      "chainID": 1,
+      "id": "curve-3pool-1",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "Curve · 3pool",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 1,
+      "id": "curve-steth-1",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "Curve · ETH/stETH",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 43114,
+      "id": "lfj-lb-43114",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "LFJ Liquidity Book V2.2",
+      "sourceReport": "dex-release-live.json"
+    },
+    {
+      "chainID": 56,
+      "id": "pancake-v2-56",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "PancakeSwap V2",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 56,
+      "id": "pancake-v3-56",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "PancakeSwap V3",
+      "sourceReport": "dex-final-live.json"
+    },
+    {
+      "chainID": 137,
+      "id": "quick-algebra-137",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "QuickSwap V3 · Algebra",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 137,
+      "id": "quick-v2-137",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "QuickSwap V2",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 1,
+      "id": "sushi-v2-1",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "SushiSwap V2",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 9223372036854776003,
+      "id": "tron-smart",
+      "message": "quote and full simulation over Tor with the same public caller and recipient; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "SUN · V1/V2/V3/V4 / SunCurve / PSM",
+      "sourceReport": "tron-matched-confirmation.json"
+    },
+    {
+      "chainID": 9223372036854776003,
+      "id": "tron-v2",
+      "message": "quote and full simulation over Tor with the same public caller and recipient; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "SunSwap V2 · Direct on-chain quote",
+      "sourceReport": "tron-matched-confirmation.json"
+    },
+    {
+      "chainID": 1,
+      "id": "uniswap-v2-1",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "Uniswap V2",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 1,
+      "id": "uniswap-v3-1",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "Uniswap V3",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 8453,
+      "id": "uniswap-v3-8453",
+      "message": "fixed deployment and onchain quote over Tor",
+      "status": "QUOTE",
+      "venue": "Uniswap V3",
+      "sourceReport": "dex-live-report.json"
+    },
+    {
+      "chainID": 1,
+      "id": "uniswap-v4-1",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "Uniswap V4 · No hooks",
+      "sourceReport": "dex-final-confirmation.json"
+    },
+    {
+      "chainID": 8453,
+      "id": "uniswap-v4-8453",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "Uniswap V4 · No hooks",
+      "sourceReport": "dex-release-live.json"
+    },
+    {
+      "chainID": 10,
+      "id": "velo-slipstream-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "Velodrome Slipstream V1",
+      "sourceReport": "dex-release-live.json"
+    },
+    {
+      "chainID": 10,
+      "id": "velodrome-10",
+      "message": "fixed deployment, quote and full swap simulation over Tor; no signing/broadcast",
+      "status": "SIMULATION",
+      "venue": "Velodrome V2",
+      "sourceReport": "dex-release-live.json"
+    }
+  ]
+}

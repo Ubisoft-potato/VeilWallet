@@ -1,0 +1,343 @@
+{
+  "version": "0.10.0",
+  "defaultLanguage": "en",
+  "availableLanguages": [
+    "en",
+    "zh-Hans"
+  ],
+  "applyLanguage": "after restart",
+  "englishMessages": 1613,
+  "swiftTests": {
+    "passed": 132,
+    "suites": 23,
+    "seconds": 20.674,
+    "optionalIndependentNodeEnabled": false
+  },
+  "toolingTests": {
+    "localizationAndDocumentation": 8,
+    "sourcePublication": 12,
+    "packagingAndCleanup": 7
+  },
+  "implementation": {
+    "bundledCatalog": true,
+    "externalTranslationService": false,
+    "opaqueInterpolations": true,
+    "canonicalLegacyStatesPreserved": true,
+    "vaultSchemaChanged": false,
+    "networkBoundaryChanged": false
+  },
+  "validation": {
+    "englishAndChineseOfflinePreviews": true,
+    "realVaultOpened": false,
+    "fundedTransactions": false
+  },
+  "limits": [
+    "Historical unrecognized app descriptions retain original text",
+    "User wallet/network names are never translated",
+    "Hover rendering uses DEBUG phases, not OS pointer tracking",
+    "Ad-hoc development build; no Apple notarization or independent security audit"
+  ],
+  "sourceMessageLiteralsChecked": 1730,
+  "nativeClickChecks": {
+    "english": {
+      "checks": [
+        "sidebar whitespace click: Assets",
+        "sidebar whitespace click: Accounts",
+        "sidebar whitespace click: Networks",
+        "sidebar whitespace click: Transactions",
+        "sidebar whitespace click: Explore",
+        "sidebar whitespace click: Privacy",
+        "sidebar whitespace click: Settings",
+        "sidebar remains usable during background work",
+        "disclosure whitespace: expand, input focus, child action, collapse, reopen, preserved field state",
+        "icon: 36 x 36 minimum, single activation",
+        "disabled disclosure does not activate",
+        "action flow: six independent clicks, wraps at 360 pt viewport, no overflow"
+      ],
+      "nativePointerEvents": true,
+      "networkStarted": false,
+      "passed": true,
+      "vaultOpened": false,
+      "version": "0.10.0"
+    },
+    "simplifiedChinese": {
+      "passed": true,
+      "scenarios": 12,
+      "nativePointerEvents": true,
+      "networkStarted": false,
+      "vaultOpened": false
+    }
+  },
+  "hoverRendering": {
+    "nativePointerEvents": false,
+    "networkStarted": false,
+    "passed": true,
+    "phaseDelivery": "DEBUG-only enter/exit signals drive the same persistent view state as onContinuousHover; this does not verify OS pointer tracking",
+    "phaseInjection": true,
+    "results": [
+      {
+        "disabledStable": true,
+        "exited": [
+          0.04472491890192032,
+          0.05244637280702591,
+          0.07734226435422897
+        ],
+        "held": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ],
+        "id": "hover.row",
+        "idle": [
+          0.04472491890192032,
+          0.05244637280702591,
+          0.07734226435422897
+        ],
+        "rapidReentryStable": true,
+        "refreshed": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ],
+        "sustained": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ]
+      },
+      {
+        "disabledStable": true,
+        "exited": [
+          0.17828825116157532,
+          0.1660052239894867,
+          0.2466941773891449
+        ],
+        "held": [
+          0.2282925546169281,
+          0.20319998264312744,
+          0.3061063289642334
+        ],
+        "id": "hover.selected",
+        "idle": [
+          0.17828825116157532,
+          0.1660052239894867,
+          0.2466941773891449
+        ],
+        "rapidReentryStable": true,
+        "refreshed": [
+          0.2282925546169281,
+          0.20319998264312744,
+          0.3061063289642334
+        ],
+        "sustained": [
+          0.2282925546169281,
+          0.20319998264312744,
+          0.3061063289642334
+        ]
+      },
+      {
+        "disabledStable": true,
+        "exited": [
+          0.12403713911771774,
+          0.13653460144996643,
+          0.17275208234786987
+        ],
+        "held": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ],
+        "id": "hover.secondary",
+        "idle": [
+          0.12403713911771774,
+          0.13653460144996643,
+          0.17275208234786987
+        ],
+        "rapidReentryStable": true,
+        "refreshed": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ],
+        "sustained": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ]
+      },
+      {
+        "disabledStable": true,
+        "exited": [
+          0.7689804434776306,
+          0.7380712628364563,
+          0.9882063269615173
+        ],
+        "held": [
+          0.7315240502357483,
+          0.7029573917388916,
+          0.9410903453826904
+        ],
+        "id": "hover.primary",
+        "idle": [
+          0.7689804434776306,
+          0.7380712628364563,
+          0.9882063269615173
+        ],
+        "rapidReentryStable": true,
+        "refreshed": [
+          0.7315240502357483,
+          0.7029573917388916,
+          0.9410903453826904
+        ],
+        "sustained": [
+          0.7315240502357483,
+          0.7029573917388916,
+          0.9410903453826904
+        ]
+      },
+      {
+        "disabledStable": true,
+        "exited": [
+          1,
+          0.6418219208717346,
+          0.3241802453994751
+        ],
+        "held": [
+          0.9564588665962219,
+          0.6094269752502441,
+          0.30680346488952637
+        ],
+        "id": "hover.warning",
+        "idle": [
+          1,
+          0.6418219208717346,
+          0.3241802453994751
+        ],
+        "rapidReentryStable": true,
+        "refreshed": [
+          0.9564588665962219,
+          0.6094269752502441,
+          0.30680346488952637
+        ],
+        "sustained": [
+          0.9564588665962219,
+          0.6094269752502441,
+          0.30680346488952637
+        ]
+      },
+      {
+        "disabledStable": true,
+        "exited": [
+          0.09534826129674911,
+          0.10229205340147018,
+          0.12993216514587402
+        ],
+        "held": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ],
+        "id": "hover.icon",
+        "idle": [
+          0.09534826129674911,
+          0.10229205340147018,
+          0.12993216514587402
+        ],
+        "rapidReentryStable": true,
+        "refreshed": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ],
+        "sustained": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ]
+      },
+      {
+        "disabledStable": true,
+        "exited": [
+          0.09534826129674911,
+          0.10229205340147018,
+          0.12993216514587402
+        ],
+        "held": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ],
+        "id": "disclosure.header",
+        "idle": [
+          0.09534826129674911,
+          0.10229205340147018,
+          0.12993216514587402
+        ],
+        "rapidReentryStable": true,
+        "refreshed": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ],
+        "sustained": [
+          0.1679307222366333,
+          0.15502768754959106,
+          0.22762644290924072
+        ]
+      }
+    ],
+    "vaultOpened": false,
+    "version": "0.10.0"
+  },
+  "offlinePreviews": {
+    "final-en": 30,
+    "zh-Hans": 30
+  },
+  "documentationReview": {
+    "filesReviewed": 95,
+    "ownedIssues": [],
+    "preservedThirdParty": [
+      {
+        "file": "Configuration/RuntimeProvenance/monero-0.18.5.4-hashes.txt",
+        "findings": 2,
+        "reason": "upstream/license content preserved"
+      },
+      {
+        "file": "Vendor/OKXWalletSDK/README.md",
+        "findings": 1,
+        "reason": "upstream/license content preserved"
+      },
+      {
+        "file": "Vendor/OKXWalletSDK/coins/cosmos/README.md",
+        "findings": 1,
+        "reason": "upstream/license content preserved"
+      },
+      {
+        "file": "Vendor/OKXWalletSDK/crypto/data/hash.txt",
+        "findings": 4,
+        "reason": "upstream/license content preserved"
+      }
+    ],
+    "note": "Preserved hits include a signed upstream root-relative source reference, upstream links, arithmetic and encoded fixture data; no personal checkout path was found."
+  },
+  "releaseApp": {
+    "version": "0.10.0",
+    "build": 15,
+    "architecture": "arm64",
+    "filesChecked": 1462,
+    "defaultRegion": "en",
+    "localizations": [
+      "en",
+      "zh-Hans"
+    ],
+    "bundledCatalogMatchesSource": true,
+    "debugEntriesExcluded": true,
+    "signing": "ad-hoc",
+    "notarized": false
+  },
+  "publicationAudit": {
+    "files": 1509,
+    "reviewedPublicFindings": 2757,
+    "unresolvedFindings": 0
+  }
+}

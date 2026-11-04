@@ -1,0 +1,38 @@
+name: Source publication checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Install pinned local scanner
+        run: ./Scripts/fetch-gitleaks.sh
+      - name: Test the publication guard
+        run: |
+          python3 -m unittest discover -s Tests/SourceAudit -p 'test_*.py'
+          python3 -m unittest discover -s Tests/Packaging -p 'test_*.py'
+          python3 -m unittest discover -s Tests/Localization -p 'test_*.py'
+      - name: Check languages and portable documentation
+        run: |
+          python3 Tools/Localization/catalog.py --check
+          python3 Scripts/check-documentation.py
+      - name: Scan the complete source tree
+        run: python3 Scripts/audit-source.py --source head
+      - name: Verify runtime privacy boundary
+        run: |
+          if ! command -v rg >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install --no-install-recommends -y ripgrep
+          fi
+          ./Scripts/check-privacy.sh

@@ -1,0 +1,32 @@
+{
+  "version": "0.7.0",
+  "checkedAt": "2026-11-03T14:18:02.052341+00:00",
+  "transactionsSignedOnPublicChains": false,
+  "transactionsBroadcastOnPublicChains": false,
+  "usesPublicTransactionsOnly": true,
+  "readsUserVault": false,
+  "transport": "Final 0.7.0 packaged TorRuntime.bundle with Release WalletCore; socks5h remote DNS",
+  "checks": [
+    {
+      "network": "Ethereum",
+      "chainID": 1,
+      "canonicalReceipt": true,
+      "confirmationThreshold": 12,
+      "nonceState": true
+    },
+    {
+      "network": "BNB Chain",
+      "chainID": 56,
+      "canonicalReceipt": true,
+      "confirmationThreshold": 15,
+      "nonceState": true
+    }
+  ],
+  "torExitVerified": true,
+  "sepoliaIdentityVerified": true,
+  "stoppedTorBlocksRequests": true,
+  "identifiersDeliberatelyOmitted": true,
+  "build": "8",
+  "finalPackagedRuntimeVerified": true,
+  "releaseCoreVerified": true
+}

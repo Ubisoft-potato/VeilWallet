@@ -1,0 +1,879 @@
+{
+  "version": 1,
+  "verifiedDate": "2026-11-04",
+  "sources": [
+    "https://api.llama.fi/v2/chains",
+    "https://api-docs.defillama.com/llms-free.txt",
+    "https://coins.llama.fi/prices/current/{chain}:{contract}",
+    "https://www.coingecko.com/en/coins/{coin-id}"
+  ],
+  "networks": [
+    {
+      "chainID": 1,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "ethereum"
+    },
+    {
+      "chainID": 10,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "optimism"
+    },
+    {
+      "chainID": 14,
+      "family": "evm",
+      "nativeSymbol": "FLR",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:flare-networks",
+      "tokenNamespace": "flare"
+    },
+    {
+      "chainID": 25,
+      "family": "evm",
+      "nativeSymbol": "CRO",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:crypto-com-chain",
+      "tokenNamespace": "cronos"
+    },
+    {
+      "chainID": 30,
+      "family": "evm",
+      "nativeSymbol": "RBTC",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:rootstock",
+      "tokenNamespace": "rsk"
+    },
+    {
+      "chainID": 40,
+      "family": "evm",
+      "nativeSymbol": "TLOS",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:telos"
+    },
+    {
+      "chainID": 50,
+      "family": "evm",
+      "nativeSymbol": "XDC",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:xdce-crowd-sale",
+      "tokenNamespace": "xdc"
+    },
+    {
+      "chainID": 56,
+      "family": "evm",
+      "nativeSymbol": "BNB",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:binancecoin",
+      "tokenNamespace": "bsc"
+    },
+    {
+      "chainID": 66,
+      "family": "evm",
+      "nativeSymbol": "OKT",
+      "nativeDecimals": 18
+    },
+    {
+      "chainID": 100,
+      "family": "evm",
+      "nativeSymbol": "XDAI",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:xdai",
+      "tokenNamespace": "xdai"
+    },
+    {
+      "chainID": 128,
+      "family": "evm",
+      "nativeSymbol": "HT",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:huobi-token"
+    },
+    {
+      "chainID": 130,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "unichain"
+    },
+    {
+      "chainID": 137,
+      "family": "evm",
+      "nativeSymbol": "POL",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:polygon-ecosystem-token",
+      "tokenNamespace": "polygon"
+    },
+    {
+      "chainID": 143,
+      "family": "evm",
+      "nativeSymbol": "MON",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:monad",
+      "tokenNamespace": "monad"
+    },
+    {
+      "chainID": 146,
+      "family": "evm",
+      "nativeSymbol": "S",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:sonic-3",
+      "tokenNamespace": "sonic"
+    },
+    {
+      "chainID": 169,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 196,
+      "family": "evm",
+      "nativeSymbol": "OKB",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:okb",
+      "tokenNamespace": "xlayer"
+    },
+    {
+      "chainID": 199,
+      "family": "evm",
+      "nativeSymbol": "BTT",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:bittorrent"
+    },
+    {
+      "chainID": 204,
+      "family": "evm",
+      "nativeSymbol": "BNB",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:binancecoin"
+    },
+    {
+      "chainID": 250,
+      "family": "evm",
+      "nativeSymbol": "FTM",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:fantom",
+      "tokenNamespace": "fantom"
+    },
+    {
+      "chainID": 252,
+      "family": "evm",
+      "nativeSymbol": "FRAX",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:frax-share"
+    },
+    {
+      "chainID": 288,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 314,
+      "family": "evm",
+      "nativeSymbol": "FIL",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:filecoin"
+    },
+    {
+      "chainID": 324,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "era"
+    },
+    {
+      "chainID": 369,
+      "family": "evm",
+      "nativeSymbol": "PLS",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:pulsechain"
+    },
+    {
+      "chainID": 480,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "wc"
+    },
+    {
+      "chainID": 592,
+      "family": "evm",
+      "nativeSymbol": "ASTR",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:astar"
+    },
+    {
+      "chainID": 648,
+      "family": "evm",
+      "nativeSymbol": "ACE",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:endurance"
+    },
+    {
+      "chainID": 988,
+      "family": "evm",
+      "nativeSymbol": "USDT0",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:usdt0",
+      "tokenNamespace": "stable"
+    },
+    {
+      "chainID": 999,
+      "family": "evm",
+      "nativeSymbol": "HYPE",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:hyperliquid",
+      "tokenNamespace": "hyperliquid"
+    },
+    {
+      "chainID": 1030,
+      "family": "evm",
+      "nativeSymbol": "CFX",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:conflux-token",
+      "tokenNamespace": "conflux"
+    },
+    {
+      "chainID": 1088,
+      "family": "evm",
+      "nativeSymbol": "METIS",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:metis-token"
+    },
+    {
+      "chainID": 1101,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 1116,
+      "family": "evm",
+      "nativeSymbol": "CORE",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:coredaoorg"
+    },
+    {
+      "chainID": 1135,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 1284,
+      "family": "evm",
+      "nativeSymbol": "GLMR",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:moonbeam",
+      "tokenNamespace": "moonbeam"
+    },
+    {
+      "chainID": 1285,
+      "family": "evm",
+      "nativeSymbol": "MOVR",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:moonriver",
+      "tokenNamespace": "moonriver"
+    },
+    {
+      "chainID": 1329,
+      "family": "evm",
+      "nativeSymbol": "SEI",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:sei-network",
+      "tokenNamespace": "sei"
+    },
+    {
+      "chainID": 1625,
+      "family": "evm",
+      "nativeSymbol": "G",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:g-token"
+    },
+    {
+      "chainID": 1868,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 2020,
+      "family": "evm",
+      "nativeSymbol": "RON",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ronin"
+    },
+    {
+      "chainID": 2222,
+      "family": "evm",
+      "nativeSymbol": "KAVA",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:kava",
+      "tokenNamespace": "kava"
+    },
+    {
+      "chainID": 2741,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 2818,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "tokenNamespace": "morph"
+    },
+    {
+      "chainID": 4200,
+      "family": "evm",
+      "nativeSymbol": "BTC",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:bitcoin"
+    },
+    {
+      "chainID": 4217,
+      "family": "evm",
+      "nativeSymbol": "USD",
+      "nativeDecimals": 18,
+      "tokenNamespace": "tempo"
+    },
+    {
+      "chainID": 4326,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "megaeth"
+    },
+    {
+      "chainID": 4663,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 4689,
+      "family": "evm",
+      "nativeSymbol": "IOTX",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:iotex"
+    },
+    {
+      "chainID": 5000,
+      "family": "evm",
+      "nativeSymbol": "MNT",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:mantle",
+      "tokenNamespace": "mantle"
+    },
+    {
+      "chainID": 5042,
+      "family": "evm",
+      "nativeSymbol": "USDC",
+      "nativeDecimals": 18
+    },
+    {
+      "chainID": 7000,
+      "family": "evm",
+      "nativeSymbol": "ZETA",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:zetachain"
+    },
+    {
+      "chainID": 8217,
+      "family": "evm",
+      "nativeSymbol": "KAIA",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:kaia"
+    },
+    {
+      "chainID": 8453,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "base"
+    },
+    {
+      "chainID": 9745,
+      "family": "evm",
+      "nativeSymbol": "XPL",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:plasma",
+      "tokenNamespace": "plasma"
+    },
+    {
+      "chainID": 10001,
+      "family": "evm",
+      "nativeSymbol": "ETHW",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum-pow-iou"
+    },
+    {
+      "chainID": 11235,
+      "family": "evm",
+      "nativeSymbol": "ISLM",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:islamic-coin"
+    },
+    {
+      "chainID": 13371,
+      "family": "evm",
+      "nativeSymbol": "IMX",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:immutable-x"
+    },
+    {
+      "chainID": 16661,
+      "family": "evm",
+      "nativeSymbol": "0G",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:zero-gravity"
+    },
+    {
+      "chainID": 33139,
+      "family": "evm",
+      "nativeSymbol": "APE",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:apecoin"
+    },
+    {
+      "chainID": 34443,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 42161,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "arbitrum"
+    },
+    {
+      "chainID": 42170,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 42220,
+      "family": "evm",
+      "nativeSymbol": "CELO",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:celo",
+      "tokenNamespace": "celo"
+    },
+    {
+      "chainID": 42766,
+      "family": "evm",
+      "nativeSymbol": "USDC",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:usd-coin"
+    },
+    {
+      "chainID": 43111,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 43114,
+      "family": "evm",
+      "nativeSymbol": "AVAX",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:avalanche-2",
+      "tokenNamespace": "avax"
+    },
+    {
+      "chainID": 48900,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 57073,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "ink"
+    },
+    {
+      "chainID": 59144,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "linea"
+    },
+    {
+      "chainID": 60808,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 80094,
+      "family": "evm",
+      "nativeSymbol": "BERA",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:berachain-bera",
+      "tokenNamespace": "berachain"
+    },
+    {
+      "chainID": 81457,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "blast"
+    },
+    {
+      "chainID": 88888,
+      "family": "evm",
+      "nativeSymbol": "CHZ",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:chiliz"
+    },
+    {
+      "chainID": 167000,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 200901,
+      "family": "evm",
+      "nativeSymbol": "BTC",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:bitcoin"
+    },
+    {
+      "chainID": 534352,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum",
+      "tokenNamespace": "scroll"
+    },
+    {
+      "chainID": 747474,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 7777777,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 1313161554,
+      "family": "evm",
+      "nativeSymbol": "ETH",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:ethereum"
+    },
+    {
+      "chainID": 1666600000,
+      "family": "evm",
+      "nativeSymbol": "ONE",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:harmony"
+    },
+    {
+      "chainID": 9223372036854775808,
+      "family": "bitcoin",
+      "nativeSymbol": "BTC",
+      "nativeDecimals": 8,
+      "nativePriceID": "coingecko:bitcoin"
+    },
+    {
+      "chainID": 9223372036854775810,
+      "family": "litecoin",
+      "nativeSymbol": "LTC",
+      "nativeDecimals": 8,
+      "nativePriceID": "coingecko:litecoin"
+    },
+    {
+      "chainID": 9223372036854775936,
+      "family": "monero",
+      "nativeSymbol": "XMR",
+      "nativeDecimals": 12,
+      "nativePriceID": "coingecko:monero"
+    },
+    {
+      "chainID": 9223372036854776003,
+      "family": "tron",
+      "nativeSymbol": "TRX",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:tron",
+      "tokenNamespace": "tron"
+    },
+    {
+      "chainID": 9223372036854776162,
+      "family": "polkadot",
+      "nativeSymbol": "DOT",
+      "nativeDecimals": 10,
+      "nativePriceID": "coingecko:polkadot"
+    },
+    {
+      "chainID": 9223372036854776205,
+      "family": "near",
+      "nativeSymbol": "NEAR",
+      "nativeDecimals": 24,
+      "nativePriceID": "coingecko:near"
+    },
+    {
+      "chainID": 9223372036854776309,
+      "family": "solana",
+      "nativeSymbol": "SOL",
+      "nativeDecimals": 9,
+      "nativePriceID": "coingecko:solana"
+    },
+    {
+      "chainID": 9223372036854776415,
+      "family": "ton",
+      "nativeSymbol": "TON",
+      "nativeDecimals": 9,
+      "nativePriceID": "coingecko:the-open-network"
+    },
+    {
+      "chainID": 9223372036854776445,
+      "family": "aptos",
+      "nativeSymbol": "APT",
+      "nativeDecimals": 8,
+      "nativePriceID": "coingecko:aptos"
+    },
+    {
+      "chainID": 9223372036854776592,
+      "family": "sui",
+      "nativeSymbol": "SUI",
+      "nativeDecimals": 9,
+      "nativePriceID": "coingecko:sui"
+    },
+    {
+      "chainID": 9223372036854777623,
+      "family": "cardano",
+      "nativeSymbol": "ADA",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:cardano"
+    },
+    {
+      "chainID": 9223372036854781565,
+      "family": "stacks",
+      "nativeSymbol": "STX",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:blockstack"
+    },
+    {
+      "chainID": 9223372036854784812,
+      "family": "starknet",
+      "nativeSymbol": "STRK",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:starknet"
+    },
+    {
+      "chainID": 9223372036854789809,
+      "family": "eos",
+      "nativeSymbol": "WAXP",
+      "nativeDecimals": 8,
+      "nativePriceID": "coingecko:wax"
+    },
+    {
+      "chainID": 9223372036854875808,
+      "family": "cosmos",
+      "nativeSymbol": "ATOM",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:cosmos"
+    },
+    {
+      "chainID": 9223372036854875809,
+      "family": "cosmos",
+      "nativeSymbol": "OSMO",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:osmosis"
+    },
+    {
+      "chainID": 9223372036854875810,
+      "family": "cosmos",
+      "nativeSymbol": "TIA",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:celestia"
+    },
+    {
+      "chainID": 9223372036854875811,
+      "family": "cosmos",
+      "nativeSymbol": "INJ",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:injective-protocol"
+    },
+    {
+      "chainID": 9223372036854875812,
+      "family": "cosmos",
+      "nativeSymbol": "SEI",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:sei-network"
+    },
+    {
+      "chainID": 9223372036854875813,
+      "family": "cosmos",
+      "nativeSymbol": "JUNO",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:juno-network"
+    },
+    {
+      "chainID": 9223372036854875814,
+      "family": "cosmos",
+      "nativeSymbol": "AKT",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:akash-network"
+    },
+    {
+      "chainID": 9223372036854875815,
+      "family": "cosmos",
+      "nativeSymbol": "SCRT",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:secret"
+    },
+    {
+      "chainID": 9223372036854875816,
+      "family": "cosmos",
+      "nativeSymbol": "KUJI",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:kujira"
+    },
+    {
+      "chainID": 9223372036854875817,
+      "family": "cosmos",
+      "nativeSymbol": "STARS",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:stargaze"
+    },
+    {
+      "chainID": 9223372036854875818,
+      "family": "cosmos",
+      "nativeSymbol": "STRD",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:stride"
+    },
+    {
+      "chainID": 9223372036854875819,
+      "family": "cosmos",
+      "nativeSymbol": "NTRN",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:neutron-3"
+    },
+    {
+      "chainID": 9223372036854875820,
+      "family": "cosmos",
+      "nativeSymbol": "DYDX",
+      "nativeDecimals": 18,
+      "nativePriceID": "coingecko:dydx-chain"
+    },
+    {
+      "chainID": 9223372036854875821,
+      "family": "cosmos",
+      "nativeSymbol": "USDC",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:usd-coin"
+    },
+    {
+      "chainID": 9223372036854875822,
+      "family": "cosmos",
+      "nativeSymbol": "XPRT",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:persistence"
+    },
+    {
+      "chainID": 9223372036854875823,
+      "family": "cosmos",
+      "nativeSymbol": "AXL",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:axelar"
+    },
+    {
+      "chainID": 9223372036854875824,
+      "family": "cosmos",
+      "nativeSymbol": "BAND",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:band-protocol"
+    },
+    {
+      "chainID": 9223372036854875825,
+      "family": "cosmos",
+      "nativeSymbol": "IRIS",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:iris-network"
+    },
+    {
+      "chainID": 9223372036854875826,
+      "family": "cosmos",
+      "nativeSymbol": "KAVA",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:kava"
+    },
+    {
+      "chainID": 9223372036854875827,
+      "family": "cosmos",
+      "nativeSymbol": "LUNA",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:terra-luna-2"
+    },
+    {
+      "chainID": 9223372036854875828,
+      "family": "cosmos",
+      "nativeSymbol": "LUNC",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:terra-luna"
+    },
+    {
+      "chainID": 9223372036854875829,
+      "family": "cosmos",
+      "nativeSymbol": "HUAHUA",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:chihuahua-token"
+    },
+    {
+      "chainID": 9223372036854875830,
+      "family": "cosmos",
+      "nativeSymbol": "DVPN",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:sentinel"
+    },
+    {
+      "chainID": 9223372036854875831,
+      "family": "cosmos",
+      "nativeSymbol": "CMDX",
+      "nativeDecimals": 6,
+      "nativePriceID": "coingecko:comdex"
+    }
+  ]
+}

@@ -1,0 +1,592 @@
+[
+  {
+    "chainID": 42161,
+    "contract": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 43114,
+    "contract": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 8453,
+    "contract": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 42220,
+    "contract": "0xceba9300f2b948710d2653dd7b07f33a8b32118c",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 25,
+    "contract": "0x3d7f2c478aafdb65542bcb44bceec05849999d2d",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 1,
+    "contract": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 999,
+    "contract": "0xb88339cb7199b77e23db6e890353e22632ba630f",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 57073,
+    "contract": "0x2d270e6886d130d724215a266106e6832161eaed",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 59144,
+    "contract": "0x176211869ca2b568f2a7d4ee941e073a821ee1ff",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 143,
+    "contract": "0x754704bc059f8c67012fed69bc8a327a5aafb603",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 2818,
+    "contract": "0xcfb1186f4e93d60e60a8bdd997427d1f33bc372b",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 10,
+    "contract": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 9745,
+    "contract": "0x2d661c89d812261039af9764eceaaee884f5f67f",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 137,
+    "contract": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 1329,
+    "contract": "0xe15fc38f6d8c56af07bbcbe3baf5708a2bf42392",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 146,
+    "contract": "0x29219dd400f2bf60e5a23d13be72b486d4038894",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 130,
+    "contract": "0x078d782b760474a361dda0af3839290b0ef57ad6",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 480,
+    "contract": "0x79a02482a880bce3f13e09da970dc34db4cd24d1",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 196,
+    "contract": "0xb6ceceab302e2e4948951ee7843fc24e92933061",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 50,
+    "contract": "0xfa2958cb79b0491cc627c1557f441ef849ca8eb1",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 324,
+    "contract": "0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Native-issued",
+    "source": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+  },
+  {
+    "chainID": 42161,
+    "contract": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 80094,
+    "contract": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 1030,
+    "contract": "0xaf37e8b6c9ed7f6318979f56fc287d76c30847ff",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 14,
+    "contract": "0xe7cd86e13ac4309349f30b3435a9d337750fc82d",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 999,
+    "contract": "0xb8ce59fc3717ada4c02eadf9682a9e934f625ebb",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 57073,
+    "contract": "0x0200c29006150606b650577bbe7b6248f58470c1",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 5000,
+    "contract": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 4326,
+    "contract": "0xb8ce59fc3717ada4c02eadf9682a9e934f625ebb",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 143,
+    "contract": "0xe7cd86e13ac4309349f30b3435a9d337750fc82d",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 2818,
+    "contract": "0xe7cd86e13ac4309349f30b3435a9d337750fc82d",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 10,
+    "contract": "0x01bff41798a0bcf287b996046ca68b395dbc1071",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 9745,
+    "contract": "0xb8ce59fc3717ada4c02eadf9682a9e934f625ebb",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 137,
+    "contract": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 30,
+    "contract": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 1329,
+    "contract": "0x9151434b16b9763660705744891fa906f660ecc5",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 988,
+    "contract": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 4217,
+    "contract": "0x20c00000000000000000000014f22ca97301eb73",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 130,
+    "contract": "0x9151434b16b9763660705744891fa906f660ecc5",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 196,
+    "contract": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+    "symbol": "USDT0",
+    "name": "Tether USD₮0",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "USDT0",
+    "source": "https://docs.usdt0.to/api/deployments"
+  },
+  {
+    "chainID": 1,
+    "contract": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    "symbol": "USDT",
+    "name": "Tether USD₮",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "Native-issued",
+    "source": "https://tether.to/en/supported-protocols/"
+  },
+  {
+    "chainID": 43114,
+    "contract": "0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7",
+    "symbol": "USDT",
+    "name": "Tether USD₮",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "Native-issued",
+    "source": "https://tether.to/en/supported-protocols/"
+  },
+  {
+    "chainID": 2222,
+    "contract": "0x919c1c267bc06a7039e03fcc2ef738525769109c",
+    "symbol": "USDT",
+    "name": "Tether USD₮",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "Native-issued",
+    "source": "https://tether.to/en/supported-protocols/"
+  },
+  {
+    "chainID": 9223372036854776003,
+    "contract": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+    "symbol": "USDT",
+    "name": "Tether USD₮",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "TRC20",
+    "source": "https://tether.to/en/supported-protocols/"
+  },
+  {
+    "chainID": 9223372036854776003,
+    "contract": "TXDk8mbtRbXeYuMNS83CfKPaYYT8XWv9Hz",
+    "symbol": "USDD",
+    "name": "USDD",
+    "decimals": 18,
+    "logo": "usdd",
+    "provenance": "Current version",
+    "source": "https://docs.usdd.io/developers/deployment-addresses.md"
+  },
+  {
+    "chainID": 9223372036854776003,
+    "contract": "TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR",
+    "symbol": "WTRX",
+    "name": "WTRX",
+    "decimals": 6,
+    "logo": "trx",
+    "provenance": "TRC20",
+    "source": "https://github.com/sun-protocol/sun-cli#built-in-token-symbols"
+  },
+  {
+    "chainID": 9223372036854776003,
+    "contract": "TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
+    "symbol": "SUN",
+    "name": "SUN",
+    "decimals": 18,
+    "logo": "sun",
+    "provenance": "TRC20",
+    "source": "https://github.com/sun-protocol/sun-cli#built-in-token-symbols"
+  },
+  {
+    "chainID": 9223372036854776003,
+    "contract": "TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9",
+    "symbol": "JST",
+    "name": "JST",
+    "decimals": 18,
+    "logo": "jst",
+    "provenance": "TRC20",
+    "source": "https://github.com/sun-protocol/sun-cli#built-in-token-symbols"
+  },
+  {
+    "chainID": 9223372036854776003,
+    "contract": "TPYmHEhy5n8TCEfYGqW2rPxsghSfzghPDn",
+    "symbol": "USDDOLD",
+    "name": "USDD legacy",
+    "decimals": 18,
+    "logo": "usdd",
+    "provenance": "Legacy · Check migration",
+    "source": "https://docs.usdd.io/introduction/what-is-usddold.md"
+  },
+  {
+    "chainID": 9223372036854776003,
+    "contract": "TEkxiTehnzSmSe2XqrBj4w32RUN966rdz8",
+    "symbol": "USDCOLD",
+    "name": "USDC legacy on TRON",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Legacy · Issuance discontinued",
+    "source": "https://www.circle.com/blog/circle-is-discontinuing-support-for-usdc-on-the-tron-blockchain"
+  },
+  {
+    "chainID": 56,
+    "contract": "0x55d398326f99059ff775485246999027b3197955",
+    "symbol": "USDT",
+    "name": "Binance-Peg BSC-USD",
+    "decimals": 18,
+    "logo": "usdt",
+    "provenance": "Binance-Peg",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/smartchain/assets"
+  },
+  {
+    "chainID": 56,
+    "contract": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    "symbol": "USDC",
+    "name": "Binance-Peg USD Coin",
+    "decimals": 18,
+    "logo": "usdc",
+    "provenance": "Binance-Peg",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/smartchain/assets"
+  },
+  {
+    "chainID": 56,
+    "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+    "symbol": "WBNB",
+    "name": "Wrapped BNB",
+    "decimals": 18,
+    "logo": "bnb",
+    "provenance": "Wrapped asset",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/smartchain/assets"
+  },
+  {
+    "chainID": 1,
+    "contract": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "symbol": "WETH",
+    "name": "Wrapped Ether",
+    "decimals": 18,
+    "logo": "eth",
+    "provenance": "Wrapped asset",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/ethereum/assets"
+  },
+  {
+    "chainID": 1,
+    "contract": "0x6b175474e89094c44da98b954eedeac495271d0f",
+    "symbol": "DAI",
+    "name": "Dai",
+    "decimals": 18,
+    "logo": "dai",
+    "provenance": "ERC20",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/ethereum/assets"
+  },
+  {
+    "chainID": 1,
+    "contract": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    "symbol": "WBTC",
+    "name": "Wrapped Bitcoin",
+    "decimals": 8,
+    "logo": "btc",
+    "provenance": "Wrapped asset",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/ethereum/assets"
+  },
+  {
+    "chainID": 10,
+    "contract": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
+    "symbol": "USDT.e",
+    "name": "Legacy bridged USDT",
+    "decimals": 6,
+    "logo": "usdt",
+    "provenance": "Legacy bridge",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/optimism/assets"
+  },
+  {
+    "chainID": 42161,
+    "contract": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+    "symbol": "USDC.e",
+    "name": "Bridged USDC",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Bridged version",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/arbitrum/assets"
+  },
+  {
+    "chainID": 137,
+    "contract": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+    "symbol": "USDC.e",
+    "name": "Bridged USDC",
+    "decimals": 6,
+    "logo": "usdc",
+    "provenance": "Bridged version",
+    "source": "https://github.com/trustwallet/assets/tree/5bbf02b975ad179fc1eaf823521df303127b1c63/blockchains/polygon/assets"
+  }
+]

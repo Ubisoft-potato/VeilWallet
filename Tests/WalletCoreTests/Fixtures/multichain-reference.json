@@ -1,0 +1,134 @@
+{
+  "phrase": "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about",
+  "accounts": {
+    "btc.segwit": {
+      "path": "m/84'/0'/0'/0/0",
+      "address": "bc1qcr8te4kr609gcawutmrza0j4xv80jy8z306fyu"
+    },
+    "btc.legacy": {
+      "path": "m/44'/0'/0'/0/0",
+      "address": "1LqBGSKuX5yYUonjxT5qGfpUsXKYYWeabA"
+    },
+    "btc.nested": {
+      "path": "m/49'/0'/0'/0/0",
+      "address": "37VucYSaXLCAsxYyAPfbSi9eh4iEcbShgf"
+    },
+    "btc.taproot": {
+      "path": "m/86'/0'/0'/0/0",
+      "address": "bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr"
+    },
+    "solana": {
+      "path": "m/44'/501'/0'/0'",
+      "address": "HAgk14JpMQLgt6rVgv7cBQFJWFto5Dqxi472uT3DKpqk"
+    },
+    "solana.legacy": {
+      "path": "m/44'/501'/0'",
+      "address": "GjJyeC1r2RgkuoCWMyPYkCWSGSGLcz266EaAkLA27AhL"
+    },
+    "tron": {
+      "path": "m/44'/195'/0'/0/0",
+      "address": "TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH"
+    },
+    "sui": {
+      "path": "m/44'/784'/0'/0'/0'",
+      "address": "0x5e93a736d04fbb25737aa40bee40171ef79f65fae833749e3c089fe7cc2161f1"
+    },
+    "aptos": {
+      "path": "m/44'/637'/0'/0'/0'",
+      "address": "0xeb663b681209e7087d681c5d3eed12aaa8e1915e7c87794542c3f96e94b3d3bf"
+    },
+    "ton.v4": {
+      "path": "m/44'/607'/0'",
+      "address": "UQAzWZa6nM5mJev91wGc7VCSfBoIsYRqKJpV78N8Add9-RKY"
+    },
+    "ton.v5": {
+      "path": "m/44'/607'/0'",
+      "address": "UQBHyu-oZVDHRYQ1-rKlGqpHy5yAqanPBirEQNMNOmfHLtaT"
+    },
+    "near": {
+      "path": "m/44'/397'/0'",
+      "address": "5510e2b44cae6eb807e3e0e45d579dda058c274abcba15e5cb84636f5d1ee412"
+    },
+    "cosmos": {
+      "path": "m/44'/118'/0'/0/0",
+      "address": "cosmos19rl4cm2hmr8afy4kldpxz3fka4jguq0auqdal4"
+    },
+    "osmosis": {
+      "path": "m/44'/118'/0'/0/0",
+      "address": "osmo19rl4cm2hmr8afy4kldpxz3fka4jguq0a5m7df8"
+    },
+    "nostr": {
+      "path": "m/44'/1237'/0'/0/0",
+      "address": "npub1az708q3kd9zy6z6f44zav5ygvdwelkzspf6mtusttx47lft2z38sghk0w7"
+    },
+    "starknet": {
+      "path": "m/44'/9004'/0'/0/0",
+      "address": "0x5d97a4a9174d9158c3886717a70112c5e60b17318a1d3ae17f563f1cf8292f4"
+    },
+    "cardano": {
+      "path": "m/1852'/1815'/0'/0/0",
+      "address": "addr1qy8ac7qqy0vtulyl7wntmsxc6wex80gvcyjy33qffrhm7sh927ysx5sftuw0dlft05dz3c7revpf7jx0xnlcjz3g69mq4afdhv"
+    },
+    "eos": {
+      "path": "m/44'/194'/0'/0/0",
+      "address": "EOS6zpSNY1YoLxNt2VsvJjoDfBueU6xC1M1ERJw1UoekL1NHn8KNA"
+    },
+    "ltc.segwit": {
+      "path": "m/84'/2'/0'/0/0",
+      "address": "ltc1qjmxnz78nmc8nq77wuxh25n2es7rzm5c2rkk4wh"
+    },
+    "ltc.legacy": {
+      "path": "m/44'/2'/0'/0/0",
+      "address": "LUWPbpM43E2p7ZSh8cyTBEkvpHmr3cB8Ez"
+    },
+    "ltc.nested": {
+      "path": "m/49'/2'/0'/0/0",
+      "address": "M7wtsL7wSHDBJVMWWhtQfTMSYYkyooAAXM"
+    },
+    "ltc.nested.compat": {
+      "path": "m/49'/2'/0'/0/0",
+      "address": "31jkZShyVAMkVz5cQpu4qp73DrAXtFP3rZ"
+    },
+    "ltc.taproot": {
+      "path": "m/86'/2'/0'/0/0",
+      "address": "ltc1puht8rk95c53q3u9w3pf9h3jfcutcrl9lxc7rqsdthjrse4k6sn7q9tuqm9"
+    },
+    "ltc.mweb": {
+      "path": "m/0'/100'",
+      "address": "ltcmweb1qqv2g556ddyyqxvr25avn9vsepu75fnygr92pwxewl72ua26su57nsqu5r89cpckmja4m7mc3tm3jremaddk8637697afaswaee78z3ztyy8sevgm"
+    }
+  },
+  "privateKeys": {
+    "litecoinWIF": "T5ZCYhLqXu6EJKk2nhjvwsaLH357CisixhLGWpKXEiqWTUtzte6o",
+    "litecoinUncompressedWIF": "6uhLoqNczaCPTj3GmT7qfau4Qrp5qb7riHtYshudPgbiGSx3bVs",
+    "litecoinUncompressedAddress": "LSFmGJugHwcwq6N6sWGJ1oJFZomSLWh9Va",
+    "litecoinMwebPair": "17943f1cce8ab9396a0e99439ddb9c115dd3e4ea093d626cc0f0397ad0a9d2f5:052ac0f5c5b3c9e3cc699af6f8e4ebb52b792af44d0c34956b1fc3607e06106b",
+    "litecoinP2WSH": "ltc1qztp0l0rwc8846ardl02fkyrrx43p96j47scz8l7qz3vnfteqc4eqgdw7z7",
+    "litecoinMultisig": "M9uQLiT7gYZTBLzWXBAQWKnQcppkouqfEG",
+    "eosWIF": "5K2VtCafACZx6iiN5xyBb67UszFQa6yVLR8UquZU2x6aPmbQnU6",
+    "eosPVT": "PVT_K1_2DDJX8a5jzxqiL63mXHW3NMfPRVMy7Qcc4hcjWio5EwE85iMPJ",
+    "nearKey": "ed25519:F1kPR175szkGxEL52A9H6Z5ocS2BtaipprK2Hiob9DjGzHTkScrBb1yt44baXPZ3LxyHcsTPdBjHmn6zx147txH",
+    "nostrKey": "nsec1tu567wukwcvq9y880f8045n9cnp07299xqjxrae4jl76y6aj2ucs2mkupq",
+    "cardanoKey": "105d2ef2192150655a926bca9cccf5e2f6e496efa9580508192e1f4a790e6f53de06529129511d1cacb0664bcf04853fdc0055a47cc6d2c6d2051270207606522047891e88934a422e3ff6eea4caaaecda795724cd2bfacf91569896750e6f534a704748705e28a7bd69d009638add767f79c63eb9c839c8ffe0eff0b6e16772",
+    "tonPair": "b477ef5ed17fb8a2b8faddd7a9835a227243a82c70b190c7af4896155aa7df9f7952e94118f34607c75e23258dd9220d66ccac5a3ee074125c25068e8107bfbf",
+    "solanaBase58": "27npWoNE4HfmLeQo1TyWcW7NEA28qnsnDK7kcttDQEWrCWnro83HMJ97rMmpvYYZRwDAvG4KRuB7hTBacvwD7bgi",
+    "solanaJSON": "[55,223,87,59,58,196,173,91,82,46,6,78,37,182,62,161,107,203,231,157,68,158,129,160,38,141,16,71,148,139,180,69,240,54,39,98,70,167,91,157,227,52,158,212,43,21,226,50,246,81,143,194,15,95,205,79,29,100,232,31,155,210,88,247]",
+    "solanaSeed": "37df573b3ac4ad5b522e064e25b63ea16bcbe79d449e81a0268d1047948bb445",
+    "suiBech32": "suiprivkey1qzyxnjc8z79lvlsg6lz2hh69fp7m7duunfzjlnkzsd59f062855mqacydfr",
+    "aptosAIP80": "ed25519-priv-0xcc92c0eaf80206d817f150e21917f797e49cf644a33ac514de3c316baa2f1bf5",
+    "bitcoinWIF": "KyZpNDKnfs94vbrwhJneDi77V6jF64PWPF8x5cdJb8ifgg2DUc9d",
+    "legacyUncompressedWIF": "5KY3dHRWNnFkBJaTnmUTaR1oqs9tU9goQbG19FSNLSo5oAxLokG",
+    "legacyUncompressedAddress": "18LhnLKXjcTw5xJFiTxntnKit2Gd63eWFm",
+    "starkKey": "001b8e16cdf31892c56c0370f0e4ca0da096ef4e0c81007b3ba10b11452f8971"
+  },
+  "invalidLitecoinAddresses": [
+    "ltcmweb1qqv2g556ddyyqxvr25avn9vsepu75fnygr92pwxewl72ua26su57nsqu5r89cpckmja4m7mc3tm3jremaddk8637697afaswaee78z3ztyyjvfqde",
+    "ltcmweb1pqv2g556ddyyqxvr25avn9vsepu75fnygr92pwxewl72ua26su57nsqu5r89cpckmja4m7mc3tm3jremaddk8637697afaswaee78z3ztyyphr4x5",
+    "ltcmweb1qlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllusu6snh",
+    "tmweb1qqv2g556ddyyqxvr25avn9vsepu75fnygr92pwxewl72ua26su57nsqu5r89cpckmja4m7mc3tm3jremaddk8637697afaswaee78z3ztyyxecm5v",
+    "ltcmweb1QQV2G556DDYYQXVR25AVN9VSEPU75FNYGR92PWXEWL72UA26SU57NSQU5R89CPCKMJA4M7MC3TM3JREMADDK8637697AFASWAEE78Z3ZTYY8SEVGM",
+    "ltc1qqyqszqgpqyqszqgpqyqszqgpqyqszqgpqydxddgq",
+    "ltc1qqyqszqgpqyqszqgpqyqszqgpqyqszqgp4f4a5r",
+    "ltc1pqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqsj28l67"
+  ]
+}
