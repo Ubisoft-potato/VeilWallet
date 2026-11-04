@@ -1,78 +1,207 @@
-# Veil Wallet
+![Veil Wallet — self-custody, built for macOS](Assets/Readme/hero.svg)
 
-A native, self-custodial macOS wallet built with SwiftUI and AppKit. **0.10.1 is a development preview**, with English as the default interface and Simplified Chinese available in the unlock screen and Settings. Language changes apply immediately, without restarting or clearing forms.
+[Features](#what-you-can-do) · [Install](#install) · [Build](#build-from-source) · [Privacy](#privacy-and-local-data) · [Contribute](CONTRIBUTING.md)
 
-Keys are generated and used locally. Supported network requests use bundled Tor, remote DNS and no direct fallback. Tor does not hide the public transaction graph or protect a compromised Mac. This project has **no independent security audit, production-funds acceptance, Developer ID signature or Apple notarization**.
+**A native macOS wallet for local keys, multichain assets and Tor-routed connections.**
 
-## Features
+Veil Wallet brings wallet management, portfolio tracking, supported transfers and on-chain interactions into a SwiftUI/AppKit desktop app. English and Simplified Chinese switch immediately. No account registration, analytics SDK, embedded browser or runtime artwork downloads.
 
-- Create or import English BIP39 mnemonics with 12/15/18/21/24 words, an optional BIP39 passphrase, supported private keys or watch-only addresses. Native multi-wallet management, address previews, backup display and password changes.
-- A fixed catalog of 81 EVM mainnets, Sepolia, 39 non-EVM networks and Nostr. Import, balance and sending support differ; see the [network matrix](Documentation/PRODUCT_SCOPE.md).
-- Native/token balances, offline icons, searchable networks, 59 EVM/TRON token presets, Tor-based USD prices and local portfolio valuation. Missing data stays explicitly unknown.
-- Transfers for EVM native coins/ERC20, transparent single-key BTC/LTC, SOL, TRX, APT, 21 Cosmos Bank networks and the official local XMR wallet runtime.
-- Typed EVM contract calls, 82 configured EVM DEX deployments and two TRON swap modes, separate exact approvals and confirmed-approval continuation. See [DEX support](Documentation/DEX.md).
-- Fixed USDT bridges ETH↔TRON and ETH↔BSC. Classic ETH/BNB privacy pools use separate notes and a bundled offline proof helper. See [scope and limits](Documentation/BRIDGES_PRIVACY.md).
-- Encrypted local transaction archives, manual same-payload rebroadcast, EVM nonce queues/replacement/cancellation and BTC/LTC RBF/single-level CPFP. No cloud sync or cross-Mac recovery workflow.
-- Configurable idle lock, default 30 minutes. Switching apps keeps the wallet unlocked; sleep, manual lock and exit stop runtimes. Secret-display views hide content when focus leaves.
+**v0.10.1 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
 
-A catalog entry does not promise that every endpoint, pool or asset remains available. DApp/WalletConnect, hardware wallets, NFTs, arbitrary unknown-token indexing, generic non-EVM token transfer forms and full address-history indexing are not implemented.
+![Veil Wallet portfolio with native navigation, USD valuation and local asset icons](Assets/Readme/overview.png)
 
-## Build
+*Offline product preview using public test fixtures. Amounts and prices are illustrative; these images contain no real user wallet. Never fund published fixture addresses.*
 
-Use Apple Silicon, macOS 14+, Swift 6.1+, Go 1.26.1, Python 3, GnuPG and standard macOS command-line tools. The validated CI toolchain is in [DMG_BUILD.md](Documentation/DMG_BUILD.md). Intel runtime archives exist, but Intel hardware has not been validated.
+## What you can do
 
-Run from the repository root. Developer fetch scripts contact upstream services directly to obtain pinned, verified build inputs; they are not wallet runtime requests.
+| Area | Available in this preview |
+|---|---|
+| **Manage your keys** | Create/import English BIP39 phrases, supported private-key formats or watch-only addresses. Multiple wallets, address previews, password-protected backup display and wallet management. |
+| **See your assets** | Native balances, 59 EVM/TRON token presets, manual tokens, local icons, searchable networks, USD unit prices and partial/stale-aware portfolio valuation. |
+| **Send and manage transactions** | Supported EVM, BTC/LTC, SOL, TRX, APT, Cosmos Bank and XMR flows. Encrypted local archives, receipt checks and protocol-specific recovery actions. |
+| **Interact on-chain** | Typed EVM calls, 82 configured EVM DEX deployments, TRON SunSwap/SUN routes and separate approval-to-swap confirmation. |
+| **Bridge supported assets** | Fixed USDT routes ETH↔TRON and ETH↔BSC, with separate source and destination verification. |
+| **Use supported privacy pools** | Fixed-denomination Classic ETH/BNB pools, separate note backups, bundled offline proving and direct withdrawals. |
+| **Control the desktop experience** | Configurable idle lock, default 30 minutes; local settings, keyboard navigation, full-row disclosures and immediate language switching. |
+
+The catalog contains **81 EVM mainnets, Sepolia, 39 non-EVM networks and Nostr identities**. Catalog presence, import, balance lookup and sending are different capabilities. The [complete network matrix](Documentation/PRODUCT_SCOPE.md) is the authority for individual chains.
+
+### Swaps and network discovery
+
+| Native swap forms | Searchable network selection |
+|:--:|:--:|
+| ![EVM DEX swap form with protocol selection, asset inputs and slippage settings](Assets/Readme/swap.png) | ![Network selector with search, local logos and network filters](Assets/Readme/networks.png) |
+| Quotes, exact approvals and swaps are separate steps. | Search by name, symbol or chain ID; filter popular, funded and test networks. |
+
+EVM swaps use supported fixed deployments and local calldata construction. TRON SUN uses a Tor-routed candidate-route service with local validation. An approval is not a completed swap: verify its receipt, obtain a fresh quote and confirm the next signature. See [DEX versions and limits](Documentation/DEX.md).
+
+### Transactions you can inspect
+
+![Native transaction management showing local transaction groups, statuses and expandable signed hashes](Assets/Readme/transactions.png)
+
+Transactions stay in an encrypted local queue and archive. Supported tools include same-payload manual rebroadcast, EVM nonce queues/speed-up/cancellation and transparent BTC/LTC RBF/single-level CPFP. Unknown broadcast results retain their original hash; the app does not automatically repeat a payment.
+
+[Transaction management](Documentation/TRANSACTIONS.md) · [Transfer support](Documentation/TRANSFERS.md) · [Bridges and privacy pools](Documentation/BRIDGES_PRIVACY.md)
+
+### Current limits
+
+Hardware wallets, WalletConnect/DApp sessions, NFT/DeFi indexing, arbitrary unknown-token discovery and full address-history indexing are not implemented. Generic non-EVM token transfer forms, additional chain-specific fee models and several catalog networks' send adapters remain unavailable.
+
+LTC MWEB supports address derivation/watch management, not scanning or spending. XMR uses the official local wallet runtime, with full live recovery/funded-flow acceptance still outstanding. Privacy pools do not include TRON mixing, RAILGUN or withdrawal relayers. See the [product scope](Documentation/PRODUCT_SCOPE.md) rather than assuming all catalog entries support every action.
+
+## Install
+
+### Requirements
+
+| | Supported distribution |
+|---|---|
+| Mac | Apple Silicon / arm64 |
+| macOS | 14 or later |
+| Installer | Versioned DMG containing Veil Wallet.app |
+| Signing | Ad-hoc development signature; not Apple-notarized |
+| Updates | Manual installation; no in-app update-check service |
+
+Intel hardware has not been validated; the current packaged proof runtime and CI installer target Apple Silicon.
+
+### Install a verified DMG
+
+Public release hosting is not configured yet. Build from source below, or obtain the versioned DMG and matching checksums from a completed **Actions → Build macOS DMG → Artifacts** run in the source repository. The [workflow](.github/workflows/macos-dmg.yml) creates artifacts; it does not automatically publish a GitHub Release.
+
+1. Download and extract the complete artifact, including its matching SHA256SUMS.
+2. From the extracted artifact directory, verify the files:
+
+   ~~~bash
+   shasum -a 256 -c SHA256SUMS
+   ~~~
+
+3. Open VeilWallet-<version>-macOS-arm64.dmg.
+4. Drag **Veil Wallet.app** into **Applications**, then eject the disk image.
+5. Launch the app and create or unlock your local vault.
+
+Because this is an unnotarized development build, macOS may block first launch. Verify the source and checksums before following **System Settings → Privacy & Security** prompts. Do not disable Gatekeeper.
+
+Removing/replacing the App normally leaves wallet files and the local Keychain intact. Keep independent offline backups; deleting the data directory or its Keychain keys can lose data. See [local storage and recovery](#privacy-and-local-data).
+
+### First launch
+
+- Create a local vault with a unique password of at least 12 characters.
+- Create/import a wallet or add a watch-only address. Compare the address preview with your original wallet before proceeding.
+- Back up the recovery material offline. A valid phrase alone does not establish the correct passphrase/path/account index.
+- Tor starts **after successful unlock**. Network actions wait for its own 100% bootstrap. Offline address/import/backup functions remain available if connection fails.
+- In Settings, select language, idle-lock interval, asset-refresh scope or a trusted supported endpoint. IP-based obfs4 bridges can be set for the current process.
+
+## Build from source
+
+Run commands from the repository root. A first build needs internet access for pinned dependencies and verified runtime downloads.
+
+### Developer prerequisites
+
+| Tool | Purpose |
+|---|---|
+| macOS 14+ on Apple Silicon | Native build, code signing and DMG verification |
+| Xcode or Command Line Tools; Swift 6.1+ | SwiftUI/AppKit, C compilation and SwiftPM; local validation used Swift 6.4 |
+| Go 1.26.1 | Offline multichain C archive |
+| Python 3 | Catalog, provenance, audit and packaging checks |
+| Node.js/npm | Development preparation of the pinned offline proof helper |
+| GnuPG, curl, tar, shasum, ripgrep | Runtime verification and source checks |
+
+CI pins Xcode 26.3, Go 1.26.1 and an ARM64 macos-15 runner. See [build details](Documentation/DMG_BUILD.md) for exact workflow behavior.
+
+### 1. Prepare the bundled runtimes
 
 ~~~bash
 ./Scripts/fetch-tor.sh
 ./Scripts/fetch-monero.sh
 ./Scripts/fetch-privacy-runtime.sh
+~~~
+
+These developer scripts fetch pinned Tor, Monero and proof-runtime inputs and verify their recorded hashes/signatures. Developer downloads contact upstream services directly. **The installed wallet does not download executable code.**
+
+### 2. Validate and build the App
+
+~~~bash
 ./Scripts/swift.sh test
 ./Scripts/check-privacy.sh
+python3 Tools/Localization/catalog.py --check
+python3 Scripts/check-documentation.py
 ./Scripts/build-app.sh
+~~~
+
+Run SwiftPM operations sequentially. The wrapper builds the offline Go archive and configures the installed Swift Testing macros. Tests use disposable public fixtures; optional independent-Node/Anvil checks have additional prerequisites described in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+The Release App is written to **build/Veil Wallet.app**:
+
+~~~bash
+open "build/Veil Wallet.app"
+~~~
+
+### 3. Create the DMG
+
+~~~bash
 ./Scripts/build-dmg.sh --skip-build
 ~~~
 
-Run SwiftPM operations sequentially. The wrapper builds the offline Go C archive and handles installed Swift Testing macros. Packaging includes Tor, obfs4 support, CA roots, Monero and the offline Node proof runtime; the running app does not download executables.
+This reuses the verified App, creates a compressed image, mounts it read-only and compares App contents, permissions, symlinks and signatures. It never launches a user wallet.
 
-Outputs are in build/: Veil Wallet.app, a versioned ARM64 DMG/ZIP, build metadata and SHA256 checksums. The DMG has an Applications shortcut and English instructions. [GitHub Actions](.github/workflows/macos-dmg.yml) builds artifacts without publishing a GitHub Release.
+| Output in build/ | Contents |
+|---|---|
+| Veil Wallet.app | Native app and bundled runtimes/resources |
+| VeilWallet-<version>-macOS-arm64.dmg | Drag-to-install disk image |
+| VeilWallet-<version>-macOS-arm64.zip | The same App as a build-generated archive |
+| BUILD-INFO.json | Toolchain, source tree/commit, runtime versions and signing mode |
+| SHA256SUMS | Checksums for generated distribution files |
 
-## Tor and local data
+Source archives are generated by CI; corresponding-source and relinking requirements for third-party components remain separate. Local deliveries may remove the ZIP after verification and update its checksum row.
 
-Opening the app shows an offline unlock screen. **Tor starts after successful vault unlock**; requests require its own process to report 100% bootstrap. Locking or closing stops Tor and local runtimes. This does not proxy other apps or change system DNS. If bootstrap fails, offline import, backup and address viewing remain available. Settings accepts IP-based obfs4 bridges for the current process.
+## Privacy and local data
 
-Ordinary requests use TorTransport → CPrivacyTransport → socks5h, HTTPS port 443, bundled CA verification and no redirects. Monero has an explicit exception: fixed authenticated loopback wallet RPC and a kernel-restricted official process connecting only to the selected Tor port via SOCKS4a and a v3 onion daemon.
+**Keys stay local. Supported external requests travel through bundled Tor.** This is an application-level boundary, not a system-wide VPN or an anonymity guarantee.
 
-Vault and encrypted local records live in the user's **Application Support → VeilWallet** directory. Removing the App normally leaves that data and local Keychain intact. Deleting either can lose records. Random privacy notes are in the password vault and **cannot be recovered from a mnemonic**. See [data and recovery limits](Documentation/TRANSACTIONS.md).
+- Ordinary RPC/pricing requests use TorTransport → CPrivacyTransport → socks5h, remote DNS, HTTPS 443, bundled CA validation and no redirect/direct fallback.
+- Monero has an explicit separate boundary: authenticated local wallet RPC and a kernel-restricted official process using SOCKS4a to a v3 onion daemon.
+- Icons, protocol catalogs, translations and the offline prover are bundled. No analytics, advertising, remote image/font loading or cloud wallet synchronization is integrated.
+- Locking, sleep or exit stop Tor and local runtimes. Switching apps keeps the session unlocked until the configured idle timeout; secret-display views hide their content on focus loss.
+- Nodes still learn queried addresses. On-chain links, amounts, timing, Tor correlation and a compromised Mac remain outside these protections. The app does not alter system DNS or proxy other applications.
 
-Language is a non-sensitive app-local UserDefaults preference, without sync. Other preferences/caches remain encrypted locally.
+Local files are under the user's **Application Support → VeilWallet** directory. The password-encrypted vault stores wallet material and random privacy notes; separate non-syncing Keychain keys protect local metadata/transaction archives.
+
+**A mnemonic cannot recover a random privacy-pool note.** Back up complete notes separately. There is no cloud sync or cross-Mac recovery workflow. Language is a non-sensitive local preference; other settings/caches remain locally encrypted.
+
+[Threat model](Documentation/SECURITY.md) · [Privacy validation](Documentation/PRIVACY_TESTING.md) · [Validation history](Documentation/VALIDATION.md) · [Private vulnerability reporting](SECURITY.md)
 
 ## Import compatibility
 
-BIP39 uses the English word list. TON-native, Electrum, SLIP39 and Chinese-word mnemonics are not accepted. Sui/Aptos support Ed25519; Polkadot uses the explicitly labeled Ed25519 BIP44 scheme, not sr25519/SURI. Cardano uses CIP-1852; its private-key entry requires a 128-byte payment/stake extended-key pair. NEAR derives implicit accounts. EOS/WAX and Starknet need explicit on-chain account binding.
+- **BIP39:** English word list, 12/15/18/21/24 words and optional passphrase. No Electrum, SLIP39, TON-native or Chinese-word mnemonic import.
+- **EVM:** supported BIP32/BIP44 paths, 32-byte private keys and watch addresses.
+- **BTC/LTC:** supported WIF/hex and address types; arbitrary scripts do not imply single-key signing control. [Litecoin details](Documentation/LITECOIN.md).
+- **XMR:** Ledger-compatible BIP39 derivation or supported English native 25-word seed/spend key. Other wallets' BIP39 conventions may differ. [Monero details](Documentation/MONERO.md).
+- **Other families:** protocol-specific formats, paths and restrictions apply. Examples include Ed25519-only Sui/Aptos/Polkadot, CIP-1852 Cardano, implicit NEAR accounts and explicit EOS/Starknet account binding.
 
-XMR can derive from this BIP39 wallet using the Ledger-compatible path, or import a supported native 25-word seed/spend key. Other wallets may use different BIP39-to-XMR conventions. LTC validates/watches all Core mainnet address encodings; arbitrary scripts and MWEB remain receive/watch-only. See [Litecoin](Documentation/LITECOIN.md), [Monero](Documentation/MONERO.md) and [transfers](Documentation/TRANSFERS.md).
+Always verify the resulting address. See the [full matrix](Documentation/PRODUCT_SCOPE.md) before importing or sending.
 
-Always compare the import preview to your existing address. A valid mnemonic does not prove that its path, passphrase, account index or contract version matches the original wallet.
+## Contribute
 
-## Development and publication
+Help improve native UX, localization, protocol correctness, privacy validation, documentation or tests. Start with **[CONTRIBUTING.md](CONTRIBUTING.md)** for setup, local checks, public fixtures, PR expectations and source-publication rules.
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md), the [threat model](Documentation/SECURITY.md), [validation records](Documentation/VALIDATION.md) and [publication audit](Documentation/OPEN_SOURCE_AUDIT.md). Tests/previews use published disposable fixtures; never fund those accounts. Screenshots, runtime downloads, caches and wallet data are excluded from Git.
+For security issues, use [SECURITY.md](SECURITY.md). Do not place real wallet material, notes, signed transactions or account screenshots in public issues.
 
-Original work uses [MIT](LICENSE). Third-party code keeps its licenses, including GPL/LGPL requirements; see [NOTICE.md](NOTICE.md) and [components](Documentation/THIRD_PARTY.md). [SECURITY.md](SECURITY.md) describes vulnerability reporting.
+## Project map
 
 ~~~text
 Sources/VeilWallet/          Native UI and session coordination
 Sources/WalletCore/          Vault, derivation, transport and protocol adapters
 Sources/CPrivacyTransport/  External request boundary
-Sources/CChainCore/         Offline C ABI
-Native/ChainCore/            Pinned offline Go SDK wrapper
-Vendor/OKXWalletSDK/         Upstream subset and licenses
-Tools/                      Developer tools and public-fixture smoke checks
+Native/ChainCore/            Pinned offline multichain C archive
 Tests/                      Protocol, privacy, localization and tooling checks
-Scripts/                    Build, audit and packaging tools
-Configuration/              App configuration, provenance and licenses
-Documentation/              English product and security documentation
+Scripts/                    Build, verification, packaging and audit tools
+Documentation/              Product matrices and technical boundaries
+Assets/Readme/               Reviewed public-fixture product images
 ~~~
 
-Research used [OKX wallet management](https://www.okx.com/en-us/help/how-do-i-manage-my-wallet-web) and [network documentation](https://web3.okx.com/onchainos/dev-docs/wallet/supported-networks). Veil Wallet is independent, does not implicitly run OKX services and does not claim feature equivalence.
+## License and attribution
+
+Original Veil Wallet code and documentation use the **[MIT license](LICENSE)**. Upstream SDK code, artwork, CA roots, Tor, Monero and the proof helper retain their own notices and obligations, including GPL/LGPL components. MIT does not override those licenses or grant trademark rights.
+
+[License scope](NOTICE.md) · [Third-party components](Documentation/THIRD_PARTY.md) · [Artwork provenance](Documentation/ASSET_ARTWORK.json) · [README image provenance](Assets/Readme/README.md)
+
+Veil Wallet is independent of OKX and does not claim feature equivalence or affiliation. The selected offline SDK sources retain their upstream attribution.

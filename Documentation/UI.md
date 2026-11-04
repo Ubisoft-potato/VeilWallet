@@ -33,4 +33,4 @@ Icons are at least 36×36pt, ordinary actions 40pt high, primary actions 44pt. A
 
 Native mouse events are sent directly to our own off-desktop test window: sidebar whitespace, disclosure/input interactions, retained state, disabled controls and six independently clickable actions at 360pt width. No system event injection, accessibility permission, vault access or networking. Geometry observers do not hit-test and return the original view in Release. See [historical click results](UI_INTERACTION_0.9.3.json).
 
-Preview rendering uses public disposable vectors and clearly labeled illustrative balances/prices; it never substitutes test data in production. Generated screenshots stay in ignored build directories.
+Preview rendering uses public disposable vectors and clearly labeled illustrative balances/prices; it never substitutes test data in production. Generated previews stay in ignored build directories. Explicitly reviewed public-fixture [README images](../Assets/Readme/README.md) have provenance and individual hash-bound audit exceptions; personal captures remain excluded.

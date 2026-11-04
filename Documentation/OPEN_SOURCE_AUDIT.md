@@ -6,11 +6,13 @@ Scope: the proposed Git source tree, configuration, documentation, resources, te
 
 Public test keys/mnemonics remain intentionally present; never fund those fixtures. Tor/Monero public verification keys and the Node public release keyring are build-verification material, not wallet or publisher private keys.
 
+The [key-material inventory](KEY_MATERIAL.md) lists test fixtures, developer scripts, DEBUG previews, upstream examples, the public prover self-test and runtime user-data locations separately. Public fixture material is not confined to the Tests directory.
+
 A prior review matched all 1,061 SDK files against the pinned upstream revision and 92 icons against provenance SHA256 values. Generic scanner candidates were reviewed as public vectors, protocol constants/contracts or public signing fingerprints. Supplemental wallet rules cover mnemonic fragments, unexplained 32-byte hex, encoded keys, notes, credential URLs, personal paths, risky filenames and binary resources.
 
 Exceptions in [SourceAuditAllowlist.json](../Configuration/SourceAuditAllowlist.json) bind explicit rules to whole-file SHA256. There are no Vendor/test directory exemptions. Any file change invalidates its exception. Personal paths/private PEM/risky paths cannot be exempted. Changed public-vector/hash files must be re-reviewed; do not bulk-approve unknown findings.
 
-Builds, installed dependencies, runtime downloads, logs, local configuration, wallet files, signing material and generated screenshots are ignored. Screenshots and ZIPs are not part of the source tree. Original upstream notices/provenance are retained.
+Builds, installed dependencies, runtime downloads, logs, local configuration, wallet files, signing material and generated screenshots are ignored. Personal/generated captures and ZIPs remain excluded. Explicitly reviewed public-fixture [README images](../Assets/Readme/README.md) are published with provenance and individual hash-bound exceptions, without a directory-wide binary exemption. Original upstream notices/provenance are retained.
 
 ## Repeatable local checks
 
@@ -47,7 +49,7 @@ Cleanup removes fixed project cache/dependency/runtime/download locations only, 
 
 ## Publication status and limits
 
-The local branch is main, with no initial commit/public author identity/remote configured. There is no existing commit history to rewrite. Before first commit, choose a public name/email and inspect staged content. Scanning does not redact author metadata, remotes or messages; future HEAD checks do not replace history scans.
+At initial preparation, the local main branch had no commits or remote. A local initial commit was subsequently created; no push or remote CI execution is claimed here. Choose a public author identity and inspect staged content before future commits. Scanning does not redact author metadata, remotes or messages; future HEAD checks do not replace history scans.
 
 Original work uses MIT; upstream licenses remain, including GPL/LGPL corresponding-source/relinking requirements. Source readiness does not clear binary redistribution. See [NOTICE](../NOTICE.md) and [THIRD_PARTY.md](THIRD_PARTY.md).
 

@@ -1,51 +1,162 @@
-# Contributing
+# Contributing to Veil Wallet
 
-Veil Wallet is a native macOS development preview, not a production wallet or an independently audited product. Read [AGENTS.md](AGENTS.md), [the threat model](Documentation/SECURITY.md) and [the feature limits](Documentation/PRODUCT_SCOPE.md) before changing signing, persistence or networking.
+Thank you for helping improve a native, self-custodial macOS wallet. Useful contributions include UX/accessibility fixes, English/Chinese translations, protocol correctness, reproducible public fixtures, privacy validation and clear documentation.
 
-## Build and check
+Veil Wallet is a development preview without independent security audit or production-funds acceptance. Start with [AGENTS.md](AGENTS.md), the [security model](Documentation/SECURITY.md) and the [feature matrix](Documentation/PRODUCT_SCOPE.md). Describe implemented and verified behavior separately from planned work.
 
-Use macOS 14 or later and the tools listed in the README. Run the three developer runtime fetch scripts before packaging. Run SwiftPM operations sequentially:
+## Before you start
 
-```bash
+For a new chain, signing format, network surface or large product change, open a design discussion/issue before substantial implementation. Explain the user problem, protocol sources, intended scope and validation. Small fixes and documentation improvements can go straight to a focused pull request.
+
+For a bug report, include app/macOS version, expected and actual behavior, minimal steps and sanitized error identifiers. Reproduce with a disposable public fixture. **Never include real seeds, keys, passwords, privacy notes, node credentials, signed payloads or personal account screenshots.** Security issues follow [SECURITY.md](SECURITY.md), not public reproduction details.
+
+## Set up a development checkout
+
+Use Apple Silicon/macOS 14+, Xcode or Command Line Tools with Swift 6.1+, Go 1.26.1, Python 3, Node/npm, GnuPG and the tools listed in the [README](README.md#developer-prerequisites). See [DMG_BUILD.md](Documentation/DMG_BUILD.md) for the pinned CI environment.
+
+Run from the repository root:
+
+~~~bash
+./Scripts/fetch-gitleaks.sh
+git config --local core.hooksPath .githooks
+
+./Scripts/fetch-tor.sh
+./Scripts/fetch-monero.sh
+./Scripts/fetch-privacy-runtime.sh
+~~~
+
+The scanner lives in ignored .tools/gitleaks/. **Local commit hooks do not download it automatically**; missing tools block the check. CI explicitly downloads/verifies the pinned scanner. No scanner service receives repository contents.
+
+Runtime fetch scripts verify pinned upstream inputs. They are developer bootstrap tools; runtime wallet traffic must retain the Tor boundary. Downloaded runtimes/dependencies do not belong in Git.
+
+Create a focused branch:
+
+~~~bash
+git switch -c fix/short-description
+~~~
+
+Use a public Git author name/email that you are comfortable publishing, such as your GitHub noreply address. Review your configured identity locally before committing. Scanning does not redact author metadata, remotes or commit messages.
+
+## Build and run
+
+~~~bash
 ./Scripts/swift.sh test
 ./Scripts/check-privacy.sh
+./Scripts/build-app.sh
+open "build/Veil Wallet.app"
+~~~
+
+Run SwiftPM operations sequentially. The wrapper builds the offline Go C archive and handles the installed Testing macros. For a verified installer:
+
+~~~bash
+./Scripts/build-dmg.sh --skip-build
+~~~
+
+Do not use a real vault for development or fund a published test account. Native preview tools use an in-memory/public-fixture model. A local test pass is not funded-chain or system-wide leakage acceptance.
+
+Use the [key-material inventory](Documentation/KEY_MATERIAL.md) to locate existing public fixtures and distinguish them from real runtime wallet data. It also covers developer scripts, DEBUG previews and upstream examples outside Tests; do not copy a personal wallet into any of those locations.
+
+## Choose checks for your change
+
+| Change | Required validation |
+|---|---|
+| Swift UI, core, signing or persistence | Swift suite, relevant regression cases and App build; inspect affected native views |
+| Network/proxy boundary | Privacy source guard, affected transport/sandbox tests and applicable read-only TorSmoke checks |
+| Translations | Matching native catalogs, placeholder/key checks and live language switching |
+| Documentation/images | English primary text, portable links, public-fixture image review and source scan |
+| Cleanup/distribution | Packaging unit tests, App verification and read-only-mounted DMG comparison |
+| New protocol/DEX adapter | Official deployment/encoding sources, independent vectors, wrong-chain/error cases and clearly scoped live validation |
+
+### Fast local checks
+
+~~~bash
+python3 -m unittest discover -s Tests/SourceAudit -p 'test_*.py'
+python3 -m unittest discover -s Tests/Packaging -p 'test_*.py'
 python3 -m unittest discover -s Tests/Localization -p 'test_*.py'
 python3 Tools/Localization/catalog.py --check
 python3 Scripts/check-documentation.py
-./Scripts/build-app.sh
-```
+./Scripts/check-privacy.sh
+~~~
 
-Network requests from the running wallet must keep the Tor gate and fail-closed policy. The optional Anvil test uses an isolated local chain without a mainnet fork; fixtures are public, unfunded test material. Never test with an actual wallet or fund a published fixture. See [validation details](Documentation/VALIDATION.md).
+### Optional deeper checks
 
-The checked-in token/market catalogs and icons are build inputs. Reference download scripts are developer maintenance tools, not build prerequisites. `build-market-catalog.py` reads `.build/price-reference/chains.json`; when deliberately updating it, fetch `https://api.llama.fi/v2/chains` there, review identity changes and update the source provenance before committing. Never regenerate network identities based only on a matching ticker.
+Anvil integration uses an isolated literal-loopback chain with a random port, no mainnet fork and public disposable keys. If Anvil is absent the optional case skips; do not count that as a completed integration run.
 
-## Source publication guard
+~~~bash
+VEIL_ANVIL="$(command -v anvil)" ./Scripts/swift.sh test
+~~~
 
-```bash
-./Scripts/fetch-gitleaks.sh
-python3 -m unittest discover -s Tests/SourceAudit -p 'test_*.py'
-git add <reviewed-paths>
-python3 Scripts/audit-source.py --report .build/open-source-audit/index.json
-```
+Independent signature-reference checks require their pinned development dependencies and VEIL_VERIFY_NODE=1. They are not enabled by default CI. Follow the existing scripts/tests and record which optional checks actually ran. See [VALIDATION.md](Documentation/VALIDATION.md), [TRANSACTIONS.md](Documentation/TRANSACTIONS.md) and [PRIVACY_TESTING.md](Documentation/PRIVACY_TESTING.md).
 
-The scanner runs locally against all Git index blobs, including force-added ignored files. CI uses `--source head` to scan a complete checked-out commit. The Gitleaks download is pinned by version and platform SHA256. No scanner service receives repository contents. Reports contain paths, rules and file hashes, not matched values.
+Run only read-only TorSmoke probes on public fixtures unless a separately authorized test plan calls for disposable test-network transactions. Do not sign or send mainnet funds to validate a PR.
 
-The installed scanner lives in ignored `.tools/gitleaks/` so cleaning build caches does not break the commit hook. `python3 Scripts/clean-build-cache.py` previews fixed project cache paths; add `--apply --downloads` to remove them and downloaded runtimes. It refuses paths containing tracked source. Do not clean while a build is running. Final artifacts in `build/` are retained.
+## Implementation expectations
 
-DMG packaging and CI are described in [DMG_BUILD.md](Documentation/DMG_BUILD.md). Run `python3 -m unittest discover -s Tests/Packaging -p 'test_*.py'` when changing cleanup or distribution checks. Release compilation maps local checkout paths before packaging; the app-content check rejects local build paths, wallet files and private-key blocks in textual resources.
+### Preserve the privacy boundary
 
-`Configuration/SourceAuditAllowlist.json` records reviewed public data with a complete file hash and explicit rules. It does not exempt `Vendor/` or tests as directories. Changing one byte invalidates that file's exceptions. Do not bulk-approve new findings: establish public provenance or regenerate from a documented public fixture first. A scan pass cannot prove the absence of arbitrary secrets or identify the owner of every public address.
+All runtime external requests use WalletCore TorTransport/CPrivacyTransport, with the documented Monero exception. Preserve unlock/bootstrap gates, remote DNS, certificate verification, endpoint restrictions, cancellation and no direct fallback. New analytics, remote artwork, browser/network SDKs or external services require an explicit architecture decision and leakage validation.
 
-To enable the local pre-commit check after installing Gitleaks:
+Do not log secrets, signed payloads, wallet addresses or Tor exit IPs. Use protocol error identifiers/sanitized messages. No cloud or cross-Mac recovery flow is part of this project.
 
-```bash
-git config --local core.hooksPath .githooks
-```
+### Preserve transaction intent
 
-Use a public Git author identity, such as your GitHub noreply email. Check the identity and staged diff locally before the first commit. The source audit does not redact Git author metadata, Git remotes or commit messages. Never put sensitive input into any of them.
+Use integer base units/BigUInt, validate chain identity, account, nonce/sequence, destination, amounts, fees and preview lifetime. Unknown RPC state is not zero balance, confirmed success, failure or cancellation. Persist hashes/attempts before broadcast and never add automatic duplicate payments.
 
-Keep the MIT license for original contributions and preserve all existing third-party and GPL helper notices. Changes should describe the user-visible behavior, validation and remaining limits. Report security problems privately using [SECURITY.md](SECURITY.md).
+Do not write cryptographic primitives. Use pinned upstream implementations and independent public vectors. Keep watch-only capabilities, unsupported paths and protocol-specific limits explicit.
 
-English is the default UI/documentation language; Simplified Chinese remains selectable. Use stable L keys and numbered arguments, with matching entries in en.lproj and zh-Hans.lproj Localizable.strings. See Documentation/I18N.md. Keep addresses, amounts, user names, protocol IDs and canonical stored states unchanged. LK is for known catalog labels; LS is display-only compatibility for app-generated history. Language changes are observable and apply immediately; never force a root-view identity change to refresh text. See [UI.md](Documentation/UI.md).
+### Localize interface text
 
-Use relative repository links and checkout-relative commands in documentation, never personal home/checkout paths. Preserve third-party readmes, licenses and signed provenance. The documentation checker reports upstream content separately; do not rewrite upstream license text to silence it.
+English is default; Simplified Chinese is selectable live. Swift uses stable message keys and numbered arguments, with matching entries in both Localizable.strings files. Do not embed translated prose or change keys just to edit wording.
+
+Keep amounts, addresses, hashes, protocol IDs and user names opaque. Preserve canonical legacy state values. Never force a root-view identity change to refresh language: current forms, credentials, approved previews and sessions must retain their state. See [I18N.md](Documentation/I18N.md).
+
+### Maintain catalogs and artwork
+
+Checked-in catalogs/icons are reviewed build inputs. Match network/contract/decimals rather than ticker names. Distinguish native issuance, bridges and legacy assets. Preserve official provenance and icon licenses.
+
+Reference download scripts are maintenance tools, not normal build prerequisites. For example, build-market-catalog.py reads .build/price-reference/chains.json; deliberately updating it requires fetching the source data, reviewing identity changes and updating provenance. Never regenerate identities by symbol alone.
+
+### Keep documentation portable and honest
+
+Primary documentation is English. Use repository-relative links and checkout-relative commands; do not add personal filesystem paths. Preserve original upstream readmes/licenses/provenance.
+
+README images are generated from explicit offline public fixtures, not the running personal wallet. Keep their warning/caption, audit every image and update [image provenance](Assets/Readme/README.md), its manifest and hash-bound audit exceptions. Arbitrary screenshots remain excluded. No private note/backup/seed screen belongs in product images.
+
+## Review the exact publication contents
+
+Stage only reviewed paths, then inspect and scan the actual index:
+
+~~~bash
+git add README.md CONTRIBUTING.md
+git diff --cached --stat
+git diff --cached
+python3 Scripts/audit-source.py --source index --report .build/open-source-audit/index.json
+~~~
+
+Replace the example paths with your change. The scanner reads exact Git blobs, including force-added ignored files, independently of worktree differences. CI checks the complete HEAD tree.
+
+Configuration/SourceAuditAllowlist.json binds explicit rules to a complete file SHA256. It does not exempt Vendor or tests as directories. One changed byte invalidates an exception. Do not bulk-approve unknown findings: establish public provenance, remove accidental data or regenerate from a documented public fixture. A pass cannot prove absence of arbitrary encoded secrets or identify every personal address.
+
+The local pre-commit hook repeats this scan. Do not bypass it to get a commit through.
+
+## Submit a focused pull request
+
+Include:
+
+- The concrete problem and resulting user-visible behavior.
+- Scope, protocol/version limits and any persisted-data implications.
+- Checks run and their results, including skipped/uncompleted acceptance.
+- For UI changes, reviewed public-fixture screenshots; for protocols, relevant official sources and independent vectors.
+
+Use a title that describes the final change. Keep unrelated refactors/dependency updates separate. Never post raw scanner matches or sensitive reproduction material. Keep the root MIT license for original work and preserve third-party/GPL/LGPL notices. Public binary releases also need their corresponding-source/relinking materials; see [NOTICE.md](NOTICE.md).
+
+The [source-check workflow](.github/workflows/source-audit.yml) runs on pushes/PRs. The [macOS packaging workflow](.github/workflows/macos-dmg.yml) builds explicit artifacts without publishing a Release. Do not claim remote CI passed until it has actually run.
+
+## Clean up safely
+
+~~~bash
+python3 Scripts/clean-build-cache.py
+python3 Scripts/clean-build-cache.py --apply --downloads
+~~~
+
+The first command previews; the second removes fixed project caches/dependencies/downloads. Stop builds first. Tracked source, Git, final packages and .tools auditing tools are retained; user Application Support/Keychain data is outside scope. Never commit .build, .tools, installed dependencies, runtime downloads, logs, wallet files or generated personal screenshots.

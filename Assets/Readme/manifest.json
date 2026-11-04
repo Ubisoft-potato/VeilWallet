@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "appVersion": "0.10.1",
+  "reviewedDate": "2026-11-04",
+  "renderer": "Sources/VeilWallet/PreviewRenderer.swift (DEBUG only)",
+  "data": "Offline in-memory public BIP39 standard vector; synthetic transaction hashes and illustrative balances/prices; no personal wallet or private notes",
+  "review": "Visual inspection, PNG chunk/CRC validation and local OCR checks; no real vault access, network calls, signing or broadcast",
+  "license": "Original artwork/UI documentation: root MIT; embedded third-party logos retain Documentation/ASSET_ARTWORK.json attribution",
+  "images": [
+    {
+      "file": "hero.svg",
+      "sha256": "5c5ef461055f0840a5263c4860138ee19a7121cdf30dd97ed85bea506c0d2bb0",
+      "width": 1600,
+      "height": 460,
+      "source": "Original vector artwork; shield geometry from Scripts/make-icon.swift"
+    },
+    {
+      "file": "overview.png",
+      "sha256": "04e66694451920d5cba76a41b1ebfb692160be88d59dd99d829da4cfa74a5b6d",
+      "width": 2560,
+      "height": 2000,
+      "source": "readme-overview.png",
+      "pngChunks": [
+        "IHDR",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "metadata": "sRGB image pixels only; no EXIF or text chunks"
+    },
+    {
+      "file": "swap.png",
+      "sha256": "dcf90d18853605f0b48831b2815136779638cb85236084ca1b654eae737c960a",
+      "width": 1300,
+      "height": 1520,
+      "source": "dex-preview.png",
+      "pngChunks": [
+        "IHDR",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "metadata": "sRGB image pixels only; no EXIF or text chunks"
+    },
+    {
+      "file": "networks.png",
+      "sha256": "68fe453e96e43cd7ddfd108f96251121010ec7f7f258913758dc823b7d6ab25f",
+      "width": 880,
+      "height": 1120,
+      "source": "network-search-preview.png",
+      "pngChunks": [
+        "IHDR",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "metadata": "sRGB image pixels only; no EXIF or text chunks"
+    },
+    {
+      "file": "transactions.png",
+      "sha256": "4e8dd45163b28aec90c5378ec68a92717d7328e48e5f5c9045c8c866dfcdc68b",
+      "width": 2480,
+      "height": 1800,
+      "source": "transactions-preview.png",
+      "pngChunks": [
+        "IHDR",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "metadata": "sRGB image pixels only; no EXIF or text chunks"
+    }
+  ]
+}

@@ -150,11 +150,11 @@
     },
     {
       "path": "Sources/VeilWallet/PreviewRenderer.swift",
-      "sha256": "848cab6db1cd3282a7d2feb6ca5f68e4f79008f4de8faca7d00e81b27d12a9f0",
+      "sha256": "40b91015061a511039993266dfc8d9740cb7fa0d97fe009d3354823466b5149a",
       "rules": [
         "mnemonic-words"
       ],
-      "reason": "Published BIP39 abandon/about vector and explicitly labeled offline UI fixtures; reviewed English/Chinese preview labels and locale. No real wallet data. Migrated translated text to native i18n resource identifiers; immutable public constants match the previously reviewed staged tree."
+      "reason": "Published BIP39 abandon/about standard vector, unchanged from initial commit. Reviewed DEBUG-only native documentation scene and sRGB pixel-only PNG export; no real vault access, network, signing or broadcast. Public phrase and key constants unchanged."
     },
     {
       "path": "Sources/WalletCore/Crypto/EVMEnvelopeVerification.swift",
@@ -2392,6 +2392,46 @@
         "binary-review"
       ],
       "reason": "Public Node release verification keyring; SHA256 checked by fetch-privacy-runtime.sh; no secret keys."
+    },
+    {
+      "path": "Assets/Readme/overview.png",
+      "sha256": "04e66694451920d5cba76a41b1ebfb692160be88d59dd99d829da4cfa74a5b6d",
+      "rules": [
+        "binary-review"
+      ],
+      "reason": "Reviewed native offline public-fixture product image from readme-overview.png. Visual and local OCR review; synthetic/public data only, standard sRGB pixels with no EXIF or text chunks. See Assets/Readme/manifest.json for provenance."
+    },
+    {
+      "path": "Assets/Readme/swap.png",
+      "sha256": "dcf90d18853605f0b48831b2815136779638cb85236084ca1b654eae737c960a",
+      "rules": [
+        "binary-review"
+      ],
+      "reason": "Reviewed native offline public-fixture product image from dex-preview.png. Visual and local OCR review; synthetic/public data only, standard sRGB pixels with no EXIF or text chunks. See Assets/Readme/manifest.json for provenance."
+    },
+    {
+      "path": "Assets/Readme/networks.png",
+      "sha256": "68fe453e96e43cd7ddfd108f96251121010ec7f7f258913758dc823b7d6ab25f",
+      "rules": [
+        "binary-review"
+      ],
+      "reason": "Reviewed native offline public-fixture product image from network-search-preview.png. Visual and local OCR review; synthetic/public data only, standard sRGB pixels with no EXIF or text chunks. See Assets/Readme/manifest.json for provenance."
+    },
+    {
+      "path": "Assets/Readme/transactions.png",
+      "sha256": "4e8dd45163b28aec90c5378ec68a92717d7328e48e5f5c9045c8c866dfcdc68b",
+      "rules": [
+        "binary-review"
+      ],
+      "reason": "Reviewed native offline public-fixture product image from transactions-preview.png. Visual and local OCR review; synthetic/public data only, standard sRGB pixels with no EXIF or text chunks. See Assets/Readme/manifest.json for provenance."
+    },
+    {
+      "path": "Assets/Readme/manifest.json",
+      "sha256": "05398df96f1463e65526c5ca8d07de5cba22986e60e73f83daba38329deb82d7",
+      "rules": [
+        "hex-32-bytes"
+      ],
+      "reason": "Five public documentation-image SHA256 checksums, independently recomputed from the reviewed local PNG/SVG files; not wallet key material."
     }
   ]
 }

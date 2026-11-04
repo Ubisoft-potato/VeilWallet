@@ -1,6 +1,7 @@
 #if DEBUG
 import AppKit
 import SwiftUI
+import ImageIO
 import WalletCore
 
 // Render only our own hierarchy with public BIP39 test vectors, without disk vault access or networking.
@@ -90,6 +91,14 @@ import WalletCore
             Text(L("message.ui_fixture_example_prices_and_balances_not_live_prices_or")).font(.system(size: 14, weight: .semibold)).foregroundStyle(.orange)
             AssetsView().environmentObject(model)
         }.padding(28) }.background(Color.veilBackground), to: destination.deletingLastPathComponent().appendingPathComponent("usd-portfolio-preview.png"), size: NSSize(width: 1080, height: 1360))
+        // Public documentation capture: the same native hierarchy, an explicit
+        // fixture banner, and no live vault, persistence, signing or networking.
+        try capture(VStack(spacing: 0) {
+            Text(L("message.ui_fixture_example_prices_and_balances_not_live_prices_or"))
+                .font(.system(size: 12, weight: .medium)).foregroundStyle(.orange)
+                .padding(12).frame(maxWidth: .infinity).background(Color.veilPanel)
+            RootView().environmentObject(model)
+        }, to: destination.deletingLastPathComponent().appendingPathComponent("readme-overview.png"), size: NSSize(width: 1280, height: 1000))
     }
     private static func capture<V: View>(_ root: V, to destination: URL, size: NSSize) throws {
         let view = NSHostingView(rootView: root.environment(\.locale, WalletLanguage.current.locale).preferredColorScheme(.dark).buttonStyle(SecondaryButton()).disclosureGroupStyle(WalletDisclosureStyle()).frame(width: size.width, height: size.height).background(Color.veilBackground))
@@ -99,8 +108,32 @@ import WalletCore
         RunLoop.current.run(until: Date().addingTimeInterval(0.3))
         guard let bitmap = view.bitmapImageRepForCachingDisplay(in: view.bounds) else { throw CocoaError(.fileWriteUnknown) }
         view.cacheDisplay(in: view.bounds, to: bitmap)
-        guard let png = bitmap.representation(using: .png, properties: [:]) else { throw CocoaError(.fileWriteUnknown) }
-        try png.write(to: destination, options: .atomic)
+        // Export pixels only; do not carry AppKit EXIF/text properties into
+        // public documentation assets.
+        guard let pixels = bitmap.cgImage,
+              let space = CGColorSpace(name: CGColorSpace.sRGB),
+              let canvas = CGContext(data: nil, width: pixels.width, height: pixels.height, bitsPerComponent: 8, bytesPerRow: 0, space: space, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue),
+              let encoded = CFDataCreateMutable(nil, 0),
+              let output = CGImageDestinationCreateWithData(encoded, "public.png" as CFString, 1, nil) else { throw CocoaError(.fileWriteUnknown) }
+        canvas.draw(pixels, in: CGRect(x: 0, y: 0, width: pixels.width, height: pixels.height))
+        guard let exported = canvas.makeImage() else { throw CocoaError(.fileWriteUnknown) }
+        CGImageDestinationAddImage(output, exported, nil)
+        guard CGImageDestinationFinalize(output) else { throw CocoaError(.fileWriteUnknown) }
+        // ImageIO may synthesize EXIF even for fresh pixels. Retain only PNG
+        // image/color chunks verbatim, including their original CRCs and IDAT.
+        let png = Data(bytes: CFDataGetBytePtr(encoded)!, count: CFDataGetLength(encoded))
+        var clean = Data(png.prefix(8)), offset = 8
+        let imageChunks: Set<String> = ["IHDR", "PLTE", "IDAT", "IEND", "tRNS", "sRGB", "gAMA", "cHRM", "iCCP", "cICP"]
+        while offset < png.count {
+            guard offset + 12 <= png.count else { throw CocoaError(.fileWriteUnknown) }
+            let length = png[offset..<offset + 4].reduce(0) { ($0 << 8) | Int($1) }
+            let end = offset + length + 12
+            guard end <= png.count else { throw CocoaError(.fileWriteUnknown) }
+            let type = String(decoding: png[offset + 4..<offset + 8], as: UTF8.self)
+            if imageChunks.contains(type) { clean.append(png[offset..<end]) }
+            offset = end
+        }
+        try clean.write(to: destination, options: .atomic)
         window.orderOut(nil)
     }
 }
