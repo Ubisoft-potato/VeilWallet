@@ -150,11 +150,11 @@
     },
     {
       "path": "Sources/VeilWallet/PreviewRenderer.swift",
-      "sha256": "40b91015061a511039993266dfc8d9740cb7fa0d97fe009d3354823466b5149a",
+      "sha256": "fa018a8d6d76caa1486a6e95416a32e4d07ed03bbab81e97fd7031c12d7c0f90",
       "rules": [
         "mnemonic-words"
       ],
-      "reason": "Published BIP39 abandon/about standard vector, unchanged from initial commit. Reviewed DEBUG-only native documentation scene and sRGB pixel-only PNG export; no real vault access, network, signing or broadcast. Public phrase and key constants unchanged."
+      "reason": "Unchanged public BIP39 test vector in DEBUG-only offline UI renderer; added empty 24-word import preview and adjusted import preview sizes."
     },
     {
       "path": "Sources/WalletCore/Crypto/EVMEnvelopeVerification.swift",
@@ -974,11 +974,11 @@
     },
     {
       "path": "Sources/WalletCore/Resources/en.lproj/Localizable.strings",
-      "sha256": "c77a6f8ddab56ba7abc27f4966a306f635694872ece090d106d40cb2334f0af8",
+      "sha256": "917f37de82cef0fb4c7b21b376a77b68c5ae34f1fe3617d29f96b0a2c1869467",
       "rules": [
         "secret-literal"
       ],
-      "reason": "Public interface labels, stable message identifiers and legacy display aliases only. Scanner matches words such as password in translation keys; these are not stored passwords. All migrated text pairs match the previously reviewed catalog; additions are language controls, section labels and protocol-unit placeholders."
+      "reason": "Existing reviewed UI labels are byte-for-byte unchanged; appended mnemonic input labels contain no credentials or wallet material."
     },
     {
       "path": "Sources/WalletCore/Resources/i18n.json",
@@ -990,11 +990,11 @@
     },
     {
       "path": "Sources/WalletCore/Resources/zh-Hans.lproj/Localizable.strings",
-      "sha256": "7639e89571bf3abc135ff302606d752a6823127ebdcfb890c273e8ed2034983c",
+      "sha256": "bd85e4ca5755717c38fb7bb418c51ddeb4954616e783a04770c31b485532b1dd",
       "rules": [
         "secret-literal"
       ],
-      "reason": "Public interface labels, stable message identifiers and legacy display aliases only. Scanner matches words such as password in translation keys; these are not stored passwords. All migrated text pairs match the previously reviewed catalog; additions are language controls, section labels and protocol-unit placeholders."
+      "reason": "Existing reviewed UI labels are byte-for-byte unchanged; appended mnemonic input labels contain no credentials or wallet material."
     },
     {
       "path": "Tests/WalletCoreTests/AssetExperienceTests.swift",

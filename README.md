@@ -6,7 +6,7 @@
 
 Veil Wallet brings wallet management, portfolio tracking, supported transfers and on-chain interactions into a SwiftUI/AppKit desktop app. English and Simplified Chinese switch immediately. No account registration, analytics SDK, embedded browser or runtime artwork downloads.
 
-**v0.10.2 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
+**v0.10.3 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
 
 ![Veil Wallet portfolio with native navigation, USD valuation and local asset icons](Assets/Readme/overview.png)
 
@@ -174,7 +174,7 @@ Local files are under the user's **Application Support → VeilWallet** director
 
 ## Import compatibility
 
-- **BIP39:** English word list, 12/15/18/21/24 words and optional passphrase. No Electrum, SLIP39, TON-native or Chinese-word mnemonic import.
+- **BIP39:** Numbered word boxes for English 12/24-word phrases, with 15/18/21-word options and an optional passphrase. Paste a complete phrase to detect its length and fill the boxes. Words are hidden by default; spelling and checksum checks run locally before address preview. No Electrum, SLIP39, TON-native or Chinese-word mnemonic import.
 - **EVM:** supported BIP32/BIP44 paths, 32-byte private keys and watch addresses.
 - **BTC/LTC:** supported WIF/hex and address types; arbitrary scripts do not imply single-key signing control. [Litecoin details](Documentation/LITECOIN.md).
 - **XMR:** Ledger-compatible BIP39 derivation or supported English native 25-word seed/spend key. Other wallets' BIP39 conventions may differ. [Monero details](Documentation/MONERO.md).

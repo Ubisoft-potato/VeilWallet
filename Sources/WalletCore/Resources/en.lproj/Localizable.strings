@@ -1637,3 +1637,16 @@
 "unit.gwei" = "Gwei";
 "wallet.default_name" = "My wallet";
 "wallet.lock" = "Lock wallet";
+"mnemonic.word_count" = "⟦0⟧ words";
+"mnemonic.show_words" = "Show words";
+"mnemonic.hide_words" = "Hide words";
+"mnemonic.paste_phrase" = "Paste phrase";
+"mnemonic.clear" = "Clear all words";
+"mnemonic.input_hint" = "Enter one English word per box, or paste your complete phrase. Space, Return and Tab move to the next box.";
+"mnemonic.check_spelling" = "Check the spelling in boxes: ⟦0⟧.";
+"mnemonic.valid" = "Recovery phrase verified locally. Ready to preview your addresses.";
+"mnemonic.checksum_error" = "The checksum does not match. Check the words and their order.";
+"mnemonic.paste_error" = "Paste a complete 12, 15, 18, 21 or 24-word phrase. To paste part of a phrase, select a box with enough room. The existing words were kept.";
+"mnemonic.clipboard_empty" = "The clipboard does not contain text.";
+"mnemonic.resize_confirmation" = "Changing the word count will remove filled boxes at the end. Continue?";
+"mnemonic.resize_confirm" = "Change word count";

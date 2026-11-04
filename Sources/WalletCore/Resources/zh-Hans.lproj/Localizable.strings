@@ -1637,3 +1637,16 @@
 "unit.gwei" = "Gwei";
 "wallet.default_name" = "我的钱包";
 "wallet.lock" = "锁定钱包";
+"mnemonic.word_count" = "⟦0⟧ 个单词";
+"mnemonic.show_words" = "显示单词";
+"mnemonic.hide_words" = "隐藏单词";
+"mnemonic.paste_phrase" = "粘贴助记词";
+"mnemonic.clear" = "清空所有单词";
+"mnemonic.input_hint" = "每格输入一个英文单词，也可粘贴整段助记词。空格、回车或 Tab 可跳到下一格。";
+"mnemonic.check_spelling" = "请检查第 ⟦0⟧ 格的单词拼写。";
+"mnemonic.valid" = "助记词已在本机校验通过，可以预览钱包地址。";
+"mnemonic.checksum_error" = "助记词校验和不匹配，请检查单词及排列顺序。";
+"mnemonic.paste_error" = "请粘贴完整的 12、15、18、21 或 24 词助记词。粘贴部分单词时，请选中剩余格数足够的输入格。原有内容已保留。";
+"mnemonic.clipboard_empty" = "剪贴板中没有文本。";
+"mnemonic.resize_confirmation" = "切换词数会移除末尾已填写的单词，是否继续？";
+"mnemonic.resize_confirm" = "切换词数";

@@ -56,6 +56,104 @@ private struct InteractionFrames: PreferenceKey {
 // Native click checks and injected hover-phase rendering checks against our own
 // hierarchy. No system event injection, vault access or network connection.
 @MainActor enum UIInteractionChecks {
+    private final class MnemonicFixture: ObservableObject {
+        @Published var draft = MnemonicImportDraft()
+        @Published var disabled = false
+    }
+    private struct MnemonicControls: View {
+        @ObservedObject var state: MnemonicFixture
+        var body: some View {
+            VStack {
+                ScrollView { MnemonicInputGrid(draft: $state.draft).disabled(state.disabled) }.frame(height: 340)
+                TextField(L("message.leave_blank_for_no_passphrase"), text: .constant(""))
+            }.padding(30).buttonStyle(SecondaryButton())
+        }
+    }
+    static func runMnemonic(to destination: URL) throws {
+        NSApplication.shared.setActivationPolicy(.prohibited)
+        WalletLocalization.useInMemoryLanguagePreferencesForVerification(.english)
+        let state = MnemonicFixture(), geometry = Geometry()
+        let (window, host) = makeHost(MnemonicControls(state: state), size: NSSize(width: 580, height: 760), geometry: geometry)
+        defer { window.orderOut(nil) }
+        func fields(_ view: NSView) -> [NSTextField] {
+            (view as? NSTextField).map { [$0] } ?? view.subviews.flatMap(fields)
+        }
+        func word(_ index: Int) throws -> NSTextField {
+            guard let field = fields(host).first(where: { $0.identifier?.rawValue == "mnemonic.word.\(index)" }) else {
+                throw WalletError.invalid("mnemonic.nativeFieldMissing")
+            }
+            return field
+        }
+        func editor(_ index: Int) throws -> NSTextView {
+            let field = try word(index)
+            if field.currentEditor() == nil { try click(try frame("mnemonic.cell.\(index)", in: geometry), fraction: 0.92, host: host) }
+            guard let editor = field.currentEditor() as? NSTextView else {
+                let kind = field.currentEditor().map { String(describing: type(of: $0)) } ?? "nil"
+                let responder = window.firstResponder.map { String(describing: type(of: $0)) } ?? "nil"
+                throw WalletError.invalid("mnemonic.nativeEditorMissing.\(index).\(kind).\(responder)")
+            }
+            return editor
+        }
+        let first = try word(0)
+        try require(fields(host).filter { $0 is NSSecureTextField }.count == 12, "mnemonic.twelveSecureCells")
+        try require(try frame("mnemonic.cell.0", in: geometry).height >= 44, "mnemonic.cellHitHeight")
+        try click(try frame("mnemonic.cell.0", in: geometry), fraction: 0.92, host: host)
+        try require(first.currentEditor() != nil, "mnemonic.cellWhitespaceFocusesInput")
+        let input = try editor(0)
+        input.insertText(Mnemonic.words[0].uppercased(), replacementRange: NSRange(location: NSNotFound, length: 0)); settle(host)
+        try require(state.draft.words[0] == Mnemonic.words[0], "mnemonic.normalizedNativeTyping")
+        try require(!input.isContinuousSpellCheckingEnabled && !input.isAutomaticSpellingCorrectionEnabled && !input.isAutomaticTextCompletionEnabled && !input.allowsUndo, "mnemonic.noSpellcheckOrUndo")
+        input.insertText(" ", replacementRange: NSRange(location: NSNotFound, length: 0)); settle(host)
+        try require(try word(1).currentEditor() != nil, "mnemonic.spaceAdvances")
+        let next = try editor(1)
+        next.doCommand(by: NSSelectorFromString("deleteBackward:")); settle(host)
+        try require(try word(0).currentEditor() != nil, "mnemonic.emptyBackspaceReturns")
+        let tab = try editor(0)
+        tab.doCommand(by: NSSelectorFromString("insertTab:")); settle(host)
+        try require(try word(1).currentEditor() != nil, "mnemonic.tabAdvances")
+        let backtab = try editor(1)
+        backtab.doCommand(by: NSSelectorFromString("insertBacktab:")); settle(host)
+        try require(try word(0).currentEditor() != nil, "mnemonic.shiftTabReturns")
+        let newline = try editor(0)
+        newline.doCommand(by: NSSelectorFromString("insertNewline:")); settle(host)
+        try require(try word(1).currentEditor() != nil, "mnemonic.returnAdvances")
+        let phrase = try Mnemonic.fromEntropy(Data(repeating: 0, count: 32))
+        let paste = try editor(4)
+        paste.insertText(phrase.uppercased().replacingOccurrences(of: " ", with: "\n"), replacementRange: NSRange(location: NSNotFound, length: 0)); settle(host)
+        try require(state.draft.count == 24 && state.draft.isValid, "mnemonic.nativeCompletePhraseInsertion")
+        try require(fields(host).filter { $0 is NSSecureTextField }.count == 24, "mnemonic.twentyFourSecureCells")
+        let saved = state.draft
+        for language in [WalletLanguage.simplifiedChinese, .english] {
+            WalletLanguage.select(language); settle(host)
+            try require(state.draft == saved, "mnemonic.languagePreservesWords")
+            try require(try word(0).accessibilityLabel() == L("message.word_0", 1), "mnemonic.languageUpdatesCellLabels")
+        }
+        try click(try frame("mnemonic.reveal", in: geometry), host: host)
+        try require(!(try word(0) is NSSecureTextField) && state.draft == saved, "mnemonic.revealPreservesWords")
+        NotificationCenter.default.post(name: NSApplication.didResignActiveNotification, object: nil); settle(host)
+        try require(try word(0) is NSSecureTextField, "mnemonic.remasksOnAppBlur")
+        state.disabled = true; settle(host)
+        try require(!(try word(0).isEnabled), "mnemonic.disabledDuringProcessing")
+        state.disabled = false; settle(host)
+        try click(try frame("mnemonic.clear", in: geometry), host: host)
+        try require(state.draft.count == 24 && state.draft.filledCount == 0, "mnemonic.clearRemovesEveryWord")
+        _ = try editor(4)
+        for index in 4..<23 {
+            guard let current = try word(index).currentEditor() as? NSTextView else { throw WalletError.invalid("mnemonic.navigationEditorMissing") }
+            current.doCommand(by: NSSelectorFromString("insertTab:")); settle(host)
+        }
+        try require(try word(23).currentEditor() != nil && !word(23).visibleRect.isEmpty, "mnemonic.scrollsToLastWord")
+        for index in stride(from: 23, through: 1, by: -1) {
+            guard let current = try word(index).currentEditor() as? NSTextView else { throw WalletError.invalid("mnemonic.navigationEditorMissing") }
+            current.doCommand(by: NSSelectorFromString("insertBacktab:")); settle(host)
+        }
+        try require(try word(0).currentEditor() != nil && !word(0).visibleRect.isEmpty, "mnemonic.scrollsBackToFirstWord")
+        let report: [String: Any] = ["passed": true, "wordCounts": [12, 24], "nativeTextInsertion": true,
+                                    "keyboardNavigation": true, "scrollsBetweenFirstAndLastWord": true, "secureByDefault": true, "remasksOnBlur": true,
+                                    "liveLanguagePreservesDraft": true, "vaultOpened": false, "networkStarted": false,
+                                    "clipboardRead": false, "fixtures": "BIP39 public zero-entropy vectors"]
+        try JSONSerialization.data(withJSONObject: report, options: [.prettyPrinted, .sortedKeys]).write(to: destination, options: .atomic)
+    }
     private static let hoverIDs = ["hover.row", "hover.selected", "hover.secondary", "hover.primary", "hover.warning", "hover.icon", "disclosure.header"]
     private final class Fixture: ObservableObject {
         @Published var expanded = false

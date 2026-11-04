@@ -27,7 +27,8 @@ import WalletCore
         }
         model.chainID = 8453; model.route = .assets; model.selectionChanged()
         try capture(RootView().environmentObject(model), to: destination.deletingLastPathComponent().appendingPathComponent("evm-base-preview.png"), size: NSSize(width: 1240, height: 820))
-        try capture(AddWalletView(mode: 1).environmentObject(model), to: destination.deletingLastPathComponent().appendingPathComponent("import-preview.png"), size: NSSize(width: 580, height: 680))
+        try capture(AddWalletView(mode: 1).environmentObject(model), to: destination.deletingLastPathComponent().appendingPathComponent("import-preview.png"), size: NSSize(width: 580, height: 780))
+        try capture(AddWalletView(mode: 1, mnemonicWordCount: 24).environmentObject(model), to: destination.deletingLastPathComponent().appendingPathComponent("import-24-preview.png"), size: NSSize(width: 580, height: 780))
         try capture(AddWalletView(mode: 1, previewAccounts: accounts).environmentObject(model), to: destination.deletingLastPathComponent().appendingPathComponent("import-addresses-preview.png"), size: NSSize(width: 580, height: 680))
         try capture(ContractCallView().environmentObject(model), to: destination.deletingLastPathComponent().appendingPathComponent("contract-preview.png"), size: NSSize(width: 650, height: 700))
         try capture(DexSwapView().environmentObject(model), to: destination.deletingLastPathComponent().appendingPathComponent("dex-preview.png"), size: NSSize(width: 650, height: 760))

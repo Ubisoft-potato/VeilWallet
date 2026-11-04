@@ -7,6 +7,10 @@ struct VeilWalletApp: App {
     @StateObject private var model = AppModel()
     init() {
         #if DEBUG
+        if let index = CommandLine.arguments.firstIndex(of: "--verify-mnemonic"), CommandLine.arguments.count > index + 1 {
+            do { try UIInteractionChecks.runMnemonic(to: URL(fileURLWithPath: CommandLine.arguments[index + 1])); exit(0) }
+            catch { FileHandle.standardError.write(Data((error.localizedDescription + "\n").utf8)); exit(1) }
+        }
         if let index = CommandLine.arguments.firstIndex(of: "--verify-i18n"), CommandLine.arguments.count > index + 1 {
             do { try UIInteractionChecks.runLanguage(to: URL(fileURLWithPath: CommandLine.arguments[index + 1])); exit(0) }
             catch { FileHandle.standardError.write(Data((error.localizedDescription + "\n").utf8)); exit(1) }

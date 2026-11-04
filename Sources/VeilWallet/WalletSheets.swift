@@ -27,6 +27,7 @@ struct AddWalletView: View {
     @ViewState private var mode = 0
     @ViewState private var name = L("wallet.default_name")
     @ViewState private var material = ""
+    @ViewState private var mnemonicDraft = MnemonicImportDraft()
     @ViewState private var passphrase = ""
     @ViewState private var accountIndex = "0"
     @ViewState private var selectedProfile = "evm"
@@ -41,16 +42,17 @@ struct AddWalletView: View {
     @ViewState private var reviewed: [WalletAccount] = []
     @ViewState private var error: String?
     @ViewState private var busy = false
-    init(mode: Int = 0, previewAccounts: [WalletAccount] = []) {
+    init(mode: Int = 0, previewAccounts: [WalletAccount] = [], mnemonicWordCount: Int = 12) {
         _mode = ViewState(initialValue: mode)
         _reviewed = ViewState(initialValue: previewAccounts)
+        _mnemonicDraft = ViewState(initialValue: MnemonicImportDraft(count: mnemonicWordCount))
     }
     private var profile: AccountProfile { AccountProfile.find(selectedProfile) ?? .evm }
     var body: some View {
         SheetFrame(title: reviewed.isEmpty ? L("message.add_a_multichain_wallet") : L("message.confirm_imported_addresses"), subtitle: L("message.recovery_phrases_private_keys_and_addresses_are_validated_locally_and")) {
             if reviewed.isEmpty {
                 ScrollView { form.padding(.trailing, 4) }
-                    .scrollBounceBehavior(.basedOnSize).frame(height: mode >= 2 ? 300 : 420)
+                    .scrollBounceBehavior(.basedOnSize).frame(height: mode >= 2 ? 300 : mode == 1 ? importHeight : 420)
             } else { review }
             ErrorText(text: error)
             HStack {
@@ -59,12 +61,13 @@ struct AddWalletView: View {
                 if busy { ProgressView().controlSize(.small) }
                 Button(busy ? L("message.processing") : reviewed.isEmpty ? L("message.validate_and_preview_addresses") : L("message.confirm_and_save_wallet")) {
                     if reviewed.isEmpty { preview() } else { save() }
-                }.buttonStyle(PrimaryButton()).disabled(busy || (mode == 0 && generated.isEmpty))
+                }.buttonStyle(PrimaryButton()).disabled(busy || (mode == 0 && generated.isEmpty) || (mode == 1 && !mnemonicDraft.isValid))
             }
         }.onChange(of: wordCount) { _, _ in generated = ""; answers = ["", "", ""] }
-            .onChange(of: mode) { _, _ in error = nil; material = ""; if mode == 2 && !profile.supportsKeyImport { selectedProfile = "ltc.segwit" } }
-            .onDisappear { material = ""; generated = ""; passphrase = ""; answers = ["", "", ""]; reviewed = [] }
+            .onChange(of: mode) { _, _ in error = nil; material = ""; mnemonicDraft.clear(); if mode == 2 && !profile.supportsKeyImport { selectedProfile = "ltc.segwit" } }
+            .onDisappear { material = ""; mnemonicDraft.clear(); generated = ""; passphrase = ""; answers = ["", "", ""]; reviewed = [] }
     }
+    private var importHeight: CGFloat { min(520, max(340, (NSScreen.main?.visibleFrame.height ?? 820) - 260)) }
     private var form: some View {
         VStack(alignment: .leading, spacing: 17) {
             Picker(L("message.method"), selection: $mode) {
@@ -104,7 +107,7 @@ struct AddWalletView: View {
                         }
                     }
                 } else {
-                    FieldLabel(title: L("message.english_bip39_recovery_phrase_12_15_18_21_24_words")) { SecureField(L("message.separate_words_with_spaces"), text: $material) }
+                    MnemonicInputGrid(draft: $mnemonicDraft)
                 }
                 FieldLabel(title: L("message.bip39_passphrase_optional_changes_every_address_and_cannot_be_recovered")) { SecureField(L("message.leave_blank_for_no_passphrase"), text: $passphrase) }
                 FieldLabel(title: L("message.account_address_index_each_chain_uses_its_standard_path")) { TextField("0", text: $accountIndex) }
@@ -157,7 +160,8 @@ struct AddWalletView: View {
             guard quiz.count == 3, zip(quiz, answers).allSatisfy({ words[$0.0] == $0.1.trimmingCharacters(in: .whitespaces).lowercased() }) else { error = L("message.complete_the_recovery_phrase_backup_check"); return }
         }
         guard let index = UInt32(accountIndex), index < 0x80000000 else { error = L("message.the_index_must_be_between_0_and_2147483647"); return }
-        let value = mode == 0 ? generated : material
+        if mode == 1 && !mnemonicDraft.isValid { error = L("message.the_recovery_phrase_contains_invalid_words_or_a_wrong_checksum"); return }
+        let value = mode == 0 ? generated : mode == 1 ? mnemonicDraft.phrase : material
         let phrasePassword = passphrase; let profile = profile; let selectedMode = mode; let customPaths = overrides
         busy = true; error = nil
         Task {
@@ -180,7 +184,7 @@ struct AddWalletView: View {
             defer { busy = false }
             do {
                 try await model.addWallet(name: name, kind: mode <= 1 ? .mnemonic : mode == 2 ? .privateKey : .watch,
-                    material: mode == 0 ? generated : material, passphrase: passphrase, account: index, profileID: selectedProfile, overrides: overrides)
+                    material: mode == 0 ? generated : mode == 1 ? mnemonicDraft.phrase : material, passphrase: passphrase, account: index, profileID: selectedProfile, overrides: overrides)
                 dismiss()
             } catch { self.error = error.localizedDescription }
         }
