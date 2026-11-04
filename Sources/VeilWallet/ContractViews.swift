@@ -89,77 +89,7 @@ struct DexSwapView: View {
     #endif
     var body: some View {
         SheetFrame(title: L("message.dex_swap"), subtitle: model.chain.name + L("message.local_encoding_on_chain_quotes_through_tor")) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    if submission == nil {
-                    Picker(L("message.dex_protocol_version"), selection: $venueID) { ForEach(DexCatalog.on(model.chainID)) { venue in Text(LK(venue.name)).tag(venue.id) } }.disabled(formLocked)
-                    Picker(L("message.pay_asset"), selection: $inputID) { assets }.disabled(formLocked)
-                    Picker(L("message.receive_asset"), selection: $outputID) { assets }.disabled(formLocked)
-                    if model.tokens.isEmpty { Text(L("message.add_an_erc_20_in_assets_using_its_correct_network")).font(.system(size: 12)).foregroundStyle(.orange) }
-                    FieldLabel(title: L("message.amount_to_pay")) { TextField("0.00", text: $amount).disabled(formLocked) }
-                    FieldLabel(title: L("message.slippage_limit_basis_points_50_0_5_maximum_1000")) { TextField("50", text: $slippage).disabled(formLocked) }
-                    if let venue = DexCatalog.find(venueID) {
-                        if venue.usesFee { FieldLabel(title: venue.feeLabel + L("message.0_compare_common_tiers")) { TextField("0", text: $fee).disabled(formLocked) } }
-                        if venue.protocol == .solidly { Toggle(L("message.stable_asset_curve_pool"), isOn: $stable).disabled(formLocked) }
-                        if venue.usesPoolID { FieldLabel(title: L("message.balancer_pool_contract_address_verify_with_a_trusted_source")) { TextField(L("placeholder.evm_address"), text: $poolID).disabled(formLocked) } }
-                        if [.v2, .v2Avax, .v3, .v3Router02, .algebra, .solidly, .slipstream].contains(venue.protocol) { Toggle(L("message.route_through_the_wrapped_native_asset_two_hops"), isOn: $viaWrapped).disabled(formLocked) }
-                        if [.curve, .curveETH].contains(venue.protocol) { Text(L("message.this_curve_pool_has_no_on_chain_deadline_the_90")).font(.system(size: 11)).foregroundStyle(.orange) }
-                        if venue.usesPermit2 { Text(L("message.permit2_uses_two_approvals_an_exact_token_allowance_then_a")).font(.system(size: 11)).foregroundStyle(.orange) }
-                    }
-                    Text(L("message.quotes_cover_the_selected_protocol_and_route_not_the_whole"))
-                        .font(.system(size: 11)).foregroundStyle(.secondary)
-                    }
-                    if let submission {
-                        Panel(padding: 14) {
-                            VStack(alignment: .leading, spacing: 9) {
-                                Text(submission.isApproval ? L("message.approval_in_progress_swap_not_sent") : L("message.swap_transaction_saved")).font(.headline)
-                                Text((DexCatalog.find(venueID)?.name ?? venueID) + " · " + amount + " " + (model.tokens.first { $0.id == inputID }?.symbol ?? model.chain.symbol) + " → " + (model.tokens.first { $0.id == outputID }?.symbol ?? model.chain.symbol))
-                                    .font(.system(size: 12))
-                                ReviewDetail(submission.title + L("message.local_hash"), submission.hash)
-                                Text(model.transactionStatus(hash: submission.hash)).font(.system(size: 12))
-                                Text(submission.isApproval ? L("message.after_approval_confirmation_is_verified_a_fresh_quote_opens_the") : L("message.verify_the_receipt_and_final_amount_in_transactions_submission_does"))
-                                    .font(.system(size: 11)).foregroundStyle(.secondary)
-                                Button(L("message.open_transactions")) { model.route = .activity; model.sheet = nil }
-                            }
-                        }
-                    }
-                    if let progress { Text(LS(progress)).font(.system(size: 12)).foregroundStyle(.secondary) }
-                    if let quote {
-                        Panel(padding: 14) {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text(L("message.estimated_output") + outputAmount(quote.amountOut, quote: quote))
-                                Text(LK(quote.venueName) + " · " + String(quote.path.count - 1) + L("message.hops")).font(.system(size: 12))
-                                if DexCatalog.find(quote.venueID ?? "")?.usesFee == true { Text(L("message.selected_pool_parameter") + String(quote.fee)).font(.system(size: 11)) }
-                                Text(L("message.minimum_output_de27b13e") + outputAmount(quote.minimumOut, quote: quote)).foregroundStyle(Color.veilGreen)
-                                Text(L("field.router") + quote.invocation.contract).font(.system(size: 10, design: .monospaced)).textSelection(.enabled)
-                                Text(L("message.quotes_expire_after_90_seconds_the_on_chain_deadline_is"))
-                                    .font(.system(size: 10)).foregroundStyle(.secondary)
-                                Text(approvalRequirement.detail).font(.system(size: 11)).foregroundStyle(approvalRequirement == .none ? Color.veilGreen : .orange)
-                            }
-                        }
-                    }
-                    ErrorText(text: error)
-                    HStack {
-                        if let submission {
-                            if !submission.isApproval || approvalStopped {
-                                Button(submission.isApproval ? L("message.end_this_flow") : L("message.start_a_new_swap")) { self.submission = nil; quote = nil; progress = nil; approvalStopped = false }
-                                    .disabled(busy)
-                            }
-                        } else {
-                            Button(L("message.get_a_fresh_quote")) { perform(stage: .quote) }.disabled(busy || !model.ready || model.tokens.isEmpty)
-                        }
-                        Spacer()
-                        if busy { Button(L("message.cancel_request")) { operation?.cancel() }; ProgressView().controlSize(.small) }
-                        if submission?.isApproval == true && !approvalStopped {
-                            Button(L("message.verify_approval_and_continue_swap")) { perform(stage: .continueApproval) }
-                                .buttonStyle(PrimaryButton()).disabled(busy || !model.ready || model.wallet?.canSign != true)
-                        } else if submission == nil {
-                            Button(approvalRequirement == .none ? L("message.simulate_and_preview_swap") : L("message.preview") + approvalRequirement.title) { perform(stage: .preview) }
-                                .buttonStyle(PrimaryButton()).disabled(busy || !model.ready || quote == nil || model.wallet?.canSign != true)
-                        }
-                    }
-                }
-            }.frame(height: 570)
+            ScrollView { swapContent }.frame(height: 570)
         }.onAppear { if outputID.isEmpty { outputID = model.tokens.first?.id ?? "native" }; if venueID.isEmpty { venueID = DexCatalog.on(model.chainID).first?.id ?? "" } }
             .onChange(of: inputID) { _, _ in quote = nil }.onChange(of: outputID) { _, _ in quote = nil }
             .onChange(of: amount) { _, _ in quote = nil }.onChange(of: slippage) { _, _ in quote = nil }
@@ -181,6 +111,89 @@ struct DexSwapView: View {
                     }.environmentObject(model)
                 }
             }
+    }
+    private var swapContent: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            if submission == nil { swapForm }
+            if let submission { submissionPanel(submission) }
+            if let progress { Text(LS(progress)).font(.system(size: 12)).foregroundStyle(.secondary) }
+            if let quote { quotePanel(quote) }
+            ErrorText(text: error)
+            swapActions
+        }
+    }
+    @ViewBuilder private var swapForm: some View {
+        Picker(L("message.dex_protocol_version"), selection: $venueID) { ForEach(DexCatalog.on(model.chainID)) { venue in Text(LK(venue.name)).tag(venue.id) } }.disabled(formLocked)
+        Picker(L("message.pay_asset"), selection: $inputID) { assets }.disabled(formLocked)
+        Picker(L("message.receive_asset"), selection: $outputID) { assets }.disabled(formLocked)
+        if model.tokens.isEmpty { Text(L("message.add_an_erc_20_in_assets_using_its_correct_network")).font(.system(size: 12)).foregroundStyle(.orange) }
+        FieldLabel(title: L("message.amount_to_pay")) { TextField("0.00", text: $amount).disabled(formLocked) }
+        FieldLabel(title: L("message.slippage_limit_basis_points_50_0_5_maximum_1000")) { TextField("50", text: $slippage).disabled(formLocked) }
+        if let venue = DexCatalog.find(venueID) {
+            if venue.usesFee { FieldLabel(title: venue.feeLabel + L("message.0_compare_common_tiers")) { TextField("0", text: $fee).disabled(formLocked) } }
+            if venue.protocol == .solidly { Toggle(L("message.stable_asset_curve_pool"), isOn: $stable).disabled(formLocked) }
+            if venue.usesPoolID { FieldLabel(title: L("message.balancer_pool_contract_address_verify_with_a_trusted_source")) { TextField(L("placeholder.evm_address"), text: $poolID).disabled(formLocked) } }
+            if [.v2, .v2Avax, .v3, .v3Router02, .algebra, .solidly, .slipstream].contains(venue.protocol) { Toggle(L("message.route_through_the_wrapped_native_asset_two_hops"), isOn: $viaWrapped).disabled(formLocked) }
+            if [.curve, .curveETH].contains(venue.protocol) { Text(L("message.this_curve_pool_has_no_on_chain_deadline_the_90")).font(.system(size: 11)).foregroundStyle(.orange) }
+            if venue.usesPermit2 { Text(L("message.permit2_uses_two_approvals_an_exact_token_allowance_then_a")).font(.system(size: 11)).foregroundStyle(.orange) }
+        }
+        Text(L("message.quotes_cover_the_selected_protocol_and_route_not_the_whole"))
+            .font(.system(size: 11)).foregroundStyle(.secondary)
+    }
+    private func submissionPanel(_ submission: DexSubmission) -> some View {
+        Panel(padding: 14) {
+            VStack(alignment: .leading, spacing: 9) {
+                Text(submission.isApproval ? L("message.approval_in_progress_swap_not_sent") : L("message.swap_transaction_saved")).font(.headline)
+                Text(submissionSummary)
+                    .font(.system(size: 12))
+                ReviewDetail(submission.title + L("message.local_hash"), submission.hash)
+                Text(model.transactionStatus(hash: submission.hash)).font(.system(size: 12))
+                Text(submission.isApproval ? L("message.after_approval_confirmation_is_verified_a_fresh_quote_opens_the") : L("message.verify_the_receipt_and_final_amount_in_transactions_submission_does"))
+                    .font(.system(size: 11)).foregroundStyle(.secondary)
+                Button(L("message.open_transactions")) { model.route = .activity; model.sheet = nil }
+            }
+        }
+    }
+    private func quotePanel(_ quote: DexQuote) -> some View {
+        Panel(padding: 14) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(L("message.estimated_output") + outputAmount(quote.amountOut, quote: quote))
+                Text("\(LK(quote.venueName)) · \(quote.path.count - 1)\(L("message.hops"))").font(.system(size: 12))
+                if DexCatalog.find(quote.venueID ?? "")?.usesFee == true { Text(L("message.selected_pool_parameter") + String(quote.fee)).font(.system(size: 11)) }
+                Text(L("message.minimum_output_de27b13e") + outputAmount(quote.minimumOut, quote: quote)).foregroundStyle(Color.veilGreen)
+                Text(L("field.router") + quote.invocation.contract).font(.system(size: 10, design: .monospaced)).textSelection(.enabled)
+                Text(L("message.quotes_expire_after_90_seconds_the_on_chain_deadline_is"))
+                    .font(.system(size: 10)).foregroundStyle(.secondary)
+                Text(approvalRequirement.detail).font(.system(size: 11)).foregroundStyle(approvalRequirement == .none ? Color.veilGreen : .orange)
+            }
+        }
+    }
+    private var swapActions: some View {
+        HStack {
+            if let submission {
+                if !submission.isApproval || approvalStopped {
+                    Button(submission.isApproval ? L("message.end_this_flow") : L("message.start_a_new_swap")) { self.submission = nil; quote = nil; progress = nil; approvalStopped = false }
+                        .disabled(busy)
+                }
+            } else {
+                Button(L("message.get_a_fresh_quote")) { perform(stage: .quote) }.disabled(busy || !model.ready || model.tokens.isEmpty)
+            }
+            Spacer()
+            if busy { Button(L("message.cancel_request")) { operation?.cancel() }; ProgressView().controlSize(.small) }
+            if submission?.isApproval == true && !approvalStopped {
+                Button(L("message.verify_approval_and_continue_swap")) { perform(stage: .continueApproval) }
+                    .buttonStyle(PrimaryButton()).disabled(busy || !model.ready || model.wallet?.canSign != true)
+            } else if submission == nil {
+                Button(approvalRequirement == .none ? L("message.simulate_and_preview_swap") : L("message.preview") + approvalRequirement.title) { perform(stage: .preview) }
+                    .buttonStyle(PrimaryButton()).disabled(busy || !model.ready || quote == nil || model.wallet?.canSign != true)
+            }
+        }
+    }
+    private var submissionSummary: String {
+        let venue = DexCatalog.find(venueID)?.name ?? venueID
+        let input = model.tokens.first { $0.id == inputID }?.symbol ?? model.chain.symbol
+        let output = model.tokens.first { $0.id == outputID }?.symbol ?? model.chain.symbol
+        return "\(venue) · \(amount) \(input) → \(output)"
     }
     private struct DexSubmission { let hash: String; let isApproval: Bool; let title: String }
     private enum Stage { case quote, preview, continueApproval }
