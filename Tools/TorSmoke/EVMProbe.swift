@@ -33,7 +33,7 @@ struct EVMProbeReport: Codable {
             if let item = chains.firstIndex(where: { $0.id == id }) { chains[item].rpcURL = pair[1] }
         }
         var results: [EVMProbeResult] = []
-        await withTaskGroup(of: EVMProbeResult.self) { group in
+        await withTaskGroup(of: EVMProbeResult.self, returning: Void.self) { group in
             var next = 0
             for _ in 0..<min(3, chains.count) {
                 let chain = chains[next]; next += 1
@@ -41,7 +41,10 @@ struct EVMProbeReport: Codable {
             }
             while let result = await group.next() {
                 results.append(result)
-                TorSmoke.output(result.status.uppercased() + ": " + result.name + " (" + String(result.chainID) + ") · " + (result.message ?? result.feeModel))
+                let status = result.status.uppercased()
+                let identity = "\(result.name) (\(result.chainID))"
+                let detail = result.message ?? result.feeModel
+                TorSmoke.output("\(status): \(identity) · \(detail)")
                 if next < chains.count {
                     let chain = chains[next]; next += 1
                     group.addTask { await inspect(chain, gate: gate) }
@@ -53,7 +56,8 @@ struct EVMProbeReport: Codable {
             let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]; encoder.dateEncodingStrategy = .iso8601
             try encoder.encode(EVMProbeReport(checkedAt: Date(), results: results)).write(to: URL(fileURLWithPath: args[index + 1]), options: .atomic)
         }
-        TorSmoke.output("EVM: " + String(results.filter { $0.status == "ready" }.count) + " ready / " + String(results.count) + " checked; no signatures or broadcasts")
+        let readyCount = results.filter { $0.status == "ready" }.count
+        TorSmoke.output("EVM: \(readyCount) ready / \(results.count) checked; no signatures or broadcasts")
     }
     nonisolated static func inspect(_ chain: Chain, gate: NetworkGate) async -> EVMProbeResult {
         var result = EVMProbeResult(chainID: chain.id, name: chain.name, rpcURL: chain.rpcURL, feeModel: chain.evmFeeModel.rawValue)
