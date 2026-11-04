@@ -36,12 +36,12 @@
     },
     {
       "path": "Documentation/THIRD_PARTY.md",
-      "sha256": "03eb12fb76ff6d40c7c4ee2c7a072156446df00f5226c3670fb9b66e103308a1",
+      "sha256": "db86dcf9eaa61f207c1dde357e593fb06e3feb72735e606d0b6baaea7284d49b",
       "rules": [
         "gitleaks/generic-api-key",
         "hex-32-bytes"
       ],
-      "reason": "Public CA/Tor archive hashes and release fingerprints are unchanged from the reviewed committed file. Updates describe patched crypto dependencies, prover-only code collection and explicit GPL/LGPL distribution boundaries."
+      "reason": "Existing public release/CA hashes and fingerprints unchanged. Corrected Tor BSD/GPL-macro notice distinction from bundled upstream license; documented actual source and relink delivery pipeline."
     },
     {
       "path": "Documentation/assets-package-report.json",
@@ -2440,6 +2440,14 @@
         "hex-32-bytes"
       ],
       "reason": "Public upstream snarkjs entry SHA256 recorded before its reviewed prover-only replacement, plus recomputed hashes of the public proof adapter, restricted entry and native verification boundary. Integrity identifiers only, no wallet keys or notes."
+    },
+    {
+      "path": "Configuration/ReleaseSources.json",
+      "sha256": "965bc21d1411416bc9756b7d5d80f87b3dba46119e21544858a1c0a62182b310",
+      "rules": [
+        "hex-32-bytes"
+      ],
+      "reason": "Pinned public upstream Tor, Tor build recipe, lyrebird, Monero and Node source archive SHA256 checksums; reviewed against official release inventories and fixed upstream revisions. No credentials or wallet material."
     }
   ]
 }

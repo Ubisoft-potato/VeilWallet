@@ -33,7 +33,7 @@ jobs:
       - name: Scan every committed source tree
         run: python3 Scripts/audit-source.py --source history
       - name: Check binary distribution policy
-        run: python3 Scripts/check-release-policy.py
+        run: python3 Scripts/check-release-policy.py --configuration-only
       - name: Check reviewed proof boundary
         run: python3 Scripts/check-dependencies.py --policy-only
       - name: Verify runtime privacy boundary

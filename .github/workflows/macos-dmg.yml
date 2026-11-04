@@ -17,6 +17,9 @@ jobs:
   build:
     runs-on: macos-15
     timeout-minutes: 90
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      distribution: ${{ steps.distribution.outputs.enabled }}
     env:
       DEVELOPER_DIR: /Applications/Xcode_26.3.app/Contents/Developer
       HOMEBREW_NO_AUTO_UPDATE: '1'
@@ -71,26 +74,97 @@ jobs:
           ./Scripts/fetch-privacy-runtime.sh
       - name: Run wallet tests
         run: ./Scripts/swift.sh test
+      - name: Verify modified LGPL libraries and application relinking
+        run: python3 Scripts/release-materials.py relink
       - name: Check compiled and collected dependency advisories
         run: python3 Scripts/check-dependencies.py --report build/DEPENDENCY-CHECK.json
       - name: Build and mount-verify DMG
         run: ./Scripts/build-dmg.sh
+      - name: Prepare exact corresponding-source deliveries
+        run: |
+          python3 Scripts/release-materials.py fetch
+          python3 Scripts/release-materials.py prepare
+          python3 Scripts/audit-source.py --source head --report build/SOURCE-AUDIT.json
+          python3 Scripts/audit-source.py --source history --report build/HISTORY-AUDIT.json
       - name: Check corresponding-source and relink delivery policy
         id: distribution
         run: python3 Scripts/check-release-policy.py --github-output "$GITHUB_OUTPUT" --stage-materials
+      - name: Stage explicit release files
+        if: steps.distribution.outputs.enabled == 'true'
+        run: python3 Scripts/release-materials.py upload
       - name: Upload verified installation artifacts
         if: steps.distribution.outputs.enabled == 'true'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: VeilWallet-${{ steps.version.outputs.version }}-macOS-arm64-${{ github.run_number }}
           path: |
-            build/VeilWallet-*-macOS-arm64.dmg
-            build/VeilWallet-*-macOS-arm64.zip
-            build/VeilWallet-*-source.tar.gz
-            build/BUILD-INFO.json
-            build/SHA256SUMS
-            build/release-materials/
+            build/release-upload/
           if-no-files-found: error
           compression-level: 0
           retention-days: 14
           include-hidden-files: false
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v') && needs.build.outputs.distribution == 'true'
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_TAG: ${{ github.ref_name }}
+    steps:
+      - name: Download verified build artifact
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: VeilWallet-${{ needs.build.outputs.version }}-macOS-arm64-${{ github.run_number }}
+          path: release-files
+      - name: Validate release identity and checksums
+        working-directory: release-files
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          tag = os.environ['RELEASE_TAG']
+          assert re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+', tag)
+          info = json.loads(Path('BUILD-INFO.json').read_text())
+          assert 'v' + info['version'] == tag
+          assert info['sourceCommit'] == os.environ['GITHUB_SHA'] and info['dirty'] is False
+          assert info['notarized'] is False and info['signing'] == 'ad-hoc'
+          for name in ['SOURCE-AUDIT.json', 'HISTORY-AUDIT.json']:
+              assert json.loads(Path(name).read_text())['unresolvedFindings'] == 0
+          manifest = json.loads(Path('MANIFEST.json').read_text())
+          assert manifest['sourceTree'] == info['sourceTree']
+          assert manifest['reviewedForBinaryDistribution'] is True and manifest['relinkVerified'] is True
+          for line in Path('SHA256SUMS').read_text().splitlines():
+              checksum, name = line.split('  ', 1)
+              assert re.fullmatch('[a-f0-9]{64}', checksum)
+              assert Path(name).name == name and not Path(name).is_symlink()
+          PY
+          sha256sum -c SHA256SUMS
+          test "$(gh api "repos/$GH_REPO/commits/$RELEASE_TAG" --jq .sha)" = "$GITHUB_SHA"
+      - name: Create draft and upload explicit assets
+        working-directory: release-files
+        run: |
+          if gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft > release-draft-state.tmp 2>/dev/null; then
+            test "$(cat release-draft-state.tmp)" = true
+            test "$(gh release view "$RELEASE_TAG" --json targetCommitish --jq .targetCommitish)" = "$GITHUB_SHA"
+          else
+            gh release create "$RELEASE_TAG" --verify-tag --target "$GITHUB_SHA" --draft --prerelease \
+              --title "Veil Wallet $RELEASE_TAG · Development preview" --notes-file "$RELEASE_TAG.md"
+          fi
+          rm release-draft-state.tmp
+          assets=()
+          while IFS= read -r line; do assets+=("${line:66}"); done < SHA256SUMS
+          assets+=(SHA256SUMS)
+          gh release upload "$RELEASE_TAG" "${assets[@]}" --clobber
+      - name: Verify uploaded files and publish
+        run: |
+          verify=$(mktemp -d)
+          gh release download "$RELEASE_TAG" --dir "$verify"
+          (cd "$verify" && sha256sum -c SHA256SUMS)
+          gh release edit "$RELEASE_TAG" --draft=false --prerelease
+          gh release view "$RELEASE_TAG" --json url,isDraft,isPrerelease

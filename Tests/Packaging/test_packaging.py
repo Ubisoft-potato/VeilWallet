@@ -66,14 +66,21 @@ class PackagingTests(unittest.TestCase):
                 for name in ['../outside', '..', '.', '/tmp']:
                     with self.subTest(name=name), self.assertRaises(ValueError): clean.validate_target(name, [])
 
-    def test_workflow_cannot_upload_caches_or_publish_release(self):
+    def test_workflow_only_publishes_verified_tagged_artifacts(self):
         workflow = (ROOT / '.github/workflows/macos-dmg.yml').read_text()
         self.assertIn('persist-credentials: false', workflow)
         self.assertIn('contents: read', workflow)
         self.assertIn('cache: false', workflow)
         self.assertNotIn('secrets.', workflow)
         self.assertNotIn('pull_request_target', workflow)
-        self.assertNotIn('gh release', workflow)
+        build, release = workflow.split('  release:', 1)
+        self.assertNotIn('contents: write', build)
+        self.assertIn("startsWith(github.ref, 'refs/tags/v')", release)
+        self.assertIn("needs.build.outputs.distribution == 'true'", release)
+        self.assertIn('contents: write', release)
+        self.assertLess(release.index('sha256sum -c SHA256SUMS'), release.index('gh release create'))
+        self.assertLess(release.index('gh release download'), release.index('gh release edit'))
+        self.assertIn('--draft --prerelease', release)
         upload = workflow.split('path: |', 1)[1].split('if-no-files-found:', 1)[0]
         self.assertNotIn('.build', upload)
         self.assertNotIn('.tools', upload)

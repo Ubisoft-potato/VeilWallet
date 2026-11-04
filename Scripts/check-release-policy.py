@@ -77,9 +77,22 @@ def main():
     parser.add_argument('--require-binary', action='store_true')
     parser.add_argument('--github-output', type=Path)
     parser.add_argument('--stage-materials', action='store_true')
+    parser.add_argument('--configuration-only', action='store_true', help='Validate policy shape without a binary build; never enables upload')
     args = parser.parse_args()
+    if args.configuration_only and (args.require_binary or args.stage_materials or args.github_output):
+        parser.error('Configuration-only checks cannot authorize binary upload')
     try:
         policy = json.loads((ROOT/'Configuration/BinaryDistribution.json').read_text())
+        if args.configuration_only:
+            if policy.get('version') != 1 or type(policy.get('enabled')) is not bool:
+                raise ValueError('Invalid binary distribution policy')
+            if policy['enabled']:
+                name = policy.get('materialsManifest') or ''
+                path = PurePosixPath(name)
+                if not name or path.is_absolute() or '..' in path.parts:
+                    raise ValueError('Missing or unsafe materials manifest path')
+            print('Policy configuration checked; exact-tree materials validation is still required before upload')
+            return 0
         tree = subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], cwd=ROOT).decode().strip()
         enabled = validate(policy, source_tree=tree)
         if enabled and args.stage_materials:

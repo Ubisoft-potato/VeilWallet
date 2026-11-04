@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "enabled": false,
-  "mode": "source-preview",
-  "reason": "CI builds and verifies the installer locally. Public binary artifact upload requires a reviewed corresponding-source/relink materials manifest for the exact source tree.",
-  "materialsManifest": null
+  "enabled": true,
+  "mode": "development-preview-with-source",
+  "reason": "Publish ad-hoc signed development installers only after exact-tree source inventory, modified LGPL library/application relink verification and corresponding-source delivery checks. Apple notarization is not required by this policy.",
+  "materialsManifest": "build/release-materials-manifest.json"
 }

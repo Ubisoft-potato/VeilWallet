@@ -65,14 +65,16 @@ Intel hardware has not been validated; the current packaged proof runtime and CI
 
 ### Install a verified DMG
 
-Public binary distribution is **disabled by default**. Build from source below. The [workflow](.github/workflows/macos-dmg.yml) builds and verifies the App/DMG, but uploads installation artifacts only after the [source/relink delivery policy](Documentation/RELEASE_POLICY.md) is enabled with reviewed materials for the exact source tree. It does not publish a GitHub Release.
+Download development installers from [GitHub Releases](https://github.com/Ubisoft-potato/VeilWallet/releases). The [workflow](.github/workflows/macos-dmg.yml) builds and mount-verifies the DMG, tests replacement/relinking of LGPL libraries, and includes exact source deliveries and checksums. Matching version tags publish a GitHub prerelease after the [source/relink delivery policy](Documentation/RELEASE_POLICY.md) passes. No Apple Developer certificate or notarization is required for this ad-hoc signed development preview.
 
-1. When reviewed binary artifacts become available, download and extract the complete artifact, including its matching SHA256SUMS.
-2. From the extracted artifact directory, verify the files:
+1. Download the DMG and its matching SHA256SUMS, or download the complete Actions artifact.
+2. For the complete artifact, verify all files from its directory:
 
    ~~~bash
    shasum -a 256 -c SHA256SUMS
    ~~~
+
+   If you downloaded only the DMG, run shasum -a 256 on that file and compare its hash with the matching SHA256SUMS line.
 
 3. Open VeilWallet-<version>-macOS-arm64.dmg.
 4. Drag **Veil Wallet.app** into **Applications**, then eject the disk image.
