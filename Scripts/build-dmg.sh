@@ -84,11 +84,17 @@ def command(args):
 def optional(args):
     try: return command(args)
     except subprocess.CalledProcessError: return None
+index_tree=command(['git','write-tree'])
+head_tree=optional(['git','rev-parse','HEAD^{tree}'])
+worktree_clean=subprocess.run(['git','diff','--quiet'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+untracked=command(['git','ls-files','--others','--exclude-standard'])
+source_tree=index_tree if worktree_clean and not untracked else None
+committed=source_tree is not None and source_tree == head_tree
 info=dict(version=version, architecture='arm64', minimumMacOS='14.0',
           signing='ad-hoc' if __import__('os').environ.get('VEIL_SIGNING_IDENTITY', '-') == '-' else 'custom identity; notarization not performed by this script',
-          notarized=False, sourceCommit=optional(['git','rev-parse','--verify','HEAD']),
-          sourceTree=command(['git','write-tree']), macOS=platform.mac_ver()[0],
-          swift=command(['swift','--version']).splitlines(), go=command(['go','version']),
+          notarized=False, sourceCommit=optional(['git','rev-parse','--verify','HEAD']) if committed else None,
+          sourceTree=source_tree, dirty=not committed, macOS=platform.mac_ver()[0],
+          swift=command(['swift','--version']).splitlines(), go=command(['./Scripts/go.sh','version']),
           runtimeVersions={'Tor':'0.4.9.15','TorExpertBundle':'16.0','Monero':'0.18.5.4','Node':'24.22.2'})
 (out/'BUILD-INFO.json').write_text(json.dumps(info,indent=2)+'\n')
 names=[f'VeilWallet-{version}-macOS-arm64.dmg', f'VeilWallet-{version}-macOS-arm64.zip', 'BUILD-INFO.json']

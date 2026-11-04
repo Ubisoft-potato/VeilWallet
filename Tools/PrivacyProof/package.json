@@ -4,6 +4,9 @@
   "private": true,
   "description": "Pinned upstream Tornado Classic cryptography; no network, wallet signing or transaction broadcast",
   "license": "GPL-3.0-or-later",
+  "overrides": {
+    "bn.js@<5": "4.12.3"
+  },
   "dependencies": {
     "circomlib": "git+https://github.com/tornadocash/circomlib.git#3b492f9801573eebcfe1b6c584afe8a3beecf2b4",
     "snarkjs": "git+https://github.com/tornadocash/snarkjs.git#869181cfaf7526fe8972073d31655493a04326d5",

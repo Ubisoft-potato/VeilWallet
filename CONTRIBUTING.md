@@ -12,7 +12,7 @@ For a bug report, include app/macOS version, expected and actual behavior, minim
 
 ## Set up a development checkout
 
-Use Apple Silicon/macOS 14+, Xcode or Command Line Tools with Swift 6.1+, Go 1.26.1, Python 3, Node/npm, GnuPG and the tools listed in the [README](README.md#developer-prerequisites). See [DMG_BUILD.md](Documentation/DMG_BUILD.md) for the pinned CI environment.
+Use Apple Silicon/macOS 14+, Xcode or Command Line Tools with Swift 6.1+, Go 1.26.10, Python 3, Node/npm, GnuPG and the tools listed in the [README](README.md#developer-prerequisites). See [DMG_BUILD.md](Documentation/DMG_BUILD.md) for the pinned CI environment.
 
 Run from the repository root:
 
@@ -75,6 +75,8 @@ python3 -m unittest discover -s Tests/Packaging -p 'test_*.py'
 python3 -m unittest discover -s Tests/Localization -p 'test_*.py'
 python3 Tools/Localization/catalog.py --check
 python3 Scripts/check-documentation.py
+python3 Scripts/check-documentation.py --source index
+python3 Scripts/check-dependencies.py --policy-only
 ./Scripts/check-privacy.sh
 ~~~
 
@@ -131,6 +133,7 @@ git add README.md CONTRIBUTING.md
 git diff --cached --stat
 git diff --cached
 python3 Scripts/audit-source.py --source index --report .build/open-source-audit/index.json
+python3 Scripts/check-documentation.py --source index
 ~~~
 
 Replace the example paths with your change. The scanner reads exact Git blobs, including force-added ignored files, independently of worktree differences. CI checks the complete HEAD tree.
@@ -138,6 +141,8 @@ Replace the example paths with your change. The scanner reads exact Git blobs, i
 Configuration/SourceAuditAllowlist.json binds explicit rules to a complete file SHA256. It does not exempt Vendor or tests as directories. One changed byte invalidates an exception. Do not bulk-approve unknown findings: establish public provenance, remove accidental data or regenerate from a documented public fixture. A pass cannot prove absence of arbitrary encoded secrets or identify every personal address.
 
 The local pre-commit hook repeats this scan. Do not bypass it to get a commit through.
+
+Before publication, scan every historical tree with python3 Scripts/audit-source.py --source history. Shallow clones are rejected; CI fetches full history. --include-reflogs also covers locally retained commit versions. Public binary upload is separately controlled by [RELEASE_POLICY.md](Documentation/RELEASE_POLICY.md); a green build does not enable it.
 
 ## Submit a focused pull request
 

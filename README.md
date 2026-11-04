@@ -6,7 +6,7 @@
 
 Veil Wallet brings wallet management, portfolio tracking, supported transfers and on-chain interactions into a SwiftUI/AppKit desktop app. English and Simplified Chinese switch immediately. No account registration, analytics SDK, embedded browser or runtime artwork downloads.
 
-**v0.10.1 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
+**v0.10.2 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
 
 ![Veil Wallet portfolio with native navigation, USD valuation and local asset icons](Assets/Readme/overview.png)
 
@@ -65,9 +65,9 @@ Intel hardware has not been validated; the current packaged proof runtime and CI
 
 ### Install a verified DMG
 
-Public release hosting is not configured yet. Build from source below, or obtain the versioned DMG and matching checksums from a completed **Actions → Build macOS DMG → Artifacts** run in the source repository. The [workflow](.github/workflows/macos-dmg.yml) creates artifacts; it does not automatically publish a GitHub Release.
+Public binary distribution is **disabled by default**. Build from source below. The [workflow](.github/workflows/macos-dmg.yml) builds and verifies the App/DMG, but uploads installation artifacts only after the [source/relink delivery policy](Documentation/RELEASE_POLICY.md) is enabled with reviewed materials for the exact source tree. It does not publish a GitHub Release.
 
-1. Download and extract the complete artifact, including its matching SHA256SUMS.
+1. When reviewed binary artifacts become available, download and extract the complete artifact, including its matching SHA256SUMS.
 2. From the extracted artifact directory, verify the files:
 
    ~~~bash
@@ -100,12 +100,14 @@ Run commands from the repository root. A first build needs internet access for p
 |---|---|
 | macOS 14+ on Apple Silicon | Native build, code signing and DMG verification |
 | Xcode or Command Line Tools; Swift 6.1+ | SwiftUI/AppKit, C compilation and SwiftPM; local validation used Swift 6.4 |
-| Go 1.26.1 | Offline multichain C archive |
+| Go 1.26.10 | Offline multichain C archive |
 | Python 3 | Catalog, provenance, audit and packaging checks |
 | Node.js/npm | Development preparation of the pinned offline proof helper |
 | GnuPG, curl, tar, shasum, ripgrep | Runtime verification and source checks |
 
-CI pins Xcode 26.3, Go 1.26.1 and an ARM64 macos-15 runner. See [build details](Documentation/DMG_BUILD.md) for exact workflow behavior.
+CI pins Xcode 26.3, Go 1.26.10 and an ARM64 macos-15 runner. See [build details](Documentation/DMG_BUILD.md) for exact workflow behavior.
+
+Scripts/go.sh selects the exact version in Configuration/Toolchains.json. If it is not installed, Go downloads and verifies that developer toolchain into the project cache. No user-wide Go setting is changed. Runtime wallet code does not download toolchains.
 
 ### 1. Prepare the bundled runtimes
 
@@ -124,6 +126,7 @@ These developer scripts fetch pinned Tor, Monero and proof-runtime inputs and ve
 ./Scripts/check-privacy.sh
 python3 Tools/Localization/catalog.py --check
 python3 Scripts/check-documentation.py
+python3 Scripts/check-dependencies.py --report build/DEPENDENCY-CHECK.json
 ./Scripts/build-app.sh
 ~~~
 
@@ -203,5 +206,7 @@ Assets/Readme/               Reviewed public-fixture product images
 Original Veil Wallet code and documentation use the **[MIT license](LICENSE)**. Upstream SDK code, artwork, CA roots, Tor, Monero and the proof helper retain their own notices and obligations, including GPL/LGPL components. MIT does not override those licenses or grant trademark rights.
 
 [License scope](NOTICE.md) · [Third-party components](Documentation/THIRD_PARTY.md) · [Artwork provenance](Documentation/ASSET_ARTWORK.json) · [README image provenance](Assets/Readme/README.md)
+
+[Dependency remediation and remaining version matches](Documentation/DEPENDENCIES.md) · [Binary distribution policy](Documentation/RELEASE_POLICY.md)
 
 Veil Wallet is independent of OKX and does not claim feature equivalence or affiliation. The selected offline SDK sources retain their upstream attribution.

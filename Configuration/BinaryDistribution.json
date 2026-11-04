@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "enabled": false,
+  "mode": "source-preview",
+  "reason": "CI builds and verifies the installer locally. Public binary artifact upload requires a reviewed corresponding-source/relink materials manifest for the exact source tree.",
+  "materialsManifest": null
+}

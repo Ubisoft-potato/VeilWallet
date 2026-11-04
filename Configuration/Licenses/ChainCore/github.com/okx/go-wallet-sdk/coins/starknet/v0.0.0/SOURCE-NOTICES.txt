@@ -1,6 +1,6 @@
+curve.go
 pedersen_params.go
 utils.go
-curve.go
 /**
 https://github.com/NethermindEth/starknet.go/blob/main/LICENSE
 
@@ -27,10 +27,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-juno_core/fp/element.go
-juno_core/fp/element_ops_purego.go
 juno_core/fp/arith.go
+juno_core/fp/element.go
 juno_core/fp/element_exp.go
+juno_core/fp/element_ops_purego.go
 // Copyright 2020 ConsenSys Software Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");

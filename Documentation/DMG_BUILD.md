@@ -27,15 +27,17 @@ Release maps checkout paths, uses upstream portable Go implementations and strip
 
 ## GitHub Actions
 
-[macos-dmg.yml](../.github/workflows/macos-dmg.yml) runs on main pushes, v* tags and manual dispatch. Tags must match [Info.plist](../Configuration/Info.plist), e.g. v0.10.1.
+[macos-dmg.yml](../.github/workflows/macos-dmg.yml) runs on main pushes, v* tags and manual dispatch. Tags must match [Info.plist](../Configuration/Info.plist), e.g. v0.10.2.
 
-Pinned environment: ARM64 macos-15, Xcode 26.3, Go 1.26.1. See [runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners) and [image inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md). Unexpected architecture/toolchain stops the build.
+Pinned environment: ARM64 macos-15, Xcode 26.3, Go 1.26.10. See [runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners) and [image inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md). Unexpected architecture/toolchain stops the build.
 
-Steps: full-HEAD secret scan, scanner tests, verified runtime downloads, default Swift tests, App/DMG validation, explicit artifact upload. Read-only permissions, no persisted checkout credentials, signing secrets or shared build caches. No cache/workspace upload. Actions use full commit SHAs.
+Steps: full-history and HEAD secret scans, exact-HEAD documentation checks, scanner tests, verified runtime downloads, default Swift tests, runtime dependency-advisory checks and App/DMG validation. Read-only permissions, no persisted checkout credentials, signing secrets or shared build caches. No cache/workspace upload. Actions use full commit SHAs.
+
+Binary artifact upload is disabled by default. [BinaryDistribution.json](../Configuration/BinaryDistribution.json) enables it only with a reviewed exact-tree corresponding-source/relink materials manifest. The workflow can still validate builds while publishing source only. See [RELEASE_POLICY.md](RELEASE_POLICY.md).
 
 Default CI does not install Anvil or set VEIL_VERIFY_NODE=1; optional checks skip. Prepared offline proof and other default checks run. This is not a funded-chain test.
 
-Artifacts last 14 days. A source tarball from HEAD excludes history/local settings/caches. It does not replace all corresponding-source/relinking obligations; see [NOTICE](../NOTICE.md) and [licenses](THIRD_PARTY.md). No GitHub Release is published.
+When distribution is enabled, artifacts last 14 days. A source tarball from HEAD excludes history/local settings/caches. It does not replace all corresponding-source/relinking obligations; see [NOTICE](../NOTICE.md) and [licenses](THIRD_PARTY.md). No GitHub Release is published.
 
 Default signing is ad-hoc, without notarization. Verify source/checksums before following macOS Privacy & Security prompts. Do not disable Gatekeeper. Developer ID/notarization need a separately configured authorized Apple identity.
 

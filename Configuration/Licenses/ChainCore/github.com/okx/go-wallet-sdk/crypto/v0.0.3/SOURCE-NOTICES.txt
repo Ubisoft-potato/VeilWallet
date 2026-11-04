@@ -1,107 +1,11 @@
-blake2b/blake2b.go
-blake2b/block.go
-// Written in 2012 by Dmitry Chestnykh.
-//
-// To the extent possible under law, the author have dedicated all copyright
-// and related and neighboring rights to this software to the public domain
-// worldwide. This software is distributed without any warranty.
-// http://creativecommons.org/publicdomain/zero/1.0/
-
-bech32/error.go
-btcd/v2/txscript/tokenizer.go
-btcd/v2/btcutil/bech32/error.go
-// Copyright (c) 2019 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-bech32/bech32.go
-btcd/v2/btcutil/bech32/bech32.go
-// Copyright (c) 2017 The btcsuite developers
-// Copyright (c) 2019 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-cbor/encode.go
-cbor/valid.go
-cbor/stream.go
-cbor/cache.go
-cbor/structfields.go
-cbor/doc.go
-cbor/bytestring.go
-cbor/decode.go
-// Copyright (c) Faye Amacker. All rights reserved.
-// Licensed under the MIT License. See LICENSE in the project root for license information.
-
-cbor/float16.go
-// Copyright 2019 Montgomery Edwards⁴⁴⁸ and Faye Amacker
-//
-// Special thanks to Kathryn Long for her Rust implementation
-// of float16 at github.com/starkat99/half-rs (MIT license)
-
-rlp/raw.go
-go-ethereum/common/test_utils.go
-go-ethereum/common/types.go
-go-ethereum/common/debug.go
-go-ethereum/accounts/abi/argument.go
-go-ethereum/accounts/abi/type.go
-go-ethereum/accounts/abi/abi.go
-go-ethereum/accounts/abi/method.go
-go-ethereum/accounts/abi/doc.go
-go-ethereum/common/compiler/solidity.go
-// Copyright 2015 The go-ethereum Authors
-// This file is part of the go-ethereum library.
-//
-// The go-ethereum library is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// The go-ethereum library is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU Lesser General Public License for more details.
-//
-// You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
-
-rlp/encode.go
-rlp/typecache.go
-rlp/doc.go
-rlp/decode.go
-go-ethereum/crypto/crypto.go
-go-ethereum/types/transaction.go
-go-ethereum/types/hashing.go
-go-ethereum/types/block.go
-go-ethereum/common/size.go
-go-ethereum/common/path.go
-go-ethereum/common/bytes.go
-go-ethereum/common/big.go
-ronin/types/transaction.go
-ronin/types/hashing.go
-// Copyright 2014 The go-ethereum Authors
-// This file is part of the go-ethereum library.
-//
-// The go-ethereum library is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// The go-ethereum library is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU Lesser General Public License for more details.
-//
-// You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
-
 abi/big.go
+go-ethereum/accounts/abi/unpack.go
+go-ethereum/accounts/hd.go
+go-ethereum/common/bitutil/compress.go
+go-ethereum/common/math/big.go
+go-ethereum/common/math/integer.go
 go-ethereum/crypto/signature_cgo.go
 go-ethereum/crypto/signature_nocgo.go
-go-ethereum/accounts/hd.go
-go-ethereum/accounts/abi/unpack.go
-go-ethereum/common/bitutil/compress.go
-go-ethereum/common/math/integer.go
-go-ethereum/common/math/big.go
 // Copyright 2017 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
@@ -118,88 +22,382 @@ go-ethereum/common/math/big.go
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-ripemd160/ripemd160.go
-// Copyright 2010 The Go Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
+base58/alphabet.go
+btcd/btcec/secp256k1.go
+btcd/v2/btcutil/base58/alphabet.go
+btcd/v2/btcutil/base58/genalphabet.go
+btcd/v2/btcutil/base58/genalphabet.go
+btcd/v2/btcutil/txsort/doc.go
+// Copyright (c) 2015 The btcsuite developers
+// Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-blake256/blake256block.go
+base58/base58.go
+btcd/txscript/scriptbuilder.go
+btcd/txscript/sign.go
+btcd/v2/btcutil/base58/base58.go
+btcd/v2/btcutil/certgen.go
+btcd/v2/txscript/scriptbuilder.go
+btcd/v2/txscript/sign.go
+btcd/v2/wire/error.go
+btcd/v2/wire/msgaddr.go
+btcd/v2/wire/msgalert.go
+btcd/v2/wire/msggetaddr.go
+btcd/v2/wire/msggetdata.go
+btcd/v2/wire/msginv.go
+btcd/v2/wire/msgmempool.go
+btcd/v2/wire/msgnotfound.go
+btcd/v2/wire/msgping.go
+btcd/v2/wire/msgpong.go
+btcd/v2/wire/msgverack.go
+btcd/v2/wire/netaddress.go
+btcd/wire/error.go
+btcd/wire/msgaddr.go
+btcd/wire/msgalert.go
+btcd/wire/msggetaddr.go
+btcd/wire/msggetdata.go
+btcd/wire/msginv.go
+btcd/wire/msgmempool.go
+btcd/wire/msgnotfound.go
+btcd/wire/msgping.go
+btcd/wire/msgpong.go
+btcd/wire/msgverack.go
+btcd/wire/netaddress.go
+// Copyright (c) 2013-2015 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+base58/base58check.go
+btcd/btcec/doc.go
+btcd/btcec/pubkey.go
+btcd/v2/btcec/doc.go
+btcd/v2/btcec/pubkey.go
+btcd/v2/btcutil/base58/base58check.go
+btcd/v2/btcutil/const.go
+btcd/v2/btcutil/doc.go
+btcd/v2/btcutil/net.go
+btcd/v2/btcutil/net_noop.go
+// Copyright (c) 2013-2014 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+bech32/bech32.go
+btcd/v2/btcutil/bech32/bech32.go
+// Copyright (c) 2017 The btcsuite developers
+// Copyright (c) 2019 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+bech32/error.go
+btcd/v2/btcutil/bech32/error.go
+btcd/v2/txscript/tokenizer.go
+// Copyright (c) 2019 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
 blake256/blake256.go
+blake256/blake256block.go
 // Copyright (c) 2019 The Decred developers
 // Originally written in 2011-2012 by Dmitry Chestnykh.
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
+
+blake2b/blake2b.go
+blake2b/block.go
+// Written in 2012 by Dmitry Chestnykh.
+//
+// To the extent possible under law, the author have dedicated all copyright
+// and related and neighboring rights to this software to the public domain
+// worldwide. This software is distributed without any warranty.
+// http://creativecommons.org/publicdomain/zero/1.0/
+
+btcd/btcec/address.go
+btcd/btcec/hash160.go
+btcd/btcec/signature.go
+btcd/txscript/doc.go
+btcd/txscript/error.go
+btcd/txscript/opcode.go
+btcd/txscript/script.go
+btcd/txscript/stack.go
+btcd/txscript/standard.go
+btcd/v2/btcutil/address.go
+btcd/v2/btcutil/appdata.go
+btcd/v2/btcutil/hash160.go
+btcd/v2/txscript/doc.go
+btcd/v2/txscript/opcode.go
+btcd/v2/txscript/stack.go
+// Copyright (c) 2013-2017 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/btcec/btcec.go
+btcd/v2/btcec/btcec.go
+// Copyright 2010 The Go Authors. All rights reserved.
+// Copyright 2011 ThePiachu. All rights reserved.
+// Copyright 2013-2014 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/btcec/ciphering.go
+btcd/txscript/consensus.go
+btcd/txscript/sigcache.go
+btcd/v2/btcec/ciphering.go
+btcd/v2/btcutil/txsort/txsort.go
+btcd/v2/txscript/consensus.go
+btcd/v2/txscript/sigcache.go
+// Copyright (c) 2015-2016 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/btcec/field.go
+// Copyright (c) 2013-2016 The btcsuite developers
+// Copyright (c) 2013-2016 Dave Collins
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/btcec/gensecp256k1.go
+btcd/v2/wire/msgfilteradd.go
+btcd/v2/wire/msgfilterclear.go
+btcd/v2/wire/msgfilterload.go
+btcd/wire/msgfilteradd.go
+btcd/wire/msgfilterclear.go
+btcd/wire/msgfilterload.go
+// Copyright (c) 2014-2015 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/btcec/precompute.go
+// Copyright 2015 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/btcec/privkey.go
+btcd/v2/btcec/privkey.go
+btcd/v2/btcutil/block.go
+btcd/v2/btcutil/tx.go
+btcd/v2/btcutil/wif.go
+btcd/v2/wire/blockheader.go
+btcd/v2/wire/common.go
+btcd/v2/wire/doc.go
+btcd/v2/wire/invvect.go
+btcd/v2/wire/message.go
+btcd/v2/wire/msgblock.go
+btcd/v2/wire/msggetblocks.go
+btcd/v2/wire/msggetheaders.go
+btcd/v2/wire/msgheaders.go
+btcd/v2/wire/msgtx.go
+btcd/v2/wire/msgversion.go
+btcd/v2/wire/protocol.go
+btcd/wire/blockheader.go
+btcd/wire/common.go
+btcd/wire/doc.go
+btcd/wire/invvect.go
+btcd/wire/message.go
+btcd/wire/msgblock.go
+btcd/wire/msggetblocks.go
+btcd/wire/msggetheaders.go
+btcd/wire/msgheaders.go
+btcd/wire/msgtx.go
+btcd/wire/msgversion.go
+btcd/wire/protocol.go
+// Copyright (c) 2013-2016 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/chaincfg/chainhash/hash.go
+btcd/v2/chaincfg/chainhash/hash.go
+// Copyright (c) 2013-2016 The btcsuite developers
+// Copyright (c) 2015 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/chaincfg/chainhash/hashfuncs.go
+btcd/v2/chaincfg/chainhash/hashfuncs.go
+// Copyright (c) 2015 The Decred developers
+// Copyright (c) 2016-2017 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/chaincfg/genesis.go
+btcd/chaincfg/params.go
+btcd/v2/btcutil/hdkeychain/extendedkey.go
+btcd/v2/chaincfg/genesis.go
+btcd/v2/chaincfg/params.go
+btcd/v2/wire/msgmerkleblock.go
+btcd/v2/wire/msgreject.go
+btcd/wire/msgmerkleblock.go
+btcd/wire/msgreject.go
+// Copyright (c) 2014-2016 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/txscript/engine.go
+btcd/v2/txscript/engine.go
+// Copyright (c) 2013-2018 The btcsuite developers
+// Copyright (c) 2015-2018 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/txscript/hashcache.go
+btcd/v2/txscript/hashcache.go
+btcd/v2/wire/msgfeefilter.go
+btcd/v2/wire/msgsendheaders.go
+btcd/wire/msgfeefilter.go
+btcd/wire/msgsendheaders.go
+// Copyright (c) 2016 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/txscript/scriptnum.go
+btcd/v2/txscript/scriptnum.go
+// Copyright (c) 2015-2017 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/v2/btcec/curve.go
+// Copyright (c) 2015-2021 The btcsuite developers
+// Copyright (c) 2015-2021 The Decred developers
+
+btcd/v2/btcec/ecdsa/error.go
+btcd/v2/btcec/error.go
+btcd/v2/btcec/modnscalar.go
+// Copyright (c) 2013-2021 The btcsuite developers
+// Copyright (c) 2015-2021 The Decred developers
+
+btcd/v2/btcec/ecdsa/signature.go
+btcd/v2/btcec/schnorr/error.go
+btcd/v2/btcec/schnorr/pubkey.go
+// Copyright (c) 2013-2017 The btcsuite developers
+// Copyright (c) 2015-2021 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/v2/btcec/schnorr/signature.go
+// Copyright (c) 2013-2022 The btcsuite developers
+
+btcd/v2/btcutil/amount.go
+// Copyright (c) 2013, 2014 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/v2/btcutil/base58/doc.go
+btcd/v2/btcutil/hdkeychain/doc.go
+// Copyright (c) 2014 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/v2/btcutil/bech32/doc.go
+btcd/v2/wire/msgcfheaders.go
+btcd/v2/wire/msgcfilter.go
+btcd/v2/wire/msggetcfheaders.go
+btcd/v2/wire/msggetcfilters.go
+btcd/wire/msgcfheaders.go
+btcd/wire/msgcfilter.go
+btcd/wire/msggetcfheaders.go
+btcd/wire/msggetcfilters.go
+// Copyright (c) 2017 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/v2/btcutil/psbt/creator.go
+btcd/v2/btcutil/psbt/extractor.go
+btcd/v2/btcutil/psbt/finalizer.go
+btcd/v2/btcutil/psbt/psbt.go
+btcd/v2/btcutil/psbt/signer.go
+btcd/v2/btcutil/psbt/updater.go
+btcd/v2/btcutil/psbt/utils.go
+btcd/v2/wire/msgcfcheckpt.go
+btcd/v2/wire/msggetcfcheckpt.go
+btcd/wire/msgcfcheckpt.go
+btcd/wire/msggetcfcheckpt.go
+// Copyright (c) 2018 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/v2/txscript/error.go
+btcd/v2/txscript/script.go
+btcd/v2/txscript/sighash.go
+// Copyright (c) 2013-2017 The btcsuite developers
+// Copyright (c) 2015-2019 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/v2/txscript/sigvalidate.go
+btcd/v2/txscript/taproot.go
+// Copyright (c) 2013-2022 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+btcd/v2/txscript/standard.go
+// Copyright (c) 2013-2020 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+cbor/bytestring.go
+cbor/cache.go
+cbor/decode.go
+cbor/doc.go
+cbor/encode.go
+cbor/stream.go
+cbor/structfields.go
+cbor/valid.go
+// Copyright (c) Faye Amacker. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+cbor/float16.go
+// Copyright 2019 Montgomery Edwards⁴⁴⁸ and Faye Amacker
+//
+// Special thanks to Kathryn Long for her Rust implementation
+// of float16 at github.com/starkat99/half-rs (MIT license)
 
 dcrec/common.go
 // Copyright (c) 2018 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-base58/base58.go
-btcd/wire/msginv.go
-btcd/wire/error.go
-btcd/wire/netaddress.go
-btcd/wire/msggetdata.go
-btcd/wire/msgaddr.go
-btcd/wire/msgpong.go
-btcd/wire/msgmempool.go
-btcd/wire/msgnotfound.go
-btcd/wire/msgverack.go
-btcd/wire/msggetaddr.go
-btcd/wire/msgping.go
-btcd/wire/msgalert.go
-btcd/txscript/scriptbuilder.go
-btcd/txscript/sign.go
-btcd/v2/wire/msginv.go
-btcd/v2/wire/error.go
-btcd/v2/wire/netaddress.go
-btcd/v2/wire/msggetdata.go
-btcd/v2/wire/msgaddr.go
-btcd/v2/wire/msgpong.go
-btcd/v2/wire/msgmempool.go
-btcd/v2/wire/msgnotfound.go
-btcd/v2/wire/msgverack.go
-btcd/v2/wire/msggetaddr.go
-btcd/v2/wire/msgping.go
-btcd/v2/wire/msgalert.go
-btcd/v2/txscript/scriptbuilder.go
-btcd/v2/txscript/sign.go
-btcd/v2/btcutil/certgen.go
-btcd/v2/btcutil/base58/base58.go
-// Copyright (c) 2013-2015 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-base58/base58check.go
-btcd/btcec/pubkey.go
-btcd/btcec/doc.go
-btcd/v2/btcutil/net.go
-btcd/v2/btcutil/doc.go
-btcd/v2/btcutil/net_noop.go
-btcd/v2/btcutil/const.go
-btcd/v2/btcec/pubkey.go
-btcd/v2/btcec/doc.go
-btcd/v2/btcutil/base58/base58check.go
-// Copyright (c) 2013-2014 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-base58/alphabet.go
-btcd/btcec/secp256k1.go
-btcd/v2/btcutil/txsort/doc.go
-btcd/v2/btcutil/base58/alphabet.go
-btcd/v2/btcutil/base58/genalphabet.go
-btcd/v2/btcutil/base58/genalphabet.go
+dcrec/secp256k1/compressedbytepoints.go
 // Copyright (c) 2015 The btcsuite developers
+// Copyright (c) 2015-2022 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
+dcrec/secp256k1/curve.go
+// Copyright (c) 2015-2022 The Decred developers
+// Copyright 2013-2014 The btcsuite developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+dcrec/secp256k1/doc.go
+// Copyright (c) 2013-2014 The btcsuite developers
+// Copyright (c) 2015-2019 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+dcrec/secp256k1/ecdh.go
+// Copyright (c) 2015 The btcsuite developers
+// Copyright (c) 2015-2016 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+dcrec/secp256k1/ecdsa/doc.go
+dcrec/secp256k1/ecdsa/error.go
 dcrec/secp256k1/error.go
 dcrec/secp256k1/modnscalar.go
-dcrec/secp256k1/ecdsa/error.go
-dcrec/secp256k1/ecdsa/doc.go
 dcrec/secp256k1/schnorr/doc.go
 // Copyright (c) 2020 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+dcrec/secp256k1/ecdsa/signature.go
+dcrec/secp256k1/pubkey.go
+dcrec/secp256k1/schnorr/signature.go
+// Copyright (c) 2013-2014 The btcsuite developers
+// Copyright (c) 2015-2022 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
+
+dcrec/secp256k1/ellipticadaptor.go
+// Copyright 2020-2022 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -223,48 +421,11 @@ dcrec/secp256k1/genprecomps.go
 dcrec/secp256k1/genprecomps.go
 // Copyright (c) 2015-2022 The Decred developers")
 
-dcrec/secp256k1/ellipticadaptor.go
-// Copyright 2020-2022 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-dcrec/secp256k1/pubkey.go
-dcrec/secp256k1/ecdsa/signature.go
-dcrec/secp256k1/schnorr/signature.go
-// Copyright (c) 2013-2014 The btcsuite developers
-// Copyright (c) 2015-2022 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-dcrec/secp256k1/compressedbytepoints.go
-// Copyright (c) 2015 The btcsuite developers
-// Copyright (c) 2015-2022 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-dcrec/secp256k1/doc.go
-// Copyright (c) 2013-2014 The btcsuite developers
-// Copyright (c) 2015-2019 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-dcrec/secp256k1/privkey.go
 dcrec/secp256k1/nonce.go
+dcrec/secp256k1/privkey.go
 dcrec/secp256k1/schnorr/pubkey.go
 // Copyright (c) 2013-2014 The btcsuite developers
 // Copyright (c) 2015-2020 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-dcrec/secp256k1/curve.go
-// Copyright (c) 2015-2022 The Decred developers
-// Copyright 2013-2014 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-dcrec/secp256k1/ecdh.go
-// Copyright (c) 2015 The btcsuite developers
-// Copyright (c) 2015-2016 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -274,40 +435,63 @@ dcrec/secp256k1/schnorr/error.go
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
-vrf/utils/big_math.go
-vrf/secp256k1/public_key.go
-/*
-*
-The MIT License (MIT)
+go-ethereum/accounts/abi/abi.go
+go-ethereum/accounts/abi/argument.go
+go-ethereum/accounts/abi/doc.go
+go-ethereum/accounts/abi/method.go
+go-ethereum/accounts/abi/type.go
+go-ethereum/common/compiler/solidity.go
+go-ethereum/common/debug.go
+go-ethereum/common/test_utils.go
+go-ethereum/common/types.go
+rlp/raw.go
+// Copyright 2015 The go-ethereum Authors
+// This file is part of the go-ethereum library.
+//
+// The go-ethereum library is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// The go-ethereum library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-Copyright (c) 2018 SmartContract ChainLink, Ltd.
-*/
+go-ethereum/accounts/abi/error.go
+go-ethereum/types/dynamic_fee_tx.go
+// Copyright 2021 The go-ethereum Authors
+// This file is part of the go-ethereum library.
+//
+// The go-ethereum library is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// The go-ethereum library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-vrf/utils/utils.go
-vrf/secp256k1/suite.go
-vrf/secp256k1/field.go
-vrf/secp256k1/scalar.go
-vrf/secp256k1/curve.go
-vrf/secp256k1/point.go
-/**
-The MIT License (MIT)
-
-Copyright (c) 2018 SmartContract ChainLink, Ltd.
-*/
-
-go-ethereum/types/transaction_signing.go
-go-ethereum/common/format.go
-go-ethereum/params/config.go
+go-ethereum/accounts/abi/error_handling.go
 go-ethereum/accounts/abi/event.go
 go-ethereum/accounts/abi/pack.go
-go-ethereum/accounts/abi/error_handling.go
 go-ethereum/accounts/abi/reflect.go
-go-ethereum/common/mclock/mclock.go
+go-ethereum/common/fdlimit/fdlimit_bsd.go
+go-ethereum/common/fdlimit/fdlimit_darwin.go
+go-ethereum/common/fdlimit/fdlimit_unix.go
+go-ethereum/common/format.go
 go-ethereum/common/hexutil/hexutil.go
 go-ethereum/common/hexutil/json.go
-go-ethereum/common/fdlimit/fdlimit_unix.go
-go-ethereum/common/fdlimit/fdlimit_darwin.go
-go-ethereum/common/fdlimit/fdlimit_bsd.go
+go-ethereum/common/mclock/mclock.go
+go-ethereum/params/config.go
+go-ethereum/types/transaction_signing.go
 ronin/types/transaction_signing.go
 // Copyright 2016 The go-ethereum Authors
 // This file is part of the go-ethereum library.
@@ -325,46 +509,10 @@ ronin/types/transaction_signing.go
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-go-ethereum/types/dynamic_fee_tx.go
-go-ethereum/accounts/abi/error.go
-// Copyright 2021 The go-ethereum Authors
-// This file is part of the go-ethereum library.
-//
-// The go-ethereum library is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// The go-ethereum library is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU Lesser General Public License for more details.
-//
-// You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
-
-go-ethereum/types/legacy_tx.go
-go-ethereum/types/access_list_tx.go
-go-ethereum/crypto/signify/signify.go
-go-ethereum/crypto/signify/signify_fuzz.go
-go-ethereum/crypto/bls12381/g1.go
-go-ethereum/crypto/bls12381/fp6.go
-go-ethereum/crypto/bls12381/isogeny.go
-go-ethereum/crypto/bls12381/fp2.go
-go-ethereum/crypto/bls12381/field_element.go
-go-ethereum/crypto/bls12381/fp12.go
-go-ethereum/crypto/bls12381/gt.go
-go-ethereum/crypto/bls12381/arithmetic_decl.go
-go-ethereum/crypto/bls12381/bls12_381.go
-go-ethereum/crypto/bls12381/arithmetic_x86_adx.go
-go-ethereum/crypto/bls12381/fp.go
-go-ethereum/crypto/bls12381/utils.go
-go-ethereum/crypto/bls12381/g2.go
-go-ethereum/crypto/bls12381/swu.go
-go-ethereum/crypto/bls12381/pairing.go
-go-ethereum/crypto/bls12381/arithmetic_x86_noadx.go
-ronin/types/legacy_tx.go
-// Copyright 2020 The go-ethereum Authors
+go-ethereum/accounts/abi/topics.go
+go-ethereum/common/fdlimit/fdlimit_windows.go
+go-ethereum/common/mclock/simclock.go
+// Copyright 2018 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -397,10 +545,21 @@ go-ethereum/accounts/abi/utils.go
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-go-ethereum/accounts/abi/topics.go
-go-ethereum/common/mclock/simclock.go
-go-ethereum/common/fdlimit/fdlimit_windows.go
-// Copyright 2018 The go-ethereum Authors
+go-ethereum/common/big.go
+go-ethereum/common/bytes.go
+go-ethereum/common/path.go
+go-ethereum/common/size.go
+go-ethereum/crypto/crypto.go
+go-ethereum/types/block.go
+go-ethereum/types/hashing.go
+go-ethereum/types/transaction.go
+rlp/decode.go
+rlp/doc.go
+rlp/encode.go
+rlp/typecache.go
+ronin/types/hashing.go
+ronin/types/transaction.go
+// Copyright 2014 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -421,8 +580,8 @@ go-ethereum/common/bitutil/bitutil.go
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-go-ethereum/common/compiler/vyper.go
 go-ethereum/common/compiler/helpers.go
+go-ethereum/common/compiler/vyper.go
 go-ethereum/common/prque/lazyqueue.go
 // Copyright 2019 The go-ethereum Authors
 // This file is part of the go-ethereum library.
@@ -450,51 +609,57 @@ go-ethereum/common/prque/sstack.go
 // toolbox may be used in accordance with the terms and conditions contained
 // in a signed written agreement between you and the author(s).
 
-go-ethereum/crypto/blake2b/register.go
-go-ethereum/crypto/blake2b/blake2x.go
-// Copyright 2017 The Go Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
-go-ethereum/crypto/blake2b/blake2b_generic.go
-go-ethereum/crypto/blake2b/blake2bAVX2_amd64.go
-go-ethereum/crypto/blake2b/blake2b_ref.go
 go-ethereum/crypto/blake2b/blake2b.go
+go-ethereum/crypto/blake2b/blake2bAVX2_amd64.go
 go-ethereum/crypto/blake2b/blake2b_amd64.go
+go-ethereum/crypto/blake2b/blake2b_generic.go
+go-ethereum/crypto/blake2b/blake2b_ref.go
 // Copyright 2016 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-go-ethereum/crypto/ecies/params.go
-go-ethereum/crypto/ecies/ecies.go
-// Copyright (c) 2013 Kyle Isom <kyle@tyrfingr.is>
-// Copyright (c) 2012 The Go Authors. All rights reserved.
+go-ethereum/crypto/blake2b/blake2x.go
+go-ethereum/crypto/blake2b/register.go
+// Copyright 2017 The Go Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+go-ethereum/crypto/bls12381/arithmetic_decl.go
+go-ethereum/crypto/bls12381/arithmetic_x86_adx.go
+go-ethereum/crypto/bls12381/arithmetic_x86_noadx.go
+go-ethereum/crypto/bls12381/bls12_381.go
+go-ethereum/crypto/bls12381/field_element.go
+go-ethereum/crypto/bls12381/fp.go
+go-ethereum/crypto/bls12381/fp12.go
+go-ethereum/crypto/bls12381/fp2.go
+go-ethereum/crypto/bls12381/fp6.go
+go-ethereum/crypto/bls12381/g1.go
+go-ethereum/crypto/bls12381/g2.go
+go-ethereum/crypto/bls12381/gt.go
+go-ethereum/crypto/bls12381/isogeny.go
+go-ethereum/crypto/bls12381/pairing.go
+go-ethereum/crypto/bls12381/swu.go
+go-ethereum/crypto/bls12381/utils.go
+go-ethereum/crypto/signify/signify.go
+go-ethereum/crypto/signify/signify_fuzz.go
+go-ethereum/types/access_list_tx.go
+go-ethereum/types/legacy_tx.go
+ronin/types/legacy_tx.go
+// Copyright 2020 The go-ethereum Authors
+// This file is part of the go-ethereum library.
 //
-// Redistribution and use in source and binary forms, with or without
-// modification, are permitted provided that the following conditions are
-// met:
+// The go-ethereum library is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
 //
-//    * Redistributions of source code must retain the above copyright
-// notice, this list of conditions and the following disclaimer.
-//    * Redistributions in binary form must reproduce the above
-// copyright notice, this list of conditions and the following disclaimer
-// in the documentation and/or other materials provided with the
-// distribution.
-//    * Neither the name of Google Inc. nor the names of its
-// contributors may be used to endorse or promote products derived from
-// this software without specific prior written permission.
+// The go-ethereum library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
 //
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+// You should have received a copy of the GNU Lesser General Public License
+// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
 go-ethereum/crypto/bls12381/arithmetic_fallback.go
 // Copyright 2020 ConsenSys AG
@@ -527,13 +692,55 @@ go-ethereum/crypto/bls12381/arithmetic_fallback.go
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-go-ethereum/crypto/secp256k1/scalar_mult_cgo.go
-go-ethereum/crypto/secp256k1/scalar_mult_nocgo.go
-go-ethereum/crypto/secp256k1/panic_cb.go
-go-ethereum/crypto/secp256k1/secp256.go
-// Copyright 2015 Jeffrey Wilcke, Felix Lange, Gustav Simonsson. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be found in
-// the LICENSE file.
+go-ethereum/crypto/bn256/bn256_fast.go
+go-ethereum/crypto/bn256/bn256_slow.go
+// Copyright 2018 Péter Szilágyi. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be found
+// in the LICENSE file.
+
+go-ethereum/crypto/bn256/cloudflare/constants.go
+go-ethereum/crypto/bn256/google/bn256.go
+go-ethereum/crypto/bn256/google/constants.go
+go-ethereum/crypto/bn256/google/curve.go
+go-ethereum/crypto/bn256/google/gfp12.go
+go-ethereum/crypto/bn256/google/gfp2.go
+go-ethereum/crypto/bn256/google/gfp6.go
+go-ethereum/crypto/bn256/google/optate.go
+go-ethereum/crypto/bn256/google/twist.go
+// Copyright 2012 The Go Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+go-ethereum/crypto/ecies/ecies.go
+go-ethereum/crypto/ecies/params.go
+// Copyright (c) 2013 Kyle Isom <kyle@tyrfingr.is>
+// Copyright (c) 2012 The Go Authors. All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are
+// met:
+//
+//    * Redistributions of source code must retain the above copyright
+// notice, this list of conditions and the following disclaimer.
+//    * Redistributions in binary form must reproduce the above
+// copyright notice, this list of conditions and the following disclaimer
+// in the documentation and/or other materials provided with the
+// distribution.
+//    * Neither the name of Google Inc. nor the names of its
+// contributors may be used to endorse or promote products derived from
+// this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 go-ethereum/crypto/secp256k1/curve.go
 // Copyright 2010 The Go Authors. All rights reserved.
@@ -568,243 +775,36 @@ go-ethereum/crypto/secp256k1/curve.go
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-go-ethereum/crypto/bn256/bn256_fast.go
-go-ethereum/crypto/bn256/bn256_slow.go
-// Copyright 2018 Péter Szilágyi. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be found
-// in the LICENSE file.
+go-ethereum/crypto/secp256k1/panic_cb.go
+go-ethereum/crypto/secp256k1/scalar_mult_cgo.go
+go-ethereum/crypto/secp256k1/scalar_mult_nocgo.go
+go-ethereum/crypto/secp256k1/secp256.go
+// Copyright 2015 Jeffrey Wilcke, Felix Lange, Gustav Simonsson. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be found in
+// the LICENSE file.
 
-go-ethereum/crypto/bn256/google/optate.go
-go-ethereum/crypto/bn256/google/twist.go
-go-ethereum/crypto/bn256/google/constants.go
-go-ethereum/crypto/bn256/google/curve.go
-go-ethereum/crypto/bn256/google/gfp2.go
-go-ethereum/crypto/bn256/google/gfp6.go
-go-ethereum/crypto/bn256/google/bn256.go
-go-ethereum/crypto/bn256/google/gfp12.go
-go-ethereum/crypto/bn256/cloudflare/constants.go
-// Copyright 2012 The Go Authors. All rights reserved.
+ripemd160/ripemd160.go
+// Copyright 2010 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-btcd/wire/msgmerkleblock.go
-btcd/wire/msgreject.go
-btcd/chaincfg/params.go
-btcd/chaincfg/genesis.go
-btcd/v2/wire/msgmerkleblock.go
-btcd/v2/wire/msgreject.go
-btcd/v2/chaincfg/params.go
-btcd/v2/chaincfg/genesis.go
-btcd/v2/btcutil/hdkeychain/extendedkey.go
-// Copyright (c) 2014-2016 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
+vrf/secp256k1/curve.go
+vrf/secp256k1/field.go
+vrf/secp256k1/point.go
+vrf/secp256k1/scalar.go
+vrf/secp256k1/suite.go
+vrf/utils/utils.go
+/**
+The MIT License (MIT)
 
-btcd/wire/msgcfheaders.go
-btcd/wire/msggetcfilters.go
-btcd/wire/msggetcfheaders.go
-btcd/wire/msgcfilter.go
-btcd/v2/wire/msgcfheaders.go
-btcd/v2/wire/msggetcfilters.go
-btcd/v2/wire/msggetcfheaders.go
-btcd/v2/wire/msgcfilter.go
-btcd/v2/btcutil/bech32/doc.go
-// Copyright (c) 2017 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
+Copyright (c) 2018 SmartContract ChainLink, Ltd.
+*/
 
-btcd/wire/msggetcfcheckpt.go
-btcd/wire/msgcfcheckpt.go
-btcd/v2/wire/msggetcfcheckpt.go
-btcd/v2/wire/msgcfcheckpt.go
-btcd/v2/btcutil/psbt/finalizer.go
-btcd/v2/btcutil/psbt/extractor.go
-btcd/v2/btcutil/psbt/updater.go
-btcd/v2/btcutil/psbt/utils.go
-btcd/v2/btcutil/psbt/psbt.go
-btcd/v2/btcutil/psbt/signer.go
-btcd/v2/btcutil/psbt/creator.go
-// Copyright (c) 2018 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
+vrf/secp256k1/public_key.go
+vrf/utils/big_math.go
+/*
+*
+The MIT License (MIT)
 
-btcd/wire/msgfilterclear.go
-btcd/wire/msgfilteradd.go
-btcd/wire/msgfilterload.go
-btcd/btcec/gensecp256k1.go
-btcd/v2/wire/msgfilterclear.go
-btcd/v2/wire/msgfilteradd.go
-btcd/v2/wire/msgfilterload.go
-// Copyright (c) 2014-2015 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/wire/msgsendheaders.go
-btcd/wire/msgfeefilter.go
-btcd/txscript/hashcache.go
-btcd/v2/wire/msgsendheaders.go
-btcd/v2/wire/msgfeefilter.go
-btcd/v2/txscript/hashcache.go
-// Copyright (c) 2016 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/wire/msggetheaders.go
-btcd/wire/message.go
-btcd/wire/invvect.go
-btcd/wire/protocol.go
-btcd/wire/msgversion.go
-btcd/wire/msgtx.go
-btcd/wire/msgheaders.go
-btcd/wire/doc.go
-btcd/wire/blockheader.go
-btcd/wire/common.go
-btcd/wire/msgblock.go
-btcd/wire/msggetblocks.go
-btcd/btcec/privkey.go
-btcd/v2/wire/msggetheaders.go
-btcd/v2/wire/message.go
-btcd/v2/wire/invvect.go
-btcd/v2/wire/protocol.go
-btcd/v2/wire/msgversion.go
-btcd/v2/wire/msgtx.go
-btcd/v2/wire/msgheaders.go
-btcd/v2/wire/doc.go
-btcd/v2/wire/blockheader.go
-btcd/v2/wire/common.go
-btcd/v2/wire/msgblock.go
-btcd/v2/wire/msggetblocks.go
-btcd/v2/btcutil/wif.go
-btcd/v2/btcutil/tx.go
-btcd/v2/btcutil/block.go
-btcd/v2/btcec/privkey.go
-// Copyright (c) 2013-2016 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/txscript/opcode.go
-btcd/txscript/error.go
-btcd/txscript/standard.go
-btcd/txscript/doc.go
-btcd/txscript/stack.go
-btcd/txscript/script.go
-btcd/btcec/address.go
-btcd/btcec/hash160.go
-btcd/btcec/signature.go
-btcd/v2/txscript/opcode.go
-btcd/v2/txscript/doc.go
-btcd/v2/txscript/stack.go
-btcd/v2/btcutil/address.go
-btcd/v2/btcutil/appdata.go
-btcd/v2/btcutil/hash160.go
-// Copyright (c) 2013-2017 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/txscript/sigcache.go
-btcd/txscript/consensus.go
-btcd/btcec/ciphering.go
-btcd/v2/txscript/sigcache.go
-btcd/v2/txscript/consensus.go
-btcd/v2/btcec/ciphering.go
-btcd/v2/btcutil/txsort/txsort.go
-// Copyright (c) 2015-2016 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/txscript/engine.go
-btcd/v2/txscript/engine.go
-// Copyright (c) 2013-2018 The btcsuite developers
-// Copyright (c) 2015-2018 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/txscript/scriptnum.go
-btcd/v2/txscript/scriptnum.go
-// Copyright (c) 2015-2017 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/btcec/btcec.go
-btcd/v2/btcec/btcec.go
-// Copyright 2010 The Go Authors. All rights reserved.
-// Copyright 2011 ThePiachu. All rights reserved.
-// Copyright 2013-2014 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/btcec/field.go
-// Copyright (c) 2013-2016 The btcsuite developers
-// Copyright (c) 2013-2016 Dave Collins
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/btcec/precompute.go
-// Copyright 2015 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/v2/txscript/error.go
-btcd/v2/txscript/sighash.go
-btcd/v2/txscript/script.go
-// Copyright (c) 2013-2017 The btcsuite developers
-// Copyright (c) 2015-2019 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/v2/txscript/standard.go
-// Copyright (c) 2013-2020 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/v2/txscript/sigvalidate.go
-btcd/v2/txscript/taproot.go
-// Copyright (c) 2013-2022 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/v2/btcutil/amount.go
-// Copyright (c) 2013, 2014 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/v2/btcec/error.go
-btcd/v2/btcec/modnscalar.go
-btcd/v2/btcec/ecdsa/error.go
-// Copyright (c) 2013-2021 The btcsuite developers
-// Copyright (c) 2015-2021 The Decred developers
-
-btcd/v2/btcec/curve.go
-// Copyright (c) 2015-2021 The btcsuite developers
-// Copyright (c) 2015-2021 The Decred developers
-
-btcd/v2/btcec/ecdsa/signature.go
-btcd/v2/btcec/schnorr/error.go
-btcd/v2/btcec/schnorr/pubkey.go
-// Copyright (c) 2013-2017 The btcsuite developers
-// Copyright (c) 2015-2021 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/v2/btcec/schnorr/signature.go
-// Copyright (c) 2013-2022 The btcsuite developers
-
-btcd/v2/btcutil/hdkeychain/doc.go
-btcd/v2/btcutil/base58/doc.go
-// Copyright (c) 2014 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/v2/chaincfg/chainhash/hashfuncs.go
-btcd/chaincfg/chainhash/hashfuncs.go
-// Copyright (c) 2015 The Decred developers
-// Copyright (c) 2016-2017 The btcsuite developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
-
-btcd/v2/chaincfg/chainhash/hash.go
-btcd/chaincfg/chainhash/hash.go
-// Copyright (c) 2013-2016 The btcsuite developers
-// Copyright (c) 2015 The Decred developers
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
+Copyright (c) 2018 SmartContract ChainLink, Ltd.
+*/

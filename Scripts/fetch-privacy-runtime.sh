@@ -33,6 +33,7 @@ for name, expected in manifest['tornado']['artifacts'].items():
     assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==expected['gitBlobSHA1'], 'Circuit Git blob mismatch'
 PY
 (cd Tools/PrivacyProof && npm ci --ignore-scripts --no-audit --no-fund)
+Vendor/PrivacyRuntime/node --no-addons Scripts/prepare-privacy-deps.cjs
 Vendor/PrivacyRuntime/node --no-addons Scripts/collect-privacy-runtime.cjs
 python3 Scripts/privacy-manifest.py Vendor/PrivacyRuntime
 python3 Scripts/privacy-manifest.py Vendor/PrivacyRuntime --verify

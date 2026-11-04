@@ -6,11 +6,15 @@ import re
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 
 root = Path(__file__).resolve().parent.parent
-out = root / 'Configuration/Licenses/ChainCore'
+destination = root / 'Configuration/Licenses/ChainCore'
+(root/'.build').mkdir(exist_ok=True)
+out = Path(tempfile.mkdtemp(prefix='chain-licenses-', dir=root/'.build'))
 env = dict(os.environ, GOCACHE=str(root / '.build/go-cache'), GOMODCACHE=str(root / '.build/go-mod'))
-lines = subprocess.check_output(['go', 'list', '-mod=readonly', '-tags=gofuzz', '-deps', '-f', '{{with .Module}}{{.Path}}|{{.Version}}|{{.Dir}}{{end}}', '.'], cwd=root / 'Native/ChainCore', env=env, text=True)
+go = str(root / 'Scripts/go.sh')
+lines = subprocess.check_output([go, 'list', '-mod=readonly', '-tags=gofuzz,purego', '-deps', '-f', '{{with .Module}}{{.Path}}|{{.Version}}|{{.Dir}}{{end}}', '.'], cwd=root / 'Native/ChainCore', env=env, text=True)
 out.mkdir(parents=True, exist_ok=True)
 modules = sorted(set(line for line in lines.splitlines() if line and not line.startswith('app.veilwallet.chaincore|')))
 manifest = []
@@ -25,7 +29,7 @@ for line in modules:
     source = Path(directory)
     target = out / name / (version or 'vendored')
     notices = []
-    for file in source.rglob('*'):
+    for file in sorted(source.rglob('*')):
         if file.is_file() and file.name.upper().startswith(('LICENSE', 'COPYING', 'NOTICE')):
             rel = file.relative_to(source)
             dest = target / rel
@@ -38,7 +42,7 @@ for line in modules:
         copy_notice(root / 'Vendor/OKXWalletSDK/LICENSE', target / 'SDK-LICENSE')
         notices.append('SDK-LICENSE')
         blocks = {}
-        for file in source.rglob('*.go'):
+        for file in sorted(source.rglob('*.go')):
             if file.name.endswith('_test.go'):
                 continue
             for comment in re.findall(r'/\*[\s\S]*?\*/|(?://[^\n]*(?:\n|$))+', file.read_text(errors='replace')):
@@ -56,12 +60,17 @@ for line in modules:
     manifest.append({'module': name, 'version': version or 'vendored at ' + (root / 'Vendor/OKXWalletSDK/UPSTREAM_COMMIT').read_text().strip(), 'notices': notices})
     if not notices:
         raise RuntimeError('Missing upstream license for ' + name)
-goroot = Path(subprocess.check_output(['go', 'env', 'GOROOT'], text=True).strip())
+goroot = Path(subprocess.check_output([go, 'env', 'GOROOT'], text=True).strip())
 license_file = next((p for p in [goroot / 'LICENSE', goroot.parent / 'LICENSE'] if p.is_file()), None)
 if license_file is None:
     raise RuntimeError('Go runtime LICENSE not found')
 (out / 'Go').mkdir(exist_ok=True)
 copy_notice(license_file, out / 'Go/LICENSE')
-(out / 'Go/VERSION').write_text(subprocess.check_output(['go', 'version'], text=True))
+(out / 'Go/VERSION').write_text(subprocess.check_output([go, 'version'], text=True))
 (out / 'modules.json').write_text(json.dumps(manifest, indent=2) + '\n')
+if destination.is_symlink():
+    raise RuntimeError('Refusing a symlinked license destination')
+if destination.exists():
+    shutil.rmtree(destination)
+shutil.move(out, destination)
 print('Collected license notices for', len(modules), 'compiled modules and Go runtime')

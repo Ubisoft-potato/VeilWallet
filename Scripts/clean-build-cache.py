@@ -8,9 +8,10 @@ import stat
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHES = ['.build', '.index-build', '.swiftpm', 'Tools/PrivacyProof/node_modules', 'Scripts/__pycache__', 'Tests/SourceAudit/__pycache__', 'Tests/Packaging/__pycache__']
+CACHES = ['.build', '.index-build', '.swiftpm', 'Tools/PrivacyProof/node_modules', 'Scripts/__pycache__', 'Tests/SourceAudit/__pycache__', 'Tests/Packaging/__pycache__', 'Tests/Localization/__pycache__', 'Tools/Localization/__pycache__']
 DOWNLOADS = ['Vendor/Tor', 'Vendor/Monero', 'Vendor/PrivacyRuntime/node', 'Vendor/PrivacyRuntime/node_modules',
              'Vendor/PrivacyRuntime/artifacts', 'Vendor/PrivacyRuntime/manifest.json', 'Vendor/PrivacyRuntime/DEPENDENCIES.json',
+             'Vendor/PrivacyRuntime/LOAD_GRAPH.json', 'Vendor/PrivacyRuntime/MODIFICATIONS.json',
              'Vendor/PrivacyRuntime/main.cjs', 'Vendor/PrivacyRuntime/package-lock.json', 'Vendor/PrivacyRuntime/NODE-LICENSE',
              'Vendor/PrivacyRuntime/source/build']
 

@@ -17,6 +17,7 @@ done
 [ -x Vendor/Monero/monero-wallet-rpc ] || { echo 'Run Scripts/fetch-monero.sh first' >&2; exit 1; }
 [ -x Vendor/PrivacyRuntime/node ] || { echo 'Run Scripts/fetch-privacy-runtime.sh first' >&2; exit 1; }
 python3 Scripts/privacy-manifest.py Vendor/PrivacyRuntime --verify
+python3 Scripts/check-dependencies.py --offline-runtime
 ./Scripts/check-privacy.sh
 build_options=(build -c "$configuration")
 if [ "$configuration" = release ]; then
@@ -78,8 +79,9 @@ for entry in Vendor/PrivacyRuntime/*; do
     ditto "$entry" "$privacy_helper/Contents/Resources/$(basename "$entry")"
 done
 mkdir -p "$privacy_helper/Contents/Resources/source/build"
-cp Scripts/collect-privacy-runtime.cjs Scripts/fetch-privacy-runtime.sh Scripts/privacy-manifest.py Scripts/build-app.sh "$privacy_helper/Contents/Resources/source/build/"
+cp Scripts/collect-privacy-runtime.cjs Scripts/prepare-privacy-deps.cjs Scripts/fetch-privacy-runtime.sh Scripts/privacy-manifest.py Scripts/build-app.sh "$privacy_helper/Contents/Resources/source/build/"
 cp Tools/PrivacyProof/package.json Tools/PrivacyProof/package-lock.json "$privacy_helper/Contents/Resources/source/"
+cp Tools/PrivacyProof/snarkjs-prover-entry.cjs Configuration/PrivacyDependencyPolicy.json "$privacy_helper/Contents/Resources/source/"
 ditto Configuration/Licenses "$app/Contents/Resources/Licenses"
 cp Documentation/THIRD_PARTY.md "$app/Contents/Resources/THIRD_PARTY.md"
 cp LICENSE "$app/Contents/Resources/Licenses/VeilWallet-MIT.txt"

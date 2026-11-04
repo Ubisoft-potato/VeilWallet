@@ -36,12 +36,12 @@
     },
     {
       "path": "Documentation/THIRD_PARTY.md",
-      "sha256": "0d4fefcd1ab707afdad0c7edbab7cdaf3103ecad222056746912491a37cf56bb",
+      "sha256": "03eb12fb76ff6d40c7c4ee2c7a072156446df00f5226c3670fb9b66e103308a1",
       "rules": [
         "gitleaks/generic-api-key",
         "hex-32-bytes"
       ],
-      "reason": "Public CA/Tor archive hashes and release-key fingerprints; only English artwork documentation changed. These remain verification material, not credentials."
+      "reason": "Public CA/Tor archive hashes and release fingerprints are unchanged from the reviewed committed file. Updates describe patched crypto dependencies, prover-only code collection and explicit GPL/LGPL distribution boundaries."
     },
     {
       "path": "Documentation/assets-package-report.json",
@@ -118,11 +118,11 @@
     },
     {
       "path": "Scripts/fetch-privacy-runtime.sh",
-      "sha256": "6bc1a6d22caa8352bc029499d5ed8a6e5bd504904126a3eebe77220a603772ed",
+      "sha256": "57607cc9a3f69fd2c24637f8ebd2c528bc0b6ce886d91583fbfbf018707febe8",
       "rules": [
         "hex-32-bytes"
       ],
-      "reason": "Pinned SHA256 checksums of public developer downloads, not credentials."
+      "reason": "Pinned public Node archive/keyring checksum literals are unchanged from the committed bootstrap. Added the hash-checked prover-only entry preparation step; no credentials or wallet material."
     },
     {
       "path": "Scripts/fetch-tor.sh",
@@ -2427,11 +2427,19 @@
     },
     {
       "path": "Assets/Readme/manifest.json",
-      "sha256": "05398df96f1463e65526c5ca8d07de5cba22986e60e73f83daba38329deb82d7",
+      "sha256": "3ce0c8881dc74052a11c907b382783770fc94853e0606a74cd74d3d0717ee061",
       "rules": [
         "hex-32-bytes"
       ],
-      "reason": "Five public documentation-image SHA256 checksums, independently recomputed from the reviewed local PNG/SVG files; not wallet key material."
+      "reason": "Public README image checksums recomputed from the reviewed local PNG/SVG files. Banner version updated; original PNG captures retain their recorded public-fixture capture version."
+    },
+    {
+      "path": "Configuration/PrivacyDependencyPolicy.json",
+      "sha256": "74e2d5b4df10ad645d1ce9ab4140b9e7d42842595d978a71914d451a7dfe02b8",
+      "rules": [
+        "hex-32-bytes"
+      ],
+      "reason": "Public upstream snarkjs entry SHA256 recorded before its reviewed prover-only replacement, plus recomputed hashes of the public proof adapter, restricted entry and native verification boundary. Integrity identifiers only, no wallet keys or notes."
     }
   ]
 }

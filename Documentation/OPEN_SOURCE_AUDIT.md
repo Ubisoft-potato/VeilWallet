@@ -22,14 +22,15 @@ python3 -m unittest discover -s Tests/SourceAudit -p 'test_*.py'
 python3 -m unittest discover -s Tests/Packaging -p 'test_*.py'
 python3 -m unittest discover -s Tests/Localization -p 'test_*.py'
 python3 Tools/Localization/catalog.py --check
-python3 Scripts/check-documentation.py
+python3 Scripts/check-documentation.py --source index
 python3 Scripts/audit-source.py --source index --report .build/open-source-audit/index.json
+python3 Scripts/audit-source.py --source history --include-reflogs
 ./Scripts/check-privacy.sh
 ~~~
 
-Gitleaks 8.30.1 is pinned to [official release](https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1) platform checksums. It scans all actual Git index blobs in local temporary storage, including force-added ignored files, independently of worktree differences and repository-controlled ignore rules. CI scans full HEAD. No scanning service receives contents. Reports contain file/rule/line/hash metadata, not matched values; raw temporary reports are removed.
+Gitleaks 8.30.1 is pinned to [official release](https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1) platform checksums. It scans all actual Git index blobs in local temporary storage, including force-added ignored files, independently of worktree differences and repository-controlled ignore rules. CI fetches full history and scans every committed tree as well as HEAD. Exact HEAD/index documentation checks cannot borrow uncommitted link targets. No scanning service receives contents. Reports contain file/rule/line/hash metadata, not matched values; raw temporary reports are removed.
 
-12 scanner tests cover mnemonic/key encodings, credential URLs, personal paths, binary resources, forced ignored files, whole-file exception invalidation, symlink rejection and actual staged-blob reading. Seven packaging/cleanup tests cover prohibited payloads/paths and safe cleanup. Localization/documentation checks add coverage/placeholder and portable-link/path regression.
+Scanner regression tests cover mnemonic/key encodings, credential URLs, personal paths, binary resources, forced ignored files, whole-file exception invalidation, symlink rejection and actual staged-blob reading. Packaging, dependency-policy and release-policy regression tests cover prohibited payloads/paths, safe cleanup, exact source/material hashes and removed verifier code. Localization/documentation checks add coverage/placeholder and portable-link/path regression.
 
 A prior wider filename inventory covered 61,400 project/cache files. Upstream examples in caches were distinguished from user secrets. That inventory is historical, not a repeated claim for every later build, and did not inspect system Keychain or actual wallet data.
 
@@ -54,3 +55,5 @@ At initial preparation, the local main branch had no commits or remote. A local 
 Original work uses MIT; upstream licenses remain, including GPL/LGPL corresponding-source/relinking requirements. Source readiness does not clear binary redistribution. See [NOTICE](../NOTICE.md) and [THIRD_PARTY.md](THIRD_PARTY.md).
 
 After creating a repository, enable [private vulnerability reporting](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository) and update [SECURITY.md](../SECURITY.md). No remote CI run or push is claimed. Pattern scanning cannot prove absence of arbitrary encoded secrets or identify every personal address.
+
+[Dependency remediation](DEPENDENCIES.md) and the [binary distribution gate](RELEASE_POLICY.md) close the release-preparation findings. Source preview builds do not automatically upload installers.

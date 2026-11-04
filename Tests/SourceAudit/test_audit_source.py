@@ -83,6 +83,29 @@ class SourceAuditTests(unittest.TestCase):
             with patch.object(audit, 'ROOT', base), self.assertRaises(ValueError):
                 audit.read_tree('index')
 
+    def test_history_detects_sensitive_blob_deleted_by_later_commit(self):
+        with tempfile.TemporaryDirectory(prefix='veil-history-test-') as directory:
+            root = Path(directory)
+            def git(*args):
+                return subprocess.check_output(['git', '-C', directory, '-c', 'user.name=Public Test',
+                    '-c', 'user.email=test@example.invalid', '-c', 'commit.gpgsign=false', *args], stderr=subprocess.DEVNULL)
+            git('init', '-q')
+            words = root/WORDLIST; words.parent.mkdir(parents=True); words.write_text('about\n')
+            candidate = root/'fixture.txt'; candidate.write_text('"' + '19' * 32 + '"')
+            git('add', '.'); git('commit', '-qm', 'fixture')
+            candidate.unlink(); git('add', '-u'); git('commit', '-qm', 'remove fixture')
+            with patch.object(audit, 'ROOT', root), patch.object(audit, 'run_gitleaks', return_value=[]):
+                result = audit.audit_history(None)
+            self.assertEqual(result['commits'], 2)
+            self.assertEqual(result['unresolvedFindings'], 1)
+            self.assertEqual(len(result['trees']), 2)
+            self.assertTrue(any(f['path'] == 'fixture.txt' for t in result['trees'] for f in t['findings']))
+
+    def test_history_refuses_shallow_checkout(self):
+        with patch.object(audit, 'git', return_value=b'true\n'):
+            with self.assertRaises(ValueError):
+                audit.audit_history(None)
+
     def test_gitleaks_scans_ignored_paths_and_returns_no_values(self):
         scanner = ROOT / '.tools/gitleaks/gitleaks'
         self.assertTrue(scanner.exists(), 'Run Scripts/fetch-gitleaks.sh first')

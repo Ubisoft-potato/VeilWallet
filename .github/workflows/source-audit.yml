@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+          fetch-depth: 0
       - name: Install pinned local scanner
         run: ./Scripts/fetch-gitleaks.sh
       - name: Test the publication guard
@@ -26,9 +27,15 @@ jobs:
       - name: Check languages and portable documentation
         run: |
           python3 Tools/Localization/catalog.py --check
-          python3 Scripts/check-documentation.py
+          python3 Scripts/check-documentation.py --source head
       - name: Scan the complete source tree
         run: python3 Scripts/audit-source.py --source head
+      - name: Scan every committed source tree
+        run: python3 Scripts/audit-source.py --source history
+      - name: Check binary distribution policy
+        run: python3 Scripts/check-release-policy.py
+      - name: Check reviewed proof boundary
+        run: python3 Scripts/check-dependencies.py --policy-only
       - name: Verify runtime privacy boundary
         run: |
           if ! command -v rg >/dev/null; then

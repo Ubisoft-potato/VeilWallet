@@ -1,6 +1,6 @@
 # README image provenance
 
-These are version 0.10.1 product-documentation assets, not captures of a personal wallet.
+The native captures use version 0.10.1 public UI fixtures; the original banner tracks the current documentation version. Capture versions and image hashes are recorded in the manifest. These are not captures of a personal wallet.
 
 - hero.svg is original vector artwork based on the shield geometry in [make-icon.swift](../../Scripts/make-icon.swift). No external fonts, scripts or images are loaded.
 - overview.png uses the native RootView with an explicit public-fixture banner and illustrative local balances/prices.

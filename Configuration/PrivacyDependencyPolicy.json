@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "snarkjs": {
+    "version": "0.1.20",
+    "originalEntrySHA256": "d13a0ff8651b95d715398da2a828a13700fe37c29a4cf02fe149d27937f0e632",
+    "entry": "Tools/PrivacyProof/snarkjs-prover-entry.cjs",
+    "exports": [
+      "Circuit",
+      "ZqField",
+      "bigInt",
+      "bn128",
+      "stringifyBigInts",
+      "unstringifyBigInts"
+    ],
+    "excludedSourcePrefixes": [
+      "src/verifier",
+      "src/setup",
+      "src/prover",
+      "cli",
+      "templates",
+      "test"
+    ],
+    "advisory": "GHSA-xp5g-jhg3-3rg2",
+    "disposition": "affected_code_not_present",
+    "reason": "The JavaScript verification/setup APIs are removed from the runtime. Only upstream field, curve, witness and serialization modules remain; Groth16 proof generation uses the fixed websnark WASM, while public signals and on-chain verifier calls are checked by the native adapter.",
+    "sourceGuards": {
+      "Tools/PrivacyProof/main.cjs": "50555f0295641679f9909575697307b04368b20fcf020f2d166b641baa3c8335",
+      "Tools/PrivacyProof/snarkjs-prover-entry.cjs": "3fbfafd908f00a8fd4c936110e4e707168c9d9aac4194a11772fbbacc95be444",
+      "Sources/WalletCore/Networking/PrivacyPoolClient.swift": "83ce538e56a3b1b6cebba517ef99b5feb07e1675082018d254f7d5cff4226cad"
+    }
+  }
+}

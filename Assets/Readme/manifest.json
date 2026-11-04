@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "appVersion": "0.10.1",
+  "appVersion": "0.10.2",
   "reviewedDate": "2026-11-04",
   "renderer": "Sources/VeilWallet/PreviewRenderer.swift (DEBUG only)",
   "data": "Offline in-memory public BIP39 standard vector; synthetic transaction hashes and illustrative balances/prices; no personal wallet or private notes",
@@ -9,7 +9,7 @@
   "images": [
     {
       "file": "hero.svg",
-      "sha256": "5c5ef461055f0840a5263c4860138ee19a7121cdf30dd97ed85bea506c0d2bb0",
+      "sha256": "b8ac8021ed08e2f5c8a7e0ff0c1d02603ba9ae3137f914e89e6756306d5be28e",
       "width": 1600,
       "height": 460,
       "source": "Original vector artwork; shield geometry from Scripts/make-icon.swift"
@@ -26,7 +26,8 @@
         "IDAT",
         "IEND"
       ],
-      "metadata": "sRGB image pixels only; no EXIF or text chunks"
+      "metadata": "sRGB image pixels only; no EXIF or text chunks",
+      "captureVersion": "0.10.1"
     },
     {
       "file": "swap.png",
@@ -40,7 +41,8 @@
         "IDAT",
         "IEND"
       ],
-      "metadata": "sRGB image pixels only; no EXIF or text chunks"
+      "metadata": "sRGB image pixels only; no EXIF or text chunks",
+      "captureVersion": "0.10.1"
     },
     {
       "file": "networks.png",
@@ -54,7 +56,8 @@
         "IDAT",
         "IEND"
       ],
-      "metadata": "sRGB image pixels only; no EXIF or text chunks"
+      "metadata": "sRGB image pixels only; no EXIF or text chunks",
+      "captureVersion": "0.10.1"
     },
     {
       "file": "transactions.png",
@@ -68,7 +71,8 @@
         "IDAT",
         "IEND"
       ],
-      "metadata": "sRGB image pixels only; no EXIF or text chunks"
+      "metadata": "sRGB image pixels only; no EXIF or text chunks",
+      "captureVersion": "0.10.1"
     }
   ]
 }

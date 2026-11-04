@@ -31,5 +31,19 @@ class DocumentationTests(unittest.TestCase):
         self.assertFalse(docs.owned('Vendor/SDK/README.md'))
         self.assertFalse(docs.owned('Configuration/Licenses/SDK/LICENSE.txt'))
 
+    def test_snapshot_does_not_borrow_an_uncommitted_link_target(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); (root/'pending.md').write_text('local only')
+            files = {'README.md': b'[pending](pending.md)'}
+            self.assertTrue(docs.inspect_text('README.md', files['README.md'].decode(), root, files=files))
+            files['pending.md'] = b'reviewed blob'
+            self.assertEqual(docs.inspect_text('README.md', files['README.md'].decode(), root, files=files), [])
+
+    def test_snapshot_accepts_image_directories_and_rejects_encoded_escape(self):
+        files = {'Assets/Readme/image.png': b'public pixels'}
+        self.assertEqual(docs.inspect_text('README.md', '![image](Assets/Readme/image.png)', files=files), [])
+        self.assertEqual(docs.inspect_text('README.md', '[assets](Assets/Readme/)', files=files), [])
+        self.assertTrue(docs.inspect_text('README.md', '[escape](%2Foutside/file)', files=files))
+
 
 if __name__ == '__main__': unittest.main()

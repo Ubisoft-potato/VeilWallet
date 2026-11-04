@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline, redacting audit of the complete Git index or HEAD tree.
+"""Offline, redacting audit of complete Git index, HEAD or historical trees.
 
 Gitleaks scans an isolated copy of exactly those blobs, not the working tree.
 Wallet-specific checks also run over every text blob. Reviewed exceptions are
@@ -42,8 +42,10 @@ def git(*args, data=None):
     return subprocess.check_output(['git', *args], cwd=ROOT, input=data, stderr=subprocess.DEVNULL)
 
 
-def read_tree(source):
-    records = git('ls-files', '--stage', '-z') if source == 'index' else git('ls-tree', '-r', '-z', 'HEAD')
+def read_tree(source, revision='HEAD'):
+    if source not in {'index', 'head'}:
+        raise ValueError('Expected an index or committed tree')
+    records = git('ls-files', '--stage', '-z') if source == 'index' else git('ls-tree', '-r', '-z', revision)
     entries = []
     for record in records.split(b'\0'):
         if not record:
@@ -198,13 +200,52 @@ def audit(files, executable):
     return results
 
 
+def audit_history(executable, include_reflogs=False):
+    if git('rev-parse', '--is-shallow-repository').strip() == b'true':
+        raise ValueError('Full history is required; use fetch-depth: 0')
+    args = ['rev-list', '--all', 'HEAD']
+    if include_reflogs:
+        args.append('--reflog')
+    commits = git(*args).decode().splitlines()
+    trees = {}
+    for commit in commits:
+        tree = git('rev-parse', commit + '^{tree}').decode().strip()
+        if tree in trees:
+            trees[tree]['commits'].append(commit)
+            continue
+        files = read_tree('head', commit)
+        findings = audit(files, executable)
+        trees[tree] = dict(tree=tree, commits=[commit], files=len(files), bytes=sum(map(len, files.values())),
+                           reviewedFindings=sum(item['reviewed'] for item in findings),
+                           unresolvedFindings=sum(not item['reviewed'] for item in findings), findings=findings)
+    if not trees:
+        raise ValueError('No committed history to audit')
+    return dict(version=1, source='history', gitleaksVersion=VERSION, commits=len(commits), trees=list(trees.values()),
+                reviewedFindings=sum(t['reviewedFindings'] for t in trees.values()),
+                unresolvedFindings=sum(t['unresolvedFindings'] for t in trees.values()))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', choices=['index', 'head'], default='index')
+    parser.add_argument('--source', choices=['index', 'head', 'history'], default='index')
+    parser.add_argument('--include-reflogs', action='store_true', help='Also audit local historical commit versions')
     parser.add_argument('--gitleaks', type=Path, default=ROOT / '.tools/gitleaks/gitleaks')
     parser.add_argument('--report', type=Path, help='Write sanitized file/rule/hash metadata; no matched values')
     args = parser.parse_args()
     try:
+        if args.include_reflogs and args.source != 'history':
+            raise ValueError('Reflogs apply only to history scans')
+        if args.source == 'history':
+            report = audit_history(args.gitleaks.resolve(), args.include_reflogs)
+            if args.report:
+                args.report.parent.mkdir(parents=True, exist_ok=True)
+                args.report.write_text(json.dumps(report, indent=2) + '\n')
+            for tree in report['trees']:
+                for item in tree['findings']:
+                    if not item['reviewed']:
+                        print(f"REVIEW {tree['commits'][0][:12]} {item['path']}:{item['line']} [{item['rule']}]")
+            print(f"History audit: {report['commits']} commits, {len(report['trees'])} unique trees, {report['unresolvedFindings']} unresolved")
+            return bool(report['unresolvedFindings'])
         files = read_tree(args.source)
         results = audit(files, args.gitleaks.resolve())
         unresolved = [r for r in results if not r['reviewed']]

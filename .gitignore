@@ -24,6 +24,8 @@ node_modules/
 /Vendor/PrivacyRuntime/artifacts/
 /Vendor/PrivacyRuntime/manifest.json
 /Vendor/PrivacyRuntime/DEPENDENCIES.json
+/Vendor/PrivacyRuntime/LOAD_GRAPH.json
+/Vendor/PrivacyRuntime/MODIFICATIONS.json
 /Vendor/PrivacyRuntime/main.cjs
 /Vendor/PrivacyRuntime/package-lock.json
 /Vendor/PrivacyRuntime/NODE-LICENSE

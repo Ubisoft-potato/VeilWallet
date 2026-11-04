@@ -6,6 +6,7 @@ const fs = require('node:fs'), path = require('node:path'), Module = require('no
 const root = path.resolve(__dirname, '..');
 const moduleRoot = path.join(root, 'Tools/PrivacyProof/node_modules');
 const loaded = new Set();
+const policy = JSON.parse(fs.readFileSync(path.join(root, 'Configuration/PrivacyDependencyPolicy.json'))).snarkjs;
 const original = Module._load;
 Module._load = function(name, parent, isMain) {
   const resolved = Module._resolveFilename(name, parent, isMain);
@@ -15,6 +16,7 @@ Module._load = function(name, parent, isMain) {
 async function main() {
   const helper = require('../Tools/PrivacyProof/main.cjs');
   const result = await helper.run({action:'publicFixtureProof',preimage:'00'.repeat(62),recipient:'0x000000000000000000000000000000000000dEaD',relayer:'0',fee:'0'}, path.join(root,'Vendor/PrivacyRuntime/artifacts'));
+  if ([...loaded].some(file => /[/\\]snarkjs[/\\]src[/\\](verifier|setup|prover)/.test(file))) throw Error('Legacy verification/setup code entered the runtime load graph');
   const packages = new Set();
   for (const file of loaded) {
     let directory = path.dirname(file);
@@ -31,6 +33,7 @@ async function main() {
     const relative=path.relative(moduleRoot,source), target=path.join(destination,relative);
     fs.cpSync(source,target,{recursive:true,filter:p=>{
       const rel=path.relative(source,p).split(path.sep);
+      if (path.basename(source)==='snarkjs' && policy.excludedSourcePrefixes.some(prefix => rel.join('/').startsWith(prefix))) return false;
       if (path.basename(source)==='websnark' && ['test','benchmarks','example'].includes(rel[0])) return false;
       if (path.basename(source)==='websnark' && rel[0]==='build' && rel.length>1 && rel[1]!=='groth16_wasm.js') return false;
       return !rel.includes('node_modules') && !rel.includes('.git') && !p.endsWith('.node') && !rel.includes('prebuilds');
@@ -41,6 +44,8 @@ async function main() {
   fs.copyFileSync(path.join(root,'Tools/PrivacyProof/main.cjs'),path.join(root,'Vendor/PrivacyRuntime/main.cjs'));
   fs.copyFileSync(path.join(root,'Tools/PrivacyProof/package-lock.json'),path.join(root,'Vendor/PrivacyRuntime/package-lock.json'));
   fs.writeFileSync(path.join(root,'Vendor/PrivacyRuntime/DEPENDENCIES.json'),JSON.stringify(notices,null,2)+'\n');
+  fs.writeFileSync(path.join(root,'Vendor/PrivacyRuntime/LOAD_GRAPH.json'),JSON.stringify([...loaded].map(file=>path.relative(moduleRoot,file)).sort(),null,2)+'\n');
+  fs.copyFileSync(path.join(root,'.build/privacy-dependency-patches.json'),path.join(root,'Vendor/PrivacyRuntime/MODIFICATIONS.json'));
   fs.writeFileSync(path.join(root,'.build/privacy-public-proof.json'),JSON.stringify(result)+'\n');
   process.stdout.write('PASS: complete public-fixture Groth16 proof; collected '+notices.length+' source packages with native addons excluded\n');
 }

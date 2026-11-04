@@ -1,6 +1,6 @@
 ed25519/ed25519.go
-ed25519/edwards25519/edwards25519.go
 ed25519/edwards25519/const.go
+ed25519/edwards25519/edwards25519.go
 // Copyright (c) 2016 The Go Authors. All rights reserved.
 // Copyright (c) 2021 Alonso Villegas.  All rights reserved.
 //
