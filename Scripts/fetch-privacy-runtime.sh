@@ -12,11 +12,12 @@ mkdir -p "$cache/gnupg" Vendor/PrivacyRuntime/artifacts
 chmod 700 "$cache/gnupg"
 fetch() { if [ ! -f "$2" ]; then curl --fail --location --proto '=https' --tlsv1.2 "$1" -o "$2.partial"; mv "$2.partial" "$2"; fi; }
 fetch "https://nodejs.org/dist/v$version/$archive" "$cache/$archive"
-fetch "https://nodejs.org/dist/v$version/SHASUMS256.txt.asc" "$cache/SHASUMS256.txt.asc"
+fetch "https://nodejs.org/dist/v$version/SHASUMS256.txt" "$cache/SHASUMS256.txt"
+fetch "https://nodejs.org/dist/v$version/SHASUMS256.txt.sig" "$cache/SHASUMS256.txt.sig"
 printf '%s  %s\n' 610b8d249da3d5733f5a128def2dd0294dbbf5b5713e6ca2529db8db419dee00 Vendor/PrivacyRuntime/provenance/node-release-keyring.kbx | shasum -a 256 -c -
-gpgv --homedir "$cache/gnupg" --keyring "$PWD/Vendor/PrivacyRuntime/provenance/node-release-keyring.kbx" --output "$cache/SHASUMS256.verified" "$cache/SHASUMS256.txt.asc"
+gpgv --homedir "$cache/gnupg" --keyring "$PWD/Vendor/PrivacyRuntime/provenance/node-release-keyring.kbx" "$cache/SHASUMS256.txt.sig" "$cache/SHASUMS256.txt"
 printf '%s  %s\n' aa9549349e47dffaa42dcf95d6e06ade8c4bdafc980979883b88767670df385a "$cache/$archive" | shasum -a 256 -c -
-awk -v name="$archive" '$1=="aa9549349e47dffaa42dcf95d6e06ade8c4bdafc980979883b88767670df385a" && $2==name {found=1} END {exit !found}' "$cache/SHASUMS256.verified"
+awk -v name="$archive" '$1=="aa9549349e47dffaa42dcf95d6e06ade8c4bdafc980979883b88767670df385a" && $2==name {found=1} END {exit !found}' "$cache/SHASUMS256.txt"
 tar -xOzf "$cache/$archive" "node-v$version-darwin-arm64/bin/node" > Vendor/PrivacyRuntime/node
 tar -xOzf "$cache/$archive" "node-v$version-darwin-arm64/LICENSE" > Vendor/PrivacyRuntime/NODE-LICENSE
 chmod 755 Vendor/PrivacyRuntime/node

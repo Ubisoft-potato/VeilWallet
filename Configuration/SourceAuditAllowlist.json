@@ -118,11 +118,11 @@
     },
     {
       "path": "Scripts/fetch-privacy-runtime.sh",
-      "sha256": "57607cc9a3f69fd2c24637f8ebd2c528bc0b6ce886d91583fbfbf018707febe8",
+      "sha256": "3fee5a89daaa94052b6e997697cb9f770655c8f290af7250f1b8239df60e88dc",
       "rules": [
         "hex-32-bytes"
       ],
-      "reason": "Pinned public Node archive/keyring checksum literals are unchanged from the committed bootstrap. Added the hash-checked prover-only entry preparation step; no credentials or wallet material."
+      "reason": "Unchanged pinned public Node archive and release-keyring SHA256 values. Verify the official detached signature over the original checksum file for consistent GnuPG behavior across CI and local builds."
     },
     {
       "path": "Scripts/fetch-tor.sh",
