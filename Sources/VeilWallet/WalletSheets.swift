@@ -217,7 +217,7 @@ struct ReceiveView: View {
                     if !account.supportsPublicBalanceQuery && model.chain.family == .litecoin {
                         Text(L("message.mweb_balance_scanning_and_sending_are_not_available_in_this")).font(.system(size: 11)).foregroundStyle(.orange).fixedSize(horizontal: false, vertical: true)
                     }
-                    Button(L("message.copy_address")) { model.copyAddress(account.networkAddress) }.buttonStyle(PrimaryButton())
+                    ClipboardCopyButton(text: account.networkAddress, title: L("message.copy_address")).buttonStyle(PrimaryButton())
                     Text(L("message.the_clipboard_clears_after_30_seconds_check_the_address_character")).font(.system(size: 11)).foregroundStyle(.secondary)
                 }.frame(maxWidth: .infinity).padding(.vertical, 15)
             }
@@ -263,7 +263,8 @@ struct AddTokenView: View {
                             HStack(spacing: 12) {
                                 AssetLogo(chain: model.chain, token: preset.token, size: 36)
                                 VStack(alignment: .leading, spacing: 5) { Text(preset.symbol + " · " + preset.name).font(.system(size: 13, weight: .medium)); Text(LK(preset.provenance) + L("message.decimals_0", preset.decimals)).font(.system(size: 10)).foregroundStyle(Color.veilAccent); Text(preset.contract).font(.system(size: 9, design: .monospaced)).textSelection(.enabled) }
-                                Spacer(); Button { model.copyAddress(preset.contract) } label: { Image(systemName: "doc.on.doc") }.help(L("message.copy_contract"))
+                                Spacer()
+                                ClipboardCopyButton(text: preset.contract, title: L("message.copy_contract"), iconOnly: true)
                             }
                         }
                     }

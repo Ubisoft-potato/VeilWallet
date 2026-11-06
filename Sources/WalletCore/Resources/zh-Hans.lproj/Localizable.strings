@@ -3,6 +3,8 @@
 "action.close" = "关闭窗口";
 "brand.tagline" = "YOUR KEYS. YOUR QUIET.";
 "brand.wordmark" = "veil";
+"clipboard.copied" = "已复制";
+"clipboard.copy_failed" = "复制失败";
 "disclosure.collapse" = "收起";
 "disclosure.expand" = "展开";
 "fee.gas_price" = "Gas 单价 · Gwei";

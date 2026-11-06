@@ -32,7 +32,7 @@ python3 Scripts/check-release-policy.py --configuration-only
 
 The first two commands validate actual build/source materials; the second also rejects a disabled policy. The third is a configuration check for source-only jobs and cannot authorize upload or emit an enabled output. It does not bypass the full packaging gate.
 
-Matching version tags trigger a separate GitHub Actions release job with write access limited to that job. It verifies the artifact checksums and source commit, creates a draft prerelease, uploads only the verified files, downloads them again and verifies their checksums before publishing. Branch builds produce an Actions artifact without creating a Release. Published releases are not overwritten by reruns. No private signing credentials are required.
+Pushing a new version tag starts the DMG build. The separate GitHub Actions release job has limited write access. It verifies the artifact checksums and source commit, creates a draft prerelease, uploads only the verified files, downloads them again and verifies their checksums before publishing. Published releases are not overwritten by reruns. No private signing credentials are required.
 
 Source checks use exact HEAD/index blobs and full Git history. Commit all reviewed documentation, then run:
 

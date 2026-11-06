@@ -68,12 +68,15 @@ class PackagingTests(unittest.TestCase):
 
     def test_workflow_only_publishes_verified_tagged_artifacts(self):
         workflow = (ROOT / '.github/workflows/macos-dmg.yml').read_text()
+        triggers = workflow.split('\non:\n', 1)[1].split('\n\n', 1)[0]
+        self.assertEqual(triggers, "  push:\n    tags: ['v*']")
         self.assertIn('persist-credentials: false', workflow)
         self.assertIn('contents: read', workflow)
         self.assertIn('cache: false', workflow)
         self.assertNotIn('secrets.', workflow)
         self.assertNotIn('pull_request_target', workflow)
         build, release = workflow.split('  release:', 1)
+        self.assertIn('if: github.event.created', build)
         self.assertNotIn('contents: write', build)
         self.assertIn("startsWith(github.ref, 'refs/tags/v')", release)
         self.assertIn("needs.build.outputs.distribution == 'true'", release)

@@ -19,7 +19,7 @@ struct AccountsView: View {
                             Text(account.profile?.name ?? account.profileID).font(.system(size: 15, weight: .semibold)); Spacer()
                             if account.requiresBinding && !account.isBound { Pill(text: L("message.on_chain_account_not_linked"), color: .orange) }
                             if account.requiresBinding { Button(account.isBound ? L("message.edit_link") : L("message.link_account")) { binding = account } }
-                            else { Button(L("message.copy_address")) { model.copyAddress(account.networkAddress) } }
+                            else { ClipboardCopyButton(text: account.networkAddress, title: L("message.copy_address")) }
                         }
                         Text(account.networkAddress).font(.system(size: 12, design: .monospaced)).textSelection(.enabled).fixedSize(horizontal: false, vertical: true)
                         if let index = account.addressIndex { Text(L("message.mweb_subaddress_index_0", index)).font(.system(size: 10)).foregroundStyle(.secondary) }

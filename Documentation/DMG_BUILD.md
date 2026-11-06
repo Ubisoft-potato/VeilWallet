@@ -27,7 +27,7 @@ Release maps checkout paths, uses upstream portable Go implementations and strip
 
 ## GitHub Actions
 
-[macos-dmg.yml](../.github/workflows/macos-dmg.yml) runs on main pushes, v* tags and manual dispatch. Tags must match [Info.plist](../Configuration/Info.plist), e.g. v0.10.2.
+[macos-dmg.yml](../.github/workflows/macos-dmg.yml) builds when a new `v*` tag is pushed. The tag must match the version in [Info.plist](../Configuration/Info.plist), for example `v0.10.6`.
 
 Pinned environment: ARM64 macos-15, Xcode 26.3, Go 1.26.10. See [runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners) and [image inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md). Unexpected architecture/toolchain stops the build.
 

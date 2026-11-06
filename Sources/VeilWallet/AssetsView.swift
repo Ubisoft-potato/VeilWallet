@@ -103,7 +103,10 @@ struct AssetsView: View {
             AssetLogo(chain: query.chain, token: query.token, size: 40, nativeAsset: query.token == nil)
             VStack(alignment: .leading, spacing: 6) {
                 HStack(spacing: 7) { Text(query.symbol).font(.system(size: 15, weight: .semibold)); Text(query.chain.name).font(.system(size: 10)).foregroundStyle(.secondary); if let token = query.token, let preset = TokenCatalog.preset(for: token), !preset.provenance.isEmpty { Text(LK(preset.provenance)).font(.system(size: 9)).foregroundStyle(Color.veilAccent) } }
-                HStack(spacing: 8) { Text(query.account.networkAddress).font(.system(size: 10, design: .monospaced)).lineLimit(1).textSelection(.enabled); IconButton(symbol: "doc.on.doc", title: L("message.copy_receiving_address")) { model.copyAddress(query.account.networkAddress) } }.foregroundStyle(.secondary)
+                HStack(spacing: 8) {
+                    Text(query.account.networkAddress).font(.system(size: 10, design: .monospaced)).lineLimit(1).textSelection(.enabled)
+                    ClipboardCopyButton(text: query.account.networkAddress, title: L("message.copy_receiving_address"), iconOnly: true)
+                }.foregroundStyle(.secondary)
                 if let token = query.token { Text(L("message.contract") + token.contract).font(.system(size: 9, design: .monospaced)).foregroundStyle(.secondary).lineLimit(1).textSelection(.enabled) }
             }.frame(maxWidth: .infinity, alignment: .leading)
             Spacer(minLength: 10)
@@ -137,7 +140,7 @@ struct AssetsView: View {
             }.foregroundStyle(.secondary)
             HStack(spacing: 8) {
                 Text(account.networkAddress).font(.system(size: 12, design: .monospaced)).textSelection(.enabled).fixedSize(horizontal: false, vertical: true)
-                IconButton(symbol: "doc.on.doc", title: L("message.copy_address_clipboard_clears_after_30_seconds")) { model.copyAddress(account.networkAddress) }
+                ClipboardCopyButton(text: account.networkAddress, title: L("message.copy_address_clipboard_clears_after_30_seconds"), iconOnly: true)
             }.foregroundStyle(.secondary)
             if let snapshot = model.snapshot(AssetQuery(walletID: wallet.id, chain: model.chain, account: account)), let date = snapshot.updatedAt {
                 Text((snapshot.error == nil ? L("message.last_queried") : L("message.update_failed_previous_balance")) + walletDate(date, date: .omitted, time: .shortened)).font(.system(size: 10)).foregroundStyle(snapshot.error == nil ? Color.secondary : .orange)

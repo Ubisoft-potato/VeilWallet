@@ -253,14 +253,6 @@ import BigInt
             else { try await refreshNativeActivity(activity, operation: operation) }
         } catch { if operation == epoch { self.error = error.localizedDescription } }
     }
-    func copyAddress(_ text: String) {
-        NSPasteboard.general.clearContents(); NSPasteboard.general.setString(text, forType: .string)
-        let change = NSPasteboard.general.changeCount
-        Task {
-            try? await Task.sleep(for: .seconds(30))
-            if NSPasteboard.general.changeCount == change { NSPasteboard.general.clearContents() }
-        }
-    }
     func prepareNative(recipient: String, amount: String, memo: String = "", gasPrice: String? = nil) async throws -> NativeTransferPlan {
         guard ready, let wallet, let account, canSendCurrentAccount else { throw WalletError.locked }
         try ensureNativeAccountAvailable()

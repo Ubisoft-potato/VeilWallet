@@ -50,7 +50,10 @@ struct PrivacyPoolView: View {
                             noteDetails(note)
                             HStack {
                                 Button(L("message.verify_password_and_reveal_backup")) { run { try await reveal(note) } }.disabled(busy || password.isEmpty)
-                                if let revealed { Button(L("message.copy_note_clear_after_30_seconds")) { model.copyAddress(revealed) }; Button(L("message.hide")) { self.revealed = nil } }
+                                if let revealed {
+                                    ClipboardCopyButton(text: revealed, title: L("message.copy_note_clear_after_30_seconds"))
+                                    Button(L("message.hide")) { self.revealed = nil }
+                                }
                             }
                             if let revealed {
                                 Text(revealed).font(.system(size: 11, design: .monospaced)).textSelection(.enabled).padding(12).background(Color.veilAccent.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))

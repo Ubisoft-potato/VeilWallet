@@ -974,11 +974,11 @@
     },
     {
       "path": "Sources/WalletCore/Resources/en.lproj/Localizable.strings",
-      "sha256": "917f37de82cef0fb4c7b21b376a77b68c5ae34f1fe3617d29f96b0a2c1869467",
+      "sha256": "f5da1ffa15394ea07b502b7ced8dc3d722bc7d4222594c06b7ab9a8a12ca463d",
       "rules": [
         "secret-literal"
       ],
-      "reason": "Existing reviewed UI labels are byte-for-byte unchanged; appended mnemonic input labels contain no credentials or wallet material."
+      "reason": "Existing reviewed UI labels are byte-for-byte unchanged. The two new labels describe copy success and failure."
     },
     {
       "path": "Sources/WalletCore/Resources/i18n.json",
@@ -990,11 +990,11 @@
     },
     {
       "path": "Sources/WalletCore/Resources/zh-Hans.lproj/Localizable.strings",
-      "sha256": "bd85e4ca5755717c38fb7bb418c51ddeb4954616e783a04770c31b485532b1dd",
+      "sha256": "611ad348c4933076509c3774b3677b94c1931a37c6e24f49dad4a1dec443c7be",
       "rules": [
         "secret-literal"
       ],
-      "reason": "Existing reviewed UI labels are byte-for-byte unchanged; appended mnemonic input labels contain no credentials or wallet material."
+      "reason": "Existing reviewed UI labels are byte-for-byte unchanged. The two new labels describe copy success and failure."
     },
     {
       "path": "Tests/WalletCoreTests/AssetExperienceTests.swift",

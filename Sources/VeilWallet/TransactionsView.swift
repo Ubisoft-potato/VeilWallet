@@ -111,7 +111,7 @@ private struct TransactionGroupView: View {
                                 HStack { Text((item.transaction?.action.label ?? L("message.legacy_record")) + " · " + item.statusLabel).font(.system(size: 12, weight: .medium)); Spacer(); Text(walletDate(item.date, date: .abbreviated, time: .shortened)).font(.system(size: 10)).foregroundStyle(.secondary) }
                                 HStack(spacing: 12) {
                                     Text(item.hash).font(.system(size: 12, design: .monospaced)).textSelection(.enabled).fixedSize(horizontal: false, vertical: true).frame(maxWidth: .infinity, alignment: .leading)
-                                    IconButton(symbol: "doc.on.doc", title: L("message.copy_transaction_hash")) { model.copyAddress(item.hash) }
+                                    ClipboardCopyButton(text: item.hash, title: L("message.copy_transaction_hash"), iconOnly: true)
                                 }
                             }.padding(14).background(Color.veilPanel, in: RoundedRectangle(cornerRadius: 10))
                         }

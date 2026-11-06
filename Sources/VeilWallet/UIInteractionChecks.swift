@@ -356,6 +356,8 @@ private struct InteractionFrames: PreferenceKey {
         }
         try require(state.count == 8, L("message.all_six_wrapped_buttons_respond_independently_once"))
         checks.append("action flow: six independent clicks, wraps at 360 pt viewport, no overflow")
+        try checkClipboardFeedback()
+        checks.append("clipboard: native icon and text clicks copy to a private test pasteboard and show temporary confirmation")
         state.disabled = false; settle(controlsHost)
         if let bitmap = controlsHost.bitmapImageRepForCachingDisplay(in: controlsHost.bounds) {
             controlsHost.cacheDisplay(in: controlsHost.bounds, to: bitmap)
@@ -363,6 +365,27 @@ private struct InteractionFrames: PreferenceKey {
         }
         let report: [String: Any] = ["version": "0.10.1", "networkStarted": false, "vaultOpened": false, "nativePointerEvents": true, "checks": checks, "passed": true]
         try JSONSerialization.data(withJSONObject: report, options: [.prettyPrinted, .sortedKeys]).write(to: destination, options: .atomic)
+    }
+    private static func checkClipboardFeedback() throws {
+        let pasteboard = NSPasteboard.withUniqueName()
+        defer { pasteboard.releaseGlobally() }
+        let fixture = "public clipboard fixture"
+        for iconOnly in [true, false] {
+            let geometry = Geometry(), labels = LanguageProbe()
+            let presentation = iconOnly ? "icon" : "text"
+            let button = ClipboardCopyButton(text: fixture, title: L("message.copy_address"), iconOnly: iconOnly, pasteboard: pasteboard)
+                .buttonStyle(SecondaryButton())
+                .interactionFrame("clipboard.button")
+            let (window, host) = makeHost(button, size: NSSize(width: 240, height: 120), geometry: geometry, languageProbe: labels)
+            defer { window.orderOut(nil) }
+            pasteboard.clearContents()
+            try require(labels.labels["clipboard.feedback"] == "", "clipboard.initialLabel")
+            try click(try frame("clipboard.button", in: geometry), host: host)
+            try require(labels.labels["clipboard.feedback"] == L("clipboard.copied"), "clipboard.\(presentation).successLabel")
+            try require(pasteboard.string(forType: .string) == fixture, "clipboard.\(presentation).fixtureWritten")
+            wait(2.2, host: host)
+            try require(labels.labels["clipboard.feedback"] == "", "clipboard.feedbackDismissed")
+        }
     }
     private static func makeHost<V: View>(_ root: V, size: NSSize, geometry: Geometry, languageProbe: LanguageProbe? = nil) -> (NSWindow, NSHostingView<some View>) {
         let view = NSHostingView(rootView: root.preferredColorScheme(.dark).frame(width: size.width, height: size.height).background(Color.veilBackground).coordinateSpace(name: "interaction-check").onPreferenceChange(InteractionFrames.self) { geometry.frames = $0 }.onPreferenceChange(I18nLabels.self) { languageProbe?.labels = $0 })

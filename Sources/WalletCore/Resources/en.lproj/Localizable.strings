@@ -3,6 +3,8 @@
 "action.close" = "Close window";
 "brand.tagline" = "YOUR KEYS. YOUR QUIET.";
 "brand.wordmark" = "veil";
+"clipboard.copied" = "Copied";
+"clipboard.copy_failed" = "Couldn’t copy";
 "disclosure.collapse" = "Collapse";
 "disclosure.expand" = "Expand";
 "fee.gas_price" = "Gas Price · Gwei";
