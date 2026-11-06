@@ -190,6 +190,17 @@ Help improve native UX, localization, protocol correctness, privacy validation, 
 
 For security issues, use [SECURITY.md](SECURITY.md). Do not place real wallet material, notes, signed transactions or account screenshots in public issues.
 
+## Support Veil Wallet
+
+If Veil Wallet has been useful to you, a crypto tip helps me spend more time maintaining and improving the app. Thanks for using Veil Wallet!
+
+- **EVM** — `0x117d91E6e734aBdF89EA4F08e53d801DcFb7A973`
+- **Bitcoin (BTC)** — `bc1qfcj53060sw60udkyg4tthn6pulrzajkxuhpph9`
+- **Solana (SOL)** — `B9iFrTKHtuHRYKuGjUm2mFKnSjTTovR6eSLM7DkoZPAM`
+- **TRON (TRX)** — `TXnUkeeH7hSLZjb6ci9SCUaQgLL1VEVZHZ`
+
+Please select the matching network in your wallet before sending.
+
 ## Project map
 
 ~~~text
