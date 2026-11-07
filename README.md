@@ -1,6 +1,6 @@
 ![Veil Wallet — self-custody, built for macOS](Assets/Readme/hero.svg)
 
-[Features](#what-you-can-do) · [Install](#install) · [Build](#build-from-source) · [Privacy](#privacy-and-local-data) · [Contribute](CONTRIBUTING.md)
+[Product site](https://ubisoft-potato.github.io/VeilWallet/) · [Features](#what-you-can-do) · [Install](#install) · [Build](#build-from-source) · [Privacy](#privacy-and-local-data) · [Contribute](CONTRIBUTING.md)
 
 **A native macOS wallet for local keys, multichain assets and Tor-routed connections.**
 

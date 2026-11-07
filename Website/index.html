@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0c0b11">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="Veil Wallet is an open-source native macOS wallet for self-custody, multichain assets, and Tor-routed connections.">
+  <meta property="og:title" content="Veil Wallet — Your keys. Your quiet.">
+  <meta property="og:description" content="A native, open-source Mac wallet with local keys and built-in Tor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ubisoft-potato.github.io/VeilWallet/">
+  <meta property="og:image" content="https://ubisoft-potato.github.io/VeilWallet/screenshots/overview.png">
+  <meta property="og:image:alt" content="Veil Wallet's native portfolio view with illustrative offline balances.">
+  <link rel="canonical" href="https://ubisoft-potato.github.io/VeilWallet/">
+  <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Veil Wallet — A native self-custody wallet for macOS</title>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap header-inner">
+      <a class="brand" href="./">
+        <img src="mark.svg" width="30" height="30" alt="">
+        <span>Veil Wallet</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#install">Install</a>
+      </nav>
+      <a class="repository" href="https://github.com/Ubisoft-potato/VeilWallet">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker"><span class="status-dot" aria-hidden="true"></span> Open source <span aria-hidden="true">/</span> Native macOS</p>
+        <h1 id="hero-title">Your keys.<br><span>Your quiet.</span></h1>
+        <p class="lede">A native Mac wallet for self-custody, multichain assets, and connections through Tor.</p>
+        <div class="actions">
+          <a class="button button-primary" href="https://github.com/Ubisoft-potato/VeilWallet/releases/download/v0.10.6/VeilWallet-0.10.6-macOS-arm64.dmg">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4"/></svg>
+            Download for Mac
+          </a>
+          <a class="button button-secondary" href="#features">Explore features <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="metadata">Apple Silicon <span aria-hidden="true">·</span> macOS 14+ <span aria-hidden="true">·</span> Development preview</p>
+      </div>
+
+      <figure class="hero-figure">
+        <div class="app-frame">
+          <div class="app-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Veil Wallet for macOS</span></div>
+          <img src="screenshots/overview.png" width="2560" height="2000" alt="Veil Wallet's native portfolio view with network navigation, a USD estimate, and per-asset controls." fetchpriority="high">
+        </div>
+        <figcaption><span>01 / Portfolio</span><span>Offline demo with illustrative balances</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="wrap network-strip">
+      <p class="kicker">Explore networks</p>
+      <ul aria-label="Selected supported networks">
+        <li><img src="networks/asset-eth.png" alt="" width="22" height="22">Ethereum</li>
+        <li><img src="networks/asset-btc.png" alt="" width="22" height="22">Bitcoin</li>
+        <li><img src="networks/asset-sol.png" alt="" width="22" height="22">Solana</li>
+        <li><img src="networks/asset-trx.png" alt="" width="22" height="22">TRON</li>
+        <li><img src="networks/asset-ltc.png" alt="" width="22" height="22">Litecoin</li>
+        <li><img src="networks/asset-xmr.png" alt="" width="22" height="22">Monero</li>
+      </ul>
+      <a class="text-link" href="https://github.com/Ubisoft-potato/VeilWallet/blob/main/Documentation/PRODUCT_SCOPE.md">Network support <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <section id="features" class="wrap section" aria-labelledby="features-title">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">01 / Inside Veil</p>
+          <h2 id="features-title">See what you hold.<br>Know what you sign.</h2>
+        </div>
+        <p>Check balances and USD estimates, move between networks, and review the details before you approve a transaction.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="feature-copy">
+            <h3>Find your network</h3>
+            <p>Search by name, symbol, or chain ID. Filter for networks with balances and manage the tokens you want to see.</p>
+          </div>
+          <figure class="feature-figure">
+            <img src="screenshots/networks.png" alt="The native network picker with search, network logos, and filters." width="880" height="1120" loading="lazy" decoding="async">
+          </figure>
+        </article>
+        <article class="feature">
+          <div class="feature-copy">
+            <h3>Review each swap</h3>
+            <p>Use supported EVM and TRON exchanges. Check the quote and confirm token approval and the swap separately.</p>
+          </div>
+          <figure class="feature-figure">
+            <img src="screenshots/swap.png" alt="A native swap form showing the protocol, token amounts, and slippage settings." width="1300" height="1520" loading="lazy" decoding="async">
+          </figure>
+        </article>
+      </div>
+
+      <article class="transactions">
+        <div class="transaction-copy">
+          <p class="kicker">Transaction history</p>
+          <h3>Follow a transaction after you send it.</h3>
+          <p>Check receipts, expand transaction hashes, and find pending transfers in your encrypted local archive.</p>
+          <a class="text-link" href="https://github.com/Ubisoft-potato/VeilWallet/blob/main/Documentation/TRANSACTIONS.md">Transaction management <span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="transaction-figure">
+          <img src="screenshots/transactions.png" alt="Veil Wallet's transaction history with grouped entries, statuses, and transaction details." width="2480" height="1800" loading="lazy" decoding="async">
+        </figure>
+      </article>
+      <div class="feature-notes">
+        <p>Product screenshots use offline test data.</p>
+        <a class="text-link" href="https://github.com/Ubisoft-potato/VeilWallet/blob/main/Documentation/BRIDGES_PRIVACY.md">Bridge and privacy pool support <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section id="privacy" class="privacy section" aria-labelledby="privacy-title">
+      <div class="wrap privacy-inner">
+        <div>
+          <p class="kicker">02 / Privacy model</p>
+          <h2 id="privacy-title">Keys stay on your Mac.</h2>
+          <p class="section-lede">Import a 12- or 24-word recovery phrase or a supported private key into a password-protected vault. Signing happens locally. Use watch-only mode to follow public addresses without importing keys.</p>
+          <a class="text-link" href="https://github.com/Ubisoft-potato/VeilWallet/blob/main/Documentation/SECURITY.md">Read the security model <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="connection">
+          <p class="kicker">App request path</p>
+          <ol aria-label="From the native app to the network endpoint">
+            <li><span>01</span><strong>Veil Wallet</strong><small>Your Mac</small></li>
+            <li><span>02</span><strong>Bundled Tor</strong><small>SOCKS proxy</small></li>
+            <li><span>03</span><strong>Chain node</strong><small>Network endpoint</small></li>
+          </ol>
+          <p>Tor starts after unlock. Veil passes hostnames through its Tor proxy and blocks network actions whenever Tor is disconnected.</p>
+          <p class="muted">Public transactions and addresses remain visible on-chain.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="install" class="wrap section install-section" aria-labelledby="install-title">
+      <div class="install">
+        <div>
+          <p class="kicker"><span class="status-dot" aria-hidden="true"></span> v0.10.6 development preview</p>
+          <h2 id="install-title">Install Veil Wallet.</h2>
+          <p class="section-lede">Available as a DMG for Apple Silicon Macs running macOS 14 or later.</p>
+          <div class="actions">
+            <a class="button button-primary" href="https://github.com/Ubisoft-potato/VeilWallet/releases/download/v0.10.6/VeilWallet-0.10.6-macOS-arm64.dmg">Download DMG <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="https://github.com/Ubisoft-potato/VeilWallet/releases">All releases <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="install-guide">
+          <h3>On your Mac</h3>
+          <ol>
+            <li>Download the DMG and <a href="https://github.com/Ubisoft-potato/VeilWallet/releases/download/v0.10.6/SHA256SUMS">matching checksums</a>.</li>
+            <li><a href="https://github.com/Ubisoft-potato/VeilWallet#install-a-verified-dmg">Verify the download</a>, open the DMG, and drag Veil Wallet into Applications.</li>
+            <li>Launch Veil Wallet and create or unlock your local vault.</li>
+          </ol>
+          <p class="muted">Ad-hoc signed, unnotarized development build.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="./"><img src="mark.svg" alt="" width="28" height="28"><span>Veil Wallet</span></a>
+        <p class="muted">Built with SwiftUI and AppKit.</p>
+      </div>
+      <nav aria-label="Project links">
+        <a href="https://github.com/Ubisoft-potato/VeilWallet">Source</a>
+        <a href="https://github.com/Ubisoft-potato/VeilWallet/issues">Issues</a>
+        <a href="https://github.com/Ubisoft-potato/VeilWallet#support-veil-wallet">Support</a>
+        <a href="https://github.com/Ubisoft-potato/VeilWallet/blob/main/LICENSE">MIT License</a>
+        <a href="https://github.com/Ubisoft-potato/VeilWallet/blob/main/Documentation/ASSET_ARTWORK.json">Artwork</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
