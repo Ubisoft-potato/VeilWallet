@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedDate": "2026-11-04",
+  "reviewedDate": "2026-11-11",
   "entries": [
     {
       "path": "Configuration/AppIcon.icns",
@@ -174,7 +174,7 @@
     },
     {
       "path": "Sources/WalletCore/Models/Bridge.swift",
-      "sha256": "90b6bbbf0274d0bfe5bc320ad87592f32af312808b7fba3273ff79ca585204b8",
+      "sha256": "67f60b3a19a62d98f3fd777c66e59e67c5df43a724e320f82da1ed2871780200",
       "rules": [
         "gitleaks/generic-api-key"
       ],
@@ -198,7 +198,7 @@
     },
     {
       "path": "Sources/WalletCore/Networking/NativeBalanceClient.swift",
-      "sha256": "f0828618055e6a3498d84c70733ff186bd7376ae396ce9825e855125fc690417",
+      "sha256": "bddb656375329c76fd79efed8bd6a376f69c5c0e8c547cde3a44c2cea9dbba58",
       "rules": [
         "hex-32-bytes"
       ],
@@ -214,7 +214,7 @@
     },
     {
       "path": "Sources/WalletCore/Networking/TronContractClient.swift",
-      "sha256": "898202211bcebfab6a7363297a1062e62714ceb46d326fbd1b674c5efd368219",
+      "sha256": "3cbc7e06a18769e9dff7152da8f74b2a1388211e19c670807ff91795438a358b",
       "rules": [
         "hex-32-bytes"
       ],
@@ -974,7 +974,7 @@
     },
     {
       "path": "Sources/WalletCore/Resources/en.lproj/Localizable.strings",
-      "sha256": "f5da1ffa15394ea07b502b7ced8dc3d722bc7d4222594c06b7ab9a8a12ca463d",
+      "sha256": "83fd649c156de24f5f19f94b29df1c2d951d33a1a80d366d506a217de702c992",
       "rules": [
         "secret-literal"
       ],
@@ -990,7 +990,7 @@
     },
     {
       "path": "Sources/WalletCore/Resources/zh-Hans.lproj/Localizable.strings",
-      "sha256": "611ad348c4933076509c3774b3677b94c1931a37c6e24f49dad4a1dec443c7be",
+      "sha256": "51bedbad80c3b068f5c0ff05494f11483d9b8c487b98c2a8fd168c19adeb684c",
       "rules": [
         "secret-literal"
       ],
@@ -1007,7 +1007,7 @@
     },
     {
       "path": "Tests/WalletCoreTests/BridgePrivacyTests.swift",
-      "sha256": "de21e6c3f67b19ddfa79dee5ab4af30aaff40118c56b6a71c0054758a8932991",
+      "sha256": "09f0d77fda4a08258cc4e061424271ce46c387255ac5a5110f00474d52d1f4c2",
       "rules": [
         "hex-32-bytes"
       ],
@@ -1115,7 +1115,7 @@
     },
     {
       "path": "Tests/WalletCoreTests/TransactionDevchainTests.swift",
-      "sha256": "84938f2a21f890dc8f05f05bf4f162b4246c86f196475114afe1ce4c58b9f14e",
+      "sha256": "9b62cab9c94db4e2237fcb07bcebb56304d9dde586f5ffa4aba38f909cabf38b",
       "rules": [
         "mnemonic-words"
       ],
@@ -1131,7 +1131,7 @@
     },
     {
       "path": "Tests/WalletCoreTests/TronDexTests.swift",
-      "sha256": "d2c1ddfd5e7478b4e9a8d4fe76e3cfa6f985af2bbdbca5d11050467b174b1769",
+      "sha256": "71c068df917fb605e86c64dbc0e5bb84da52af29388ec55e95cefb6692e25219",
       "rules": [
         "hex-32-bytes"
       ],
@@ -2448,6 +2448,22 @@
         "hex-32-bytes"
       ],
       "reason": "Pinned public upstream Tor, Tor build recipe, lyrebird, Monero and Node source archive SHA256 checksums; reviewed against official release inventories and fixed upstream revisions. No credentials or wallet material."
+    },
+    {
+      "path": "Sources/WalletCore/Models/TronNetwork.swift",
+      "sha256": "d51b33b641b3f8144e3b4ee564ce235131f6b1c717956cc6095477e33e079505",
+      "rules": [
+        "hex-32-bytes"
+      ],
+      "reason": "Pinned public TRON mainnet and Nile genesis block hashes; independently checked through official network RPC and successful Nile transactions."
+    },
+    {
+      "path": "Tools/ProtocolAcceptance/prepare-privacy.cjs",
+      "sha256": "efb48f66d21fef7e3de500f704c4aea6ae52a710bbaf37607b229a48aa2799cc",
+      "rules": [
+        "hex-32-bytes"
+      ],
+      "reason": "SHA256 of public ETHTornado artifact from pinned Tornado CLI revision 378ddf8b8b92a4924037d7b64a94dbfd5a7dd6e8; isolated developer fixture only."
     }
   ]
 }

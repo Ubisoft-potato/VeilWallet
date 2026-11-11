@@ -113,6 +113,23 @@ struct BridgePrivacyTests {
         for signature in ["f(uint256[0])", "f(uint256[65])", "f(uint256[06])"] { do { _ = try ContractABI.types(signature); Issue.record("Noncanonical array accepted") } catch {} }
         do { _ = try ContractABI.encode(signature: "f(uint256[2])", arguments: ["[\"1\"]"]); Issue.record("Wrong fixed count accepted") } catch {}
     }
+    @Test func bridgeTestnetRoutesCannotCrossIntoMainnet() throws {
+        for source in BridgeCatalog.deployments {
+            let destinations = BridgeCatalog.destinations(for: source)
+            #expect(!destinations.isEmpty)
+            #expect(destinations.allSatisfy { $0.isTestnet == source.isTestnet })
+        }
+        let sepolia = try #require(BridgeCatalog.find("stargate-usdt-sepolia"))
+        let bsc = try #require(BridgeCatalog.find("stargate-usdt-bsc-testnet"))
+        #expect(BridgeCatalog.destinations(for: sepolia) == [bsc])
+        #expect(sepolia.decimals == 6 && bsc.decimals == 6)
+        #expect(bsc.nativeSymbol == "tBNB" && bsc.nativeDecimals == 18)
+        #expect(Chain.defaults.first { $0.id == 97 }?.isTestnet == true)
+        var wrong = try #require(Chain.defaults.first { $0.id == 11155111 })
+        wrong.isTestnet = false
+        let client = BridgeClient(transport: BridgeRPC(), chains: [wrong], isolation: "test")
+        #expect(throws: WalletError.self) { try client.endpoint(wrong.id) }
+    }
     @Test func bridgeDeliveryRequiresMatchingGuidRecipientAndAmount() async throws {
         let source = BridgeCatalog.find("stargate-usdt-eth")!, destination = BridgeCatalog.find("stargate-usdt-bsc")!
         let record = BridgeTransferRecord(sourceID: source.id, destinationID: destination.id, sender: bridgeOwner, recipient: bridgeOwner, sourceOFT: source.contract, destinationOFT: destination.contract, amount: "10000000", minimumDestination: "9900000000000000000")

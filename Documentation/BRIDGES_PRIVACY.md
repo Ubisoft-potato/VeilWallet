@@ -1,6 +1,6 @@
 # Bridges and non-custodial privacy pools
 
-Native forms use fixed deployments, local ABI encoding, on-chain quotes/simulation, separate exact approvals and password checks for every signature. This is an unaudited development build without funded deposit/withdrawal acceptance.
+Native forms use fixed deployments, local ABI encoding, on-chain quotes/simulation, separate exact approvals and password checks for every signature. This is an unaudited development build. [Execution acceptance](PROTOCOL_ACCEPTANCE.md) distinguishes genuine local deposit/proof/withdrawal and bridge-source tests from outstanding public end-to-end delivery and production-funds acceptance.
 
 ## Bridge routes
 
@@ -8,6 +8,7 @@ Native forms use fixed deployments, local ABI encoding, on-chain quotes/simulati
 |---|---|---|
 | ETH ↔ TRON | Allbridge OFT / native USDT | Fixed wrapper; verify token/sharedDecimals/destination peer; no retired LP route |
 | ETH ↔ BSC | Stargate V2 Taxi / USDT | quoteOFT/quoteSend/sendToken; explicit 6/18-decimal rounding to shared 6 decimals |
+| Sepolia ↔ BSC Testnet | Official Stargate V2 / test USDT | Separate pinned deployments and EIDs; both test tokens use 6 decimals; never paired with mainnet routes |
 | TRON ↔ BSC | Two separate legs through ETH | Confirm delivery, then quote/approve/sign each next leg; no automatic chaining |
 
 Open Bridge from Assets and enter recipient/amount. Insufficient nonzero allowance needs a separately confirmed zero reset, then exact approval. Requote after confirmation; watch-only accounts can quote only.

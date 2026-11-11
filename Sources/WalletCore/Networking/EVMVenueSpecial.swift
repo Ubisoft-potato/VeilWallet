@@ -67,6 +67,7 @@ extension EVMVenueClient {
         let registered = try ContractABI.uint(await rpc.readContract(ContractInvocation(contract: vault, signature: "isPoolRegistered(address)", arguments: [pool])))
         let initialized = try ContractABI.uint(await rpc.readContract(ContractInvocation(contract: vault, signature: "isPoolInitialized(address)", arguments: [pool])))
         guard registered == 1, initialized == 1 else { throw WalletError.invalid(L("message.the_balancer_pool_is_unregistered_or_uninitialized")) }
+        guard try await ContractABI.uint(rpc.readContract(ContractInvocation(contract: vault, signature: "isPoolPaused(address)", arguments: [pool]))) == 0 else { throw WalletError.invalid(L("dex.balancer_pool_paused")) }
         let tokens = try ContractABI.addressArray(await rpc.readContract(ContractInvocation(contract: vault, signature: "getPoolTokens(address)", arguments: [pool])))
         guard path.count == 2, path.allSatisfy({ address in tokens.contains { $0.lowercased() == address.lowercased() } }) else { throw WalletError.invalid(L("message.the_asset_is_not_in_this_balancer_pool")) }
         return Ethereum.checksumAddress(pool)

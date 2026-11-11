@@ -71,7 +71,7 @@ extension BridgeClient {
         }
     }
     static func verify(_ deployment: BridgeDeployment, destination: BridgeDeployment, endpoint: BridgeReadSession) async throws -> (oft: String, admin: UInt32) {
-        guard BridgeCatalog.find(deployment.id) == deployment, endpoint.chain.id == deployment.networkID else { throw WalletError.invalid(L("message.bridge_deployment_is_not_pinned")) }
+        guard BridgeCatalog.find(deployment.id) == deployment, endpoint.chain.id == deployment.networkID, endpoint.chain.isTestnet == deployment.isTestnet else { throw WalletError.invalid(L("message.bridge_deployment_is_not_pinned")) }
         guard try await endpoint.uint(deployment.tokenAddress, "decimals()") == BigUInt(deployment.decimals) else { throw WalletError.invalid(L("message.bridge_token_decimals_differ_from_the_pinned_catalog")) }
         if deployment.bridgeProtocol == .stargateV2 {
             let actual = try await endpoint.address(deployment.contract, "token()")
@@ -87,7 +87,7 @@ extension BridgeClient {
         return (oft, bp)
     }
     static func validateIntent(_ quote: BridgeQuote, sender: String, chain: Chain) throws {
-        guard !quote.isExpired, quote.source.networkID == chain.id, BridgeCatalog.find(quote.source.id) == quote.source,
+        guard !quote.isExpired, quote.source.networkID == chain.id, quote.source.isTestnet == chain.isTestnet, BridgeCatalog.find(quote.source.id) == quote.source,
               BridgeCatalog.destinations(for: quote.source).contains(quote.destination), BridgeEndpoint.same(sender, quote.sender, chain: chain), quote.amount > 0, (1...1000).contains(quote.slippageBP) else { throw WalletError.invalid(L("message.bridge_preview_expired_or_the_account_route_changed")) }
         _ = try BridgeEndpoint.word(quote.recipient, networkID: quote.destination.networkID)
     }

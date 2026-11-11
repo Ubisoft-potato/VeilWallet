@@ -1,10 +1,22 @@
 /* Veil Wallet interface catalog. Stable keys; opaque numbered arguments. */
 "action.cancel" = "取消";
 "action.close" = "关闭窗口";
+"assets.group.accessibility" = "⟦0⟧，分布于 ⟦1⟧ 个网络";
+"assets.group.filter_hint" = "同币种跨网络合并展示，汇总余额与估值以当前筛选结果为准。";
+"assets.group.historical" = "含历史数据 · 展开查看";
+"assets.group.historical_prices" = "各网络历史价格";
+"assets.group.network_prices" = "各网络单价";
+"assets.group.partial_prices" = "部分网络价格未知";
+"assets.group.partial_value" = "部分持仓尚未估值";
+"assets.group.scope" = "⟦0⟧ 个网络 · ⟦1⟧ 项持仓";
+"assets.group.toggle_hint" = "点击整行可展开或收起各网络持仓。";
+"assets.group.unknown_balances" = "⟦0⟧ 项余额未知";
 "brand.tagline" = "YOUR KEYS. YOUR QUIET.";
 "brand.wordmark" = "veil";
 "clipboard.copied" = "已复制";
 "clipboard.copy_failed" = "复制失败";
+"tron.network_mismatch" = "TRON 节点的创世块与所选网络不符。";
+"tron.unsupported_test_route" = "SUN 智能路由适用于已配置的主网部署。";
 "disclosure.collapse" = "收起";
 "disclosure.expand" = "展开";
 "fee.gas_price" = "Gas 单价 · Gwei";
@@ -1652,3 +1664,5 @@
 "mnemonic.clipboard_empty" = "剪贴板中没有文本。";
 "mnemonic.resize_confirmation" = "切换词数会移除末尾已填写的单词，是否继续？";
 "mnemonic.resize_confirm" = "切换词数";
+"dex.balancer_pool_paused" = "此 Balancer 池已暂停。请选择开放的池；当前池无法报价或签名。";
+"bridge.testnet_delivery_unverified" = "测试网路线 · 尚未通过端到端到账验收。源链确认不代表目标链已到账。";

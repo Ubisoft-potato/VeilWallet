@@ -48,15 +48,15 @@ public struct Chain: Identifiable, Codable, Equatable, Hashable, Sendable {
     public static var defaults: [Chain] { NetworkCatalog.chains }
 }
 public struct Token: Identifiable, Codable, Equatable, Sendable {
-    public var id: String { "\(chainID):\(chainID == TronAddress.chainID ? contract : contract.lowercased())" }
+    public var id: String { "\(chainID):\(TronNetwork.isTron(chainID) ? contract : contract.lowercased())" }
     public let chainID: UInt64
     public let contract: String
     public let symbol: String
     public let decimals: Int
     public init(chainID: UInt64, contract: String, symbol: String, decimals: Int) throws {
-        guard (chainID == TronAddress.chainID ? TronAddress.validate(contract) : Ethereum.validateAddress(contract)), (0...36).contains(decimals), !symbol.isEmpty, symbol.count <= 24,
+        guard (TronNetwork.isTron(chainID) ? TronAddress.validate(contract) : Ethereum.validateAddress(contract)), (0...36).contains(decimals), !symbol.isEmpty, symbol.count <= 24,
               symbol.unicodeScalars.allSatisfy({ !CharacterSet.controlCharacters.contains($0) }) else { throw WalletError.invalid(L("message.invalid_token_information")) }
-        self.chainID = chainID; self.contract = chainID == TronAddress.chainID ? contract : Ethereum.checksumAddress(contract); self.symbol = symbol; self.decimals = decimals
+        self.chainID = chainID; self.contract = TronNetwork.isTron(chainID) ? contract : Ethereum.checksumAddress(contract); self.symbol = symbol; self.decimals = decimals
     }
 }
 public struct Activity: Identifiable, Codable, Sendable {

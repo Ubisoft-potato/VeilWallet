@@ -43,6 +43,18 @@ private struct TronMock: PrivateRequesting {
 }
 
 struct TronDexTests {
+    @Test func explicitNileIdentityDoesNotRelaxMainnetValidation() throws {
+        #expect(try TronNetwork.genesis(for: TronNetwork.nile) != TronNetwork.genesis(for: NetworkCatalog.nativeChains.first { $0.family == .tron }!))
+        var wrong = TronNetwork.nile
+        wrong.id = TronAddress.chainID
+        #expect(throws: WalletError.self) { try TronNetwork.genesis(for: wrong) }
+        wrong = TronNetwork.nile
+        wrong.isTestnet = false
+        #expect(throws: WalletError.self) { try TronNetwork.genesis(for: wrong) }
+        let token = try Token(chainID: TronNetwork.nileID, contract: testUSDT, symbol: "TEST", decimals: 6)
+        #expect(token.contract == testUSDT)
+        #expect(try TronNetwork.v2Deployment(TronNetwork.nileID).router != TronDexClient.v2Router)
+    }
     private func client(_ scenario: String = "") -> TronContractClient { .init(transport: TronMock(scenario: scenario), chain: NetworkCatalog.nativeChains.first { $0.family == .tron }!, isolation: "test") }
     private func account() throws -> WalletAccount { try MultichainCrypto.importPrivateKey(String(repeating: "01", count: 32), profile: AccountProfile.find("tron")!) }
     @Test func previousTronDefaultMigratesWhileCustomRPCIsPreserved() throws {

@@ -43,8 +43,9 @@ public enum DexApprovalProgress: Equatable, Sendable {
     case ready
     case stopped(String)
 
-    public static func resolveTron(hash: String, activities: [Activity], walletID: UUID, sender: String) -> Self {
-        guard let item = activities.first(where: { $0.hash.lowercased() == hash.lowercased() && $0.walletID == walletID && $0.chainID == TronAddress.chainID }),
+    public static func resolveTron(hash: String, activities: [Activity], walletID: UUID, sender: String, chainID: UInt64 = TronAddress.chainID) -> Self {
+        guard TronNetwork.isTron(chainID),
+              let item = activities.first(where: { $0.hash.lowercased() == hash.lowercased() && $0.walletID == walletID && $0.chainID == chainID }),
               let record = item.transaction, record.profileID == "tron", record.sender == sender, record.action == .original else {
             return .waiting(L("message.no_approval_record_was_found_for_the_current_tron_account"))
         }

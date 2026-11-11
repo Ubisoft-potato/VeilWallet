@@ -27,6 +27,7 @@ extension View {
 import AppKit
 import Combine
 import WalletCore
+import BigInt
 
 private struct I18nLabels: PreferenceKey {
     static var defaultValue: [String: String] = [:]
@@ -56,6 +57,103 @@ private struct InteractionFrames: PreferenceKey {
 // Native click checks and injected hover-phase rendering checks against our own
 // hierarchy. No system event injection, vault access or network connection.
 @MainActor enum UIInteractionChecks {
+    private final class AssetGroupFixture: ObservableObject {
+        @Published var expanded = false
+        @Published var revisions = 0
+        @Published var childActions = 0
+    }
+    private struct AssetGroupControls: View {
+        @ObservedObject var state: AssetGroupFixture
+        let group: PortfolioAssetGroup
+        let summary: PortfolioAssetGroupSummary
+        var body: some View {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(L("message.ui_fixture_example_prices_and_balances_not_live_prices_or")).font(.system(size: 12)).foregroundStyle(.orange)
+                Panel(padding: 0) {
+                    AssetGroupDisclosure(group: group, summary: summary, updating: state.revisions > 0, expanded: $state.expanded) {
+                        ForEach(group.holdings) { query in
+                            HStack(spacing: 15) {
+                                AssetLogo(chain: query.chain, token: query.token, size: 32)
+                                Text(query.chain.name).frame(maxWidth: .infinity, alignment: .leading)
+                                Button(L("message.receive_show_qr_code")) { state.childActions += 1 }
+                                    .interactionFrame("assets.child." + String(query.chain.id))
+                            }.padding(20)
+                        }
+                    }
+                }.clipShape(RoundedRectangle(cornerRadius: 18))
+                Spacer()
+            }.padding(24).buttonStyle(SecondaryButton())
+        }
+    }
+    static func runAssetGroups(to destination: URL) throws {
+        NSApplication.shared.setActivationPolicy(.prohibited)
+        WalletLocalization.useInMemoryLanguagePreferencesForVerification(.english)
+        let model = AppModel(previewMode: true)
+        model.local.chains = Chain.defaults.filter { [1,56].contains($0.id) }
+        let queries = model.assetQueries.filter { $0.symbol == "USDT" }
+        let group = try requireGroup(queries)
+        let balances = queries.map { AssetBalanceSnapshot(query: $0, balance: BigUInt(10).power($0.decimals) * 12) }
+        let prices = try queries.map { query -> MarketPriceSnapshot in
+            guard let key = MarketPriceCatalog.key(chain: query.chain, token: query.token) else { throw WalletError.invalid("assets.fixture.priceKeyMissing") }
+            return MarketPriceSnapshot(key: key, quote: MarketPrice(key: key, units: try USDValue.priceUnits(1), sourceTimestamp: Date(), fetchedAt: Date(), tokenDecimals: query.decimals), error: nil)
+        }
+        let summary = PortfolioAssetGroupSummary(group: group, balances: balances, prices: prices, balanceMaxAge: 300)
+        let state = AssetGroupFixture(), geometry = Geometry()
+        let (window, host) = makeHost(AssetGroupControls(state: state, group: group, summary: summary), size: NSSize(width: 1000, height: 500), geometry: geometry)
+        defer { window.orderOut(nil) }
+        func capture(_ name: String) throws {
+            guard let bitmap = host.bitmapImageRepForCachingDisplay(in: host.bounds) else { throw WalletError.invalid("assets.fixture.captureMissing") }
+            host.cacheDisplay(in: host.bounds, to: bitmap)
+            try bitmap.representation(using: .png, properties: [:])?.write(to: destination.deletingLastPathComponent().appendingPathComponent(name), options: .atomic)
+        }
+        try require(!state.expanded && geometry.frames["assets.holdings.USDT"] == nil, "assets.groups.defaultCollapsed")
+        let heading = try frame("assets.group.USDT", in: geometry)
+        try require(heading.width >= 900 && heading.height >= 98, "assets.groups.fullRowHitArea")
+        try capture("asset-groups-collapsed.png")
+        try click(heading, fraction: 0.45, host: host)
+        try require(state.expanded, "assets.groups.whitespaceExpands")
+        try require(geometry.frames["assets.holdings.USDT"] != nil, "assets.groups.childrenVisible")
+        try click(try frame("assets.child.56", in: geometry), host: host)
+        try require(state.childActions == 1 && state.expanded, "assets.groups.childActionDoesNotCollapse")
+        state.revisions += 1; settle(host)
+        try require(state.expanded, "assets.groups.refreshPreservesExpansion")
+        WalletLanguage.select(.simplifiedChinese); settle(host)
+        try require(state.expanded, "assets.groups.languagePreservesExpansion")
+        try capture("asset-groups-expanded-zh.png")
+        WalletLanguage.select(.english); settle(host)
+        try capture("asset-groups-expanded.png")
+        try click(try frame("assets.group.USDT", in: geometry), fraction: 0.97, host: host)
+        try require(!state.expanded, "assets.groups.chevronCollapses")
+        // Allow the removal transition to finish before inspecting preferences.
+        wait(0.3, host: host)
+        try require(geometry.frames["assets.holdings.USDT"] == nil, "assets.groups.collapsedChildrenRemoved")
+        model.local.assetBalances = balances; model.local.marketPrices = prices
+        for query in model.assetQueries where query.token == nil {
+            model.local.assetBalances?.append(AssetBalanceSnapshot(query: query, balance: BigUInt(10).power(query.decimals) / 4))
+        }
+        let listGeometry = Geometry()
+        let (listWindow, listHost) = makeHost(ScrollView {
+            VStack(alignment: .leading, spacing: 14) {
+                Text(L("message.ui_fixture_example_prices_and_balances_not_live_prices_or")).font(.system(size: 12)).foregroundStyle(.orange)
+                AssetsView().environmentObject(model)
+            }.padding(24)
+        }.buttonStyle(SecondaryButton()), size: NSSize(width: 1080, height: 1500), geometry: listGeometry)
+        defer { listWindow.orderOut(nil) }
+        try require(listGeometry.frames["assets.holdings.USDT"] == nil, "assets.list.defaultCollapsed")
+        try click(try frame("assets.group.USDT", in: listGeometry), fraction: 0.45, host: listHost)
+        try require(listGeometry.frames["assets.holdings.USDT"] != nil, "assets.list.realHoldingsExpand")
+        wait(0.5, host: listHost)
+        if let bitmap = listHost.bitmapImageRepForCachingDisplay(in: listHost.bounds) {
+            listHost.cacheDisplay(in: listHost.bounds, to: bitmap)
+            try bitmap.representation(using: .png, properties: [:])?.write(to: destination.deletingLastPathComponent().appendingPathComponent("asset-list-expanded.png"), options: .atomic)
+        }
+        let report: [String: Any] = ["passed": true, "networkStarted": false, "vaultOpened": false, "nativePointerEvents": true, "checks": ["default collapsed", "full header whitespace expands", "child action stays expanded", "refresh retains expansion", "live language switch retains expansion", "chevron collapses", "actual portfolio list expands network holdings"]]
+        try JSONSerialization.data(withJSONObject: report, options: [.prettyPrinted, .sortedKeys]).write(to: destination, options: .atomic)
+    }
+    private static func requireGroup(_ queries: [AssetQuery]) throws -> PortfolioAssetGroup {
+        guard let group = PortfolioAssetGroup.groups(queries).first, group.holdings.count == 2 else { throw WalletError.invalid("assets.fixture.groupMissing") }
+        return group
+    }
     private final class MnemonicFixture: ObservableObject {
         @Published var draft = MnemonicImportDraft()
         @Published var disabled = false

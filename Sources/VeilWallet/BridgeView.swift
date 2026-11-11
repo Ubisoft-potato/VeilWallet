@@ -23,7 +23,7 @@ struct BridgeQuoteDetails: View {
             ReviewDetail(L("message.estimated_usdt_received"), Ethereum.formatUnits(quote.expectedDestination, decimals: quote.destination.decimals, precision: 18))
             ReviewDetail(quote.absoluteMinimumEnforced ? L("message.on_chain_minimum_usdt_received") : L("message.minimum_estimate_at_current_rates_usdt"), Ethereum.formatUnits(quote.minimumDestination, decimals: quote.destination.decimals, precision: 18))
             if !quote.absoluteMinimumEnforced { Text(L("message.allbridge_enforces_a_slippage_ratio_administrator_fee_changes_can_alter")).font(.system(size: 11)).foregroundStyle(.orange) }
-            ReviewDetail(L("message.message_fee") + (quote.source.networkID == TronAddress.chainID ? "TRX" : quote.source.networkID == 56 ? "BNB" : "ETH"), Ethereum.formatUnits(quote.nativeFee, decimals: quote.source.networkID == TronAddress.chainID ? 6 : 18, precision: 18))
+            ReviewDetail(L("message.message_fee") + quote.source.nativeSymbol, Ethereum.formatUnits(quote.nativeFee, decimals: quote.source.nativeDecimals, precision: 18))
             ReviewDetail(L("message.source_bridge_contract_spender"), quote.source.contract)
             ReviewDetail(L("message.source_destination_token"), quote.source.tokenAddress + " → " + quote.destination.tokenAddress)
         }
@@ -50,6 +50,9 @@ struct BridgeView: View {
                         ForEach(BridgeCatalog.on(model.chainID)) { source in Text(source.bridgeProtocol.name).tag(source.id) }
                     }.disabled(busy)
                     if let destination { Text(L("message.destination_network") + (model.local.chains.first { $0.id == destination.networkID }?.name ?? String(destination.networkID))).font(.headline) }
+                    if BridgeCatalog.find(sourceID)?.isTestnet == true {
+                        Text(L("bridge.testnet_delivery_unverified")).font(.system(size: 11)).foregroundStyle(.orange)
+                    }
                     FieldLabel(title: L("message.full_receiving_address_on_the_destination_network")) { TextField(destination?.networkID == TronAddress.chainID ? "T…" : "0x…", text: $recipient).disabled(busy) }
                     Button(L("message.use_this_wallet_s_destination_chain_account")) { if let destination, let chain = model.local.chains.first(where: { $0.id == destination.networkID }), let account = model.wallet?.accounts(on: chain).first { recipient = account.networkAddress } }.disabled(busy)
                     FieldLabel(title: L("message.amount_to_pay_usdt")) { TextField("0.00", text: $amount).disabled(busy) }
@@ -70,14 +73,18 @@ struct BridgeView: View {
             .onChange(of: sourceID) { _, _ in quote = nil; recipient = "" }
             .onChange(of: recipient) { _, _ in quote = nil }.onChange(of: amount) { _, _ in quote = nil }.onChange(of: slippage) { _, _ in quote = nil }
             .onChange(of: model.walletID) { _, _ in task?.cancel(); quote = nil }
-            .onChange(of: model.chainID) { _, _ in task?.cancel(); quote = nil }
+            .onChange(of: model.chainID) { _, _ in
+                task?.cancel(); quote = nil; approval = false
+                sourceID = BridgeCatalog.on(model.chainID).first?.id ?? ""
+                recipient = ""
+            }
             .onDisappear { task?.cancel() }
             .sheet(isPresented: Binding(get: { plan != nil }, set: { if !$0 { plan = nil; quote = nil } })) {
                 if let plan { switch plan { case .evm(let preview): EVMReviewView(preview: preview).environmentObject(model); case .tron(let native): TronTransactionReviewView(plan: native).environmentObject(model) } }
             }
     }
     private func perform(_ stage: Int) {
-        guard let sender = model.address, let destination else { return }
+        guard let sender = model.address, let destination, BridgeCatalog.find(sourceID)?.networkID == model.chainID else { return }
         let wallet = model.walletID, chain = model.chainID, client = model.bridgeClient()
         busy = true; error = nil
         task = Task {

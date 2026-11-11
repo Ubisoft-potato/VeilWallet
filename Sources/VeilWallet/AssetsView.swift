@@ -8,6 +8,7 @@ struct AssetsView: View {
     @ViewState private var currentNetworkOnly = false
     @ViewState private var hideZero = true
     @ViewState private var failedOnly = false
+    @ViewState private var expandedGroups = Set<String>()
     init(showZeroBalances: Bool = false) { _hideZero = ViewState(initialValue: !showZeroBalances) }
     private var queries: [AssetQuery] { model.assetQueries.filter { !currentNetworkOnly || $0.chain.id == model.chainID } }
     private var funded: [AssetQuery] { queries.filter { (model.snapshot($0)?.balance ?? 0) > 0 } }
@@ -19,6 +20,7 @@ struct AssetsView: View {
             return a != b ? a : false
         }
     }
+    private var groups: [PortfolioAssetGroup] { PortfolioAssetGroup.groups(visible) }
     var body: some View {
         TimelineView(.periodic(from: .now, by: 30)) { context in content(now: context.date) }
     }
@@ -49,6 +51,7 @@ struct AssetsView: View {
                     HStack { Image(systemName: "magnifyingglass").foregroundStyle(.secondary); TextField(L("message.search_assets_networks_contracts_or_addresses"), text: $search).textFieldStyle(.plain) }.padding(11).background(Color.veilPanel, in: RoundedRectangle(cornerRadius: 10))
                     Toggle(L("message.with_balance_only"), isOn: $hideZero).toggleStyle(.checkbox).fixedSize()
                 }
+                Text(L("assets.group.filter_hint")).font(.system(size: 11)).foregroundStyle(.secondary)
                 if model.discovering {
                     VStack(alignment: .leading, spacing: 7) { ProgressView(value: Double(model.discoveryCompleted), total: Double(max(1, model.discoveryTotal))); Text(L("message.querying_0_1_through_tor_balances_update_individually", model.discoveryCompleted, model.discoveryTotal)).font(.system(size: 11)).foregroundStyle(.secondary) }
                 }
@@ -56,11 +59,12 @@ struct AssetsView: View {
                 if failed > 0 {
                     HStack { Label(L("message.0_queries_failed_their_balances_are_unknown_not_zero", failed), systemImage: "exclamationmark.triangle").font(.system(size: 11)).foregroundStyle(.orange); Spacer(); Button(failedOnly ? L("message.show_all") : L("message.show_failed_queries")) { failedOnly.toggle(); if failedOnly { hideZero = false; search = "" } } }
                 }
+                let assetGroups = groups
                 Panel(padding: 0) {
                     LazyVStack(spacing: 0) {
                         HStack { Text(L("message.asset_network_wallet_address")); Spacer(); Text(L("message.unit_price_usd")).frame(width: 120, alignment: .trailing); Text(L("message.balance_value_usd")).frame(width: 165, alignment: .trailing); Text("").frame(width: 30) }.font(.system(size: 11)).foregroundStyle(.secondary).padding(20)
                         Divider()
-                        if visible.isEmpty {
+                        if assetGroups.isEmpty {
                             VStack(spacing: 12) {
                                 Image(systemName: model.discovering ? "network" : "tray").font(.system(size: 30)).foregroundStyle(Color.veilAccent)
                                 Text(model.discovering ? L("message.discovering_assets") : L("message.no_known_balances_match_this_filter")).font(.system(size: 17, weight: .medium))
@@ -68,9 +72,22 @@ struct AssetsView: View {
                                 Button(L("message.browse_all_assets")) { hideZero = false; failedOnly = false; search = "" }
                             }.padding(32)
                         }
-                        ForEach(visible) { query in portfolioRow(query, now: now); Divider().padding(.leading, 74) }
+                        ForEach(assetGroups) { group in
+                            if group.holdings.count > 1 {
+                                AssetGroupDisclosure(group: group,
+                                    summary: PortfolioAssetGroupSummary(group: group, balances: model.local.assetBalances ?? [], prices: model.local.marketPrices ?? [], balanceMaxAge: model.preferences.refreshInterval + 60, now: now),
+                                    updating: group.holdings.contains { model.checkingAssets.contains($0.id) },
+                                    expanded: Binding(get: { expandedGroups.contains(group.id) }, set: { value in if value { expandedGroups.insert(group.id) } else { expandedGroups.remove(group.id) } })) {
+                                        ForEach(group.holdings) { query in
+                                            portfolioRow(query, now: now)
+                                            if query.id != group.holdings.last?.id { Divider().padding(.leading, 74) }
+                                        }
+                                    }
+                            } else if let query = group.holdings.first { portfolioRow(query, now: now) }
+                            if group.id != assetGroups.last?.id { Divider() }
+                        }
                     }
-                }
+                }.clipShape(RoundedRectangle(cornerRadius: 18))
                 Text(L("message.usd_prices_come_from_defillama_through_tor_every_5_minutes")).font(.system(size: 11)).foregroundStyle(.secondary)
             } else {
                 Panel { VStack(alignment: .leading, spacing: 18) { Image(systemName: "wallet.bifold").font(.system(size: 38)).foregroundStyle(Color.veilAccent); Text(L("message.add_your_first_wallet")).font(.system(size: 24, weight: .medium)); Text(L("message.create_a_wallet_import_a_recovery_phrase_or_private_key")).foregroundStyle(.secondary); Button(L("message.add_wallet")) { model.sheet = .addWallet }.buttonStyle(PrimaryButton()) }.padding(.vertical, 30) }

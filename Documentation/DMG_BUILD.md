@@ -27,9 +27,9 @@ Release maps checkout paths, uses upstream portable Go implementations and strip
 
 ## GitHub Actions
 
-[macos-dmg.yml](../.github/workflows/macos-dmg.yml) builds when a new `v*` tag is pushed. The tag must match the version in [Info.plist](../Configuration/Info.plist), for example `v0.10.6`.
+[macos-dmg.yml](../.github/workflows/macos-dmg.yml) builds when a new `v*` tag is pushed. The tag must match the version in [Info.plist](../Configuration/Info.plist), for example `v0.10.7`. Ordinary main-branch pushes do not start this workflow.
 
-Pinned environment: ARM64 macos-15, Xcode 26.3, Go 1.26.10. See [runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners) and [image inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-arm64-Readme.md). Unexpected architecture/toolchain stops the build.
+Pinned environment: ARM64 macos-26, Xcode 26.3, Go 1.26.10. See [runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners) and [image inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md). Unexpected architecture/toolchain stops the build.
 
 Steps: full-history and HEAD secret scans, exact-HEAD documentation checks, scanner tests, verified runtime downloads, default Swift tests, runtime dependency-advisory checks and App/DMG validation. Read-only permissions, no persisted checkout credentials, signing secrets or shared build caches. No cache/workspace upload. Actions use full commit SHAs.
 
@@ -37,7 +37,7 @@ Binary artifact upload is disabled by default. [BinaryDistribution.json](../Conf
 
 Default CI does not install Anvil or set VEIL_VERIFY_NODE=1; optional checks skip. Prepared offline proof and other default checks run. This is not a funded-chain test.
 
-When distribution is enabled, artifacts last 14 days. A source tarball from HEAD excludes history/local settings/caches. It does not replace all corresponding-source/relinking obligations; see [NOTICE](../NOTICE.md) and [licenses](THIRD_PARTY.md). No GitHub Release is published.
+When distribution is enabled, artifacts last 14 days. A source tarball from HEAD excludes history/local settings/caches. It does not replace all corresponding-source/relinking obligations; see [NOTICE](../NOTICE.md) and [licenses](THIRD_PARTY.md). The separate release job verifies the uploaded artifacts and publishes a GitHub prerelease for the matching version tag.
 
 Default signing is ad-hoc, without notarization. Verify source/checksums before following macOS Privacy & Security prompts. Do not disable Gatekeeper. Developer ID/notarization need a separately configured authorized Apple identity.
 

@@ -2,7 +2,7 @@
 
 Version 0.10.1 uses native i18n configuration with immediate English/Simplified Chinese switching, retaining current inputs and session state. Version 0.10.0 added English documentation and portable path checks. Earlier releases added prices, asset discovery, transaction management, bridges/privacy pools and DEX continuation. No cross-Mac recovery or cloud sync is provided.
 
-The fixed development catalog contains 122 entries: 81 EVM mainnets, Sepolia, 39 non-EVM networks and Nostr. There are 51 derivable account profiles plus arbitrary-script LTC watch entry. Catalog coverage, implemented protocol paths, endpoint availability and funded acceptance are separate. No funded-transfer acceptance is claimed.
+The fixed development catalog contains 123 entries: 81 EVM mainnets, Sepolia and BSC testnets, 39 non-EVM networks and Nostr. There are 51 derivable account profiles plus arbitrary-script LTC watch entry. Catalog coverage, implemented protocol paths, endpoint availability and funded acceptance are separate. See [protocol execution acceptance](PROTOCOL_ACCEPTANCE.md) for the specific local-chain and public-testnet results; production-funds acceptance is not claimed.
 
 | Family | Import | Balance | Sending |
 |---|---|---|---|

@@ -30,7 +30,7 @@ EVM quotes read contracts through RPC, without a remote aggregator. Fee paramete
 - Router/Permit2/PoolManager versions are pinned to matching official sun-kit/universal-router-sdk releases. Old documentation router addresses/PSM opcodes cannot be mixed with current SDK values.
 - TRX/USDT/WTRX/USDD/SUN use fixed local identities and checked on-chain decimals; other TRC20 may be added. Generic TRC20 transfer forms remain unavailable.
 
-TriggerSmartContract protobuf is built locally, not supplied by the node: TAPOS, 180-second expiry and fee_limit. Recheck mainnet genesis, ordinary single-signature owner permissions, Energy simulation, Energy/bandwidth prices and balance. fee_limit includes 50% Energy buffer; worst-case bandwidth is additional and is not part of fee_limit. Available resources may reduce actual cost.
+TriggerSmartContract protobuf is built locally, not supplied by the node: TAPOS, 180-second expiry and fee_limit. Recheck the selected network's pinned genesis, ordinary single-signature owner permissions, Energy simulation, Energy/bandwidth prices and balance. Explicit Nile test configuration uses a separate network ID, testnet flag, genesis and V2 deployments; SUN smart routing remains mainnet-only. fee_limit includes 50% Energy buffer; worst-case bandwidth is additional and is not part of fee_limit. Available resources may reduce actual cost.
 
 Current preset TRON RPC is https://api.tronstack.io; the prior TronGrid default returned 403 through the tested Tor exit. Ethereum uses https://eth.drpc.org after the old PublicNode disconnected during Balancer quoting. dRPC documents its [Tor endpoint](https://drpc.org/docs/tor). Only exact old defaults migrate; custom endpoints remain. There is no automatic provider rotation or direct fallback.
 
@@ -57,6 +57,8 @@ Confirmed sufficient allowance can be reused for the same account/token/spender.
 [Catalog regression](DEX_REGRESSION_0.9.1.json) covers all 82 EVM deployments, deployment/quote constraints and 6/18-decimal approval sequences through reset, exact approval, required Permit2 approval, requote and final swap preview. Every configured EVM network has confirmation-threshold checks. TRON covers both modes, 13 SUN route variants, recipient/minimum-output constraints, solidified receipt binding and unknown-state blocking.
 
 These are mocks/public vectors; they are not a guarantee of liquidity or funded execution for every token/pool. Separate [live results](dex-0.9.1-live-report.json) distinguish deployment, quote and simulation checks.
+
+[Execution acceptance](PROTOCOL_ACCEPTANCE.md) records actual ETH/BSC fork transactions for all 15 deployments and a public Nile V2 round trip. Other networks and SUN smart routing do not inherit that result. Contract previews now additionally simulate with the actual signing gas limit, retry a bounded higher limit if the provider underestimates execution, and repeat that bounded simulation before signing. Paused Balancer pools are rejected before producing a quote.
 
 Before signing, re-simulate, verify network/balance/allowance/expiry/deployments and compare rebuilt calldata against recipient/path/amount. Save hash before broadcast; timeout means unverified, with no automatic retry. Cancelable requests run blocking libcurl off Swift's cooperative pool. V3/native and V4 unsettled native inputs are explicitly refunded.
 

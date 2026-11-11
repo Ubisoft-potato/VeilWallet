@@ -4,10 +4,11 @@ public enum NetworkCatalog {
     public static let sourceDate = "2026-11-02"
     public static let chains: [Chain] = {
         let sepolia = Chain(id: 11155111, name: "Ethereum Sepolia", symbol: "ETH", rpcURL: "https://ethereum-sepolia-rpc.publicnode.com", isTestnet: true)
+        let bscTestnet = Chain(id: 97, name: "BNB Smart Chain Testnet", symbol: "tBNB", rpcURL: "https://bsc-testnet-rpc.publicnode.com", isTestnet: true)
         let evm: [Chain]
         if let url = Bundle.module.url(forResource: "evm-networks", withExtension: "json"), let data = try? Data(contentsOf: url), let result = try? JSONDecoder().decode([Chain].self, from: data) { evm = result }
         else { evm = [Chain(id: 1, name: "Ethereum", symbol: "ETH", rpcURL: "https://ethereum-rpc.publicnode.com")] }
-        return [sepolia] + evm + nativeChains
+        return [sepolia, bscTestnet] + evm + nativeChains
     }()
     public static let nativeChains: [Chain] = {
         var result = [

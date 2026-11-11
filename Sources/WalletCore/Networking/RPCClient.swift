@@ -155,7 +155,19 @@ public struct RPCClient: Sendable {
         if mode == .legacy { fields["gasPrice"] = .string(Ethereum.quantity(maxFee)) }
         else { fields["maxFeePerGas"] = .string(Ethereum.quantity(maxFee)); fields["maxPriorityFeePerGas"] = .string(Ethereum.quantity(tip)) }
         let estimated = try await quantity("eth_estimateGas", [.object(fields)])
-        let gasLimit = estimated * 120 / 100
+        var gasLimit = estimated * 120 / 100
+        if purpose.invocation != nil {
+            for attempt in 0..<4 {
+                var bounded = fields
+                bounded["gas"] = .string(Ethereum.quantity(gasLimit))
+                do {
+                    _ = try await call("eth_call", params: [.object(bounded), .string("latest")])
+                    break
+                } catch WalletError.rpcRejected(3) where attempt < 3 && gasLimit < 20_000_000 {
+                    gasLimit = min(30_000_000, gasLimit * 150 / 100)
+                }
+            }
+        }
         let transaction = try EVMTransaction(chainID: chain.id, nonce: nonce, maxPriorityFee: tip, maxFee: maxFee, gasLimit: gasLimit, to: to, value: value, data: data, mode: mode)
         let additional = try await EVMFeeEstimator.additional(client: self, transaction: transaction)
         let nativeBalance = try await balance(address: sender)
@@ -209,8 +221,12 @@ public struct RPCClient: Sendable {
             guard try await balance(address: preview.sender, token: token) >= Ethereum.parseUnits(preview.amount, decimals: token.decimals) + reserved else { throw WalletError.invalid(L("message.the_token_balance_or_queue_reservations_changed")) }
         }
         try await enforceTokenReservations(preview, latest: state.latest)
-        let fields = transactionFields(sender: preview.sender, to: preview.transaction.to, value: preview.transaction.value, data: preview.transaction.data, mode: preview.transaction.mode, maxFee: preview.transaction.maxFee, priority: preview.transaction.maxPriorityFee)
+        var fields = transactionFields(sender: preview.sender, to: preview.transaction.to, value: preview.transaction.value, data: preview.transaction.data, mode: preview.transaction.mode, maxFee: preview.transaction.maxFee, priority: preview.transaction.maxPriorityFee)
         guard preview.transaction.maxFee > 0, try await quantity("eth_estimateGas", [.object(fields)]) <= preview.transaction.gasLimit else { throw WalletError.invalid(L("message.the_current_gas_price_or_execution_budget_is_no_longer")) }
+        if purpose.invocation != nil {
+            fields["gas"] = .string(Ethereum.quantity(preview.transaction.gasLimit))
+            _ = try await call("eth_call", params: [.object(fields), .string("latest")])
+        }
     }
     public func broadcast(_ raw: Data) async throws -> String {
         guard chain.isEVM, chain.canTransfer else { throw WalletError.invalid(L("message.sending_is_not_available_on_this_network_yet")) }

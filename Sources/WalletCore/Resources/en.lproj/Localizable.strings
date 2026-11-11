@@ -1,10 +1,22 @@
 /* Veil Wallet interface catalog. Stable keys; opaque numbered arguments. */
 "action.cancel" = "Cancel";
 "action.close" = "Close window";
+"assets.group.accessibility" = "⟦0⟧ across ⟦1⟧ networks";
+"assets.group.filter_hint" = "Assets are grouped across networks. Totals reflect the current filters.";
+"assets.group.historical" = "Cached values · see details";
+"assets.group.historical_prices" = "Historical network prices";
+"assets.group.network_prices" = "Prices across networks";
+"assets.group.partial_prices" = "Some prices unavailable";
+"assets.group.partial_value" = "Partial USD value";
+"assets.group.scope" = "⟦0⟧ networks · ⟦1⟧ holdings";
+"assets.group.toggle_hint" = "Click anywhere on this row to expand or collapse network holdings.";
+"assets.group.unknown_balances" = "⟦0⟧ balances unknown";
 "brand.tagline" = "YOUR KEYS. YOUR QUIET.";
 "brand.wordmark" = "veil";
 "clipboard.copied" = "Copied";
 "clipboard.copy_failed" = "Couldn’t copy";
+"tron.network_mismatch" = "The TRON node genesis does not match the selected network.";
+"tron.unsupported_test_route" = "SUN smart routing is available on the configured mainnet deployment.";
 "disclosure.collapse" = "Collapse";
 "disclosure.expand" = "Expand";
 "fee.gas_price" = "Gas Price · Gwei";
@@ -1652,3 +1664,5 @@
 "mnemonic.clipboard_empty" = "The clipboard does not contain text.";
 "mnemonic.resize_confirmation" = "Changing the word count will remove filled boxes at the end. Continue?";
 "mnemonic.resize_confirm" = "Change word count";
+"dex.balancer_pool_paused" = "This Balancer pool is paused. Select an active pool; quoting and signing are blocked.";
+"bridge.testnet_delivery_unverified" = "Testnet route · End-to-end delivery is not yet verified. Source confirmation does not prove destination receipt.";

@@ -33,7 +33,9 @@ public struct TronDexClient: Sendable {
     static let stableFlags: [String: String] = ["usdd202pool": "65792", "2pool": "131328", "2pooltusdusdt": "196864", "old3pool": "262400", "oldusdcpool": "69632", "usdc2pooltusdusdt": "135168", "usdd2pooltusdusdt": "200704", "usdj2pooltusdusdt": "266240"]
 
     public func quote(sender: String, input: Token?, output: Token?, amount: String, slippageBPS: UInt32 = 50, mode: TronDexMode = .smart) async throws -> TronDexQuote {
-        guard client.chain.id == TronAddress.chainID, TronAddress.validate(sender), (1...1000).contains(slippageBPS), input?.contract != output?.contract else { throw WalletError.invalid(L("message.invalid_tron_swap_network_assets_or_slippage")) }
+        _ = try TronNetwork.genesis(for: client.chain)
+        guard TronAddress.validate(sender), (1...1000).contains(slippageBPS), input?.contract != output?.contract else { throw WalletError.invalid(L("message.invalid_tron_swap_network_assets_or_slippage")) }
+        guard mode == .v2 || client.chain.id == TronAddress.chainID else { throw WalletError.invalid(L("tron.unsupported_test_route")) }
         for token in [input, output].compactMap({ $0 }) {
             guard token.chainID == client.chain.id, try await ContractABI.uint(client.read(TronInvocation(contract: token.contract, signature: "decimals()", arguments: []))) == BigUInt(token.decimals) else { throw WalletError.invalid(L("message.trc20_network_or_on_chain_decimals_mismatch")) }
         }
@@ -41,11 +43,12 @@ public struct TronDexClient: Sendable {
         guard units > 0, units.bitWidth <= 128 else { throw WalletError.invalid(L("message.tron_swap_amount_out_of_range")) }
         let outputAmount: BigUInt, hops: [TronDexHop]
         if mode == .v2 {
-            let factory = try await readAddress(Self.v2Router, "factory()")
-            guard factory == Self.v2Factory, try await readAddress(Self.v2Router, "WETH()") == Self.wrapped else { throw WalletError.invalid(L("message.sunswap_v2_router_deployment_mismatch")) }
-            let path = [input?.contract ?? Self.wrapped, output?.contract ?? Self.wrapped]
+            let deployment = try TronNetwork.v2Deployment(client.chain.id)
+            let factory = try await readAddress(deployment.router, "factory()")
+            guard factory == deployment.factory, try await readAddress(deployment.router, "WETH()") == deployment.wrapped else { throw WalletError.invalid(L("message.sunswap_v2_router_deployment_mismatch")) }
+            let path = [input?.contract ?? deployment.wrapped, output?.contract ?? deployment.wrapped]
             guard path[0] != path[1] else { throw WalletError.invalid(L("message.this_flow_does_not_perform_standalone_trx_wrapping_unwrapping")) }
-            let value = try await client.read(TronInvocation(contract: Self.v2Router, signature: "getAmountsOut(uint256,address[])", arguments: [String(units), ContractABI.json(path.map { try TronAddress.evm($0) })]))
+            let value = try await client.read(TronInvocation(contract: deployment.router, signature: "getAmountsOut(uint256,address[])", arguments: [String(units), ContractABI.json(path.map { try TronAddress.evm($0) })]))
             let amounts = try ContractABI.uintArray(value, count: 2)
             guard amounts[0] == units else { throw WalletError.invalid(L("message.sunswap_input_amount_mismatch")) }
             outputAmount = amounts[1]; hops = [.init(from: path[0], to: path[1], version: "v2", fee: 3000, parameters: nil)]
@@ -75,7 +78,7 @@ public struct TronDexClient: Sendable {
     public func approvalRequirement(_ quote: TronDexQuote, sender: String) async throws -> DexApprovalRequirement {
         guard quote.chainID == client.chain.id, quote.sender == sender, !quote.isExpired else { throw WalletError.invalid(L("message.the_tron_approval_quote_or_account_changed")) }
         guard let token = quote.input else { return .none }
-        let spender = quote.mode == .v2 ? Self.v2Router : Self.permit2
+        let spender = quote.mode == .v2 ? try TronNetwork.v2Deployment(client.chain.id).router : Self.permit2
         let current = try await allowance(token: token.contract, owner: sender, spender: spender)
         if current < quote.amountIn { return current == 0 ? .token : .reset }
         if quote.mode == .smart, try await permitAllowance(quote, sender: sender) == false { return .permit2 }
@@ -83,7 +86,7 @@ public struct TronDexClient: Sendable {
     }
     public func prepareApproval(_ quote: TronDexQuote, sender: String) async throws -> NativeTransferPlan {
         guard !quote.isExpired, quote.sender == sender, let token = quote.input else { throw WalletError.invalid(L("message.the_tron_approval_quote_expired_or_the_account_changed")) }
-        let spender = quote.mode == .v2 ? Self.v2Router : Self.permit2
+        let spender = quote.mode == .v2 ? try TronNetwork.v2Deployment(client.chain.id).router : Self.permit2
         let needed = try await approvalRequirement(quote, sender: sender)
         let invocation: TronInvocation
         switch needed {
@@ -172,9 +175,10 @@ public struct TronDexClient: Sendable {
     }
     static func invocation(mode: TronDexMode, sender: String, input: Token?, output: Token?, amount: BigUInt, minimum: BigUInt, deadline: BigUInt, hops: [TronDexHop]) throws -> TronInvocation {
         if mode == .v2 {
-            let path = try ContractABI.json([input?.contract ?? Self.wrapped, output?.contract ?? Self.wrapped].map { try TronAddress.evm($0) })
-            if input == nil { return try TronInvocation(contract: Self.v2Router, signature: "swapExactETHForTokens(uint256,address[],address,uint256)", arguments: [String(minimum), path, TronAddress.evm(sender), String(deadline)], callValue: amount) }
-            return try TronInvocation(contract: Self.v2Router, signature: output == nil ? "swapExactTokensForETH(uint256,uint256,address[],address,uint256)" : "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)", arguments: [String(amount), String(minimum), path, TronAddress.evm(sender), String(deadline)])
+            let deployment = try TronNetwork.v2Deployment(input?.chainID ?? output?.chainID ?? TronAddress.chainID)
+            let path = try ContractABI.json([input?.contract ?? deployment.wrapped, output?.contract ?? deployment.wrapped].map { try TronAddress.evm($0) })
+            if input == nil { return try TronInvocation(contract: deployment.router, signature: "swapExactETHForTokens(uint256,address[],address,uint256)", arguments: [String(minimum), path, TronAddress.evm(sender), String(deadline)], callValue: amount) }
+            return try TronInvocation(contract: deployment.router, signature: output == nil ? "swapExactTokensForETH(uint256,uint256,address[],address,uint256)" : "swapExactTokensForTokens(uint256,uint256,address[],address,uint256)", arguments: [String(amount), String(minimum), path, TronAddress.evm(sender), String(deadline)])
         }
         var commands = Data(), inputs: [String] = []
         func append(_ command: UInt8, _ types: [String], _ values: [String]) throws { commands.append(command); inputs.append("0x" + (try ContractABI.parameters(types: types, arguments: values)).hexString) }

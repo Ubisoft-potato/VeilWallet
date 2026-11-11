@@ -43,6 +43,23 @@ private func contractReply(_ method: String, _ params: [JSONValue], allowance: B
 }
 struct ContractTests {
     let chain = Chain.defaults.first { $0.id == 1 }!
+    @Test func underestimatedProxyGasIsCheckedAtTheActualSigningLimit() async throws {
+        let invocation = try ContractInvocation(contract: erc20Address, signature: "approve(address,uint256)", arguments: [wrappedAddress, "123"])
+        func transport(required: BigUInt) -> ContractRPC {
+            ContractRPC { method, params in
+                if method == "eth_estimateGas" { return .string("0x7530") }
+                if method == "eth_call", let gas = params[0]["gas"]?.string,
+                   try Ethereum.decodeQuantity(gas) < required { throw WalletError.rpcRejected(3) }
+                return try contractReply(method, params)
+            }
+        }
+        let client = RPCClient(transport: transport(required: 70_000), chain: chain, isolation: "test")
+        let preview = try await client.prepareContract(sender: contractSender, invocation: invocation)
+        #expect(preview.transaction.gasLimit >= 70_000)
+        try await client.revalidate(preview)
+        let changed = RPCClient(transport: transport(required: preview.transaction.gasLimit + 1), chain: chain, isolation: "test")
+        await #expect(throws: WalletError.self) { try await changed.revalidate(preview) }
+    }
     @Test func contractPreparationRequiresCodeAndSuccessfulSimulation() async throws {
         let call = try ContractInvocation(contract: erc20Address, signature: "approve(address,uint256)", arguments: [wrappedAddress, "123"])
         for failure in ["empty-code", "revert", "false-approval"] {

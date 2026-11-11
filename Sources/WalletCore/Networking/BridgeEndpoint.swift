@@ -40,7 +40,7 @@ public struct BridgeClient: Sendable {
     let noncePolicy: EVMNoncePolicy?
     public init(transport: any PrivateRequesting, chains: [Chain], isolation: String, noncePolicy: EVMNoncePolicy? = nil) { self.transport = transport; self.chains = chains; self.isolation = isolation; self.noncePolicy = noncePolicy }
     func endpoint(_ id: UInt64) throws -> BridgeEndpoint {
-        guard let chain = chains.first(where: { $0.id == id }), BridgeCatalog.on(id).isEmpty == false else { throw WalletError.invalid(L("message.this_network_has_no_bridge_integration")) }
+        guard let chain = chains.first(where: { $0.id == id }), BridgeCatalog.on(id).contains(where: { $0.isTestnet == chain.isTestnet }) else { throw WalletError.invalid(L("message.this_network_has_no_bridge_integration")) }
         if chain.family == .tron { return .tron(TronContractClient(transport: transport, chain: chain, isolation: isolation + ":bridge:" + String(id))) }
         guard chain.isEVM else { throw WalletError.invalid(L("message.unsupported_bridge_protocol")) }
         return .evm(RPCClient(transport: transport, chain: chain, isolation: isolation + ":bridge:" + String(id), noncePolicy: noncePolicy))

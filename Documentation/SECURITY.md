@@ -21,6 +21,8 @@ Explicit Complete file-protection flags returned EPERM on the tested native macO
 
 Separate local metadata/transaction archives use a random non-syncing Keychain AES key. Vault/password or mnemonic recovery does not depend on that metadata key, but archives/settings do. Every signature, backup display, wallet removal and password change re-authenticates. Password rotation uses a new salt and rolls back memory state on write failure. Watch-only wallets cannot sign.
 
+The macOS query currently targets the legacy file-based Keychain: it does not set `kSecUseDataProtectionKeychain`. Its `ThisDeviceOnly` accessibility value is therefore not a verified device-binding guarantee. `kSecAttrSynchronizable = false` disables iCloud synchronization, not operating-system migration or backup copying. Migration Assistant may transfer the file-based Keychain and wallet directory. No two-Mac non-migration acceptance test has been completed. See [Apple's macOS Keychain implementation notes](https://developer.apple.com/documentation/technotes/tn3137-on-mac-keychains).
+
 Before broadcast, save typed intent and signed payload/XMR metadata in UUID/AAD-bound encrypted archives. Persist the broadcast attempt before the network call. Timeout/crash recovery retains unverified state and reservations; no automatic resend. A process-level single-writer lock protects the data directory. See [transaction rules](TRANSACTIONS.md).
 
 Language is a non-sensitive app-local UserDefaults preference with no synchronization. It updates displayed text immediately while retaining forms, passwords, session state and approved previews; it never triggers signing, requoting or broadcasting. Localization only changes display text; canonical IDs/legacy state decoding, amounts, addresses, signing bytes and existing vault schemas remain stable.
@@ -86,4 +88,4 @@ The kill switch is application-level fail-closed gating/cancellation, not a syst
 
 ## Outstanding acceptance
 
-Independent cryptographic/network review; cross-version DNS/TLS/process capture; crash/sleep/proxy failure matrix; hardware signing; memory protection; independent simulations/allowance risk controls; complete remaining protocols/L2 fees; funded transfers/replacements/privacy flows; full XMR recovery; Developer ID/notarization; reproducible builds and supply-chain/redistribution review remain outstanding.
+Independent cryptographic/network review; cross-version DNS/TLS/process capture; crash/sleep/proxy failure matrix; hardware signing; memory protection; independent simulations/allowance risk controls; complete remaining protocols/L2 fees; full production-funds acceptance; full XMR recovery; Developer ID/notarization; reproducible builds and supply-chain/redistribution review remain outstanding. [Protocol execution acceptance](PROTOCOL_ACCEPTANCE.md) documents the narrower local-chain and public Nile results and remaining bridge-delivery gaps.

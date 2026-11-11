@@ -21,7 +21,7 @@ public struct TronContractClient: Sendable {
     public func verifyChain() async throws {
         guard chain.family == .tron else { throw WalletError.invalid(L("message.the_selected_network_is_not_tron")) }
         let genesis = try await native.rest("wallet/getblockbynum", body: .object(["num": .number(0)]))
-        guard genesis["blockID"] == .string("00000000000000001ebf88508a03865c71d452e25f4d51194196a1d22b6653dc") else { throw WalletError.invalid(L("message.the_tron_node_is_not_on_mainnet")) }
+        guard genesis["blockID"] == .string(try TronNetwork.genesis(for: chain)) else { throw WalletError.invalid(L("tron.network_mismatch")) }
     }
     func verifyCode(_ address: String) async throws {
         guard TronAddress.validate(address) else { throw WalletError.invalid(L("message.invalid_tron_contract_address")) }

@@ -5,10 +5,11 @@ import BigInt
 
 // Test-only transport: this exception never enters Sources or the shipped app.
 // The target is an ephemeral literal-loopback chain created with public keys.
-private actor DevchainTransport: PrivateRequesting {
+actor DevchainTransport: PrivateRequesting {
     let port: Int
+    let timeout: TimeInterval
     private var dropSend = false
-    init(port: Int) { self.port = port }
+    init(port: Int, timeout: TimeInterval = 5) { self.port = port; self.timeout = timeout }
     func dropNextSendResponse() { dropSend = true }
     func execute(_ request: PrivateRequest) async throws -> Data {
         guard request.url.absoluteString == "https://evm-local.invalid", let body = request.body else { throw WalletError.invalid("Test transport rejected a non-local fixture") }
@@ -18,17 +19,26 @@ private actor DevchainTransport: PrivateRequesting {
         return response
     }
     private func post(_ data: Data) async throws -> Data {
-        let config = URLSessionConfiguration.ephemeral; config.connectionProxyDictionary = [:]; config.urlCache = nil; config.httpCookieStorage = nil; config.timeoutIntervalForRequest = 5
+        let config = URLSessionConfiguration.ephemeral; config.connectionProxyDictionary = [:]; config.urlCache = nil; config.httpCookieStorage = nil; config.timeoutIntervalForRequest = timeout
         let session = URLSession(configuration: config); defer { session.invalidateAndCancel() }
         var request = URLRequest(url: URL(string: "http://127.0.0.1:\(port)")!); request.httpMethod = "POST"; request.httpBody = data; request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let (bytes, response) = try await session.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw WalletError.invalid("Isolated chain HTTP error") }; return bytes
     }
     func control(_ method: String, params: [JSONValue] = []) async throws -> JSONValue {
-        guard ["evm_mine", "evm_snapshot", "evm_revert", "anvil_setBalance", "anvil_setCode", "eth_getStorageAt"].contains(method) else { throw WalletError.invalid("Test control rejected method") }
+        guard ["evm_mine", "evm_setNextBlockTimestamp", "evm_snapshot", "evm_revert", "anvil_setBalance", "anvil_setCode", "eth_getStorageAt", "eth_getBlockByNumber", "anvil_mine"].contains(method) else { throw WalletError.invalid("Test control rejected method") }
         let id = UUID().uuidString, data = try JSONEncoder().encode(JSONValue.object(["jsonrpc": .string("2.0"), "id": .string(id), "method": .string(method), "params": .array(params)]))
         let result = try JSONDecoder().decode(JSONValue.self, from: await post(data))
         guard result["id"] == .string(id), result["error"] == nil, let value = result["result"] else { throw WalletError.invalid("Isolated chain control error") }; return value
+    }
+    func synchronizeClock() async throws {
+        let head = try await control("eth_getBlockByNumber", params: [.string("latest"), .bool(false)])
+        guard let timestamp = head["timestamp"]?.string,
+              let current = Int(exactly: try Ethereum.decodeQuantity(timestamp)), current < Int.max else { throw WalletError.invalid("Invalid local fixture clock") }
+        // Rapid automining may put the local head seconds ahead of wall time.
+        // Never move backwards; retain the production client's clock checks.
+        _ = try await control("evm_setNextBlockTimestamp", params: [.number(max(current + 1, Int(Date().timeIntervalSince1970)))])
+        _ = try await control("evm_mine")
     }
 }
 @Suite(.serialized) struct TransactionDevchainTests {

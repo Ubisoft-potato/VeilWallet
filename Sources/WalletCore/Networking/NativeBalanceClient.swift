@@ -27,7 +27,7 @@ public struct NativeBalanceClient: Sendable {
             guard funded >= spent else { throw WalletError.invalid(L("message.the_bitcoin_node_returned_inconsistent_balances")) }; return funded - spent
         case .tron:
             let genesis = try await rest(path: "wallet/getblockbynum", body: .object(["num": .number(0)]))
-            guard genesis["blockID"] == .string("00000000000000001ebf88508a03865c71d452e25f4d51194196a1d22b6653dc") else { throw WalletError.invalid(L("message.tron_node_genesis_does_not_match_mainnet")) }
+            guard genesis["blockID"] == .string(try TronNetwork.genesis(for: chain)) else { throw WalletError.invalid(L("tron.network_mismatch")) }
             let value = try await rest(path: "wallet/getaccount", body: .object(["address": .string(address), "visible": .bool(true)]))
             if value == .object([:]) { return 0 }
             guard value["Error"] == nil, value["error"] == nil, value["address"] != nil || value["balance"] != nil else { throw WalletError.rpc(L("message.the_tron_node_returned_invalid_account_data")) }

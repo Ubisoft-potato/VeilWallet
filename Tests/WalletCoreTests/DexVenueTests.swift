@@ -60,6 +60,7 @@ private struct VenueMock: PrivateRequesting {
                 let index = BigUInt(try Data(strictHex: String(data.dropFirst(10))))
                 result = try address(index == 0 ? coinA : (index == 1 ? coinB : wrappedCoin))
             case sel("isPoolRegistered(address)"), sel("isPoolInitialized(address)"): result = word(scenario == "unregistered" ? 0 : 1)
+            case sel("isPoolPaused(address)"): result = word(scenario == "paused" ? 1 : 0)
             case sel("getPoolTokens(address)"):
                 result = .string("0x" + (try ContractABI.parameters(types: ["address[]"], arguments: [ContractABI.json([coinA, coinB, wrappedCoin])])).hexString)
             default: result = word(1) // successful fixed local write simulation only
@@ -230,7 +231,7 @@ struct DexVenueTests {
         let receiver = BigUInt(try Data(strictHex: testSender))
         #expect(refund == ContractABI.word(0) + ContractABI.word(receiver) + ContractABI.word(0))
     }
-    @Test(arguments: ["partialLB", "unregistered"])
+    @Test(arguments: ["partialLB", "unregistered", "paused"])
     func partialLBAndUnregisteredBalancerPoolsCannotProduceSwapQuotes(scenario: String) async throws {
         let venue = DexCatalog.find(scenario == "partialLB" ? "lfj-lb-43114" : "balancer-v3-1")!, chain = Chain.defaults.first { $0.id == venue.chainID }!
         let dex = DexClient(rpc: RPCClient(transport: VenueMock(venue: venue, scenario: scenario), chain: chain, isolation: "test"))

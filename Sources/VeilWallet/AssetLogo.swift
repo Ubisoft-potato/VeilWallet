@@ -15,6 +15,7 @@ struct AssetLogo: View {
     var token: Token? = nil
     var size: CGFloat = 40
     var nativeAsset = false
+    var showNetworkBadge = true
     private var key: String? {
         if let token { return TokenCatalog.preset(for: token)?.logo }
         return nativeAsset ? AssetArtwork.nativeKey(chain) : AssetArtwork.networkKey(chain)
@@ -25,7 +26,7 @@ struct AssetLogo: View {
                 if let key, let image = AssetImageCache.image(key) { Image(nsImage: image).resizable().interpolation(.high).scaledToFit() }
                 else { Circle().fill(Color.veilAccent.opacity(0.15)); Text(String((token?.symbol ?? chain.symbol).prefix(3))).font(.system(size: size * 0.25, weight: .bold)).foregroundStyle(Color.veilAccent) }
             }.frame(width: size, height: size).clipShape(Circle())
-            if token != nil || nativeAsset {
+            if showNetworkBadge && (token != nil || nativeAsset) {
                 Group {
                     if let image = AssetImageCache.image(AssetArtwork.networkKey(chain)) { Image(nsImage: image).resizable().scaledToFit() }
                     else { Circle().fill(Color.veilBackground); Text(String(chain.name.prefix(1))).font(.system(size: size * 0.17, weight: .bold)) }

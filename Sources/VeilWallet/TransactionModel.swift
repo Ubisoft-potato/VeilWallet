@@ -132,7 +132,7 @@ struct TransferDraft {
         // This operation owns busy; validate the live session without blocking
         // on the UI flag that remains set until the deferred cleanup above.
         guard !Task.isCancelled, session == epoch, networkSessionReady, self.walletID == walletID, chainID == TronAddress.chainID, address == sender else { throw WalletError.networkBlocked }
-        return .resolveTron(hash: hash, activities: local.activities, walletID: walletID, sender: sender)
+        return .resolveTron(hash: hash, activities: local.activities, walletID: walletID, sender: sender, chainID: chainID)
     }
     func pendingTronDexApproval(for quote: TronDexQuote) async throws -> (hash: String, title: String)? {
         guard ready, chainID == quote.chainID, let walletID, address == quote.sender else { throw WalletError.locked }
