@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedDate": "2026-11-11",
+  "reviewedDate": "2026-11-12",
   "entries": [
     {
       "path": "Configuration/AppIcon.icns",
@@ -36,7 +36,7 @@
     },
     {
       "path": "Documentation/THIRD_PARTY.md",
-      "sha256": "db86dcf9eaa61f207c1dde357e593fb06e3feb72735e606d0b6baaea7284d49b",
+      "sha256": "f66575be0165be03502dbf40a48b6500ceda4132907f72db7367284f2ebfb502",
       "rules": [
         "gitleaks/generic-api-key",
         "hex-32-bytes"
@@ -126,7 +126,7 @@
     },
     {
       "path": "Scripts/fetch-tor.sh",
-      "sha256": "80ae99f8e0b0ca5d3f7d9767e9401c39d6d33e66bcf6d351428dbc7be37bd01e",
+      "sha256": "4f93b235ded89909c7b0549df78d73b9d6904929cc676fcf99f24346144d935a",
       "rules": [
         "hex-32-bytes"
       ],
@@ -2443,7 +2443,7 @@
     },
     {
       "path": "Configuration/ReleaseSources.json",
-      "sha256": "965bc21d1411416bc9756b7d5d80f87b3dba46119e21544858a1c0a62182b310",
+      "sha256": "ed430101e5cfe2e477e666e9a57acd1e696661b5bb3b2a840e625622723ca4c0",
       "rules": [
         "hex-32-bytes"
       ],

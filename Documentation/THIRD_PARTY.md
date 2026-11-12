@@ -31,7 +31,7 @@ Tor archive integrity:
 - x86_64 SHA-256: `5b1860215c26f2d408392d1d79e798a2f81d65eb939510bb94c11f237bd0bfc3`
 - Pinned Tor Browser Developers primary signing-key fingerprint: `EF6E286DDA85EA2A4BA7DE684E2C6E8793298290`.
 - ARM64 archive signature verified against subkey `022DA248432D2A0E0F54E65E316C1FACD62D07D9`, signature date 2026-10-29. Hash/signature are checked before local code-signature replacement.
-- Tor is an independent executable, not linked into WalletCore. Preserve upstream corresponding-source availability and license obligations when distributing the bundle. Official releases and their build definitions are available at https://dist.torproject.org/torbrowser/16.0/ and https://gitlab.torproject.org/tpo/applications/tor-browser-build .
+- Tor is an independent executable, not linked into WalletCore. Preserve upstream corresponding-source availability and license obligations when distributing the bundle. The pinned official release and its build definitions are available at https://archive.torproject.org/tor-package-archive/torbrowser/16.0/ and https://gitlab.torproject.org/tpo/applications/tor-browser-build .
 
 
 ## Multichain provenance and redistribution

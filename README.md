@@ -6,7 +6,7 @@
 
 Veil Wallet brings wallet management, portfolio tracking, supported transfers and on-chain interactions into a SwiftUI/AppKit desktop app. English and Simplified Chinese switch immediately. No account registration, analytics SDK, embedded browser or runtime artwork downloads.
 
-**v0.10.7 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
+**v0.10.8 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
 
 ![Veil Wallet portfolio with native navigation, USD valuation and local asset icons](Assets/Readme/overview.png)
 

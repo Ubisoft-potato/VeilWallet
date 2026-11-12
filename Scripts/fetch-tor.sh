@@ -12,14 +12,22 @@ command -v gpg >/dev/null || { echo 'Install GnuPG first: brew install gnupg' >&
 mkdir -p Vendor .build/gnupg
 chmod 700 .build/gnupg
 archive="tor-expert-bundle-macos-$arch-$version.tar.gz"
-base="https://dist.torproject.org/torbrowser/$version"
+base="https://archive.torproject.org/tor-package-archive/torbrowser/$version"
+# dist.torproject.org rotates older releases out of its live directory. Pin
+# historical releases to Tor's official archive, with the same hash and signer.
+fetch() {
+    echo "Fetching verified-release input: $1"
+    /usr/bin/curl --fail --location --retry 3 --connect-timeout 20 --max-time 300 \
+        --proto '=https' --proto-redir '=https' --tlsv1.2 "$1" -o "$2.partial"
+    mv "$2.partial" "$2"
+}
 # This is a developer-only fetch. The installed app never downloads executables.
-if [ ! -f "Vendor/$archive" ]; then /usr/bin/curl --fail --location --proto '=https' --tlsv1.2 "$base/$archive" -o "Vendor/$archive"; fi
+if [ ! -f "Vendor/$archive" ]; then fetch "$base/$archive" "Vendor/$archive"; fi
 actual=$(shasum -a 256 "Vendor/$archive" | awk '{print $1}')
 [ "$actual" = "$expected" ] || { echo 'Tor SHA-256 mismatch' >&2; exit 1; }
-/usr/bin/curl --fail --location --proto '=https' --tlsv1.2 "$base/$archive.asc" -o "Vendor/$archive.asc"
+fetch "$base/$archive.asc" "Vendor/$archive.asc"
 if [ ! -f Vendor/tor-browser-release-key.asc ]; then
-    /usr/bin/curl --fail --location --proto '=https' --tlsv1.2 "https://keys.openpgp.org/vks/v1/by-fingerprint/$fingerprint" -o Vendor/tor-browser-release-key.asc
+    fetch "https://keys.openpgp.org/vks/v1/by-fingerprint/$fingerprint" Vendor/tor-browser-release-key.asc
 fi
 gpg --batch --no-autostart --homedir .build/gnupg --import Vendor/tor-browser-release-key.asc 2>.build/tor-key-import.log || {
     # Public-key import may return nonzero solely because sandboxed gpg-agent cannot start.
