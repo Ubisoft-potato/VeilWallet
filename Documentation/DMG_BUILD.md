@@ -27,9 +27,9 @@ Release maps checkout paths, uses upstream portable Go implementations and strip
 
 ## GitHub Actions
 
-[macos-dmg.yml](../.github/workflows/macos-dmg.yml) builds when a new `v*` tag is pushed. The tag must match the version in [Info.plist](../Configuration/Info.plist), for example `v0.10.8`. Ordinary main-branch pushes do not start this workflow.
+[macos-dmg.yml](../.github/workflows/macos-dmg.yml) builds when a new `v*` tag is pushed. The tag must match the version in [Info.plist](../Configuration/Info.plist), for example `v0.10.9`. Ordinary main-branch pushes do not start this workflow.
 
-Pinned environment: ARM64 macos-26, Xcode 26.3, Go 1.26.10. See [runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners) and [image inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md). Unexpected architecture/toolchain stops the build.
+Pinned environment: ARM64 macos-26, Xcode 26.3, Go 1.26.11. See [runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners) and [image inventory](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md). Unexpected architecture/toolchain stops the build.
 
 Steps: full-history and HEAD secret scans, exact-HEAD documentation checks, scanner tests, verified runtime downloads, default Swift tests, runtime dependency-advisory checks and App/DMG validation. Read-only permissions, no persisted checkout credentials, signing secrets or shared build caches. No cache/workspace upload. Actions use full commit SHAs.
 

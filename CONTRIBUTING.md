@@ -12,7 +12,7 @@ For a bug report, include app/macOS version, expected and actual behavior, minim
 
 ## Set up a development checkout
 
-Use Apple Silicon/macOS 14+, Xcode or Command Line Tools with Swift 6.1+, Go 1.26.10, Python 3, Node/npm, GnuPG and the tools listed in the [README](README.md#developer-prerequisites). See [DMG_BUILD.md](Documentation/DMG_BUILD.md) for the pinned CI environment.
+Use Apple Silicon/macOS 14+, Xcode or Command Line Tools with Swift 6.1+, Go 1.26.11, Python 3, Node/npm, GnuPG and the tools listed in the [README](README.md#developer-prerequisites). See [DMG_BUILD.md](Documentation/DMG_BUILD.md) for the pinned CI environment.
 
 Run from the repository root:
 

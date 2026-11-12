@@ -6,7 +6,7 @@
 
 Veil Wallet brings wallet management, portfolio tracking, supported transfers and on-chain interactions into a SwiftUI/AppKit desktop app. English and Simplified Chinese switch immediately. No account registration, analytics SDK, embedded browser or runtime artwork downloads.
 
-**v0.10.8 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
+**v0.10.9 · Development preview · macOS 14+ · Apple Silicon.** The project has not undergone an independent security audit, Apple notarization or complete live-funds acceptance. Read the [security model](Documentation/SECURITY.md) before using it.
 
 ![Veil Wallet portfolio with native navigation, USD valuation and local asset icons](Assets/Readme/overview.png)
 
@@ -104,12 +104,12 @@ Run commands from the repository root. A first build needs internet access for p
 |---|---|
 | macOS 14+ on Apple Silicon | Native build, code signing and DMG verification |
 | Xcode or Command Line Tools; Swift 6.1+ | SwiftUI/AppKit, C compilation and SwiftPM; local validation used Swift 6.4 |
-| Go 1.26.10 | Offline multichain C archive |
+| Go 1.26.11 | Offline multichain C archive |
 | Python 3 | Catalog, provenance, audit and packaging checks |
 | Node.js/npm | Development preparation of the pinned offline proof helper |
 | GnuPG, curl, tar, shasum, ripgrep | Runtime verification and source checks |
 
-CI pins Xcode 26.3, Go 1.26.10 and an ARM64 macos-15 runner. See [build details](Documentation/DMG_BUILD.md) for exact workflow behavior.
+CI pins Xcode 26.3, Go 1.26.11 and an ARM64 macos-26 runner. See [build details](Documentation/DMG_BUILD.md) for exact workflow behavior.
 
 Scripts/go.sh selects the exact version in Configuration/Toolchains.json. If it is not installed, Go downloads and verifies that developer toolchain into the project cache. No user-wide Go setting is changed. Runtime wallet code does not download toolchains.
 

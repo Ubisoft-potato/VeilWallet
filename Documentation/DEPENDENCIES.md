@@ -4,7 +4,9 @@ Version 0.10.2 updates the native dependency graph and makes advisory checks rep
 
 ## Native crypto and toolchain
 
-- [Toolchains.json](../Configuration/Toolchains.json) pins Go 1.26.10. [go.sh](../Scripts/go.sh) selects it for builds, license collection and build metadata without modifying user-wide settings. Missing developer toolchains are downloaded with Go checksum-database verification into the project cache.
+Go 1.26.11 resolves the standard-library version match for [GO-2026-6859](https://vuln.go.dev/ID/GO-2026-6859.json). Both the developer wrapper and CI select this patched toolchain; the full online advisory gate remains enabled.
+
+- [Toolchains.json](../Configuration/Toolchains.json) pins Go 1.26.11. [go.sh](../Scripts/go.sh) selects it for builds, license collection and build metadata without modifying user-wide settings. Missing developer toolchains are downloaded with Go checksum-database verification into the project cache.
 - The [Go module files](../Native/ChainCore/go.mod) pin edwards25519 1.2.0, geth 1.17.10, gnark-crypto 0.22.0, current x/sys and the upstream x/crypto change that removes the unmaintained OpenPGP package. Module sums remain checked. The vendored OKX SDK subtree remains unchanged.
 - Existing independent public signing/derivation fixtures, local transaction integration and official offline Monero tests verify compatibility. These tests do not replace independent cryptographic review.
 

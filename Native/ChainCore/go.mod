@@ -1,6 +1,6 @@
 module app.veilwallet.chaincore
 
-go 1.26.8
+go 1.26.11
 
 require (
 	filippo.io/edwards25519 v1.2.0
